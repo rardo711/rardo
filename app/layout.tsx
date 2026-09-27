@@ -4,6 +4,8 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
+import Grain from "@/components/Grain";
+import PointerLight from "@/components/PointerLight";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -124,6 +126,8 @@ export default function RootLayout({
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <PointerLight />
+        <Grain />
       </body>
     </html>
   );

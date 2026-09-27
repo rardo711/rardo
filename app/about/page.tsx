@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../../components/Reveal";
+import Still from "../../components/Still";
+import InkRule from "../../components/InkRule";
 
 export const metadata = {
   title: "About",
@@ -82,15 +84,17 @@ export default function About() {
           </div>
           <Reveal delay={0.1} className="lg:col-span-6">
             <figure>
-              <Image
-                src="/photos/gerardo-olivia.webp"
-                alt="Gerardo and Olivia, in black and white, standing under the trees."
-                width={1000}
-                height={1500}
-                priority
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                className="aspect-[3/4] w-full object-cover object-[center_18%]"
-              />
+              <Still>
+                <Image
+                  src="/photos/gerardo-olivia.webp"
+                  alt="Gerardo and Olivia, in black and white, standing under the trees."
+                  width={1000}
+                  height={1500}
+                  priority
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  className="aspect-[3/4] w-full object-cover object-[center_18%]"
+                />
+              </Still>
               <figcaption className="mt-3 font-tech text-[11px] uppercase tracking-[0.18em] text-ink-soft">
                 Gerardo and Olivia
               </figcaption>
@@ -110,14 +114,16 @@ export default function About() {
             {frames.map((f, i) => (
               <Reveal key={f.src} delay={i * 0.08}>
                 <figure>
-                  <Image
-                    src={f.src}
-                    alt={f.alt}
-                    width={1000}
-                    height={1500}
-                    sizes="(min-width: 640px) 30vw, 100vw"
-                    className="aspect-[3/4] w-full object-cover object-[center_20%]"
-                  />
+                  <Still>
+                    <Image
+                      src={f.src}
+                      alt={f.alt}
+                      width={1000}
+                      height={1500}
+                      sizes="(min-width: 640px) 30vw, 100vw"
+                      className="aspect-[3/4] w-full object-cover object-[center_20%]"
+                    />
+                  </Still>
                   <figcaption className="mt-3 font-tech text-[11px] uppercase tracking-[0.18em] text-ink-soft">
                     {f.caption}
                   </figcaption>
@@ -203,17 +209,20 @@ export default function About() {
               So far
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-10 md:grid-cols-3">
-            {road.map((r, i) => (
-              <Reveal key={r.when} delay={i * 0.08}>
-                <div className="border-t-2 border-ink pt-6">
-                  <p className="font-tech text-xs uppercase tracking-[0.2em] text-accent">
-                    {r.when}
-                  </p>
-                  <p className="mt-4 leading-relaxed text-ink-soft">{r.what}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="relative mt-12">
+            <InkRule from="md" />
+            <div className="grid gap-10 md:grid-cols-3">
+              {road.map((r, i) => (
+                <Reveal key={r.when} delay={i * 0.08}>
+                  <div className="border-t-2 border-ink pt-6 md:border-transparent">
+                    <p className="font-tech text-xs uppercase tracking-[0.2em] text-accent">
+                      {r.when}
+                    </p>
+                    <p className="mt-4 leading-relaxed text-ink-soft">{r.what}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
           <Reveal delay={0.1}>
             <p className="mt-16 text-center font-display text-2xl italic sm:text-3xl">
