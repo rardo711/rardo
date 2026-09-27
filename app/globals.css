@@ -124,6 +124,26 @@ p {
   }
 }
 
+/* ——— Animated underline sweep for quiet links ——— */
+.u-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left calc(100% - 0.05em);
+  padding-bottom: 0.12em;
+  transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.u-sweep:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-sweep {
+    transition: none;
+  }
+}
+
 /* ——— Drifting warm glow behind the hero ——— */
 .hero-glow {
   position: absolute;
