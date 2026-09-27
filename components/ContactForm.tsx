@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-// Rardo: replace with your email to take the form live, e.g.
-// "https://formsubmit.co/ajax/you@example.com"
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/YOUR-EMAIL-HERE";
+// Form submissions land here via FormSubmit (free). First submission sends
+// an activation email to this address — click it once and the form goes live.
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/gerardoj2001@outlook.com";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
