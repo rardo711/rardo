@@ -65,6 +65,10 @@ export default function Contact() {
               <p className="mt-8 border border-line bg-wash px-6 py-5 font-display text-xl italic">
                 One flat price: $250. Half up front, half when it&apos;s live.
               </p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                Bigger project? Monthly pricing is available too — it depends
+                on the project, so mention it in your message.
+              </p>
             </Reveal>
           </div>
         </div>

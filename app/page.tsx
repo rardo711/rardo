@@ -236,6 +236,10 @@ export default function Home() {
             <p className="mt-14 border border-line bg-wash px-6 py-5 text-center font-display text-xl italic sm:text-2xl">
               One flat price: $250. No hourly billing, no surprises.
             </p>
+            <p className="mt-4 text-center text-sm text-ink-soft">
+              Bigger project? Monthly pricing is available too — it depends on
+              the project, so mention it when you reach out.
+            </p>
           </Reveal>
         </div>
       </section>
