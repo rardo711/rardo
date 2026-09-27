@@ -3,6 +3,7 @@
 @theme {
   --font-display: var(--font-fraunces), "Georgia", serif;
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-tech: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
 
   --color-paper: #faf6ee;
   --color-wash: #f2ebdb;
@@ -39,20 +40,4 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .marquee-track {
-    animation: none;
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  animation: marquee 36s linear infinite;
 }
