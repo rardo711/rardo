@@ -169,19 +169,21 @@ export default function Home() {
       {/* ——— Services ——— */}
       <section id="services" className="scroll-mt-20 border-b border-line bg-wash">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
-          <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
-              <span className="text-accent">01</span>
-              <span aria-hidden> · </span>What I do
-            </p>
-            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-              What I offer.
-            </h2>
-            <p className="mt-5 max-w-xl leading-relaxed text-ink-soft">
-              No packages with forty line items. Three things, done well —
-              each one something I&apos;ve already built and shipped.
-            </p>
-          </Reveal>
+          <Parallax offset={-28}>
+            <Reveal>
+              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+                <span className="text-accent">01</span>
+                <span aria-hidden> · </span>What I do
+              </p>
+              <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+                What I offer.
+              </h2>
+              <p className="mt-5 max-w-xl leading-relaxed text-ink-soft">
+                No packages with forty line items. Three things, done well —
+                each one something I&apos;ve already built and shipped.
+              </p>
+            </Reveal>
+          </Parallax>
           <div className="mt-14 grid gap-px bg-line sm:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.08} className="h-full">
@@ -205,67 +207,53 @@ export default function Home() {
       {/* ——— Work ——— */}
       <section id="work" className="scroll-mt-20 border-b border-line">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
-          <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
-              <span className="text-accent">02</span>
-              <span aria-hidden> · </span>Selected work
-            </p>
-            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-              Real sites, for real businesses.
-            </h2>
-          </Reveal>
+          <Parallax offset={28}>
+            <Reveal>
+              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+                <span className="text-accent">02</span>
+                <span aria-hidden> · </span>Selected work
+              </p>
+              <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+                Real sites, for real businesses.
+              </h2>
+            </Reveal>
+          </Parallax>
           <div className="mt-16 flex flex-col gap-20 sm:gap-24 lg:mt-20">
-            {work.map((p, i) => {
-              const flip = i % 2 === 1;
-              return (
-                <Reveal key={p.name}>
-                  <article className="group grid items-start gap-6 lg:grid-cols-12 lg:gap-12">
-                    <Parallax
-                      offset={flip ? 48 : -48}
-                      className={`lg:col-span-3 ${flip ? "lg:order-2" : ""}`}
-                    >
+            {work.map((p) => (
+              <Reveal key={p.name}>
+                <article className="group max-w-4xl">
+                  <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-accent">
+                    {p.kind}
+                  </p>
+                  <h3 className="mt-3 font-display text-4xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-accent-deep sm:text-5xl lg:text-6xl">
+                    {p.name}
+                  </h3>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {p.tags.map((t) => (
                       <span
-                        aria-hidden
-                        className={`block select-none font-display text-[clamp(5rem,12vw,10rem)] font-semibold leading-[0.85] tracking-tight text-line transition-colors duration-500 group-hover:text-accent/40 lg:text-[11rem] ${flip ? "lg:text-right" : ""}`}
+                        key={t}
+                        className="border border-line px-3 py-1 font-tech text-[11px] uppercase tracking-[0.14em] text-ink-soft"
                       >
-                        {p.n}
+                        {t}
                       </span>
-                    </Parallax>
-                    <div className={`lg:col-span-9 ${flip ? "lg:order-1" : ""}`}>
-                      <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-accent">
-                        {p.kind}
-                      </p>
-                      <h3 className="mt-3 font-display text-4xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-accent-deep sm:text-5xl lg:text-6xl">
-                        {p.name}
-                      </h3>
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {p.tags.map((t) => (
-                          <span
-                            key={t}
-                            className="border border-line px-3 py-1 font-tech text-[11px] uppercase tracking-[0.14em] text-ink-soft"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                      <p className="mt-5 max-w-2xl leading-relaxed text-ink-soft">
-                        {p.description}
-                      </p>
-                      <Link
-                        href={p.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`Visit ${p.name} (opens in a new tab)`}
-                        className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent-deep"
-                      >
-                        Visit the site
-                        <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </Link>
-                    </div>
-                  </article>
-                </Reveal>
-              );
-            })}
+                    ))}
+                  </div>
+                  <p className="mt-5 max-w-2xl leading-relaxed text-ink-soft">
+                    {p.description}
+                  </p>
+                  <Link
+                    href={p.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit ${p.name} (opens in a new tab)`}
+                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent-deep"
+                  >
+                    Visit the site
+                    <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -273,15 +261,17 @@ export default function Home() {
       {/* ——— Process ——— */}
       <section id="process" className="scroll-mt-20 border-b border-line">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
-          <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
-              <span className="text-accent">03</span>
-              <span aria-hidden> · </span>How it works
-            </p>
-            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-              How it goes.
-            </h2>
-          </Reveal>
+          <Parallax offset={-28}>
+            <Reveal>
+              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+                <span className="text-accent">03</span>
+                <span aria-hidden> · </span>How it works
+              </p>
+              <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+                How it goes.
+              </h2>
+            </Reveal>
+          </Parallax>
           <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.08}>
@@ -347,29 +337,33 @@ export default function Home() {
               and what you wish your website did. I&apos;ll get back to you within a day.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 bg-paper px-7 py-3.5 text-base font-semibold text-ink transition-all hover:bg-accent hover:text-paper active:scale-[0.96]"
-              >
-                Start your project
-                <ArrowRight
-                  size={18}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </Link>
-              <Link
-                href="https://x.com/gerardocasta711"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Message me on X (opens in a new tab)"
-                className="group inline-flex items-center gap-2 border border-paper/40 px-7 py-3.5 text-base font-semibold text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
-              >
-                Message me on X
-                <ArrowUpRight
-                  size={18}
-                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </Link>
+              <Magnetic>
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-2 bg-paper px-7 py-3.5 text-base font-semibold text-ink transition-all hover:bg-accent hover:text-paper active:scale-[0.96]"
+                >
+                  Start your project
+                  <ArrowRight
+                    size={18}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link
+                  href="https://x.com/gerardocasta711"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Message me on X (opens in a new tab)"
+                  className="group inline-flex items-center gap-2 border border-paper/40 px-7 py-3.5 text-base font-semibold text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
+                >
+                  Message me on X
+                  <ArrowUpRight
+                    size={18}
+                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
+              </Magnetic>
             </div>
             <p className="mt-8 font-tech text-[11px] uppercase tracking-[0.18em] text-paper/40">
               @gerardocasta711 — DMs open
