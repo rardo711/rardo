@@ -27,7 +27,7 @@ export default function OgImage() {
             marginBottom: 24,
           }}
         >
-          Christian &middot; Husband &middot; Father
+          Websites for small businesses
         </div>
         <div
           style={{
@@ -55,7 +55,7 @@ export default function OgImage() {
             fontFamily: "system-ui, sans-serif",
           }}
         >
-          I build things, study Scripture, and write.
+          One flat price. Agreed up front.
         </div>
       </div>
     ),

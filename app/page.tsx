@@ -1,385 +1,291 @@
-import Image from "next/image";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
+import SectionLabel from "../components/SectionLabel";
 
-const projects = [
+const work = [
   {
-    name: "Theos Logos",
+    n: "01",
+    name: "RaeMa's Remedies",
+    kind: "Client — order site",
     description:
-      "A scholarly Bible study web app. Hebrew and Greek lexicons, original-language tools, no fluff.",
+      "An order site for a family wellness brand. Customers browse the products and send their order straight to RaeMa's inbox — and she updates products, prices, and photos herself through a plain-language admin panel. No developer needed.",
+    href: "https://raemas-remedies-castanedag2001-1468.vercel.app",
+  },
+  {
+    n: "02",
+    name: "Better Than Gold Tallow Co.",
+    kind: "Client — business site",
+    description:
+      "A one-page site for a local tallow business, built from her real flyer, farm photos, and exact words. What she sells, her story, and a direct line to her — nothing for a customer to get lost in.",
+    href: "https://rardo711.github.io/better-than-gold-tallow/",
+  },
+  {
+    n: "03",
+    name: "Theos Logos",
+    kind: "Personal — web app",
+    description:
+      "My own build: a scholarly Bible study app with Hebrew and Greek lexicons and original-language tools. Proof I can ship complex, working software — not just pages.",
     href: "https://theos-logos-official.vercel.app",
   },
+];
+
+const services = [
   {
-    name: "RaeMa's Remedies",
-    description:
-      "An order site for my mother-in-law's wellness brand. She edits it herself — I just built the door.",
-    href: "https://raemas-remedies.vercel.app",
+    n: "01",
+    title: "One-page business websites",
+    body: "Everything a customer needs and nothing they don't: who you are, what you do, your hours, and a big button to call or message you. Fast, sharp on phones — because that's where your customers find you.",
   },
   {
-    name: "Better Than Gold Tallow Co.",
-    description:
-      "A site for a friend's tallow business, built from her flyer and her farm photos.",
-    href: "https://better-than-gold-tallow.vercel.app",
+    n: "02",
+    title: "Ordering & contact forms",
+    body: "Let customers order ahead or reach you straight from the site. Orders land in your inbox — no apps to learn, no monthly fees, nothing to maintain.",
+  },
+  {
+    n: "03",
+    title: "Sites you can update yourself",
+    body: "A plain-language edit panel for your words, prices, hours, and photos. Change anything in minutes, on your own, without calling a developer.",
   },
 ];
 
-const writing = [
+const steps = [
   {
-    name: "\u201CUltimate Truth\u201D",
-    description: "A book manuscript. In progress.",
+    n: "01",
+    title: "We talk",
+    body: "Free. You tell me about your business, I ask questions. Plain talk, no jargon, no pressure.",
   },
   {
-    name: "A thesis on modern American evangelicalism",
-    description: "Where it went wrong, documented with footnotes.",
+    n: "02",
+    title: "Free mockup",
+    body: "I build a one-page mockup from your public info and show it to you on my phone. You see exactly what you'd get before you pay anything.",
   },
   {
-    name: "Seminary coursework",
-    description:
-      "Greek and Hebrew exegesis at SEPE — currently working through Colossians.",
-  },
-];
-
-const road = [
-  {
-    place: "Honduras",
-    text: "Where I'm from. I miss the food most of all — then everything.",
+    n: "03",
+    title: "Half now, half on delivery",
+    body: "One flat price: $250. Half up front, half when your site is live. No hourly billing, no surprises.",
   },
   {
-    place: "Glennville, Georgia",
-    text: "Home now. Husband, father of two. Family first, always.",
-  },
-  {
-    place: "T-Mobile, Reidsville",
-    text: "Retail Associate Manager. I lead the team at our store.",
-  },
-  {
-    place: "2026",
-    text: "Started building software with AI — and shipped real sites for real people.",
+    n: "04",
+    title: "It's yours",
+    body: "The site is yours outright. I'll show you how to update it yourself — and I'm a message away if you ever need me.",
   },
 ];
-
-const soundtrack = [
-  "Jon Guerra",
-  "Twenty One Pilots",
-  "Chon",
-  "Delta Sleep",
-  "Hippo Campus",
-  "\u2026and Jon Guerra again",
-];
-
-const marqueeWords = [
-  "Faith",
-  "Family",
-  "Building",
-  "Writing",
-  "Terer\u00E9",
-  "Glennville, GA",
-];
-
-function SectionHeading({ index, title }: { index: string; title: string }) {
-  return (
-    <div className="flex items-baseline gap-4 border-b border-line pb-4">
-      <span className="font-display text-sm italic text-accent">{index}</span>
-      <h2 className="font-display text-3xl font-medium tracking-tight md:text-4xl">
-        {title}
-      </h2>
-    </div>
-  );
-}
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      <header className="sticky top-0 z-10 border-b border-line bg-paper">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-          <a
-            href="#top"
-            className="font-display text-lg font-semibold tracking-tight"
-          >
-            Gerardo Castaneda
-          </a>
-          <nav className="flex items-center gap-5 text-sm text-ink-soft">
-            <a href="#building" className="hidden hover:text-ink sm:inline">
-              Building
-            </a>
-            <a href="#writing" className="hidden hover:text-ink sm:inline">
-              Writing
-            </a>
-            <a href="#road" className="hidden hover:text-ink md:inline">
-              The road
-            </a>
-            <a
-              href="https://x.com/gerardocasta711"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 font-medium text-ink hover:text-accent"
-            >
-              X <ArrowUpRight className="h-4 w-4" aria-hidden />
-            </a>
-          </nav>
-        </div>
-      </header>
-
-      <main id="top">
-        {/* Hero */}
-        <section className="mx-auto max-w-3xl px-6 pb-14 pt-20 md:pb-20 md:pt-28">
+    <>
+      {/* ——— Hero ——— */}
+      <section className="border-b border-line">
+        <div className="mx-auto max-w-6xl px-5 pb-16 pt-20 sm:px-8 sm:pb-24 sm:pt-28">
           <Reveal>
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-ink-soft">
-              Christian &middot; Husband &middot; Father
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+              Gerardo Castaneda — Glennville, GA
             </p>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="mt-6 font-display text-5xl font-medium leading-[1.05] tracking-tight md:text-7xl">
-              I build things, study <em className="text-accent">Scripture</em>,
-              and write.
+            <h1 className="mt-8 max-w-4xl font-display text-[clamp(2.75rem,7.5vw,5.75rem)] font-semibold leading-[1.02] tracking-tight">
+              I build websites that bring customers through your door.
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
-              I&rsquo;m Gerardo &mdash; Rardo to most people. I lead the retail
-              team at a T-Mobile store in Reidsville, Georgia. The rest of
-              the time I&rsquo;m learning to build software with AI, studying
-              the Bible in Hebrew and Greek, and writing down what I find.
+              I&apos;m Rardo. I design and build simple, fast one-page websites
+              for local businesses — who you are, what you do, your hours, and
+              a way to call you. One flat price, agreed up front.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a
-                href="#building"
-                className="inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent-deep"
+              <Link
+                href="#contact"
+                className="group inline-flex items-center gap-2 bg-ink px-7 py-3.5 text-base font-semibold text-paper transition-colors hover:bg-accent-deep"
               >
-                What I&rsquo;m building{" "}
-                <ArrowDown className="h-4 w-4" aria-hidden />
-              </a>
-              <a
-                href="https://x.com/gerardocasta711"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 border border-ink px-5 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+                Start your project
+                <ArrowRight
+                  size={18}
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </Link>
+              <Link
+                href="#work"
+                className="inline-flex items-center gap-2 border border-ink px-7 py-3.5 text-base font-semibold transition-colors hover:bg-ink hover:text-paper"
               >
-                Follow me on X <ArrowUpRight className="h-4 w-4" aria-hidden />
-              </a>
+                See the work
+              </Link>
             </div>
           </Reveal>
-        </section>
-
-        {/* Hero artwork */}
-        <section className="mx-auto max-w-5xl px-6 pb-16 md:pb-24">
-          <Reveal>
-            <figure>
-              <Image
-                src="/images/hero.webp"
-                alt="An open ancient book whose Hebrew letterforms flow into copper circuit traces and geometric shapes"
-                width={1920}
-                height={1080}
-                priority
-                className="h-auto w-full"
-              />
-              <figcaption className="mt-3 text-sm italic text-ink-soft">
-                Ancient words, new tools.
-              </figcaption>
-            </figure>
-          </Reveal>
-        </section>
-
-        {/* Marquee */}
-        <div
-          aria-hidden
-          className="overflow-hidden border-y border-accent-deep bg-accent py-3"
-        >
-          <div className="marquee-track flex w-max items-center gap-8 whitespace-nowrap">
-            {[...marqueeWords, ...marqueeWords].map((w, i) => (
-              <span
-                key={i}
-                className="font-display text-lg italic text-paper"
-              >
-                {w}
-                <span className="ml-8 not-italic text-paper/60">&middot;</span>
-              </span>
-            ))}
-          </div>
         </div>
+      </section>
 
-        {/* Building */}
-        <section
-          id="building"
-          className="mx-auto max-w-3xl scroll-mt-24 px-6 py-14 md:py-20"
-        >
+      {/* ——— Work ——— */}
+      <section id="work" className="scroll-mt-20 border-b border-line">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <Reveal>
-            <SectionHeading index="01" title="Building" />
-            <p className="mt-6 max-w-xl leading-relaxed text-ink-soft">
-              Side projects with AI, when the week allows. I&rsquo;m learning
-              software development from zero &mdash; in the open, with AI as
-              tutor.
-            </p>
+            <SectionLabel index="SEC.01">Selected work</SectionLabel>
+            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+              Real sites, for real businesses.
+            </h2>
           </Reveal>
-          <div className="mt-8">
-            {projects.map((p, i) => (
+          <div className="mt-14">
+            {work.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.06}>
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-start justify-between gap-6 border-t border-line py-6 last:border-b"
-                >
-                  <div>
-                    <h3 className="font-display text-xl font-medium tracking-tight transition-colors group-hover:text-accent md:text-2xl">
-                      {p.name}
-                    </h3>
-                    <p className="mt-2 max-w-md leading-relaxed text-ink-soft">
-                      {p.description}
-                    </p>
+                <article className="group border-t border-line py-10 last:border-b sm:py-12">
+                  <div className="flex flex-col gap-6 sm:flex-row sm:items-baseline sm:justify-between">
+                    <div className="flex items-baseline gap-5">
+                      <span className="font-tech text-sm text-ink-soft">
+                        {p.n}
+                      </span>
+                      <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+                        {p.name}
+                      </h3>
+                    </div>
+                    <span className="font-tech text-[11px] uppercase tracking-[0.2em] text-accent">
+                      {p.kind}
+                    </span>
                   </div>
-                  <ArrowUpRight
-                    className="mt-1 h-5 w-5 shrink-0 text-ink-soft transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
-                    aria-hidden
-                  />
-                </a>
+                  <p className="mt-5 max-w-2xl leading-relaxed text-ink-soft">
+                    {p.description}
+                  </p>
+                  <Link
+                    href={p.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent-deep"
+                  >
+                    Visit the site
+                    <ArrowUpRight size={16} />
+                  </Link>
+                </article>
               </Reveal>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Writing */}
-        <section
-          id="writing"
-          className="mx-auto max-w-3xl scroll-mt-24 px-6 py-14 md:py-20"
-        >
+      {/* ——— Services ——— */}
+      <section id="services" className="scroll-mt-20 border-b border-line bg-wash">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <Reveal>
-            <SectionHeading index="02" title="Writing" />
-            <p className="mt-6 max-w-xl leading-relaxed text-ink-soft">
-              Theology with the footnotes showing. Manuscripts in progress
-              &mdash; the drafts are where the work is.
+            <SectionLabel index="SEC.02">Services</SectionLabel>
+            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+              What I offer.
+            </h2>
+            <p className="mt-5 max-w-xl leading-relaxed text-ink-soft">
+              No packages with forty line items. Three things, done well —
+              each one something I&apos;ve already built and shipped.
             </p>
           </Reveal>
-          <div className="mt-8">
-            {writing.map((w, i) => (
-              <Reveal key={w.name} delay={i * 0.06}>
-                <div className="border-t border-line py-6 last:border-b">
-                  <h3 className="font-display text-xl font-medium tracking-tight md:text-2xl">
-                    {w.name}
+          <div className="mt-14 grid gap-px bg-line sm:grid-cols-3">
+            {services.map((s, i) => (
+              <Reveal key={s.n} delay={i * 0.08} className="h-full">
+                <div className="flex h-full flex-col bg-wash p-8">
+                  <span className="font-tech text-sm text-accent">{s.n}</span>
+                  <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight">
+                    {s.title}
                   </h3>
-                  <p className="mt-2 max-w-md leading-relaxed text-ink-soft">
-                    {w.description}
-                  </p>
+                  <p className="mt-4 leading-relaxed text-ink-soft">{s.body}</p>
                 </div>
               </Reveal>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Arch band */}
-        <section aria-hidden className="py-6 md:py-10">
+      {/* ——— Process ——— */}
+      <section id="process" className="scroll-mt-20 border-b border-line">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <Reveal>
-            <Image
-              src="/images/band-arch.webp"
-              alt=""
-              width={1920}
-              height={640}
-              className="h-auto w-full"
-            />
+            <SectionLabel index="SEC.03">Process</SectionLabel>
+            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+              How it goes.
+            </h2>
           </Reveal>
-        </section>
-
-        {/* The road */}
-        <section
-          id="road"
-          className="mx-auto max-w-3xl scroll-mt-24 px-6 py-14 md:py-20"
-        >
-          <Reveal>
-            <SectionHeading index="03" title="The road so far" />
-          </Reveal>
-          <ol className="mt-8">
-            {road.map((r, i) => (
-              <Reveal key={r.place} delay={i * 0.06}>
-                <li className="flex gap-6 border-t border-line py-6 last:border-b">
-                  <span
-                    aria-hidden
-                    className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"
-                  />
-                  <div>
-                    <h3 className="font-display text-xl font-medium tracking-tight md:text-2xl">
-                      {r.place}
-                    </h3>
-                    <p className="mt-2 max-w-md leading-relaxed text-ink-soft">
-                      {r.text}
-                    </p>
-                  </div>
+          <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            {steps.map((s, i) => (
+              <Reveal key={s.n} delay={i * 0.08}>
+                <li className="border-t-2 border-ink pt-6">
+                  <span className="font-tech text-sm text-ink-soft">
+                    {s.n}
+                  </span>
+                  <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-ink-soft">{s.body}</p>
                 </li>
               </Reveal>
             ))}
           </ol>
-        </section>
-
-        {/* The Life Proper */}
-        <section className="mx-auto max-w-3xl px-6 py-14 md:py-20">
-          <Reveal>
-            <SectionHeading index="04" title="The Life Proper" />
-            <p className="mt-6 max-w-xl leading-relaxed text-ink-soft">
-              A podcast with my friend Caleb. Faith, culture, and the examined
-              life.
+          <Reveal delay={0.1}>
+            <p className="mt-14 border border-line bg-wash px-6 py-5 text-center font-display text-xl italic sm:text-2xl">
+              One flat price: $250. No hourly billing, no surprises.
             </p>
           </Reveal>
-        </section>
-
-        {/* Soundtrack */}
-        <section className="mx-auto max-w-3xl px-6 py-14 md:py-20">
-          <Reveal>
-            <SectionHeading index="05" title="On repeat" />
-            <p className="mt-6 max-w-xl leading-relaxed text-ink-soft">
-              The soundtrack behind all of it. No skips.
-            </p>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <ul className="mt-8 flex flex-wrap gap-3">
-              {soundtrack.map((s) => (
-                <li
-                  key={s}
-                  className="border border-line bg-wash px-4 py-2 font-display text-lg italic"
-                >
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </section>
-
-        {/* Elsewhere */}
-        <section className="mx-auto max-w-3xl px-6 py-14 md:py-20">
-          <Reveal>
-            <SectionHeading index="06" title="Elsewhere" />
-            <a
-              href="https://x.com/gerardocasta711"
-              target="_blank"
-              rel="noreferrer"
-              className="group mt-6 flex items-start justify-between gap-6 border-t border-b border-line py-6"
-            >
-              <div>
-                <h3 className="font-display text-xl font-medium tracking-tight transition-colors group-hover:text-accent md:text-2xl">
-                  X &mdash; @gerardocasta711
-                </h3>
-                <p className="mt-2 max-w-md leading-relaxed text-ink-soft">
-                  Where I think out loud about building, faith, and fatherhood.
-                </p>
-              </div>
-              <ArrowUpRight
-                className="mt-1 h-5 w-5 shrink-0 text-ink-soft transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
-                aria-hidden
-              />
-            </a>
-          </Reveal>
-        </section>
-      </main>
-
-      <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-3xl flex-col gap-2 px-6 py-10 text-sm text-ink-soft sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; 2026 Gerardo Castaneda &middot; Glennville, GA</p>
-          <p>
-            Built by hand, with AI.{" "}
-            <span className="italic">Fueled by terer&eacute;.</span>
-          </p>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      {/* ——— About teaser ——— */}
+      <section className="border-b border-line">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+          <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+            <Reveal>
+              <SectionLabel index="SEC.04">About</SectionLabel>
+              <p className="mt-6 max-w-xl font-display text-2xl leading-snug tracking-tight sm:text-3xl">
+                Husband, father, musician, photographer. From Siguatepeque,
+                Honduras to Glennville, Georgia — building with AI, studying
+                Scripture, writing it all down.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Link
+                href="/about"
+                className="group inline-flex shrink-0 items-center gap-2 border border-ink px-6 py-3 font-semibold transition-colors hover:bg-ink hover:text-paper"
+              >
+                More about me
+                <ArrowRight
+                  size={18}
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </Link>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ——— Contact / CTA band ——— */}
+      <section id="contact" className="scroll-mt-20 bg-ink text-paper">
+        <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-36">
+          <Reveal>
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-paper/60">
+              SEC.05 — Contact
+            </p>
+            <h2 className="mt-8 font-display text-[clamp(3rem,9vw,7rem)] font-semibold leading-[0.98] tracking-tight">
+              Let&apos;s build yours.
+            </h2>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-paper/70">
+              Tell me about your business — what you do, who it&apos;s for,
+              and what you wish your website did. I&apos;ll reply within a day,
+              plainly and honestly.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link
+                href="https://x.com/gerardocasta711"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-2 bg-paper px-7 py-3.5 text-base font-semibold text-ink transition-colors hover:bg-accent hover:text-paper"
+              >
+                Message me on X
+                <ArrowUpRight
+                  size={18}
+                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </Link>
+            </div>
+            <p className="mt-8 font-tech text-[11px] uppercase tracking-[0.18em] text-paper/40">
+              @gerardocasta711 — DMs open
+            </p>
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }
