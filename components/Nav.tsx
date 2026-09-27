@@ -49,7 +49,7 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8 lg:max-w-7xl">
         <Link
           href="/"
           onClick={brandClick}

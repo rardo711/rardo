@@ -12,10 +12,10 @@ const links = [
 export default function Footer() {
   return (
     <footer className="bg-coal text-paper">
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:max-w-7xl">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+            <p className="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
               Gerardo Castaneda
             </p>
             <p className="mt-3 max-w-md leading-relaxed text-paper/60">
