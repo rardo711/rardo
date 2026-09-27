@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
 import Parallax from "../components/Parallax";
@@ -6,31 +7,26 @@ import Magnetic from "../components/Magnetic";
 
 const work = [
   {
-    n: "01",
     name: "RaeMa's Remedies",
     kind: "Client — order site",
     tags: ["One-page site", "Order form", "Self-editable"],
     description:
       "An order site for a family wellness brand. Customers browse the products and send their order straight to RaeMa's inbox — and she updates products, prices, and photos herself through a plain-language admin panel. No developer needed.",
-    href: "https://raemas-remedies-castanedag2001-1468.vercel.app",
+    href: "https://raemas-remedies.vercel.app",
+    image: "/work/raemas.webp",
+    imageAlt:
+      "RaeMa's Remedies homepage, with the line Made by hand, the old way.",
   },
   {
-    n: "02",
     name: "Better Than Gold Tallow Co.",
     kind: "Client — business site",
     tags: ["One-page site", "Farm brand"],
     description:
       "A one-page site for a local tallow business, built from her real flyer, farm photos, and exact words. What she sells, her story, and a direct line to her — nothing for a customer to get lost in.",
-    href: "https://rardo711.github.io/better-than-gold-tallow/",
-  },
-  {
-    n: "03",
-    name: "Theos Logos",
-    kind: "Personal — web app",
-    tags: ["Web app", "Hebrew & Greek tools", "Personal build"],
-    description:
-      "My own build: a scholarly Bible study app with Hebrew and Greek lexicons and original-language tools. Proof I can ship complex, working software — not just pages.",
-    href: "https://theos-logos-official.vercel.app",
+    href: "https://better-than-gold-tallow.vercel.app",
+    image: "/work/tallow.webp",
+    imageAlt:
+      "Better Than Gold Tallow Co. homepage, over a gold field at sunrise.",
   },
 ];
 
@@ -144,28 +140,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ——— Marquee divider ——— */}
-      <div className="marquee border-b border-line bg-ink py-3.5 text-paper" aria-hidden>
-        <div className="marquee-track font-tech text-xs font-medium uppercase tracking-[0.22em]">
-          {[0, 1].map((copy) => (
-            <span key={copy} className="marquee-chunk">
-              <span>One-page websites</span>
-              <span className="text-accent">◆</span>
-              <span>Glennville, Georgia</span>
-              <span className="text-accent">◆</span>
-              <span>Websites for small businesses</span>
-              <span className="text-accent">◆</span>
-              <span>One-page websites</span>
-              <span className="text-accent">◆</span>
-              <span>Glennville, Georgia</span>
-              <span className="text-accent">◆</span>
-              <span>Websites for small businesses</span>
-              <span className="text-accent">◆</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* ——— Services ——— */}
       <section id="services" className="scroll-mt-20 border-b border-line bg-wash">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
@@ -176,11 +150,10 @@ export default function Home() {
                 <span aria-hidden> · </span>What I do
               </p>
               <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                What I offer.
+                Three things, done well.
               </h2>
               <p className="mt-5 max-w-xl leading-relaxed text-ink-soft">
-                No packages with forty line items. Three things, done well —
-                each one something I&apos;ve already built and shipped.
+                No packages with forty line items. Each one something I've already built and shipped.
               </p>
             </Reveal>
           </Parallax>
@@ -218,39 +191,58 @@ export default function Home() {
               </h2>
             </Reveal>
           </Parallax>
-          <div className="mt-16 flex flex-col gap-20 sm:gap-24 lg:mt-20">
-            {work.map((p) => (
+          <div className="mt-16 flex flex-col gap-20 lg:mt-24 lg:gap-28">
+            {work.map((p, i) => (
               <Reveal key={p.name}>
-                <article className="group max-w-4xl">
-                  <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-accent">
-                    {p.kind}
-                  </p>
-                  <h3 className="mt-3 font-display text-4xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-accent-deep sm:text-5xl lg:text-6xl">
-                    {p.name}
-                  </h3>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {p.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="border border-line px-3 py-1 font-tech text-[11px] uppercase tracking-[0.14em] text-ink-soft"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="mt-5 max-w-2xl leading-relaxed text-ink-soft">
-                    {p.description}
-                  </p>
+                <article className="group grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
                   <Link
                     href={p.href}
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`Visit ${p.name} (opens in a new tab)`}
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent-deep"
+                    className={`block overflow-hidden border border-line bg-wash lg:col-span-7 ${
+                      i % 2 === 1 ? "lg:order-2" : ""
+                    }`}
                   >
-                    Visit the site
-                    <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <Image
+                      src={p.image}
+                      alt={p.imageAlt}
+                      width={1440}
+                      height={1000}
+                      className="aspect-[3/2] w-full object-cover object-top motion-safe:transition-transform motion-safe:duration-700 motion-safe:group-hover:scale-[1.015]"
+                      sizes="(min-width: 1024px) 58vw, 100vw"
+                    />
                   </Link>
+                  <div className={`lg:col-span-5 ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                    <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-accent">
+                      {p.kind}
+                    </p>
+                    <h3 className="mt-3 font-display text-4xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-accent-deep sm:text-5xl">
+                      {p.name}
+                    </h3>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {p.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="border border-line px-3 py-1 font-tech text-[11px] uppercase tracking-[0.14em] text-ink-soft"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-5 leading-relaxed text-ink-soft">
+                      {p.description}
+                    </p>
+                    <Link
+                      href={p.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent-deep"
+                    >
+                      Visit the site
+                      <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
+                  </div>
                 </article>
               </Reveal>
             ))}
@@ -287,6 +279,11 @@ export default function Home() {
               </Reveal>
             ))}
           </ol>
+          <Reveal delay={0.12}>
+            <p className="mt-16 max-w-2xl font-display text-2xl leading-snug tracking-tight sm:text-3xl">
+              The mockup is free. The build is a flat fee — named before I start.
+            </p>
+          </Reveal>
         </div>
       </section>
 

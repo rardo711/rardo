@@ -78,7 +78,33 @@ export default function Nav() {
             Gerardo Castaneda
           </span>
         </Link>
-        <div ref={menuRef} className="relative">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          {links.map((l) => {
+            const active = l.href === "/about" && pathname === "/about";
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`u-sweep text-sm font-medium transition-colors hover:text-ink ${
+                  active ? "text-ink" : "text-ink-soft"
+                }`}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
+          <Link
+            href="/contact"
+            className="group inline-flex items-center gap-2 bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
+          >
+            Start your project
+            <ArrowRight
+              size={16}
+              className="transition-transform group-hover:translate-x-0.5"
+            />
+          </Link>
+        </nav>
+        <div ref={menuRef} className="relative lg:hidden">
           <button
             ref={buttonRef}
             type="button"

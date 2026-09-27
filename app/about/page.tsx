@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../../components/Reveal";
 
 export const metadata = {
@@ -23,70 +24,151 @@ const road = [
   },
 ];
 
+const frames = [
+  {
+    src: "/photos/family-walk.webp",
+    alt: "Gerardo, Olivia, and their two children walking across a lawn, holding hands.",
+    caption: "Family first",
+  },
+  {
+    src: "/photos/with-daughter.webp",
+    alt: "Gerardo sitting on the grass, holding his daughter.",
+    caption: "The unplanned ones",
+  },
+  {
+    src: "/photos/wedding.webp",
+    alt: "Gerardo and Olivia on their wedding day, foreheads touching under a floral arch.",
+    caption: "Our day",
+  },
+];
+
 export default function About() {
   return (
     <>
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 pb-16 pt-20 sm:px-8 sm:pt-28">
-          <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">The person behind the sites</p>
-            <h1 className="mt-8 font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-none tracking-tight">
-              I&apos;m Rardo.
-            </h1>
-          </Reveal>
-          <div className="mt-12 flex max-w-3xl flex-col gap-6 text-lg leading-relaxed text-ink-soft">
-            <Reveal delay={0.08}>
-              <p>
-                <span className="font-semibold text-ink">
-                  I&apos;m Gerardo Castaneda
-                </span>{" "}
-                — Rardo to most people. Husband, father of two, musician,
-                photographer. I was born in Siguatepeque, Honduras, and now
-                live in Glennville, Georgia.
+        <div className="mx-auto grid max-w-6xl items-end gap-12 px-5 pb-16 pt-20 sm:px-8 sm:pt-28 lg:max-w-7xl lg:grid-cols-12 lg:gap-16 lg:pb-24">
+          <div className="lg:col-span-6">
+            <Reveal>
+              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+                The person behind the sites
               </p>
+              <h1 className="mt-8 font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-none tracking-tight">
+                I'm Rardo.
+              </h1>
             </Reveal>
-            <Reveal delay={0.12}>
-              <p>
-                Family comes first — that&apos;s non-negotiable, and it&apos;s
-                downstream of the main thing. My bio has said it for years,
-                and I mean it:{" "}
-                <span className="font-display italic text-ink">
-                  &ldquo;Loving Jesus is life&apos;s greatest
-                  achievement.&rdquo;
-                </span>
-              </p>
-            </Reveal>
-            <Reveal delay={0.16}>
-              <p>
-                In 2026 I started learning to build software, with AI as my
-                tutor. I learn in the open — this site, the order system I
-                built for my mother-in-law&apos;s business, a Bible study app
-                with Hebrew and Greek lexicons. Real things, for real people.
-              </p>
-            </Reveal>
+            <div className="mt-10 flex max-w-xl flex-col gap-6 text-lg leading-relaxed text-ink-soft">
+              <Reveal delay={0.08}>
+                <p>
+                  <span className="font-semibold text-ink">
+                    I'm Gerardo Castaneda
+                  </span>{" "}
+                  — Rardo to most people. Husband, father of two, musician,
+                  photographer. I was born in Siguatepeque, Honduras, and now
+                  live in Glennville, Georgia.
+                </p>
+              </Reveal>
+              <Reveal delay={0.12}>
+                <p>
+                  Family comes first — that's non-negotiable, and it's
+                  downstream of the main thing. My bio has said it for years,
+                  and I mean it:{" "}
+                  <span className="font-display italic text-ink">
+                    &ldquo;Loving Jesus is life's greatest
+                    achievement.&rdquo;
+                  </span>
+                </p>
+              </Reveal>
+            </div>
           </div>
+          <Reveal delay={0.1} className="lg:col-span-6">
+            <figure>
+              <Image
+                src="/photos/gerardo-olivia.webp"
+                alt="Gerardo and Olivia, in black and white, standing under the trees."
+                width={1000}
+                height={1500}
+                priority
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                className="aspect-[3/4] w-full object-cover object-[center_18%]"
+              />
+              <figcaption className="mt-3 font-tech text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+                Gerardo and Olivia
+              </figcaption>
+            </figure>
+          </Reveal>
         </div>
       </section>
 
       <section className="border-b border-line bg-wash">
-        <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:max-w-7xl">
+          <Reveal>
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+              The life the words are about
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-5">
+            {frames.map((f, i) => (
+              <Reveal key={f.src} delay={i * 0.08}>
+                <figure>
+                  <Image
+                    src={f.src}
+                    alt={f.alt}
+                    width={1000}
+                    height={1500}
+                    sizes="(min-width: 640px) 30vw, 100vw"
+                    className="aspect-[3/4] w-full object-cover object-[center_20%]"
+                  />
+                  <figcaption className="mt-3 font-tech text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+                    {f.caption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-line">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:max-w-7xl">
           <div className="flex max-w-3xl flex-col gap-6 text-lg leading-relaxed text-ink-soft">
             <Reveal>
               <p>
-                I make music and take photographs —{" "}
-                <span className="font-semibold text-ink">
-                  @lvngphotography
-                </span>{" "}
-                is where the photos live. Some of my favorite shots are the
-                unplanned ones: my kids, mid-laugh, doing nothing special.
+                In 2026 I started learning to build software, with AI as my
+                tutor. I learn in the open — this site, the order system I
+                built for my mother-in-law's business, and{" "}
+                <Link
+                  href="https://theos-logos-official.vercel.app"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4"
+                >
+                  Theos Logos
+                </Link>
+                , a Bible study app with Hebrew and Greek lexicons. Real
+                things, for real people. The client sites are on the home
+                page. Theos Logos is the one I built for myself.
               </p>
             </Reveal>
             <Reveal delay={0.08}>
               <p>
+                I make music and take photographs —{" "}
+                <a
+                  href="https://www.instagram.com/lvngphotography/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4"
+                >
+                  @lvngphotography
+                  <ArrowUpRight size={16} aria-hidden />
+                </a>{" "}
+                is where the photos live. Some of my favorite shots are the
+                unplanned ones: my kids, mid-laugh, doing nothing special.
+              </p>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p>
                 With my friend Caleb I co-host{" "}
-                <span className="font-semibold text-ink">
-                  The Life Proper
-                </span>
+                <span className="font-semibold text-ink">The Life Proper</span>
                 , a podcast on faith and the examined life. And I write: a
                 book manuscript called{" "}
                 <span className="font-display italic text-ink">
@@ -96,20 +178,22 @@ export default function About() {
                 coursework in Greek and Hebrew exegesis.
               </p>
             </Reveal>
-            <Reveal delay={0.12}>
+            <Reveal delay={0.16}>
               <p>
                 By day I lead a retail team at T-Mobile in Reidsville. The
-                rest of the time, I&apos;m building.
+                rest of the time, I'm building.
               </p>
             </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
+      <section className="border-b border-line bg-wash">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:max-w-7xl">
           <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">So far</p>
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+              So far
+            </p>
           </Reveal>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
             {road.map((r, i) => (

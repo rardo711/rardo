@@ -77,9 +77,6 @@ p {
     animation: none;
     transform: none;
   }
-  .marquee-track {
-    animation: none;
-  }
   .hero-glow {
     animation: none;
   }
@@ -95,32 +92,6 @@ p {
 @keyframes hero-rise {
   to {
     transform: translateY(0);
-  }
-}
-
-/* ——— Slow marquee divider ——— */
-.marquee {
-  overflow: hidden;
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 32s linear infinite;
-  will-change: transform;
-}
-
-.marquee-chunk {
-  display: flex;
-  align-items: center;
-  gap: 2.75rem;
-  padding-right: 2.75rem;
-  white-space: nowrap;
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
   }
 }
 

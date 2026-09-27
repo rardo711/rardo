@@ -35,6 +35,12 @@ export default function Footer() {
                 className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </Link>
+            <a
+              href="mailto:gerardoj2001@outlook.com"
+              className="mt-3 block text-sm text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper"
+            >
+              gerardoj2001@outlook.com
+            </a>
           </div>
           <nav className="flex flex-wrap gap-x-7 gap-y-3">
             {links.map((l) => (

@@ -125,6 +125,15 @@ export default function ContactForm() {
         Or message me on X
         <ArrowUpRight size={18} />
       </a>
+      <p className="text-center text-sm text-ink-soft">
+        Or email{" "}
+        <a
+          href="mailto:gerardoj2001@outlook.com"
+          className="font-medium text-ink underline decoration-accent decoration-2 underline-offset-4"
+        >
+          gerardoj2001@outlook.com
+        </a>
+      </p>
     </form>
   );
 }

@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://rardo-castanedag2001-1468.vercel.app";
+  const base = siteUrl;
   return [
     { url: base, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },

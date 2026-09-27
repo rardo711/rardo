@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -24,8 +25,6 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   display: "swap",
 });
-
-const siteUrl = "https://rardo-castanedag2001-1468.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -52,11 +51,14 @@ export const metadata: Metadata = {
       "Simple, fast one-page websites for local businesses.",
     images: ["/opengraph-image"],
   },
-  themeColor: "#faf6ec",
   other: {
     "geo.region": "US-GA",
     "geo.placename": "Glennville, Georgia",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#faf6ec",
 };
 
 const jsonLd = {

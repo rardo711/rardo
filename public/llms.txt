@@ -17,16 +17,19 @@ Glennville, Georgia and Tattnall County.
 ## How it works
 
 1. You reach out — tell me about your business.
-2. We talk it through — a quick call or messages, whatever's easier.
-3. I build your site — one focused week, real words about your real business.
-4. You go live — your site goes live and it's yours.
+2. Free mockup — you see the page before you pay anything.
+3. I build your site — one focused week. The build is a flat fee, named before I start.
+4. It's yours — I'll show you how to update it, and I'm a message away.
 
 ## Selected work
 
 - RaeMa's Remedies — family wellness brand; order system that sends orders to
-  the owner's inbox.
-- Better Than Gold Tallow Co. — farm product site with inquiry links.
-- Theos Logos — Bible study web app with Hebrew and Greek lexicons.
+  the owner's inbox. https://raemas-remedies.vercel.app
+- Better Than Gold Tallow Co. — farm product site.
+  https://better-than-gold-tallow.vercel.app
+
+Theos Logos (https://theos-logos-official.vercel.app) is a personal Bible study
+app, not a client site.
 
 ## About
 
@@ -37,6 +40,7 @@ achievement."
 
 ## Contact
 
-- Start a project: https://rardo-castanedag2001-1468.vercel.app/contact
+- Start a project: https://castaneda.vercel.app/contact
+- Email: gerardoj2001@outlook.com
 - X: https://x.com/gerardocasta711
 - I reply within a day — usually faster.
