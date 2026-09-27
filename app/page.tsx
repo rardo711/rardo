@@ -64,8 +64,8 @@ const steps = [
   },
   {
     n: "03",
-    title: "Half now, half on delivery",
-    body: "One flat price: $250. Half up front, half when your site is live. No hourly billing, no surprises.",
+    title: "I build your site",
+    body: "You approve the mockup, I build the real thing — one focused week, and we put it live together.",
   },
   {
     n: "04",
@@ -94,7 +94,7 @@ export default function Home() {
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
               I&apos;m Rardo. I design and build simple, fast one-page websites
               for local businesses — who you are, what you do, your hours, and
-              a way to call you. One flat price, agreed up front.
+              a way to call you.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
@@ -233,15 +233,6 @@ export default function Home() {
               </Reveal>
             ))}
           </ol>
-          <Reveal delay={0.1}>
-            <p className="mt-14 border border-line bg-wash px-6 py-5 text-center font-display text-xl italic sm:text-2xl">
-              One flat price: $250. No hourly billing, no surprises.
-            </p>
-            <p className="mt-4 text-center text-sm text-ink-soft">
-              Bigger project? Monthly pricing is available too — it depends on
-              the project, so mention it when you reach out.
-            </p>
-          </Reveal>
         </div>
       </section>
 

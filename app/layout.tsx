@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s · Gerardo Castaneda",
   },
   description:
-    "I'm Rardo. I design and build simple, fast one-page websites for local businesses — who you are, what you do, your hours, and a way to call you. One flat price, agreed up front.",
+    "I'm Rardo. I design and build simple, fast one-page websites for local businesses — who you are, what you do, your hours, and a way to call you.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
     siteName: "Gerardo Castaneda",
     title: "Gerardo Castaneda — Websites for Small Businesses",
     description:
-      "Simple, fast one-page websites for local businesses. One flat price, agreed up front.",
+      "Simple, fast one-page websites for local businesses.",
     images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Gerardo Castaneda — Websites for Small Businesses",
     description:
-      "Simple, fast one-page websites for local businesses. One flat price, agreed up front.",
+      "Simple, fast one-page websites for local businesses.",
     images: ["/opengraph-image"],
   },
   themeColor: "#faf6ec",
@@ -68,7 +68,6 @@ const jsonLd = {
       url: siteUrl,
       description:
         "One-page websites, ordering and contact forms, and update-it-yourself sites for local businesses.",
-      priceRange: "$250",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Glennville",
