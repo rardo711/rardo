@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Reveal from "../../components/Reveal";
-import PhotoSlot from "../../components/PhotoSlot";
 
 export const metadata = {
   title: "About",
@@ -35,89 +34,73 @@ export default function About() {
               I&apos;m Rardo.
             </h1>
           </Reveal>
-          <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="mt-12 flex max-w-3xl flex-col gap-6 text-lg leading-relaxed text-ink-soft">
             <Reveal delay={0.08}>
-              <PhotoSlot
-                ratio="4 / 5"
-                subject="You — with the family, or at your desk"
-              />
+              <p>
+                <span className="font-semibold text-ink">
+                  I&apos;m Gerardo Castaneda
+                </span>{" "}
+                — Rardo to most people. Husband, father of two, musician,
+                photographer. I was born in Siguatepeque, Honduras, and now
+                live in Glennville, Georgia.
+              </p>
             </Reveal>
-            <div className="flex flex-col justify-center gap-6 text-lg leading-relaxed text-ink-soft">
-              <Reveal delay={0.1}>
-                <p>
-                  <span className="font-semibold text-ink">
-                    I&apos;m Gerardo Castaneda
-                  </span>{" "}
-                  — Rardo to most people. Husband, father of two, musician,
-                  photographer. I was born in Siguatepeque, Honduras, and now
-                  live in Glennville, Georgia.
-                </p>
-              </Reveal>
-              <Reveal delay={0.14}>
-                <p>
-                  Family comes first — that&apos;s non-negotiable, and
-                  it&apos;s downstream of the main thing. My bio has said it
-                  for years, and I mean it:{" "}
-                  <span className="font-display italic text-ink">
-                    &ldquo;Loving Jesus is life&apos;s greatest
-                    achievement.&rdquo;
-                  </span>
-                </p>
-              </Reveal>
-              <Reveal delay={0.18}>
-                <p>
-                  In 2026 I started learning to build software, with AI as my
-                  tutor. I learn in the open — this site, the order system I
-                  built for my mother-in-law&apos;s business, a Bible study app
-                  with Hebrew and Greek lexicons. Real things, for real people.
-                </p>
-              </Reveal>
-            </div>
+            <Reveal delay={0.12}>
+              <p>
+                Family comes first — that&apos;s non-negotiable, and it&apos;s
+                downstream of the main thing. My bio has said it for years,
+                and I mean it:{" "}
+                <span className="font-display italic text-ink">
+                  &ldquo;Loving Jesus is life&apos;s greatest
+                  achievement.&rdquo;
+                </span>
+              </p>
+            </Reveal>
+            <Reveal delay={0.16}>
+              <p>
+                In 2026 I started learning to build software, with AI as my
+                tutor. I learn in the open — this site, the order system I
+                built for my mother-in-law&apos;s business, a Bible study app
+                with Hebrew and Greek lexicons. Real things, for real people.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section className="border-b border-line bg-wash">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <div className="flex flex-col justify-center gap-6 text-lg leading-relaxed text-ink-soft">
-              <Reveal>
-                <p>
-                  I make music and take photographs —{" "}
-                  <span className="font-semibold text-ink">
-                    @lvngphotography
-                  </span>{" "}
-                  is where the photos live. Some of my favorite shots are the
-                  unplanned ones: my kids, mid-laugh, doing nothing special.
-                </p>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <p>
-                  With my friend Caleb I co-host{" "}
-                  <span className="font-semibold text-ink">
-                    The Life Proper
-                  </span>
-                  , a podcast on faith and the examined life. And I write: a
-                  book manuscript called{" "}
-                  <span className="font-display italic text-ink">
-                    Ultimate Truth
-                  </span>
-                  , a thesis on modern American evangelicalism, and seminary
-                  coursework in Greek and Hebrew exegesis.
-                </p>
-              </Reveal>
-              <Reveal delay={0.12}>
-                <p>
-                  By day I lead a retail team at T-Mobile in Reidsville. The
-                  rest of the time, I&apos;m building.
-                </p>
-              </Reveal>
-            </div>
+          <div className="flex max-w-3xl flex-col gap-6 text-lg leading-relaxed text-ink-soft">
+            <Reveal>
+              <p>
+                I make music and take photographs —{" "}
+                <span className="font-semibold text-ink">
+                  @lvngphotography
+                </span>{" "}
+                is where the photos live. Some of my favorite shots are the
+                unplanned ones: my kids, mid-laugh, doing nothing special.
+              </p>
+            </Reveal>
             <Reveal delay={0.08}>
-              <PhotoSlot
-                ratio="4 / 3"
-                subject="Honduras, the studio, the family — your call"
-              />
+              <p>
+                With my friend Caleb I co-host{" "}
+                <span className="font-semibold text-ink">
+                  The Life Proper
+                </span>
+                , a podcast on faith and the examined life. And I write: a
+                book manuscript called{" "}
+                <span className="font-display italic text-ink">
+                  Ultimate Truth
+                </span>
+                , a thesis on modern American evangelicalism, and seminary
+                coursework in Greek and Hebrew exegesis.
+              </p>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p>
+                By day I lead a retail team at T-Mobile in Reidsville. The
+                rest of the time, I&apos;m building.
+              </p>
             </Reveal>
           </div>
         </div>
