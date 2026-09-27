@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/#services", label: "Services" },
@@ -8,11 +11,20 @@ const links = [
 ];
 
 export default function Nav() {
+  const pathname = usePathname();
+
+  function brandClick(e: React.MouseEvent) {
+    if (pathname !== "/") return;
+    e.preventDefault();
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  }
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link
           href="/"
+          onClick={brandClick}
           className="font-display text-lg font-semibold tracking-tight"
         >
           Gerardo Castaneda
