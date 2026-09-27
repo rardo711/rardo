@@ -43,11 +43,11 @@ export default function ContactForm() {
     return (
       <div className="border border-line bg-wash px-8 py-14 text-center">
         <p className="font-display text-3xl font-semibold tracking-tight">
-          Message received.
+          Got it.
         </p>
         <p className="mx-auto mt-4 max-w-md leading-relaxed text-ink-soft">
-          Thanks for reaching out — I&apos;ll reply within a day, plainly and
-          honestly.
+          Your message landed in my inbox. I&apos;ll reply within a day —
+          usually faster.
         </p>
       </div>
     );
