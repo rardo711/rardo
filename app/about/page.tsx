@@ -145,7 +145,7 @@ export default function About() {
           </Link>
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 bg-ink px-6 py-3 font-semibold text-paper transition-colors hover:bg-accent-deep"
+            className="group inline-flex items-center gap-2 bg-ink px-6 py-3 font-semibold text-paper transition-all hover:bg-accent-deep active:scale-[0.96]"
           >
             Work with me
             <ArrowRight

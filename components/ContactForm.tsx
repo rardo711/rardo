@@ -41,7 +41,7 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="border border-line bg-wash px-8 py-14 text-center">
+      <div role="status" className="border border-line bg-wash px-8 py-14 text-center">
         <p className="font-display text-3xl font-semibold tracking-tight">
           Got it.
         </p>
@@ -60,13 +60,13 @@ export default function ContactForm() {
           <span className="font-tech text-[11px] uppercase tracking-[0.2em] text-ink-soft">
             Your name *
           </span>
-          <input name="name" required placeholder="Jane Doe" className={inputCls} />
+          <input name="name" required autoComplete="name" placeholder="Jane Doe" className={inputCls} />
         </label>
         <label className="flex flex-col gap-2">
           <span className="font-tech text-[11px] uppercase tracking-[0.2em] text-ink-soft">
             Business name
           </span>
-          <input name="business" placeholder="Doe's Bakery" className={inputCls} />
+          <input name="business" autoComplete="organization" placeholder="Doe's Bakery" className={inputCls} />
         </label>
       </div>
       <label className="flex flex-col gap-2">
@@ -93,12 +93,13 @@ export default function ContactForm() {
         />
       </label>
       {status === "error" && (
-        <p className="text-sm font-medium text-accent-deep">
+        <p role="alert" className="text-sm font-medium text-accent-deep">
           Something went wrong sending that —{" "}
           <a
             href="https://x.com/gerardocasta711"
             target="_blank"
             rel="noreferrer"
+            aria-label="Message me on X instead (opens in a new tab)"
             className="underline underline-offset-2"
           >
             message me on X instead
@@ -109,7 +110,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="group mt-2 inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-base font-semibold text-paper transition-colors hover:bg-accent-deep disabled:opacity-60"
+        className="group mt-2 inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-base font-semibold text-paper transition-all hover:bg-accent-deep active:scale-[0.96] disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Send it"}
         <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
@@ -118,7 +119,8 @@ export default function ContactForm() {
         href="https://x.com/gerardocasta711"
         target="_blank"
         rel="noreferrer"
-        className="group inline-flex items-center justify-center gap-2 border border-ink px-8 py-4 text-base font-semibold transition-colors hover:bg-ink hover:text-paper"
+        aria-label="Message me on X (opens in a new tab)"
+        className="group inline-flex items-center justify-center gap-2 border border-ink px-8 py-4 text-base font-semibold transition-all hover:bg-ink hover:text-paper active:scale-[0.96]"
       >
         Or message me on X
         <ArrowUpRight size={18} />

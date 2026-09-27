@@ -51,17 +51,55 @@ export const metadata: Metadata = {
       "Simple, fast one-page websites for local businesses. One flat price, agreed up front.",
     images: ["/opengraph-image"],
   },
+  themeColor: "#faf6ec",
+  other: {
+    "geo.region": "US-GA",
+    "geo.placename": "Glennville, Georgia",
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Gerardo Castaneda — Websites for Small Businesses",
-  url: siteUrl,
-  description:
-    "One-page websites, ordering and contact forms, and update-it-yourself sites for local businesses.",
-  areaServed: { "@type": "City", name: "Glennville, GA" },
-  sameAs: ["https://x.com/gerardocasta711"],
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#business`,
+      name: "Gerardo Castaneda — Websites for Small Businesses",
+      url: siteUrl,
+      description:
+        "One-page websites, ordering and contact forms, and update-it-yourself sites for local businesses.",
+      priceRange: "$250",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Glennville",
+        addressRegion: "GA",
+        addressCountry: "US",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 31.9407,
+        longitude: -81.9296,
+      },
+      areaServed: [
+        { "@type": "City", name: "Glennville, GA" },
+        {
+          "@type": "AdministrativeArea",
+          name: "Tattnall County, GA",
+        },
+      ],
+      sameAs: [
+        "https://x.com/gerardocasta711",
+        "https://github.com/rardo711",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Gerardo Castaneda — Websites for Small Businesses",
+      publisher: { "@id": `${siteUrl}/#business` },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -72,13 +110,16 @@ export default function RootLayout({
       <body
         className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} font-sans antialiased`}
       >
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ScrollProgress />
         <Nav />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>

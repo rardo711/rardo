@@ -1,0 +1,44 @@
+# Gerardo Castaneda — Websites for Small Businesses
+
+> I build simple, fast one-page websites for local businesses. One flat price: $250.
+
+## Who this is for
+
+Local businesses that need a page customers can find: who you are, what you do,
+your hours, and a way to call or message you. Built for shops in and around
+Glennville, Georgia and Tattnall County.
+
+## Services
+
+- One-page business websites (who you are, what you do, hours, contact)
+- Ordering and contact forms that send straight to your inbox
+- Update-it-yourself sites you can edit without a developer
+- One flat price: $250. Half up front, half when it's live. Monthly pricing is
+  available for bigger projects — it depends on the project.
+
+## How it works
+
+1. You reach out — tell me about your business.
+2. We talk it through — a quick call or messages, whatever's easier.
+3. I build your site — one focused week, real words about your real business.
+4. You go live — half now, half when it's live.
+
+## Selected work
+
+- RaeMa's Remedies — family wellness brand; order system that sends orders to
+  the owner's inbox.
+- Better Than Gold Tallow Co. — farm product site with inquiry links.
+- Theos Logos — Bible study web app with Hebrew and Greek lexicons.
+
+## About
+
+I'm Gerardo Castaneda — Rardo. Husband, father of two, musician, photographer.
+Born in Siguatepeque, Honduras; now in Glennville, Georgia. Started learning to
+build software in 2026 with AI as my tutor. "Loving Jesus is life's greatest
+achievement."
+
+## Contact
+
+- Start a project: https://rardo-castanedag2001-1468.vercel.app/contact
+- X: https://x.com/gerardocasta711
+- I reply within a day — usually faster.
