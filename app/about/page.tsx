@@ -168,7 +168,15 @@ export default function About() {
             <Reveal delay={0.12}>
               <p>
                 With my friend Caleb I co-host{" "}
-                <span className="font-semibold text-ink">The Life Proper</span>
+                <a
+                  href="https://open.spotify.com/show/2rxl4jrLFaQ2SYb75NGDYj"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4"
+                >
+                  The Life Proper
+                  <ArrowUpRight size={16} aria-hidden />
+                </a>
                 , a podcast on faith and the examined life. And I write: a
                 book manuscript called{" "}
                 <span className="font-display italic text-ink">
