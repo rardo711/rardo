@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <circle cx="100" cy="100" r="100" fill="#faf6ec"/>
-  <circle cx="100" cy="100" r="88" fill="none" stroke="#221a13" stroke-width="7"/>
-  <text x="100" y="128" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="bold" font-size="96"><tspan fill="#221a13">G</tspan><tspan dx="-14" font-size="67" fill="#a84d1d">C</tspan></text>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#221a13" stroke-width="5"/>
+  <circle cx="100" cy="12" r="8" fill="#a84d1d"/>
+  <text x="100" y="124" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="bold" font-size="76"><tspan fill="#221a13">G</tspan><tspan dx="-16" dy="-10" font-size="54" fill="#a84d1d">C</tspan></text>
 </svg>
