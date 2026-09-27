@@ -47,16 +47,6 @@ export default function OgImage() {
             backgroundColor: "#a34a1e",
           }}
         />
-        <div
-          style={{
-            marginTop: 24,
-            fontSize: 32,
-            color: "#6a5d4b",
-            fontFamily: "system-ui, sans-serif",
-          }}
-        >
-          Built by hand in Glennville, Georgia.
-        </div>
       </div>
     ),
     { ...size }

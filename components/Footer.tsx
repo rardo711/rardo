@@ -54,12 +54,9 @@ export default function Footer() {
             ))}
           </nav>
         </div>
-        <div className="mt-14 flex flex-col gap-2 border-t border-paper/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 border-t border-paper/15 pt-6">
           <p className="font-tech text-[11px] uppercase tracking-[0.18em] text-paper/40">
             © 2026 Gerardo Castaneda
-          </p>
-          <p className="font-tech text-[11px] uppercase tracking-[0.18em] text-paper/40">
-            Made by hand in Glennville, Georgia
           </p>
         </div>
       </div>
