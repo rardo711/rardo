@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Reveal from "../../components/Reveal";
-import SectionLabel from "../../components/SectionLabel";
 import PhotoSlot from "../../components/PhotoSlot";
 
 export const metadata = {
@@ -31,7 +30,7 @@ export default function About() {
       <section className="border-b border-line">
         <div className="mx-auto max-w-6xl px-5 pb-16 pt-20 sm:px-8 sm:pt-28">
           <Reveal>
-            <SectionLabel index="About">The person behind the sites</SectionLabel>
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">The person behind the sites</p>
             <h1 className="mt-8 font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-none tracking-tight">
               I&apos;m Rardo.
             </h1>
@@ -127,7 +126,7 @@ export default function About() {
       <section className="border-b border-line">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
           <Reveal>
-            <SectionLabel index="The road">So far</SectionLabel>
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">So far</p>
           </Reveal>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
             {road.map((r, i) => (
@@ -143,7 +142,7 @@ export default function About() {
           </div>
           <Reveal delay={0.1}>
             <p className="mt-16 text-center font-display text-2xl italic sm:text-3xl">
-              Fueled by tereré.
+              Fueled by Mate*.
             </p>
           </Reveal>
         </div>
@@ -162,7 +161,7 @@ export default function About() {
             Back home
           </Link>
           <Link
-            href="/#contact"
+            href="/contact"
             className="group inline-flex items-center gap-2 bg-ink px-6 py-3 font-semibold text-paper transition-colors hover:bg-accent-deep"
           >
             Work with me

@@ -28,7 +28,7 @@ export default function Footer() {
             About
           </Link>
           <Link
-            href="/#contact"
+            href="/contact"
             className="text-ink-soft transition-colors hover:text-ink"
           >
             Contact

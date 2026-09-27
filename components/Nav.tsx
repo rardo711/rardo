@@ -28,7 +28,7 @@ export default function Nav() {
             </Link>
           ))}
           <Link
-            href="/#contact"
+            href="/contact"
             className="bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
           >
             Start a project

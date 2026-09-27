@@ -5,13 +5,14 @@
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
   --font-tech: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
 
-  --color-paper: #faf6ee;
-  --color-wash: #f2ebdb;
-  --color-ink: #221a12;
-  --color-ink-soft: #6a5d4b;
-  --color-accent: #a34a1e;
-  --color-accent-deep: #7e3a14;
-  --color-line: #e3d7bf;
+  --color-paper: #faf6ec;
+  --color-wash: #f3ecdc;
+  --color-ink: #221a13;
+  --color-coal: #161009;
+  --color-ink-soft: #6b5d4c;
+  --color-accent: #a84d1d;
+  --color-accent-deep: #86390f;
+  --color-line: #e4d8c0;
 }
 
 html {
