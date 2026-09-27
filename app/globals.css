@@ -15,8 +15,10 @@
   --color-line: #e4d8c0;
 }
 
+/* Lenis smooth scroll owns wheel smoothing; keep native instant jumps
+   so anchor/scrollTo math stays predictable. */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -73,6 +75,82 @@ p {
   }
   .pulse-dot::after {
     animation: none;
+  }
+  .hero-line {
+    animation: none;
+    transform: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .hero-glow {
+    animation: none;
+  }
+}
+
+/* ——— Hero entrance: lines rise out of a clip mask on load ——— */
+.hero-line {
+  transform: translateY(112%);
+  animation: hero-rise 1.05s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform;
+}
+
+@keyframes hero-rise {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ——— Slow marquee divider ——— */
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee-chunk {
+  display: flex;
+  align-items: center;
+  gap: 2.75rem;
+  padding-right: 2.75rem;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ——— Drifting warm glow behind the hero ——— */
+.hero-glow {
+  position: absolute;
+  top: -25%;
+  right: -12%;
+  width: 62%;
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle,
+    rgba(168, 77, 29, 0.13),
+    transparent 65%
+  );
+  filter: blur(48px);
+  pointer-events: none;
+  animation: glow-drift 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes glow-drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(-14%, 20%) scale(1.18);
   }
 }
 
