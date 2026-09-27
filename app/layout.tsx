@@ -16,6 +16,7 @@ const publicSans = Public_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rardo-castanedag2001-1468.vercel.app"),
   title: "Gerardo Castaneda",
   description:
     "Christian, husband, father. Building software with AI, studying Scripture in Hebrew and Greek, and writing — from Glennville, Georgia.",
