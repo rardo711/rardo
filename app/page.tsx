@@ -101,7 +101,7 @@ export default function Home() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 bg-ink px-7 py-3.5 text-base font-semibold text-paper transition-colors hover:bg-accent-deep"
+                className="group inline-flex items-center gap-2 bg-ink px-7 py-3.5 text-base font-semibold text-paper transition-all hover:bg-accent-deep active:scale-[0.96]"
               >
                 Start your project
                 <ArrowRight
@@ -111,7 +111,7 @@ export default function Home() {
               </Link>
               <Link
                 href="#work"
-                className="inline-flex items-center gap-2 border border-ink px-7 py-3.5 text-base font-semibold transition-colors hover:bg-ink hover:text-paper"
+                className="inline-flex items-center gap-2 border border-ink px-7 py-3.5 text-base font-semibold transition-all hover:bg-ink hover:text-paper active:scale-[0.96]"
               >
                 See the work
               </Link>
@@ -194,6 +194,7 @@ export default function Home() {
                         href={p.href}
                         target="_blank"
                         rel="noreferrer"
+                        aria-label={`Visit ${p.name} (opens in a new tab)`}
                         className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent-deep"
                       >
                         Visit the site
@@ -293,7 +294,7 @@ export default function Home() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 bg-paper px-7 py-3.5 text-base font-semibold text-ink transition-colors hover:bg-accent hover:text-paper"
+                className="group inline-flex items-center gap-2 bg-paper px-7 py-3.5 text-base font-semibold text-ink transition-all hover:bg-accent hover:text-paper active:scale-[0.96]"
               >
                 Start your project
                 <ArrowRight
@@ -305,6 +306,7 @@ export default function Home() {
                 href="https://x.com/gerardocasta711"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Message me on X (opens in a new tab)"
                 className="group inline-flex items-center gap-2 border border-paper/40 px-7 py-3.5 text-base font-semibold text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
               >
                 Message me on X

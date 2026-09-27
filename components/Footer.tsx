@@ -26,6 +26,7 @@ export default function Footer() {
               href="https://x.com/gerardocasta711"
               target="_blank"
               rel="noreferrer"
+              aria-label="Gerardo on X (opens in a new tab)"
               className="group mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-paper/80 underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-paper"
             >
               @gerardocasta711
