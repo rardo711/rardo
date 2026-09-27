@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import {
   motion,
@@ -26,6 +26,21 @@ export type WorkPiece = {
   imageAlt: string;
 };
 
+function useDesktopMotion() {
+  const reduce = useReducedMotion();
+  const [wide, setWide] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
+    const sync = () => setWide(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  return Boolean(wide && !reduce);
+}
+
 function Shot({
   piece,
   flip,
@@ -34,7 +49,7 @@ function Shot({
   flip: boolean;
 }) {
   const frame = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const desktop = useDesktopMotion();
   const { scrollYProgress } = useScroll({
     target: frame,
     offset: ["start end", "end start"],
@@ -47,8 +62,7 @@ function Shot({
   const shine = useMotionTemplate`radial-gradient(380px circle at ${shineX}% ${shineY}%, rgba(250,246,236,0.34), transparent 46%)`;
 
   function onMove(e: React.MouseEvent) {
-    if (reduce) return;
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (!desktop) return;
     const el = frame.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -70,16 +84,14 @@ function Shot({
       ref={frame}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      style={reduce ? undefined : { rotateX: rx, rotateY: ry, transformPerspective: 1100 }}
+      style={
+        desktop
+          ? { rotateX: rx, rotateY: ry, transformPerspective: 1100 }
+          : undefined
+      }
       className={`lg:col-span-7 ${flip ? "lg:order-2" : ""}`}
     >
-      <motion.div
-        className="relative overflow-hidden border border-line bg-wash"
-        initial={reduce ? false : { clipPath: "inset(100% 0 0 0)" }}
-        whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-        viewport={{ once: true, amount: 0.35 }}
-        transition={{ duration: 1.15, ease: EASE }}
-      >
+      <div className="work-reveal relative overflow-hidden border border-line bg-wash">
         <Link
           href={piece.href}
           target="_blank"
@@ -87,7 +99,7 @@ function Shot({
           aria-label={`Visit ${piece.name} (opens in a new tab)`}
           className="group/shot relative block"
         >
-          <motion.div style={reduce ? undefined : { y, scale: 1.08 }}>
+          <motion.div style={desktop ? { y, scale: 1.08 } : undefined}>
             <Image
                 src={piece.image}
                 alt={piece.imageAlt}
@@ -112,7 +124,7 @@ function Shot({
             <i className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-paper" />
           </span>
         </Link>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }
@@ -125,7 +137,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
       {items.map((piece, i) => (
         <motion.article
           key={piece.name}
-          className="group grid items-center gap-8 lg:grid-cols-12 lg:gap-14"
+          className="work-card group grid items-center gap-8 lg:grid-cols-12 lg:gap-14"
           initial={reduce ? false : { opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}

@@ -214,3 +214,29 @@ p {
     display: none;
   }
 }
+
+/* Shots stay fully visible on phones. The shutter only runs on a wide screen. */
+@media (max-width: 1023px) {
+  .work-card,
+  .work-reveal,
+  .work-reveal * {
+    opacity: 1 !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .work-reveal {
+    animation: shot-open 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes shot-open {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0% 0 0 0);
+  }
+}

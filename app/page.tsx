@@ -117,7 +117,7 @@ export default function Home() {
       </section>
 
       {/* ——— Work ——— */}
-      <section id="work" className="scroll-mt-20 overflow-x-clip border-b border-line">
+      <section id="work" className="scroll-mt-20 border-b border-line">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
           <Parallax offset={28}>
             <Reveal>
