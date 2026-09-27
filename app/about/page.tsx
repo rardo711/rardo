@@ -27,7 +27,7 @@ export default function About() {
   return (
     <>
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 pb-16 pt-20 sm:px-8 sm:pt-28">
+        <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 pb-16 pt-20 sm:px-8 sm:pt-28">
           <Reveal>
             <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">The person behind the sites</p>
             <h1 className="mt-8 font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-none tracking-tight">
@@ -69,7 +69,7 @@ export default function About() {
       </section>
 
       <section className="border-b border-line bg-wash">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
           <div className="flex max-w-3xl flex-col gap-6 text-lg leading-relaxed text-ink-soft">
             <Reveal>
               <p>
@@ -107,7 +107,7 @@ export default function About() {
       </section>
 
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
           <Reveal>
             <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">So far</p>
           </Reveal>
@@ -132,7 +132,7 @@ export default function About() {
       </section>
 
       <section>
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-5 py-16 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-5 py-16 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:max-w-7xl">
           <Link
             href="/"
             className="group inline-flex items-center gap-2 font-semibold text-ink-soft transition-colors hover:text-ink"

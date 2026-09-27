@@ -79,19 +79,21 @@ export default function Home() {
     <>
       {/* ——— Hero ——— */}
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 pb-16 pt-20 sm:px-8 sm:pb-24 sm:pt-28">
+        <div className="mx-auto max-w-6xl px-5 pb-16 pt-20 sm:px-8 sm:pb-24 sm:pt-28 lg:max-w-7xl lg:pb-28 lg:pt-36">
           <Reveal>
             <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
               Gerardo Castaneda — Glennville, GA
             </p>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="mt-8 max-w-4xl font-display text-[clamp(2.75rem,7.5vw,5.75rem)] font-semibold leading-[1.02] tracking-tight">
-              I build websites that bring customers through your door.
+            <h1 className="mt-8 max-w-4xl font-display text-[clamp(2.75rem,7.5vw,5.75rem)] font-semibold leading-[1.02] tracking-tight lg:max-w-6xl lg:text-[clamp(4rem,8vw,7rem)] lg:leading-[0.98]">
+              I build websites that bring{" "}
+              <em className="text-accent-deep">customers</em> through your
+              door.
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft lg:text-xl">
               I&apos;m Rardo. I design and build simple, fast one-page websites
               for local businesses — who you are, what you do, your hours, and
               a way to call you.
@@ -117,15 +119,28 @@ export default function Home() {
               </Link>
             </div>
           </Reveal>
+          <Reveal delay={0.3}>
+            <div className="mt-16 flex flex-wrap gap-x-12 gap-y-4 border-t border-line pt-6 font-tech text-[11px] uppercase tracking-[0.18em] text-ink-soft lg:mt-20">
+              <span className="inline-flex items-center gap-2.5">
+                <span className="pulse-dot" aria-hidden />
+                Available for new projects
+              </span>
+              <span>One-page sites, one focused week</span>
+              <span>Glennville, GA — works anywhere</span>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ——— Services ——— */}
       <section id="services" className="scroll-mt-20 border-b border-line bg-wash">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
           <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">What I do</p>
-            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+              <span className="text-accent">01</span>
+              <span aria-hidden> · </span>What I do
+            </p>
+            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
               What I offer.
             </h2>
             <p className="mt-5 max-w-xl leading-relaxed text-ink-soft">
@@ -136,8 +151,12 @@ export default function Home() {
           <div className="mt-14 grid gap-px bg-line sm:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.08} className="h-full">
-                <div className="flex h-full flex-col bg-wash p-8">
-                  <span className="font-tech text-sm text-accent">{s.n}</span>
+                <div className="group/card flex h-full flex-col bg-wash p-8 transition-transform duration-300 hover:-translate-y-1 lg:p-10">
+                  <span
+                    aria-hidden
+                    className="h-0.5 w-8 bg-accent transition-all duration-300 group-hover/card:w-16"
+                  />
+                  <span className="mt-6 font-tech text-sm text-accent">{s.n}</span>
                   <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight">
                     {s.title}
                   </h3>
@@ -151,30 +170,33 @@ export default function Home() {
 
       {/* ——— Work ——— */}
       <section id="work" className="scroll-mt-20 border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
           <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">Selected work</p>
-            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+              <span className="text-accent">02</span>
+              <span aria-hidden> · </span>Selected work
+            </p>
+            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
               Real sites, for real businesses.
             </h2>
           </Reveal>
-          <div className="mt-16 flex flex-col gap-20 sm:gap-24">
+          <div className="mt-16 flex flex-col gap-20 sm:gap-24 lg:mt-20">
             {work.map((p, i) => {
               const flip = i % 2 === 1;
               return (
                 <Reveal key={p.name}>
-                  <article className="group grid items-start gap-6 lg:grid-cols-12 lg:gap-10">
+                  <article className="group grid items-start gap-6 lg:grid-cols-12 lg:gap-12">
                     <span
                       aria-hidden
-                      className={`select-none font-display text-[clamp(5rem,12vw,10rem)] font-semibold leading-[0.85] tracking-tight text-line transition-colors duration-500 group-hover:text-accent/40 lg:col-span-4 ${flip ? "lg:order-2 lg:text-right" : ""}`}
+                      className={`select-none font-display text-[clamp(5rem,12vw,10rem)] font-semibold leading-[0.85] tracking-tight text-line transition-colors duration-500 group-hover:text-accent/40 lg:col-span-3 lg:text-[11rem] ${flip ? "lg:order-2 lg:text-right" : ""}`}
                     >
                       {p.n}
                     </span>
-                    <div className={`lg:col-span-8 ${flip ? "lg:order-1" : ""}`}>
+                    <div className={`lg:col-span-9 ${flip ? "lg:order-1" : ""}`}>
                       <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-accent">
                         {p.kind}
                       </p>
-                      <h3 className="mt-3 font-display text-4xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-accent-deep sm:text-5xl">
+                      <h3 className="mt-3 font-display text-4xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-accent-deep sm:text-5xl lg:text-6xl">
                         {p.name}
                       </h3>
                       <div className="mt-5 flex flex-wrap gap-2">
@@ -211,17 +233,20 @@ export default function Home() {
 
       {/* ——— Process ——— */}
       <section id="process" className="scroll-mt-20 border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
           <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">How it works</p>
-            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+              <span className="text-accent">03</span>
+              <span aria-hidden> · </span>How it works
+            </p>
+            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
               How it goes.
             </h2>
           </Reveal>
-          <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.08}>
-                <li className="border-t-2 border-ink pt-6">
+                <li className="border-t-2 border-ink pt-6 transition-colors duration-300 hover:border-accent">
                   <span className="font-tech text-sm text-ink-soft">
                     {s.n}
                   </span>
@@ -238,11 +263,11 @@ export default function Home() {
 
       {/* ——— About teaser ——— */}
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:max-w-7xl">
           <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
             <Reveal>
               <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">The short version</p>
-              <p className="mt-6 max-w-xl font-display text-2xl leading-snug tracking-tight sm:text-3xl">
+              <p className="mt-6 max-w-xl font-display text-2xl leading-snug tracking-tight sm:text-3xl lg:max-w-3xl lg:text-4xl">
                 Husband, father, musician, photographer. From Siguatepeque,
                 Honduras to Glennville, Georgia — building with AI, studying
                 Scripture, writing it all down.
@@ -266,14 +291,14 @@ export default function Home() {
 
       {/* ——— Contact / CTA band ——— */}
       <section className="bg-coal text-paper">
-        <div className="mx-auto max-w-6xl overflow-hidden px-5 py-24 sm:px-8 sm:py-36">
+        <div className="mx-auto max-w-6xl overflow-hidden px-5 py-24 sm:px-8 sm:py-36 lg:max-w-7xl">
           <Reveal>
             <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-paper/60">
               Contact
             </p>
           </Reveal>
           <Parallax offset={50}>
-            <h2 className="mt-8 font-display text-[clamp(3rem,9vw,7rem)] font-semibold leading-[0.98] tracking-tight">
+            <h2 className="mt-8 font-display text-[clamp(3rem,9vw,7rem)] font-semibold leading-[0.98] tracking-tight lg:text-[clamp(4rem,9vw,8rem)]">
               Let&apos;s build yours.
             </h2>
           </Parallax>

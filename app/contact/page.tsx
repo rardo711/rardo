@@ -28,7 +28,7 @@ const next = [
 export default function Contact() {
   return (
     <section className="border-b border-line">
-      <div className="mx-auto max-w-6xl px-5 pb-20 pt-20 sm:px-8 sm:pt-28">
+      <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 pb-20 pt-20 sm:px-8 sm:pt-28">
         <Reveal>
           <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">Contact</p>
           <h1 className="mt-8 max-w-3xl font-display text-[clamp(2.75rem,7vw,5.5rem)] font-semibold leading-[1.02] tracking-tight">
