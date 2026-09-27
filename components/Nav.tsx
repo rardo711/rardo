@@ -56,7 +56,7 @@ export default function Nav() {
           className="flex items-center gap-2.5"
           aria-label="Gerardo Castaneda — home"
         >
-          <Logo size={34} />
+          <Logo size={38} />
           <span className="font-display text-lg font-semibold tracking-tight">
             Gerardo Castaneda
           </span>
