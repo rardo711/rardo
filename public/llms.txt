@@ -1,6 +1,6 @@
 # Gerardo Castaneda — Websites for Small Businesses
 
-> I build simple, fast one-page websites for local businesses. One flat price: $250.
+> I build simple, fast one-page websites for local businesses.
 
 ## Who this is for
 
@@ -13,15 +13,13 @@ Glennville, Georgia and Tattnall County.
 - One-page business websites (who you are, what you do, hours, contact)
 - Ordering and contact forms that send straight to your inbox
 - Update-it-yourself sites you can edit without a developer
-- One flat price: $250. Half up front, half when it's live. Monthly pricing is
-  available for bigger projects — it depends on the project.
 
 ## How it works
 
 1. You reach out — tell me about your business.
 2. We talk it through — a quick call or messages, whatever's easier.
 3. I build your site — one focused week, real words about your real business.
-4. You go live — half now, half when it's live.
+4. You go live — your site goes live and it's yours.
 
 ## Selected work
 

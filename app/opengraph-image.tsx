@@ -55,7 +55,7 @@ export default function OgImage() {
             fontFamily: "system-ui, sans-serif",
           }}
         >
-          One flat price. Agreed up front.
+          Built by hand in Glennville, Georgia.
         </div>
       </div>
     ),
