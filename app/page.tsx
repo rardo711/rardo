@@ -8,6 +8,7 @@ const work = [
     n: "01",
     name: "RaeMa's Remedies",
     kind: "Client — order site",
+    tags: ["One-page site", "Order form", "Self-editable"],
     description:
       "An order site for a family wellness brand. Customers browse the products and send their order straight to RaeMa's inbox — and she updates products, prices, and photos herself through a plain-language admin panel. No developer needed.",
     href: "https://raemas-remedies-castanedag2001-1468.vercel.app",
@@ -16,6 +17,7 @@ const work = [
     n: "02",
     name: "Better Than Gold Tallow Co.",
     kind: "Client — business site",
+    tags: ["One-page site", "Farm brand"],
     description:
       "A one-page site for a local tallow business, built from her real flyer, farm photos, and exact words. What she sells, her story, and a direct line to her — nothing for a customer to get lost in.",
     href: "https://rardo711.github.io/better-than-gold-tallow/",
@@ -24,6 +26,7 @@ const work = [
     n: "03",
     name: "Theos Logos",
     kind: "Personal — web app",
+    tags: ["Web app", "Hebrew & Greek tools", "Personal build"],
     description:
       "My own build: a scholarly Bible study app with Hebrew and Greek lexicons and original-language tools. Proof I can ship complex, working software — not just pages.",
     href: "https://theos-logos-official.vercel.app",
@@ -117,51 +120,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ——— Work ——— */}
-      <section id="work" className="scroll-mt-20 border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-          <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">Selected work</p>
-            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-              Real sites, for real businesses.
-            </h2>
-          </Reveal>
-          <div className="mt-14">
-            {work.map((p, i) => (
-              <Reveal key={p.name} delay={i * 0.06}>
-                <article className="group border-t border-line py-10 transition-colors duration-300 last:border-b hover:bg-wash/50 sm:py-12">
-                  <div className="flex flex-col gap-6 sm:flex-row sm:items-baseline sm:justify-between">
-                    <div className="flex items-baseline gap-5">
-                      <span className="font-tech text-sm text-ink-soft">
-                        {p.n}
-                      </span>
-                      <h3 className="font-display text-3xl font-semibold tracking-tight transition-transform duration-300 group-hover:translate-x-2 sm:text-4xl">
-                        {p.name}
-                      </h3>
-                    </div>
-                    <span className="font-tech text-[11px] uppercase tracking-[0.2em] text-accent">
-                      {p.kind}
-                    </span>
-                  </div>
-                  <p className="mt-5 max-w-2xl leading-relaxed text-ink-soft">
-                    {p.description}
-                  </p>
-                  <Link
-                    href={p.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent-deep"
-                  >
-                    Visit the site
-                    <ArrowUpRight size={16} />
-                  </Link>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ——— Services ——— */}
       <section id="services" className="scroll-mt-20 border-b border-line bg-wash">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
@@ -187,6 +145,65 @@ export default function Home() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ——— Work ——— */}
+      <section id="work" className="scroll-mt-20 border-b border-line">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <Reveal>
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">Selected work</p>
+            <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+              Real sites, for real businesses.
+            </h2>
+          </Reveal>
+          <div className="mt-16 flex flex-col gap-20 sm:gap-24">
+            {work.map((p, i) => {
+              const flip = i % 2 === 1;
+              return (
+                <Reveal key={p.name}>
+                  <article className="group grid items-start gap-6 lg:grid-cols-12 lg:gap-10">
+                    <span
+                      aria-hidden
+                      className={`select-none font-display text-[clamp(5rem,12vw,10rem)] font-semibold leading-[0.85] tracking-tight text-line transition-colors duration-500 group-hover:text-accent/40 lg:col-span-4 ${flip ? "lg:order-2 lg:text-right" : ""}`}
+                    >
+                      {p.n}
+                    </span>
+                    <div className={`lg:col-span-8 ${flip ? "lg:order-1" : ""}`}>
+                      <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-accent">
+                        {p.kind}
+                      </p>
+                      <h3 className="mt-3 font-display text-4xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-accent-deep sm:text-5xl">
+                        {p.name}
+                      </h3>
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {p.tags.map((t) => (
+                          <span
+                            key={t}
+                            className="border border-line px-3 py-1 font-tech text-[11px] uppercase tracking-[0.14em] text-ink-soft"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="mt-5 max-w-2xl leading-relaxed text-ink-soft">
+                        {p.description}
+                      </p>
+                      <Link
+                        href={p.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent-deep"
+                      >
+                        Visit the site
+                        <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </Link>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
