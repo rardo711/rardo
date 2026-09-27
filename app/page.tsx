@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
 import Parallax from "../components/Parallax";
+import Magnetic from "../components/Magnetic";
 
 const work = [
   {
@@ -78,20 +79,31 @@ export default function Home() {
   return (
     <>
       {/* ——— Hero ——— */}
-      <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 pb-16 pt-20 sm:px-8 sm:pb-24 sm:pt-28 lg:max-w-7xl lg:pb-28 lg:pt-36">
+      <section className="relative overflow-hidden border-b border-line">
+        <div aria-hidden className="hero-glow" />
+        <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-20 sm:px-8 sm:pb-24 sm:pt-28 lg:max-w-7xl lg:pb-28 lg:pt-36">
           <Reveal>
             <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
               Gerardo Castaneda — Glennville, GA
             </p>
           </Reveal>
-          <Reveal delay={0.08}>
-            <h1 className="mt-8 max-w-4xl font-display text-[clamp(2.75rem,7.5vw,5.75rem)] font-semibold leading-[1.02] tracking-tight lg:max-w-6xl lg:text-[clamp(4rem,8vw,7rem)] lg:leading-[0.98]">
-              I build websites that bring{" "}
-              <em className="text-accent-deep">customers</em> through your
-              door.
-            </h1>
-          </Reveal>
+          <h1 className="mt-8 max-w-4xl font-display text-[clamp(2.75rem,7.5vw,5.75rem)] font-semibold leading-[1.02] tracking-tight lg:max-w-6xl lg:text-[clamp(4rem,8vw,7rem)] lg:leading-[0.98]">
+            <span className="-mb-[0.09em] block overflow-hidden pb-[0.09em]">
+              <span className="hero-line block" style={{ animationDelay: "0.05s" }}>
+                I build websites
+              </span>
+            </span>
+            <span className="-mb-[0.09em] block overflow-hidden pb-[0.09em]">
+              <span className="hero-line block" style={{ animationDelay: "0.17s" }}>
+                that bring <em className="text-accent-deep">customers</em>
+              </span>
+            </span>
+            <span className="-mb-[0.09em] block overflow-hidden pb-[0.09em]">
+              <span className="hero-line block" style={{ animationDelay: "0.29s" }}>
+                through your door.
+              </span>
+            </span>
+          </h1>
           <Reveal delay={0.16}>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft lg:text-xl">
               I&apos;m Rardo. I design and build simple, fast one-page websites
@@ -101,22 +113,26 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.24}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 bg-ink px-7 py-3.5 text-base font-semibold text-paper transition-all hover:bg-accent-deep active:scale-[0.96]"
-              >
-                Start your project
-                <ArrowRight
-                  size={18}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </Link>
-              <Link
-                href="#work"
-                className="inline-flex items-center gap-2 border border-ink px-7 py-3.5 text-base font-semibold transition-all hover:bg-ink hover:text-paper active:scale-[0.96]"
-              >
-                See the work
-              </Link>
+              <Magnetic>
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-2 bg-ink px-7 py-3.5 text-base font-semibold text-paper transition-all hover:bg-accent-deep active:scale-[0.96]"
+                >
+                  Start your project
+                  <ArrowRight
+                    size={18}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link
+                  href="#work"
+                  className="inline-flex items-center gap-2 border border-ink px-7 py-3.5 text-base font-semibold transition-all hover:bg-ink hover:text-paper active:scale-[0.96]"
+                >
+                  See the work
+                </Link>
+              </Magnetic>
             </div>
           </Reveal>
           <Reveal delay={0.3}>
@@ -131,6 +147,28 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      {/* ——— Marquee divider ——— */}
+      <div className="marquee border-b border-line bg-ink py-3.5 text-paper" aria-hidden>
+        <div className="marquee-track font-tech text-xs font-medium uppercase tracking-[0.22em]">
+          {[0, 1].map((copy) => (
+            <span key={copy} className="marquee-chunk">
+              <span>One-page websites</span>
+              <span className="text-accent">◆</span>
+              <span>Glennville, Georgia</span>
+              <span className="text-accent">◆</span>
+              <span>Available for new projects</span>
+              <span className="text-accent">◆</span>
+              <span>One-page websites</span>
+              <span className="text-accent">◆</span>
+              <span>Glennville, Georgia</span>
+              <span className="text-accent">◆</span>
+              <span>Available for new projects</span>
+              <span className="text-accent">◆</span>
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* ——— Services ——— */}
       <section id="services" className="scroll-mt-20 border-b border-line bg-wash">
@@ -186,12 +224,17 @@ export default function Home() {
               return (
                 <Reveal key={p.name}>
                   <article className="group grid items-start gap-6 lg:grid-cols-12 lg:gap-12">
-                    <span
-                      aria-hidden
-                      className={`select-none font-display text-[clamp(5rem,12vw,10rem)] font-semibold leading-[0.85] tracking-tight text-line transition-colors duration-500 group-hover:text-accent/40 lg:col-span-3 lg:text-[11rem] ${flip ? "lg:order-2 lg:text-right" : ""}`}
+                    <Parallax
+                      offset={flip ? 48 : -48}
+                      className={`lg:col-span-3 ${flip ? "lg:order-2" : ""}`}
                     >
-                      {p.n}
-                    </span>
+                      <span
+                        aria-hidden
+                        className={`block select-none font-display text-[clamp(5rem,12vw,10rem)] font-semibold leading-[0.85] tracking-tight text-line transition-colors duration-500 group-hover:text-accent/40 lg:text-[11rem] ${flip ? "lg:text-right" : ""}`}
+                      >
+                        {p.n}
+                      </span>
+                    </Parallax>
                     <div className={`lg:col-span-9 ${flip ? "lg:order-1" : ""}`}>
                       <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-accent">
                         {p.kind}
