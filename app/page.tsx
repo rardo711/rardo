@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
-import SectionLabel from "../components/SectionLabel";
+import Parallax from "../components/Parallax";
 
 const work = [
   {
@@ -97,7 +97,7 @@ export default function Home() {
           <Reveal delay={0.24}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
-                href="#contact"
+                href="/contact"
                 className="group inline-flex items-center gap-2 bg-ink px-7 py-3.5 text-base font-semibold text-paper transition-colors hover:bg-accent-deep"
               >
                 Start your project
@@ -121,7 +121,7 @@ export default function Home() {
       <section id="work" className="scroll-mt-20 border-b border-line">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <Reveal>
-            <SectionLabel index="SEC.01">Selected work</SectionLabel>
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">Selected work</p>
             <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
               Real sites, for real businesses.
             </h2>
@@ -129,13 +129,13 @@ export default function Home() {
           <div className="mt-14">
             {work.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.06}>
-                <article className="group border-t border-line py-10 last:border-b sm:py-12">
+                <article className="group border-t border-line py-10 transition-colors duration-300 last:border-b hover:bg-wash/50 sm:py-12">
                   <div className="flex flex-col gap-6 sm:flex-row sm:items-baseline sm:justify-between">
                     <div className="flex items-baseline gap-5">
                       <span className="font-tech text-sm text-ink-soft">
                         {p.n}
                       </span>
-                      <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+                      <h3 className="font-display text-3xl font-semibold tracking-tight transition-transform duration-300 group-hover:translate-x-2 sm:text-4xl">
                         {p.name}
                       </h3>
                     </div>
@@ -166,7 +166,7 @@ export default function Home() {
       <section id="services" className="scroll-mt-20 border-b border-line bg-wash">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <Reveal>
-            <SectionLabel index="SEC.02">Services</SectionLabel>
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">What I do</p>
             <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
               What I offer.
             </h2>
@@ -195,7 +195,7 @@ export default function Home() {
       <section id="process" className="scroll-mt-20 border-b border-line">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <Reveal>
-            <SectionLabel index="SEC.03">Process</SectionLabel>
+            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">How it works</p>
             <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
               How it goes.
             </h2>
@@ -228,7 +228,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
           <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
             <Reveal>
-              <SectionLabel index="SEC.04">About</SectionLabel>
+              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">The short version</p>
               <p className="mt-6 max-w-xl font-display text-2xl leading-snug tracking-tight sm:text-3xl">
                 Husband, father, musician, photographer. From Siguatepeque,
                 Honduras to Glennville, Georgia — building with AI, studying
@@ -252,26 +252,39 @@ export default function Home() {
       </section>
 
       {/* ——— Contact / CTA band ——— */}
-      <section id="contact" className="scroll-mt-20 bg-ink text-paper">
-        <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-36">
+      <section className="bg-coal text-paper">
+        <div className="mx-auto max-w-6xl overflow-hidden px-5 py-24 sm:px-8 sm:py-36">
           <Reveal>
             <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-paper/60">
-              SEC.05 — Contact
+              Contact
             </p>
+          </Reveal>
+          <Parallax offset={50}>
             <h2 className="mt-8 font-display text-[clamp(3rem,9vw,7rem)] font-semibold leading-[0.98] tracking-tight">
               Let&apos;s build yours.
             </h2>
+          </Parallax>
+          <Reveal delay={0.1}>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-paper/70">
               Tell me about your business — what you do, who it&apos;s for,
-              and what you wish your website did. I&apos;ll reply within a day,
-              plainly and honestly.
+              and what you wish your website did. I&apos;ll get back to you within a day.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 bg-paper px-7 py-3.5 text-base font-semibold text-ink transition-colors hover:bg-accent hover:text-paper"
+              >
+                Start your project
+                <ArrowRight
+                  size={18}
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </Link>
               <Link
                 href="https://x.com/gerardocasta711"
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center gap-2 bg-paper px-7 py-3.5 text-base font-semibold text-ink transition-colors hover:bg-accent hover:text-paper"
+                className="group inline-flex items-center gap-2 border border-paper/40 px-7 py-3.5 text-base font-semibold text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
               >
                 Message me on X
                 <ArrowUpRight
