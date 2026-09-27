@@ -137,10 +137,6 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.3}>
             <div className="mt-16 flex flex-wrap gap-x-12 gap-y-4 border-t border-line pt-6 font-tech text-[11px] uppercase tracking-[0.18em] text-ink-soft lg:mt-20">
-              <span className="inline-flex items-center gap-2.5">
-                <span className="pulse-dot" aria-hidden />
-                Available for new projects
-              </span>
               <span>One-page sites, one focused week</span>
               <span>Glennville, GA — works anywhere</span>
             </div>
@@ -157,13 +153,13 @@ export default function Home() {
               <span className="text-accent">◆</span>
               <span>Glennville, Georgia</span>
               <span className="text-accent">◆</span>
-              <span>Available for new projects</span>
+              <span>Websites for small businesses</span>
               <span className="text-accent">◆</span>
               <span>One-page websites</span>
               <span className="text-accent">◆</span>
               <span>Glennville, Georgia</span>
               <span className="text-accent">◆</span>
-              <span>Available for new projects</span>
+              <span>Websites for small businesses</span>
               <span className="text-accent">◆</span>
             </span>
           ))}
