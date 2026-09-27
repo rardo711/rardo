@@ -35,14 +35,14 @@ export default function Logo({
       <circle cx="100" cy="12" r="8" fill={dotFill} />
       <text
         x="100"
-        y="124"
+        y="123"
         textAnchor="middle"
         fontFamily="Fraunces, Georgia, 'Times New Roman', serif"
         fontWeight={600}
-        fontSize={76}
+        fontSize={72}
       >
         <tspan fill={gFill}>G</tspan>
-        <tspan dx={-16} dy={-10} fontSize={54} fill={cFill}>
+        <tspan dx={-8} dy={0} fontSize={50} fill={cFill}>
           C
         </tspan>
       </text>
