@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 const links = [
   { href: "/#services", label: "What I do" },
@@ -52,9 +53,13 @@ export default function Nav() {
         <Link
           href="/"
           onClick={brandClick}
-          className="font-display text-lg font-semibold tracking-tight"
+          className="flex items-center gap-2.5"
+          aria-label="Gerardo Castaneda — home"
         >
-          Gerardo Castaneda
+          <Logo size={34} />
+          <span className="font-display text-lg font-semibold tracking-tight">
+            Gerardo Castaneda
+          </span>
         </Link>
         <div ref={menuRef} className="relative">
           <button
