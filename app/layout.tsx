@@ -35,9 +35,6 @@ export const metadata: Metadata = {
   },
   description:
     "I'm Rardo. I design and build simple, fast one-page websites for local businesses — who you are, what you do, your hours, and a way to call you.",
-  verification: {
-    google: "_kvi9eZ9184eNuyetdCW1qzRO2VXYo3-NTk-GKrwC_s",
-  },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
