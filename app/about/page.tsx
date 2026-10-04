@@ -95,8 +95,8 @@ export default function About() {
                   downstream of the main thing. My bio has said it for years,
                   and I mean it:{" "}
                   <span className="font-display italic text-ink">
-                    &ldquo;Loving Jesus is life's greatest
-                    achievement.&rdquo;
+                    &ldquo;Living for the glory of God is life's
+                    purpose.&rdquo;
                   </span>
                 </p>
               </Reveal>
