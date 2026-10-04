@@ -1,16 +1,13 @@
 type Props = {
   size?: number;
-  label?: string;
 };
 
-export default function Logo({
-  size = 38,
-  label = "GC — Gerardo Castaneda",
-}: Props) {
+/** Decorative: the link around it carries the accessible name. */
+export default function Logo({ size = 38 }: Props) {
   return (
     <img
       src="/gc-mark.png"
-      alt={label}
+      alt=""
       width={Math.round(size * 1.43)}
       height={size}
       className="block object-contain"

@@ -4,11 +4,25 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../../components/Reveal";
 import Still from "../../components/Still";
 import InkRule from "../../components/InkRule";
+import { pageMetadata } from "@/lib/seo";
+import { pageDates, siteUrl } from "@/lib/site";
 
-export const metadata = {
+export const metadata = pageMetadata({
+  path: "/about",
   title: "About",
+  ogTitle: "About · Gerardo Castaneda",
   description:
     "I'm Rardo — husband, father, musician, photographer. From Siguatepeque, Honduras to Glennville, Georgia.",
+});
+
+const profileJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${siteUrl}/about#profile`,
+  url: `${siteUrl}/about`,
+  name: "About Gerardo Castaneda",
+  dateModified: pageDates["/about"],
+  mainEntity: { "@id": `${siteUrl}/#person` },
 };
 
 const road = [
@@ -47,19 +61,25 @@ const frames = [
 export default function About() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(profileJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="border-b border-line">
-        <div className="mx-auto grid max-w-6xl items-end gap-12 px-5 pb-16 pt-20 sm:px-8 sm:pt-28 lg:max-w-7xl lg:grid-cols-12 lg:gap-16 lg:pb-24">
+        <div className="gutter mx-auto grid max-w-6xl items-end gap-12 pb-16 pt-20 sm:pt-28 lg:max-w-7xl lg:grid-cols-12 lg:gap-16 lg:pb-24">
           <div className="lg:col-span-6">
-            <Reveal>
-              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+            <Reveal eager>
+              <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
                 The person behind the sites
               </p>
-              <h1 className="mt-8 font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-none tracking-tight">
+              <h1 className="mt-8 font-display text-h1 font-semibold">
                 I'm Rardo.
               </h1>
             </Reveal>
-            <div className="mt-10 flex max-w-xl flex-col gap-6 text-lg leading-relaxed text-ink-soft">
-              <Reveal delay={0.08}>
+            <div className="mt-10 flex max-w-[62ch] flex-col gap-6 text-body text-ink-soft">
+              <Reveal eager delay={0.08}>
                 <p>
                   <span className="font-semibold text-ink">
                     I'm Gerardo Castaneda
@@ -69,7 +89,7 @@ export default function About() {
                   live in Glennville, Georgia.
                 </p>
               </Reveal>
-              <Reveal delay={0.12}>
+              <Reveal eager delay={0.12}>
                 <p>
                   Family comes first — that's non-negotiable, and it's
                   downstream of the main thing. My bio has said it for years,
@@ -82,7 +102,7 @@ export default function About() {
               </Reveal>
             </div>
           </div>
-          <Reveal delay={0.1} className="lg:col-span-6">
+          <Reveal eager delay={0.1} className="lg:col-span-6">
             <figure>
               <Still>
                 <Image
@@ -92,10 +112,11 @@ export default function About() {
                   height={1500}
                   priority
                   sizes="(min-width: 1024px) 42vw, 100vw"
-                  className="aspect-[3/4] w-full object-cover object-[center_18%]"
+                  data-bw=""
+                  className="photo-warm aspect-[3/4] w-full object-cover object-[center_18%]"
                 />
               </Still>
-              <figcaption className="mt-3 font-tech text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+              <figcaption className="mt-3 font-tech text-eyebrow uppercase text-ink-soft">
                 Gerardo and Olivia
               </figcaption>
             </figure>
@@ -104,9 +125,9 @@ export default function About() {
       </section>
 
       <section className="border-b border-line bg-wash">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:max-w-7xl">
+        <div className="gutter mx-auto max-w-6xl py-16 sm:py-20 lg:max-w-7xl">
           <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+            <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
               The life the words are about
             </p>
           </Reveal>
@@ -121,10 +142,10 @@ export default function About() {
                       width={1000}
                       height={1500}
                       sizes="(min-width: 640px) 30vw, 100vw"
-                      className="aspect-[3/4] w-full object-cover object-[center_20%]"
+                      className="photo-warm aspect-[3/4] w-full object-cover object-[center_20%]"
                     />
                   </Still>
-                  <figcaption className="mt-3 font-tech text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+                  <figcaption className="mt-3 font-tech text-eyebrow uppercase text-ink-soft">
                     {f.caption}
                   </figcaption>
                 </figure>
@@ -135,8 +156,8 @@ export default function About() {
       </section>
 
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:max-w-7xl">
-          <div className="flex max-w-3xl flex-col gap-6 text-lg leading-relaxed text-ink-soft">
+        <div className="gutter mx-auto max-w-6xl py-20 sm:py-24 lg:max-w-7xl">
+          <div className="flex max-w-[62ch] flex-col gap-6 text-body text-ink-soft">
             <Reveal>
               <p>
                 In 2026 I started learning to build software, with AI as my
@@ -149,6 +170,7 @@ export default function About() {
                   className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4"
                 >
                   Theos Logos
+                  <span className="sr-only"> (opens in a new tab)</span>
                 </Link>
                 , a Bible study app with Hebrew and Greek lexicons. Real
                 things, for real people. The client sites are on the home
@@ -165,6 +187,7 @@ export default function About() {
                   className="inline-flex items-center gap-1 font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4"
                 >
                   @lvngphotography
+                  <span className="sr-only"> (opens in a new tab)</span>
                   <ArrowUpRight size={16} aria-hidden />
                 </a>{" "}
                 is where the photos live. Some of my favorite shots are the
@@ -181,6 +204,7 @@ export default function About() {
                   className="inline-flex items-center gap-1 font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4"
                 >
                   The Life Proper
+                  <span className="sr-only"> (opens in a new tab)</span>
                   <ArrowUpRight size={16} aria-hidden />
                 </a>
                 , a podcast on faith and the examined life. And I write: a
@@ -203,9 +227,9 @@ export default function About() {
       </section>
 
       <section className="border-b border-line bg-wash">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:max-w-7xl">
+        <div className="gutter mx-auto max-w-6xl py-20 sm:py-24 lg:max-w-7xl">
           <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+            <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
               So far
             </p>
           </Reveal>
@@ -215,7 +239,7 @@ export default function About() {
               {road.map((r, i) => (
                 <Reveal key={r.when} delay={i * 0.08}>
                   <div className="border-t-2 border-ink pt-6 md:border-transparent">
-                    <p className="font-tech text-xs uppercase tracking-[0.2em] text-accent">
+                    <p className="font-tech text-eyebrow uppercase text-accent-deep">
                       {r.when}
                     </p>
                     <p className="mt-4 leading-relaxed text-ink-soft">{r.what}</p>
@@ -225,32 +249,34 @@ export default function About() {
             </div>
           </div>
           <Reveal delay={0.1}>
-            <p className="mt-16 text-center font-display text-2xl italic sm:text-3xl">
+            <p className="mt-16 text-center font-display text-quote italic">
               Fueled by Mate*.
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section>
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-5 py-16 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:max-w-7xl">
+      <section data-cta-end="">
+        <div className="gutter mx-auto flex max-w-6xl flex-col items-stretch gap-4 py-16 sm:flex-row sm:items-center sm:justify-between lg:max-w-7xl">
           <Link
             href="/"
-            className="group inline-flex items-center gap-2 font-semibold text-ink-soft transition-colors hover:text-ink"
+            className="group inline-flex min-h-12 items-center gap-2 font-semibold text-ink-soft transition-colors hover:text-ink"
           >
             <ArrowLeft
               size={18}
+              aria-hidden
               className="transition-transform group-hover:-translate-x-1"
             />
             Back home
           </Link>
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 bg-ink px-6 py-3 font-semibold text-paper transition-all hover:bg-accent-deep active:scale-[0.96]"
+            className="group inline-flex min-h-12 w-full items-center justify-center gap-2 border border-transparent bg-ink px-6 py-3 font-semibold text-paper transition-all hover:bg-accent-deep active:scale-[0.97] sm:w-auto"
           >
             Work with me
             <ArrowRight
               size={18}
+              aria-hidden
               className="transition-transform group-hover:translate-x-1"
             />
           </Link>

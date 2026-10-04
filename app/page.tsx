@@ -1,12 +1,18 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
-import Parallax from "../components/Parallax";
-import Magnetic from "../components/Magnetic";
 import Hero from "../components/Hero";
 import WorkShowcase from "../components/WorkShowcase";
 import InkRule from "../components/InkRule";
 import CtaTitle from "../components/CtaTitle";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  path: "/",
+  description:
+    "I'm Rardo. I design and build simple, fast one-page websites for local businesses — who you are, what you do, your hours, and a way to call you.",
+  ogDescription: "Simple, fast one-page websites for local businesses.",
+});
 
 const work = [
   {
@@ -81,31 +87,29 @@ export default function Home() {
 
       {/* ——— Services ——— */}
       <section id="services" className="scroll-mt-20 border-b border-line bg-wash">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
-          <Parallax offset={-28}>
+        <div className="mx-auto max-w-6xl gutter section-y lg:max-w-7xl">
             <Reveal>
-              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+              <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
                 <span className="text-accent">01</span>
                 <span aria-hidden> · </span>What I do
               </p>
-              <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+              <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
                 Three things, done well.
               </h2>
               <p className="mt-5 max-w-xl leading-relaxed text-ink-soft">
                 No packages with forty line items. Each one something I've already built and shipped.
               </p>
             </Reveal>
-          </Parallax>
-          <div className="mt-14 grid gap-px bg-line sm:grid-cols-3">
+          <div className="mt-14 grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.08} className="h-full">
-                <div className="card-sheen group/card flex h-full flex-col bg-wash p-8 transition-transform duration-300 hover:-translate-y-1 lg:p-10">
+              <Reveal key={s.n} delay={i * 0.06} className="h-full md:last:col-span-2 lg:last:col-span-1">
+                <div className="group/card flex h-full flex-col bg-wash p-6 transition-transform duration-300 hover:-translate-y-0.5 sm:p-8 lg:p-10">
                   <span
                     aria-hidden
                     className="h-0.5 w-8 bg-accent transition-all duration-300 group-hover/card:w-16"
                   />
-                  <span className="mt-6 font-tech text-sm text-accent">{s.n}</span>
-                  <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight">
+                  <span className="mt-6 font-tech text-sm text-accent-deep">{s.n}</span>
+                  <h3 className="mt-4 font-display text-h3 font-semibold">
                     {s.title}
                   </h3>
                   <p className="mt-4 leading-relaxed text-ink-soft">{s.body}</p>
@@ -118,56 +122,55 @@ export default function Home() {
 
       {/* ——— Work ——— */}
       <section id="work" className="scroll-mt-20 border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
-          <Parallax offset={28}>
+        <div className="mx-auto max-w-6xl gutter section-y lg:max-w-7xl">
             <Reveal>
-              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+              <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
                 <span className="text-accent">02</span>
                 <span aria-hidden> · </span>Selected work
               </p>
-              <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+              <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
                 Real sites, for real businesses.
               </h2>
             </Reveal>
-          </Parallax>
           <WorkShowcase items={work} />
         </div>
       </section>
 
       {/* ——— Process ——— */}
       <section id="process" className="scroll-mt-20 border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:max-w-7xl">
-          <Parallax offset={-28}>
+        <div className="mx-auto max-w-6xl gutter section-y lg:max-w-7xl">
             <Reveal>
-              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">
+              <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
                 <span className="text-accent">03</span>
                 <span aria-hidden> · </span>How it works
               </p>
-              <h2 className="mt-6 max-w-2xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+              <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
                 How it goes.
               </h2>
             </Reveal>
-          </Parallax>
           <div className="relative mt-14">
             <InkRule />
             <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
               {steps.map((s, i) => (
-                <Reveal key={s.n} delay={i * 0.08}>
-                  <li className="group/step border-t-2 border-ink pt-6 transition-colors duration-300 hover:border-accent lg:border-transparent lg:hover:border-transparent">
-                    <span className="font-tech text-sm text-ink-soft transition-colors duration-300 group-hover/step:text-accent">
-                      {s.n}
-                    </span>
-                    <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">
-                      {s.title}
-                    </h3>
-                    <p className="mt-3 leading-relaxed text-ink-soft">{s.body}</p>
-                  </li>
+                <Reveal
+                  as="li"
+                  key={s.n}
+                  delay={i * 0.06}
+                  className="group/step border-t-2 border-ink pt-6 transition-colors duration-300 hover:border-accent lg:border-transparent lg:hover:border-transparent"
+                >
+                  <span className="font-tech text-sm text-ink-soft transition-colors duration-300 group-hover/step:text-accent-deep">
+                    {s.n}
+                  </span>
+                  <h3 className="mt-3 font-display text-h3 font-semibold">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-ink-soft">{s.body}</p>
                 </Reveal>
               ))}
             </ol>
           </div>
           <Reveal delay={0.12}>
-            <p className="mt-16 max-w-2xl font-display text-2xl leading-snug tracking-tight sm:text-3xl">
+            <p className="mt-16 max-w-2xl font-display text-quote">
               The mockup is free. The build is a flat fee — named before I start.
             </p>
           </Reveal>
@@ -176,11 +179,11 @@ export default function Home() {
 
       {/* ——— About teaser ——— */}
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:max-w-7xl">
+        <div className="mx-auto max-w-6xl gutter py-20 sm:py-24 lg:max-w-7xl">
           <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
             <Reveal>
-              <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-ink-soft">The short version</p>
-              <p className="mt-6 max-w-xl font-display text-2xl leading-snug tracking-tight sm:text-3xl lg:max-w-3xl lg:text-4xl">
+              <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">The short version</p>
+              <p className="mt-6 max-w-xl font-display text-quote lg:max-w-3xl">
                 Husband, father, musician, photographer. From Siguatepeque,
                 Honduras to Glennville, Georgia — building with AI, studying
                 Scripture, writing it all down.
@@ -189,7 +192,7 @@ export default function Home() {
             <Reveal delay={0.1}>
               <Link
                 href="/about"
-                className="group inline-flex shrink-0 items-center gap-2 border border-ink px-6 py-3 font-semibold transition-colors hover:bg-ink hover:text-paper"
+                className="group inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 border border-ink px-6 py-3 font-semibold sm:w-auto transition-colors hover:bg-ink hover:text-paper"
               >
                 More about me
                 <ArrowRight
@@ -203,49 +206,47 @@ export default function Home() {
       </section>
 
       {/* ——— Contact / CTA band ——— */}
-      <section className="bg-coal text-paper">
-        <div className="mx-auto max-w-6xl overflow-hidden px-5 py-24 sm:px-8 sm:py-36 lg:max-w-7xl">
+      <section data-surface="dark" data-cta-end="" className="bg-coal text-paper">
+        <div className="mx-auto max-w-6xl gutter overflow-hidden py-24 sm:py-36 lg:max-w-7xl">
           <Reveal>
-            <p className="font-tech text-xs font-medium uppercase tracking-[0.22em] text-paper/60">
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">
               Contact
             </p>
           </Reveal>
           <CtaTitle />
           <Reveal delay={0.1}>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-paper/70">
+            <p className="mt-8 max-w-xl text-lead text-paper/70">
               Tell me about your business — what you do, who it&apos;s for,
               and what you wish your website did. I&apos;ll get back to you within a day.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Magnetic>
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center gap-2 bg-paper px-7 py-3.5 text-base font-semibold text-ink transition-all hover:bg-accent hover:text-paper active:scale-[0.96]"
-                >
-                  Start your project
-                  <ArrowRight
-                    size={18}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </Link>
-              </Magnetic>
-              <Magnetic>
-                <Link
-                  href="https://x.com/gerardocasta711"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Message me on X (opens in a new tab)"
-                  className="group inline-flex items-center gap-2 border border-paper/40 px-7 py-3.5 text-base font-semibold text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
-                >
-                  Message me on X
-                  <ArrowUpRight
-                    size={18}
-                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </Link>
-              </Magnetic>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+              <Link
+                href="/contact"
+                className="group inline-flex min-h-12 w-full items-center justify-center gap-2 border border-transparent bg-paper px-7 py-3 text-base font-semibold text-ink transition-all hover:bg-accent hover:text-paper active:scale-[0.97] sm:w-auto"
+              >
+                Start your project
+                <ArrowRight
+                  size={18}
+                  aria-hidden
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </Link>
+              <Link
+                href="https://x.com/gerardocasta711"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex min-h-12 w-full items-center justify-center gap-2 border border-paper/60 px-7 py-3 text-base font-semibold text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink sm:w-auto"
+              >
+                Message me on X
+                <span className="sr-only"> (opens in a new tab)</span>
+                <ArrowUpRight
+                  size={18}
+                  aria-hidden
+                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </Link>
             </div>
-            <p className="mt-8 font-tech text-[11px] uppercase tracking-[0.18em] text-paper/40">
+            <p className="mt-8 font-tech text-eyebrow uppercase text-paper/70">
               @gerardocasta711 — DMs open
             </p>
           </Reveal>

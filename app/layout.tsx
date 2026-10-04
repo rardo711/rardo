@@ -3,15 +3,18 @@ import { Fraunces, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
-import SmoothScroll from "@/components/SmoothScroll";
-import PointerLight from "@/components/PointerLight";
-import { siteUrl } from "@/lib/site";
+import RevealObserver from "@/components/RevealObserver";
+import StickyCta from "@/components/StickyCta";
+import { siteUrl, defaultTitle, siteName } from "@/lib/site";
 import "./globals.css";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
+  // The design uses real italics (<em>customers</em>, quotes); without this
+  // the browser fakes a slant. `opsz` gives display sizes the refined cut.
+  style: ["normal", "italic"],
 });
 
 const publicSans = Public_Sans({
@@ -27,31 +30,18 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+const homeDescription =
+  "I'm Rardo. I design and build simple, fast one-page websites for local businesses — who you are, what you do, your hours, and a way to call you.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Gerardo Castaneda — Websites for Small Businesses",
-    template: "%s · Gerardo Castaneda",
+    default: defaultTitle,
+    template: `%s · ${siteName}`,
   },
-  description:
-    "I'm Rardo. I design and build simple, fast one-page websites for local businesses — who you are, what you do, your hours, and a way to call you.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    url: siteUrl,
-    siteName: "Gerardo Castaneda",
-    title: "Gerardo Castaneda — Websites for Small Businesses",
-    description:
-      "Simple, fast one-page websites for local businesses.",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Gerardo Castaneda — Websites for Small Businesses",
-    description:
-      "Simple, fast one-page websites for local businesses.",
-    images: ["/opengraph-image"],
-  },
+  description: homeDescription,
+  // Canonical, openGraph and twitter live on each page (lib/seo.ts): a
+  // canonical here would be inherited by every route and point them all home.
   other: {
     "geo.region": "US-GA",
     "geo.placename": "Glennville, Georgia",
@@ -60,16 +50,37 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#faf6ec",
+  colorScheme: "light",
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      name: "Gerardo Castaneda",
+      givenName: "Gerardo",
+      familyName: "Castaneda",
+      alternateName: "Rardo",
+      url: `${siteUrl}/about`,
+      description:
+        "Husband, father of two, musician and photographer in Glennville, Georgia. Builds simple websites for local businesses.",
+      homeLocation: { "@type": "Place", name: "Glennville, Georgia" },
+      sameAs: [
+        "https://x.com/gerardocasta711",
+        "https://github.com/rardo711",
+        "https://www.instagram.com/lvngphotography/",
+      ],
+    },
+    {
       "@type": "ProfessionalService",
       "@id": `${siteUrl}/#business`,
-      name: "Gerardo Castaneda — Websites for Small Businesses",
+      name: defaultTitle,
       url: siteUrl,
+      founder: { "@id": `${siteUrl}/#person` },
       description:
         "One-page websites, ordering and contact forms, and update-it-yourself sites for local businesses.",
       address: {
@@ -99,8 +110,9 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "Gerardo Castaneda — Websites for Small Businesses",
+      name: defaultTitle,
       publisher: { "@id": `${siteUrl}/#business` },
+      author: { "@id": `${siteUrl}/#person` },
     },
   ],
 };
@@ -109,7 +121,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        {/* Reveal animations only hide content when JS is available. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+      </head>
       <body
         className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} font-sans antialiased`}
       >
@@ -118,14 +138,18 @@ export default function RootLayout({
         </a>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
         />
         <ScrollProgress />
-        <SmoothScroll />
+        <RevealObserver />
         <Nav />
-        <main id="main">{children}</main>
+        <main id="main" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
         <Footer />
-        <PointerLight />
+        <StickyCta />
       </body>
     </html>
   );

@@ -1,36 +1,37 @@
-"use client";
+import type { ElementType, ReactNode } from "react";
 
-import { motion, useReducedMotion } from "motion/react";
-import type { ReactNode } from "react";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
-
+/**
+ * Gentle rise-and-fade. Pure CSS (see globals.css) — a Server Component.
+ *
+ * - default: hidden only when JS is on (html.js), revealed by RevealObserver
+ *   when it scrolls into view.
+ * - eager: for content that is on screen at load. A short CSS-only entrance
+ *   that never waits for hydration, so it can't delay LCP.
+ */
 export default function Reveal({
   children,
   delay = 0,
-  className,
-  y = 26,
+  className = "",
+  as: Tag = "div",
+  eager = false,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
-  y?: number;
+  as?: ElementType;
+  eager?: boolean;
 }) {
-  const reduce = useReducedMotion();
-
-  if (reduce) {
-    return <div className={className}>{children}</div>;
+  const style = { "--d": `${Math.min(delay, 0.24)}s` } as React.CSSProperties;
+  if (eager) {
+    return (
+      <Tag className={`reveal-now ${className}`.trim()} style={style}>
+        {children}
+      </Tag>
+    );
   }
-
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y, filter: "blur(6px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.7, delay, ease: EASE }}
-    >
+    <Tag data-reveal="" className={className || undefined} style={style}>
       {children}
-    </motion.div>
+    </Tag>
   );
 }

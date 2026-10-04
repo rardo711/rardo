@@ -22,9 +22,9 @@ function Word({
 }) {
   const reduce = useReducedMotion();
   const y = useTransform(progress, [0, 1], [from, to]);
-  if (reduce) return <span className="inline">{children} </span>;
+  if (reduce) return <span className="inline">{children}</span>;
   return (
-    <motion.span style={{ y }} className="inline-block pr-[0.28em]">
+    <motion.span style={{ y }} className="inline-block">
       {children}
     </motion.span>
   );
@@ -37,11 +37,11 @@ export default function CtaTitle() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const x = useTransform(scrollYProgress, [0, 1], [-56, 64]);
+  const x = useTransform(scrollYProgress, [0, 1], [-24, 24]);
   const words = [
-    { text: "Let's", from: 18, to: -10 },
-    { text: "build", from: 32, to: -22 },
-    { text: "yours.", from: 46, to: -34 },
+    { text: "Let's", from: 9, to: -5 },
+    { text: "build", from: 16, to: -11 },
+    { text: "yours.", from: 23, to: -17 },
   ];
 
   return (
@@ -55,17 +55,15 @@ export default function CtaTitle() {
           build
         </motion.p>
       )}
-      <h2
-        aria-label="Let's build yours."
-        className="relative font-display text-[clamp(3rem,9vw,7rem)] font-semibold leading-[0.98] tracking-tight lg:text-[clamp(4rem,9vw,8rem)]"
-      >
-        <span aria-hidden>
-          {words.map((w) => (
-            <Word key={w.text} progress={scrollYProgress} from={w.from} to={w.to}>
+      <h2 className="relative font-display text-[clamp(2.75rem,1.087rem+7.391vw,7rem)] font-semibold leading-[1] tracking-tight">
+        {words.map((w, i) => (
+          <span key={w.text}>
+            <Word progress={scrollYProgress} from={w.from} to={w.to}>
               {w.text}
             </Word>
-          ))}
-        </span>
+            {i < words.length - 1 ? " " : ""}
+          </span>
+        ))}
       </h2>
     </div>
   );
