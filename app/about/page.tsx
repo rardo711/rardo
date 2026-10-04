@@ -92,11 +92,10 @@ export default function About() {
               <Reveal eager delay={0.12}>
                 <p>
                   Family comes first — that's non-negotiable, and it's
-                  downstream of the main thing. My bio has said it for years,
-                  and I mean it:{" "}
+                  downstream of the main thing. I've discovered, by God's grace
+                  and goodness, that{" "}
                   <span className="font-display italic text-ink">
-                    &ldquo;Living for the glory of God is life's
-                    purpose.&rdquo;
+                    living for the glory of God is life's purpose.
                   </span>
                 </p>
               </Reveal>
