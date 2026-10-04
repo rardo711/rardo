@@ -13,20 +13,16 @@ const links = [
   { href: "/about", label: "About" },
 ];
 
-/** Three-line icon. In the open sheet the lines spring from burger to X;
- *  when the sheet is closing they spring back. Static otherwise. */
-function Burger({ state }: { state?: "opening" | "closing" }) {
+/** Three lines that spring into an X (CSS transitions, no JS animation). */
+function Burger({ open }: { open: boolean }) {
   return (
-    <span aria-hidden className="burger" data-state={state}>
+    <span aria-hidden className="burger" data-open={open || undefined}>
       <span className="burger-line" />
       <span className="burger-line" />
       <span className="burger-line" />
     </span>
   );
 }
-
-/** Page regions that must not be reachable while the sheet is open. */
-const BEHIND = "main, footer, .site-header, [data-sticky-cta]";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -35,22 +31,7 @@ export default function Nav() {
   const headerRef = useRef<HTMLElement>(null);
   const openRef = useRef(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const sheetRef = useRef<HTMLDivElement>(null);
-  const wasOpen = useRef(false);
-
-  // Close with a short spring-back; reduced motion closes at once.
-  function closeMenu() {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setOpen(false);
-      return;
-    }
-    setClosing(true);
-    window.setTimeout(() => {
-      setOpen(false);
-      setClosing(false);
-    }, 170);
-  }
+  const menuRef = useRef<HTMLDivElement>(null);
 
   function brandClick(e: React.MouseEvent) {
     if (pathname !== "/") return;
@@ -120,46 +101,37 @@ export default function Nav() {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
-  // Modal behaviour: lock scroll, make the page inert, trap Tab, handle Esc,
-  // move focus in, and put it back on the toggle when the sheet closes.
+  function closeMenu(refocus = false) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setOpen(false);
+    } else {
+      setClosing(true);
+      window.setTimeout(() => {
+        setOpen(false);
+        setClosing(false);
+      }, 160);
+    }
+    if (refocus) buttonRef.current?.focus({ preventScroll: true });
+  }
+
+  // Dropdown behaviour: Escape and outside tap close it. The page is never
+  // locked or made inert, so nothing shifts or bounces underneath.
   useEffect(() => {
     openRef.current = open;
-    if (!open) {
-      if (wasOpen.current) buttonRef.current?.focus({ preventScroll: true });
-      wasOpen.current = false;
-      return;
-    }
-    wasOpen.current = true;
-    // `overflow: hidden` on <html> (see .menu-open) locks the page without
-    // moving it; scrollbar-gutter keeps the layout from shifting.
-    document.documentElement.classList.add("menu-open");
-    const behind = Array.from(document.querySelectorAll<HTMLElement>(BEHIND));
-    behind.forEach((el) => el.setAttribute("inert", ""));
-    closeRef.current?.focus();
-
+    if (!open) return;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") {
+      if (e.key === "Escape") closeMenu(true);
+    }
+    function onPointer(e: PointerEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         closeMenu();
-        return;
-      }
-      if (e.key !== "Tab" || !sheetRef.current) return;
-      const f = sheetRef.current.querySelectorAll<HTMLElement>("a[href], button");
-      if (f.length === 0) return;
-      const first = f[0];
-      const last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
       }
     }
     document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.documentElement.classList.remove("menu-open");
-      behind.forEach((el) => el.removeAttribute("inert"));
+      document.removeEventListener("pointerdown", onPointer);
     };
   }, [open]);
 
@@ -209,92 +181,78 @@ export default function Nav() {
               />
             </Link>
           </nav>
-          <button
-            ref={buttonRef}
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-expanded={open}
-            aria-controls="site-menu"
-            aria-label="Open menu"
-            className="inline-flex h-11 w-11 items-center justify-center border border-field text-ink transition-colors hover:border-ink lg:hidden"
-          >
-            <Burger />
-          </button>
+          <div ref={menuRef} className="relative lg:hidden">
+            <button
+              ref={buttonRef}
+              type="button"
+              onClick={() => (open && !closing ? closeMenu() : setOpen(true))}
+              aria-expanded={open && !closing}
+              aria-controls="site-menu"
+              aria-label={open && !closing ? "Close menu" : "Open menu"}
+              className="inline-flex h-11 w-11 items-center justify-center border border-field text-ink transition-colors hover:border-ink"
+            >
+              <Burger open={open && !closing} />
+            </button>
+            {open && (
+              <nav
+                id="site-menu"
+                aria-label="Site menu"
+                data-closing={closing || undefined}
+                className="menu-pop absolute right-0 top-[calc(100%+0.625rem)] z-[70] w-[min(21rem,calc(100vw-2.5rem))] border border-ink bg-paper"
+              >
+                <ul>
+                  {links.map((l, i) => {
+                    const active = l.href === "/about" && pathname === "/about";
+                    return (
+                      <li
+                        key={l.href}
+                        className="menu-item border-b border-line"
+                        style={{ "--i": i } as React.CSSProperties}
+                      >
+                        <Link
+                          href={l.href}
+                          aria-current={active ? "page" : undefined}
+                          onClick={() => setOpen(false)}
+                          className={`group flex items-baseline gap-4 px-5 py-4 transition-colors hover:bg-wash ${
+                            active ? "text-accent-deep" : "text-ink"
+                          }`}
+                        >
+                          <span className="font-tech text-[0.7rem] tracking-widest text-ink-soft">
+                            0{i + 1}
+                          </span>
+                          <span className="font-display text-xl font-semibold tracking-tight">
+                            {l.label}
+                          </span>
+                          <ArrowRight
+                            size={16}
+                            aria-hidden
+                            className="ml-auto self-center text-ink-soft transition-transform group-hover:translate-x-1"
+                          />
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <div className="menu-item p-4" style={{ "--i": links.length } as React.CSSProperties}>
+                  <Link
+                    href="/contact"
+                    onClick={() => setOpen(false)}
+                    className="group flex min-h-12 w-full items-center justify-between bg-ink px-5 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
+                  >
+                    Start your project
+                    <ArrowRight
+                      size={16}
+                      aria-hidden
+                      className="transition-transform group-hover:translate-x-1"
+                    />
+                  </Link>
+                </div>
+              </nav>
+            )}
+          </div>
         </div>
       </header>
 
-      {open && (
-        <div
-          id="site-menu"
-          ref={sheetRef}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Site menu"
-          data-closing={closing || undefined}
-          className="menu-sheet fixed inset-0 z-[70] flex flex-col bg-paper lg:hidden"
-        >
-          <div className="gutter flex items-center justify-between pb-4 pt-[max(1rem,env(safe-area-inset-top))]">
-            <span className="flex items-center gap-2.5">
-              <Logo size={38} />
-              <span className="font-display text-lg font-semibold tracking-tight">
-                Gerardo Castaneda
-              </span>
-            </span>
-            <button
-              ref={closeRef}
-              type="button"
-              onClick={closeMenu}
-              aria-label="Close menu"
-              className="inline-flex h-11 w-11 items-center justify-center border border-field text-ink transition-colors hover:border-ink"
-            >
-              <Burger state={closing ? "closing" : "opening"} />
-            </button>
-          </div>
-          <nav
-            aria-label="Site menu"
-            className="gutter flex-1 overflow-y-auto border-t border-line"
-          >
-            <ul className="flex flex-col">
-              {links.map((l, i) => {
-                const active = l.href === "/about" && pathname === "/about";
-                return (
-                  <li
-                    key={l.href}
-                    className="menu-item border-b border-line"
-                    style={{ "--i": i } as React.CSSProperties}
-                  >
-                    <Link
-                      href={l.href}
-                      aria-current={active ? "page" : undefined}
-                      onClick={() => setOpen(false)}
-                      className={`flex min-h-14 items-center justify-between py-3 font-display text-[clamp(1.75rem,1.3rem+1.8vw,2.25rem)] font-semibold tracking-tight ${
-                        active ? "text-accent-deep" : "text-ink"
-                      }`}
-                    >
-                      {l.label}
-                      <ArrowRight size={20} aria-hidden className="text-ink-soft" />
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-          <div className="gutter pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4">
-            <Link
-              href="/contact"
-              onClick={() => setOpen(false)}
-              className="group flex min-h-14 w-full items-center justify-between border border-transparent bg-ink px-6 text-base font-semibold text-paper transition-colors hover:bg-accent-deep"
-            >
-              Start your project
-              <ArrowRight
-                size={18}
-                aria-hidden
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </Link>
-          </div>
-        </div>
-      )}
     </>
   );
 }

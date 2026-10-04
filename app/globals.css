@@ -373,17 +373,7 @@ p {
   }
 }
 
-/* ——— Mobile menu sheet ——— */
-.menu-sheet {
-  /* Fixed to the *small* viewport edge-to-edge, then stretched to the
-     dynamic one, so it never ends short when the browser bars collapse. */
-  height: 100svh;
-  height: 100dvh;
-  overscroll-behavior: contain;
-  touch-action: pan-y;
-}
-
-/* Hamburger icon: three lines that spring into an X (and back). */
+/* ——— Mobile dropdown menu ——— */
 .burger {
   position: relative;
   display: block;
@@ -396,147 +386,78 @@ p {
   left: 0;
   width: 20px;
   height: 2px;
-  border-radius: 9999px;
   background: currentColor;
+  transition:
+    transform 0.2s ease-in,
+    opacity 0.2s ease-in;
 }
 
 .burger-line:nth-child(1) {
   top: 4px;
 }
-
 .burger-line:nth-child(2) {
   top: 9px;
 }
-
 .burger-line:nth-child(3) {
   top: 14px;
 }
 
-/* The sheet's own X is the burger already turned: static end state. */
-.burger[data-state] .burger-line:nth-child(1) {
+.burger[data-open] .burger-line:nth-child(1) {
   transform: translateY(5px) rotate(45deg);
 }
-
-.burger[data-state] .burger-line:nth-child(2) {
+.burger[data-open] .burger-line:nth-child(2) {
   opacity: 0;
   transform: scaleX(0.3);
 }
-
-.burger[data-state] .burger-line:nth-child(3) {
+.burger[data-open] .burger-line:nth-child(3) {
   transform: translateY(-5px) rotate(-45deg);
 }
 
+.menu-pop {
+  transform-origin: top right;
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .menu-sheet {
-    animation: sheet-open 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  .burger[data-open] .burger-line {
+    transition-duration: 0.45s;
+    transition-timing-function: cubic-bezier(0.34, 1.6, 0.5, 1);
   }
 
-  .menu-sheet[data-closing] {
-    animation: sheet-close 0.17s ease-in both;
+  .menu-pop {
+    animation: menu-pop-in 0.38s cubic-bezier(0.22, 1.2, 0.36, 1) both;
   }
 
-  /* Springy overshoot, like a damped spring. */
-  .burger[data-state="opening"] .burger-line {
-    animation-duration: 0.5s;
-    animation-timing-function: cubic-bezier(0.34, 1.7, 0.5, 1);
-    animation-fill-mode: both;
+  .menu-pop[data-closing] {
+    animation: menu-pop-out 0.16s ease-in both;
   }
 
-  .burger[data-state="opening"] .burger-line:nth-child(1) {
-    animation-name: burger-top-in;
-  }
-
-  .burger[data-state="opening"] .burger-line:nth-child(2) {
-    animation-name: burger-mid-in;
-  }
-
-  .burger[data-state="opening"] .burger-line:nth-child(3) {
-    animation-name: burger-bot-in;
-  }
-
-  .burger[data-state="closing"] .burger-line {
-    animation-duration: 0.17s;
-    animation-timing-function: ease-in;
-    animation-fill-mode: both;
-  }
-
-  .burger[data-state="closing"] .burger-line:nth-child(1) {
-    animation-name: burger-top-in;
-    animation-direction: reverse;
-  }
-
-  .burger[data-state="closing"] .burger-line:nth-child(2) {
-    animation-name: burger-mid-in;
-    animation-direction: reverse;
-  }
-
-  .burger[data-state="closing"] .burger-line:nth-child(3) {
-    animation-name: burger-bot-in;
-    animation-direction: reverse;
-  }
-
-  /* Links slide in one after another (55ms apart, after a 100ms beat). */
+  /* Rows rise in one after another. */
   .menu-item {
-    animation: menu-item-in 0.5s cubic-bezier(0.34, 1.35, 0.55, 1) both;
-    animation-delay: calc(0.1s + var(--i, 0) * 0.055s);
+    animation: menu-item-in 0.42s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+    animation-delay: calc(0.08s + var(--i, 0) * 0.05s);
   }
 }
 
-@keyframes sheet-open {
+@keyframes menu-pop-in {
   from {
     opacity: 0;
-    transform: translateY(-16px);
+    transform: translateY(-10px) scale(0.96);
   }
 }
 
-@keyframes sheet-close {
+@keyframes menu-pop-out {
   to {
     opacity: 0;
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes burger-top-in {
-  from {
-    transform: translateY(0) rotate(0);
-  }
-  to {
-    transform: translateY(5px) rotate(45deg);
-  }
-}
-
-@keyframes burger-mid-in {
-  from {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-  to {
-    opacity: 0;
-    transform: scaleX(0.3);
-  }
-}
-
-@keyframes burger-bot-in {
-  from {
-    transform: translateY(0) rotate(0);
-  }
-  to {
-    transform: translateY(-5px) rotate(-45deg);
+    transform: translateY(-6px) scale(0.98);
   }
 }
 
 @keyframes menu-item-in {
   from {
     opacity: 0;
-    transform: translateX(14px);
+    transform: translateY(8px);
   }
-}
-
-html.menu-open {
-  /* Locks the page without moving it (no position:fixed hack, so no jump
-     back to the top on close). Gutter stays reserved, so no sideways shift. */
-  overflow: hidden;
-  overscroll-behavior: none;
 }
 
 /* ——— Sticky header: hides on scroll-down, but never while it holds focus ——— */
