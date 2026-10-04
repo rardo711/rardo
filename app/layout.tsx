@@ -20,10 +20,7 @@ const fraunces = Fraunces({
 const publicSans = Public_Sans({
   subsets: ["latin"],
   variable: "--font-public-sans",
-  // `optional`: body text never re-paints when the font arrives, so the
-  // largest-text paint (LCP) is not delayed by the web font. Metric-matched
-  // fallback keeps the layout identical; repeat views use the cached font.
-  display: "optional",
+  display: "swap",
 });
 
 const plexMono = IBM_Plex_Mono({

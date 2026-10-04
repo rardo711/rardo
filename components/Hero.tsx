@@ -93,14 +93,14 @@ export default function Hero() {
           </Line>
           <Line i={2}>through your door.</Line>
         </h1>
-        <Reveal eager delay={0.2}>
+        <Reveal eager delay={0.1}>
           <p className="mt-8 max-w-xl text-lead text-ink-soft">
             I'm Rardo. I design and build simple, fast one-page websites
             for local businesses — who you are, what you do, your hours, and a
             way to call you.
           </p>
         </Reveal>
-        <Reveal eager delay={0.24}>
+        <Reveal eager delay={0.14}>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <Link
               href="/contact"
@@ -121,7 +121,7 @@ export default function Hero() {
             </Link>
           </div>
         </Reveal>
-        <Reveal eager delay={0.24}>
+        <Reveal eager delay={0.14}>
           <div className="mt-16 flex flex-wrap gap-x-12 gap-y-4 border-t border-line pt-6 font-tech text-eyebrow uppercase text-ink-soft lg:mt-20">
             <span>One-page sites, one focused week</span>
             <span>Glennville, GA — works anywhere</span>
