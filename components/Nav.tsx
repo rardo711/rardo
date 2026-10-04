@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Logo from "./Logo";
 
 const links = [
@@ -13,18 +13,44 @@ const links = [
   { href: "/about", label: "About" },
 ];
 
+/** Three-line icon. In the open sheet the lines spring from burger to X;
+ *  when the sheet is closing they spring back. Static otherwise. */
+function Burger({ state }: { state?: "opening" | "closing" }) {
+  return (
+    <span aria-hidden className="burger" data-state={state}>
+      <span className="burger-line" />
+      <span className="burger-line" />
+      <span className="burger-line" />
+    </span>
+  );
+}
+
 /** Page regions that must not be reachable while the sheet is open. */
 const BEHIND = "main, footer, .site-header, [data-sticky-cta]";
 
 export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const openRef = useRef(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
   const wasOpen = useRef(false);
+
+  // Close with a short spring-back; reduced motion closes at once.
+  function closeMenu() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setOpen(false);
+      return;
+    }
+    setClosing(true);
+    window.setTimeout(() => {
+      setOpen(false);
+      setClosing(false);
+    }, 170);
+  }
 
   function brandClick(e: React.MouseEvent) {
     if (pathname !== "/") return;
@@ -113,7 +139,7 @@ export default function Nav() {
 
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        setOpen(false);
+        closeMenu();
         return;
       }
       if (e.key !== "Tab" || !sheetRef.current) return;
@@ -192,7 +218,7 @@ export default function Nav() {
             aria-label="Open menu"
             className="inline-flex h-11 w-11 items-center justify-center border border-field text-ink transition-colors hover:border-ink lg:hidden"
           >
-            <Menu size={20} aria-hidden />
+            <Burger />
           </button>
         </div>
       </header>
@@ -204,6 +230,7 @@ export default function Nav() {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
+          data-closing={closing || undefined}
           className="menu-sheet fixed inset-0 z-[70] flex flex-col bg-paper lg:hidden"
         >
           <div className="gutter flex items-center justify-between pb-4 pt-[max(1rem,env(safe-area-inset-top))]">
@@ -216,11 +243,11 @@ export default function Nav() {
             <button
               ref={closeRef}
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={closeMenu}
               aria-label="Close menu"
               className="inline-flex h-11 w-11 items-center justify-center border border-field text-ink transition-colors hover:border-ink"
             >
-              <X size={20} aria-hidden />
+              <Burger state={closing ? "closing" : "opening"} />
             </button>
           </div>
           <nav
@@ -228,10 +255,14 @@ export default function Nav() {
             className="gutter flex-1 overflow-y-auto border-t border-line"
           >
             <ul className="flex flex-col">
-              {links.map((l) => {
+              {links.map((l, i) => {
                 const active = l.href === "/about" && pathname === "/about";
                 return (
-                  <li key={l.href} className="border-b border-line">
+                  <li
+                    key={l.href}
+                    className="menu-item border-b border-line"
+                    style={{ "--i": i } as React.CSSProperties}
+                  >
                     <Link
                       href={l.href}
                       aria-current={active ? "page" : undefined}

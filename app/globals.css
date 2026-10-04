@@ -375,7 +375,6 @@ p {
 
 /* ——— Mobile menu sheet ——— */
 .menu-sheet {
-  animation: sheet-open 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
   /* Fixed to the *small* viewport edge-to-edge, then stretched to the
      dynamic one, so it never ends short when the browser bars collapse. */
   height: 100svh;
@@ -384,10 +383,152 @@ p {
   touch-action: pan-y;
 }
 
+/* Hamburger icon: three lines that spring into an X (and back). */
+.burger {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.burger-line {
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  border-radius: 9999px;
+  background: currentColor;
+}
+
+.burger-line:nth-child(1) {
+  top: 4px;
+}
+
+.burger-line:nth-child(2) {
+  top: 9px;
+}
+
+.burger-line:nth-child(3) {
+  top: 14px;
+}
+
+/* The sheet's own X is the burger already turned: static end state. */
+.burger[data-state] .burger-line:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.burger[data-state] .burger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.3);
+}
+
+.burger[data-state] .burger-line:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .menu-sheet {
+    animation: sheet-open 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .menu-sheet[data-closing] {
+    animation: sheet-close 0.17s ease-in both;
+  }
+
+  /* Springy overshoot, like a damped spring. */
+  .burger[data-state="opening"] .burger-line {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.34, 1.7, 0.5, 1);
+    animation-fill-mode: both;
+  }
+
+  .burger[data-state="opening"] .burger-line:nth-child(1) {
+    animation-name: burger-top-in;
+  }
+
+  .burger[data-state="opening"] .burger-line:nth-child(2) {
+    animation-name: burger-mid-in;
+  }
+
+  .burger[data-state="opening"] .burger-line:nth-child(3) {
+    animation-name: burger-bot-in;
+  }
+
+  .burger[data-state="closing"] .burger-line {
+    animation-duration: 0.17s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: both;
+  }
+
+  .burger[data-state="closing"] .burger-line:nth-child(1) {
+    animation-name: burger-top-in;
+    animation-direction: reverse;
+  }
+
+  .burger[data-state="closing"] .burger-line:nth-child(2) {
+    animation-name: burger-mid-in;
+    animation-direction: reverse;
+  }
+
+  .burger[data-state="closing"] .burger-line:nth-child(3) {
+    animation-name: burger-bot-in;
+    animation-direction: reverse;
+  }
+
+  /* Links slide in one after another (55ms apart, after a 100ms beat). */
+  .menu-item {
+    animation: menu-item-in 0.5s cubic-bezier(0.34, 1.35, 0.55, 1) both;
+    animation-delay: calc(0.1s + var(--i, 0) * 0.055s);
+  }
+}
+
 @keyframes sheet-open {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes sheet-close {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes burger-top-in {
+  from {
+    transform: translateY(0) rotate(0);
+  }
+  to {
+    transform: translateY(5px) rotate(45deg);
+  }
+}
+
+@keyframes burger-mid-in {
+  from {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  to {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+}
+
+@keyframes burger-bot-in {
+  from {
+    transform: translateY(0) rotate(0);
+  }
+  to {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+}
+
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
   }
 }
 
