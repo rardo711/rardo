@@ -28,21 +28,19 @@ export default function StickyCta() {
   useEffect(() => {
     if (!eligible) return;
 
-    // Past the start: sentinel at the bottom of the hero on home, a fixed
-    // scroll distance elsewhere.
-    const sentinel = document.getElementById("hero-end");
+    // Past the start: the hero itself on home, or a
+    // marker 600px down the page elsewhere. IntersectionObserver in both
+    // cases, so no scroll handler runs.
+    const sentinel =
+      document.getElementById("hero-end") ??
+      document.getElementById("cta-start");
     let cleanupStart = () => {};
     if (sentinel) {
       const io = new IntersectionObserver(([e]) => {
-        setPastStart(!e.isIntersecting && e.boundingClientRect.top < 0);
+        setPastStart(!e.isIntersecting && e.boundingClientRect.bottom < 0);
       });
       io.observe(sentinel);
       cleanupStart = () => io.disconnect();
-    } else {
-      const onScroll = () => setPastStart(window.scrollY > 600);
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
-      cleanupStart = () => window.removeEventListener("scroll", onScroll);
     }
 
     // Step aside when a final CTA / the footer is visible.
@@ -54,7 +52,9 @@ export default function StickyCta() {
       }
       setAtEnd(ends.size > 0);
     });
-    document.querySelectorAll("[data-cta-end]").forEach((el) => endIo.observe(el));
+    document
+      .querySelectorAll("[data-cta-end]")
+      .forEach((el) => endIo.observe(el));
 
     return () => {
       cleanupStart();
@@ -66,24 +66,32 @@ export default function StickyCta() {
   const show = pastStart && !atEnd;
 
   return (
-    <div
-      data-sticky-cta=""
-      data-visible={show}
-      aria-hidden={!show}
-      inert={!show}
-      className="sticky-cta"
-    >
-      <Link
-        href="/contact"
-        className="group flex min-h-12 w-full items-center justify-center gap-2 border border-transparent bg-ink px-6 text-base font-semibold text-paper transition-colors hover:bg-accent-deep active:scale-[0.98]"
+    <>
+      {/* Marker for pages without a hero: the bar appears once it's passed. */}
+      <div
+        id="cta-start"
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[600px]"
+      />
+      <div
+        data-sticky-cta=""
+        data-visible={show}
+        aria-hidden={!show}
+        inert={!show}
+        className="sticky-cta"
       >
-        Start your project
-        <ArrowRight
-          size={18}
-          aria-hidden
-          className="transition-transform group-hover:translate-x-1"
-        />
-      </Link>
-    </div>
+        <Link
+          href="/contact"
+          className="group flex min-h-12 w-full items-center justify-center gap-2 border border-transparent bg-ink px-6 text-base font-semibold text-paper transition-colors hover:bg-accent-deep active:scale-[0.98]"
+        >
+          Start your project
+          <ArrowRight
+            size={18}
+            aria-hidden
+            className="transition-transform group-hover:translate-x-1"
+          />
+        </Link>
+      </div>
+    </>
   );
 }

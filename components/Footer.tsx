@@ -11,7 +11,11 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer data-surface="dark" data-cta-end="" className="bg-coal text-paper">
+    <footer
+      data-surface="dark"
+      data-cta-end=""
+      className="cv-auto [--cis:33rem] md:[--cis:36rem] lg:[--cis:31rem] bg-coal text-paper"
+    >
       <div className="gutter mx-auto max-w-6xl py-16 sm:py-20 lg:max-w-7xl">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div>

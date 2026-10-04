@@ -77,15 +77,46 @@
   }
 }
 
+/* ——— Scrolling ———
+   Scrolling itself is always native. Smooth behaviour is switched on only
+   for the duration of an in-page anchor jump (components/AnchorScroll.tsx)
+   and never for visitors who prefer reduced motion. */
+:root {
+  --header-h: 4.5rem;
+}
+
 html {
-  scroll-padding-top: 5rem;
-  scroll-padding-bottom: 5rem;
+  /* Reserve the scrollbar's space so opening the menu, route changes and
+     short pages don't shift the layout sideways. */
+  scrollbar-gutter: stable;
+  scroll-padding-top: calc(var(--header-h) + env(safe-area-inset-top));
+  scroll-padding-bottom: 1.5rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  html {
+  html[data-anchor-scroll] {
     scroll-behavior: smooth;
   }
+}
+
+/* Anchor targets sit just under the sticky header. */
+main section[id] {
+  scroll-margin-top: 0.5rem;
+}
+
+/* Below-the-fold sections skip rendering until they're near the viewport.
+   `auto` in contain-intrinsic-size remembers the real height once seen, so
+   the scrollbar and anchor jumps don't drift. Sizes are set per section. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--cis, 40rem);
+}
+
+/* Added after load + idle (components/RevealObserver.tsx): everything is
+   rendered, so scrolling never triggers first-time layout. */
+.cv-warm .cv-auto {
+  content-visibility: visible;
 }
 
 body {
@@ -189,15 +220,92 @@ p {
   }
 }
 
+/* ——— Scroll-linked effects, CSS only (compositor-driven, zero JS per frame).
+   They run where scroll timelines are supported and simply don't apply
+   elsewhere. ——— */
+.scroll-progress {
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 60;
+    height: 3px;
+    background: var(--color-accent);
+    transform-origin: left;
+    transform: scaleX(0);
+    pointer-events: none;
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root block);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-drift {
+      animation: hero-drift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 90svh;
+    }
+
+    .cta-scope {
+      view-timeline: --cta block;
+    }
+
+    .cta-ghost {
+      animation: cta-ghost linear both;
+      animation-timeline: --cta;
+      animation-range: cover 0% cover 100%;
+    }
+
+    .cta-word {
+      animation: cta-word linear both;
+      animation-timeline: --cta;
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+
+@keyframes progress-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hero-drift {
+  to {
+    transform: translateY(-32px);
+  }
+}
+
+@keyframes cta-ghost {
+  from {
+    transform: translateX(-24px);
+  }
+  to {
+    transform: translateX(24px);
+  }
+}
+
+@keyframes cta-word {
+  from {
+    transform: translateY(calc(var(--from) * 1px));
+  }
+  to {
+    transform: translateY(calc(var(--to) * 1px));
+  }
+}
+
 /* ——— Scroll reveals (see components/Reveal.tsx + RevealObserver.tsx) ———
    Hidden only when JS is available (html.js), so no-JS and
    pre-hydration visitors always see the content. */
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(12px);
   transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s);
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s);
 }
 
 .js [data-reveal].is-in {
@@ -268,7 +376,12 @@ p {
 /* ——— Mobile menu sheet ——— */
 .menu-sheet {
   animation: sheet-open 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Fixed to the *small* viewport edge-to-edge, then stretched to the
+     dynamic one, so it never ends short when the browser bars collapse. */
+  height: 100svh;
+  height: 100dvh;
   overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
 @keyframes sheet-open {
@@ -279,12 +392,17 @@ p {
 }
 
 html.menu-open {
+  /* Locks the page without moving it (no position:fixed hack, so no jump
+     back to the top on close). Gutter stays reserved, so no sideways shift. */
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 /* ——— Sticky header: hides on scroll-down, but never while it holds focus ——— */
 .site-header {
   transition: transform 0.3s ease-out;
+  /* The one persistent animated layer; will-change is used nowhere else. */
+  will-change: transform;
 }
 
 .site-header[data-hidden="true"] {
@@ -311,6 +429,9 @@ html.menu-open {
     transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
     visibility 0s linear 0.22s;
   visibility: hidden;
+  /* Keeps the bar's own paint out of the page's, which steadies it while
+     iOS Safari resizes the viewport under the address bar. */
+  contain: layout paint;
 }
 
 .sticky-cta[data-visible="true"] {

@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import RevealObserver from "@/components/RevealObserver";
+import AnchorScroll from "@/components/AnchorScroll";
 import StickyCta from "@/components/StickyCta";
 import { siteUrl, defaultTitle, siteName } from "@/lib/site";
 import "./globals.css";
@@ -123,7 +124,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Reveal animations only hide content when JS is available. */}
         <script
@@ -146,6 +147,7 @@ export default function RootLayout({
         />
         <ScrollProgress />
         <RevealObserver />
+        <AnchorScroll />
         <Nav />
         <main id="main" tabIndex={-1} className="outline-none">
           {children}

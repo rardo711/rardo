@@ -86,7 +86,10 @@ export default function Home() {
       <Hero />
 
       {/* ——— Services ——— */}
-      <section id="services" className="scroll-mt-20 border-b border-line bg-wash">
+      <section
+        id="services"
+        className="cv-auto [--cis:79rem] md:[--cis:62rem] lg:[--cis:55.5rem] border-b border-line bg-wash"
+      >
         <div className="mx-auto max-w-6xl gutter section-y lg:max-w-7xl">
             <Reveal>
               <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
@@ -121,7 +124,10 @@ export default function Home() {
       </section>
 
       {/* ——— Work ——— */}
-      <section id="work" className="scroll-mt-20 border-b border-line">
+      <section
+        id="work"
+        className="cv-auto [--cis:105rem] md:[--cis:124rem] lg:[--cis:95.5rem] border-b border-line"
+      >
         <div className="mx-auto max-w-6xl gutter section-y lg:max-w-7xl">
             <Reveal>
               <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
@@ -137,7 +143,10 @@ export default function Home() {
       </section>
 
       {/* ——— Process ——— */}
-      <section id="process" className="scroll-mt-20 border-b border-line">
+      <section
+        id="process"
+        className="cv-auto [--cis:79rem] md:[--cis:57rem] lg:[--cis:48rem] border-b border-line"
+      >
         <div className="mx-auto max-w-6xl gutter section-y lg:max-w-7xl">
             <Reveal>
               <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
@@ -206,7 +215,11 @@ export default function Home() {
       </section>
 
       {/* ——— Contact / CTA band ——— */}
-      <section data-surface="dark" data-cta-end="" className="bg-coal text-paper">
+      <section
+        data-surface="dark"
+        data-cta-end=""
+        className="cv-auto [--cis:40.5rem] lg:[--cis:45rem] bg-coal text-paper"
+      >
         <div className="mx-auto max-w-6xl gutter overflow-hidden py-24 sm:py-36 lg:max-w-7xl">
           <Reveal>
             <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">

@@ -19,7 +19,8 @@ const BEHIND = "main, footer, .site-header, [data-sticky-cta]";
 export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const openRef = useRef(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
@@ -32,24 +33,49 @@ export default function Nav() {
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   }
 
-  // Hide on scroll down, reveal on scroll up. 8px hysteresis so tiny
-  // movements (and iOS overscroll bounce) don't flicker the header.
+  // Hide on scroll down, reveal on scroll up. One passive listener, work
+  // batched into a single rAF, and the result written straight to the DOM
+  // (no React state, so scrolling never re-renders the header). 8px
+  // hysteresis so tiny movements and iOS rubber-banding don't flicker it.
   useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
     let last = window.scrollY;
-    function onScroll() {
+    let hidden = false;
+    let frame = 0;
+    function set(next: boolean) {
+      if (next === hidden) return;
+      hidden = next;
+      header!.dataset.hidden = String(next);
+    }
+    function update() {
+      frame = 0;
       const y = window.scrollY;
+      // During an anchor jump the header stays put so the target isn't
+      // left under an empty band.
+      if (document.documentElement.hasAttribute("data-anchor-scroll")) {
+        set(false);
+        last = y;
+        return;
+      }
       if (y <= 0) {
-        setHidden(false);
+        set(false);
       } else if (Math.abs(y - last) > 8) {
-        setHidden(!open && y > last && y > 140);
+        set(!openRef.current && y > last && y > 140);
       } else {
         return;
       }
       last = y;
     }
+    function onScroll() {
+      if (!frame) frame = requestAnimationFrame(update);
+    }
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [open]);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   // Close on navigation (adjust state during render, not in an effect).
   const [seenPath, setSeenPath] = useState(pathname);
@@ -71,12 +97,15 @@ export default function Nav() {
   // Modal behaviour: lock scroll, make the page inert, trap Tab, handle Esc,
   // move focus in, and put it back on the toggle when the sheet closes.
   useEffect(() => {
+    openRef.current = open;
     if (!open) {
-      if (wasOpen.current) buttonRef.current?.focus();
+      if (wasOpen.current) buttonRef.current?.focus({ preventScroll: true });
       wasOpen.current = false;
       return;
     }
     wasOpen.current = true;
+    // `overflow: hidden` on <html> (see .menu-open) locks the page without
+    // moving it; scrollbar-gutter keeps the layout from shifting.
     document.documentElement.classList.add("menu-open");
     const behind = Array.from(document.querySelectorAll<HTMLElement>(BEHIND));
     behind.forEach((el) => el.setAttribute("inert", ""));
@@ -111,7 +140,7 @@ export default function Nav() {
   return (
     <>
       <header
-        data-hidden={hidden}
+        ref={headerRef}
         className="site-header sticky top-0 z-50 border-b border-line bg-paper pt-[env(safe-area-inset-top)]"
       >
         <div className="gutter mx-auto flex max-w-6xl items-center justify-between py-4 lg:max-w-7xl">

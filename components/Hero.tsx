@@ -7,7 +7,6 @@ import {
   motion,
   useMotionValue,
   useReducedMotion,
-  useScroll,
   useSpring,
   useTransform,
 } from "motion/react";
@@ -31,12 +30,6 @@ function Line({ children, i }: { children: React.ReactNode; i: number }) {
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, -32]);
-
   // The glow drifts slowly toward the pointer (mouse only, large screens).
   const px = useMotionValue(0);
   const py = useMotionValue(0);
@@ -70,9 +63,10 @@ export default function Hero() {
         style={reduce ? undefined : { x: glowX, y: glowY }}
       />
 
-      <motion.div
-        style={reduce ? undefined : { y: contentY }}
-        className="gutter relative mx-auto max-w-6xl pb-16 pt-20 sm:pb-24 sm:pt-28 lg:max-w-7xl lg:pb-28 lg:pt-36 short-landscape:pb-10 short-landscape:pt-10"
+      {/* hero-drift: a scroll-linked nudge done in CSS (globals.css), so it
+          runs on the compositor and costs no JS per scroll event. */}
+      <div
+        className="hero-drift gutter relative mx-auto max-w-6xl pb-16 pt-20 sm:pb-24 sm:pt-28 lg:max-w-7xl lg:pb-28 lg:pt-36 short-landscape:pb-10 short-landscape:pt-10"
       >
         <Reveal eager>
           <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
@@ -127,9 +121,9 @@ export default function Hero() {
             <span>Glennville, GA — works anywhere</span>
           </div>
         </Reveal>
-      </motion.div>
-      {/* The sticky CTA bar appears once this marker has scrolled past. */}
-      <div id="hero-end" aria-hidden className="absolute inset-x-0 bottom-0 h-px" />
+      </div>
+      {/* The sticky CTA bar appears once this marker (the whole hero) has scrolled past. */}
+      <div id="hero-end" aria-hidden className="pointer-events-none absolute inset-0" />
     </section>
   );
 }

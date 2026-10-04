@@ -1,19 +1,6 @@
-"use client";
-
-import { motion, useScroll, useSpring } from "motion/react";
-
+/** Reading-progress bar. Pure CSS (scroll-driven animation, see globals.css):
+ *  no scroll listener and no spring running on the main thread. Browsers
+ *  without scroll timelines don't show it. */
 export default function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 28,
-    restDelta: 0.001,
-  });
-  return (
-    <motion.div
-      aria-hidden
-      className="fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-accent"
-      style={{ scaleX }}
-    />
-  );
+  return <div aria-hidden className="scroll-progress" />;
 }
