@@ -189,7 +189,8 @@ export default function Nav() {
               aria-expanded={open && !closing}
               aria-controls="site-menu"
               aria-label={open && !closing ? "Close menu" : "Open menu"}
-              className="inline-flex h-11 w-11 items-center justify-center border border-field text-ink transition-colors hover:border-ink"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-field text-ink transition-colors hover:border-ink data-[open=true]:bg-wash"
+              data-open={open && !closing}
             >
               <Burger open={open && !closing} />
             </button>
@@ -198,7 +199,7 @@ export default function Nav() {
                 id="site-menu"
                 aria-label="Site menu"
                 data-closing={closing || undefined}
-                className="menu-pop absolute right-0 top-[calc(100%+0.625rem)] z-[70] w-[min(21rem,calc(100vw-2.5rem))] border border-ink bg-paper"
+                className="menu-pop absolute right-0 top-[calc(100%+0.625rem)] z-[70] w-[min(21rem,calc(100vw-2.5rem))] rounded-[1.75rem] border border-line bg-paper p-2.5"
               >
                 <ul>
                   {links.map((l, i) => {
@@ -206,45 +207,49 @@ export default function Nav() {
                     return (
                       <li
                         key={l.href}
-                        className="menu-item border-b border-line"
+                        className="menu-item"
                         style={{ "--i": i } as React.CSSProperties}
                       >
                         <Link
                           href={l.href}
                           aria-current={active ? "page" : undefined}
                           onClick={() => setOpen(false)}
-                          className={`group flex items-baseline gap-4 px-5 py-4 transition-colors hover:bg-wash ${
-                            active ? "text-accent-deep" : "text-ink"
+                          className={`group flex items-center gap-4 rounded-2xl px-3.5 py-3 transition-colors hover:bg-wash active:bg-wash ${
+                            active ? "bg-wash text-accent-deep" : "text-ink"
                           }`}
                         >
-                          <span className="font-tech text-[0.7rem] tracking-widest text-ink-soft">
-                            0{i + 1}
+                          <span
+                            aria-hidden
+                            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-wash font-display text-sm italic text-accent-deep transition-colors group-hover:bg-accent group-hover:text-paper"
+                          >
+                            {i + 1}
                           </span>
-                          <span className="font-display text-xl font-semibold tracking-tight">
+                          <span className="font-display text-xl font-medium tracking-tight">
                             {l.label}
                           </span>
                           <ArrowRight
                             size={16}
                             aria-hidden
-                            className="ml-auto self-center text-ink-soft transition-transform group-hover:translate-x-1"
+                            className="ml-auto text-ink-soft opacity-0 transition-all -translate-x-1 group-hover:translate-x-0 group-hover:opacity-100"
                           />
                         </Link>
                       </li>
                     );
                   })}
                 </ul>
-                <div className="menu-item p-4" style={{ "--i": links.length } as React.CSSProperties}>
+                <div className="menu-item mt-1.5 p-1.5" style={{ "--i": links.length } as React.CSSProperties}>
                   <Link
                     href="/contact"
                     onClick={() => setOpen(false)}
-                    className="group flex min-h-12 w-full items-center justify-between bg-ink px-5 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
+                    className="group flex min-h-13 w-full items-center justify-between rounded-full bg-accent py-1.5 pl-6 pr-1.5 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
                   >
                     Start your project
-                    <ArrowRight
-                      size={16}
+                    <span
                       aria-hidden
-                      className="transition-transform group-hover:translate-x-1"
-                    />
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-paper text-accent-deep transition-transform group-hover:translate-x-0.5"
+                    >
+                      <ArrowRight size={16} />
+                    </span>
                   </Link>
                 </div>
               </nav>

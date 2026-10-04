@@ -415,7 +415,11 @@ p {
 
 .menu-pop {
   transform-origin: top right;
-  box-shadow: 6px 6px 0 var(--color-ink);
+  /* Soft, warm, layered shadow in the page's own brown, not a hard edge. */
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.6) inset,
+    0 2px 6px rgb(34 26 19 / 0.06),
+    0 18px 40px -8px rgb(134 57 15 / 0.22);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -425,7 +429,7 @@ p {
   }
 
   .menu-pop {
-    animation: menu-pop-in 0.38s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+    animation: menu-pop-in 0.42s cubic-bezier(0.22, 1.25, 0.36, 1) both;
   }
 
   .menu-pop[data-closing] {
@@ -442,7 +446,7 @@ p {
 @keyframes menu-pop-in {
   from {
     opacity: 0;
-    transform: translateY(-10px) scale(0.96);
+    transform: translateY(-8px) scale(0.9);
   }
 }
 
