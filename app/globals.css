@@ -281,10 +281,10 @@ p {
 
 @keyframes cta-ghost {
   from {
-    transform: translateX(-24px);
+    transform: translateX(48px);
   }
   to {
-    transform: translateX(24px);
+    transform: translateX(-48px);
   }
 }
 
