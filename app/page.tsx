@@ -220,7 +220,7 @@ export default function Home() {
         data-cta-end=""
         className="cv-auto [--cis:40.5rem] lg:[--cis:45rem] bg-coal text-paper"
       >
-        <div className="mx-auto max-w-6xl gutter overflow-hidden py-24 sm:py-36 lg:max-w-7xl">
+        <div className="mx-auto max-w-6xl gutter overflow-clip py-24 sm:py-36 lg:max-w-7xl">
           <Reveal>
             <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">
               Contact
