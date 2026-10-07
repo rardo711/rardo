@@ -201,7 +201,7 @@ export default function Home() {
           <Reveal delay={0.12}>
             <div className="mt-16 flex flex-col gap-3">
               <p className="max-w-2xl font-display text-quote">
-                The mockup is free. Builds typically start at $500 flat — named before I start.
+                The mockup is free. Builds typically start at $250 flat — named before I start.
               </p>
               <p className="font-tech text-eyebrow uppercase text-ink-soft">
                 No hourly creep · No required monthly subscriptions · 100% owned by you
