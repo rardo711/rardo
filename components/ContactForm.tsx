@@ -10,6 +10,14 @@ const FORM_ENDPOINT = "https://formsubmit.co/ajax/gerardoj2001@outlook.com";
 type Status = "idle" | "sending" | "sent" | "error";
 type Field = "name" | "contact" | "message";
 type Errors = Partial<Record<Field, string>>;
+type ProjectScope = "new-site" | "redesign" | "order-form" | "other";
+
+const SCOPE_OPTIONS: { id: ProjectScope; label: string }[] = [
+  { id: "new-site", label: "New One-Page Site" },
+  { id: "redesign", label: "Site Redesign" },
+  { id: "order-form", label: "Order / Intake Form" },
+  { id: "other", label: "Something Else" },
+];
 
 const inputCls =
   "w-full min-h-12 border border-field bg-paper px-4 py-3 text-base text-ink placeholder:text-ink-mute transition-colors hover:border-ink-soft focus-visible:border-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent aria-[invalid=true]:border-2 aria-[invalid=true]:border-accent-deep";
@@ -52,6 +60,7 @@ export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
   const [touched, setTouched] = useState<Partial<Record<Field, boolean>>>({});
+  const [scope, setScope] = useState<ProjectScope>("new-site");
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
@@ -107,6 +116,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           _subject: "New project inquiry — rardo site",
           _honey: "",
+          project_type: data.get("project_scope") || scope,
           name: data.get("name"),
           business: data.get("business"),
           contact: data.get("contact"),
@@ -132,7 +142,7 @@ export default function ContactForm() {
         <p className="font-display text-3xl font-semibold tracking-tight">
           Got it.
         </p>
-        <p className="mx-auto mt-4 max-w-md leading-relaxed text-ink-soft">
+        <p className="mt-3 leading-relaxed text-ink-soft">
           Your message landed in my inbox. I&apos;ll reply within a day —
           usually faster.
         </p>
@@ -150,6 +160,34 @@ export default function ContactForm() {
       noValidate
       className="flex flex-col gap-5"
     >
+      {/* Project Type Selector */}
+      <div className="flex flex-col gap-2">
+        <label className={labelCls}>Project Type</label>
+        <div
+          className="flex flex-wrap gap-2"
+          role="radiogroup"
+          aria-label="Project Type"
+        >
+          {SCOPE_OPTIONS.map((opt) => (
+            <button
+              key={opt.id}
+              type="button"
+              role="radio"
+              aria-checked={scope === opt.id}
+              onClick={() => setScope(opt.id)}
+              className={`min-h-10 px-3.5 py-1.5 font-tech text-xs uppercase tracking-wider transition-colors ${
+                scope === opt.id
+                  ? "border border-ink bg-ink text-paper"
+                  : "border border-line bg-paper text-ink-soft hover:border-ink hover:text-ink"
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+        <input type="hidden" name="project_scope" value={scope} />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="f-name" className={labelCls}>
@@ -286,6 +324,11 @@ export default function ContactForm() {
           gerardoj2001@outlook.com
         </a>
       </p>
+      <div className="mt-1 flex flex-col items-center gap-1.5 text-center text-sm text-ink-soft">
+        <p className="font-tech text-eyebrow uppercase text-ink-mute">
+          Direct to Gerardo · Reidsville / Glennville local
+        </p>
+      </div>
     </form>
   );
 }

@@ -7,6 +7,7 @@ export type WorkPiece = {
   name: string;
   kind: string;
   tags: string[];
+  outcome?: string;
   description: string;
   href: string;
   image: string;
@@ -60,6 +61,14 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
             <h3 className="mt-3 font-display text-[clamp(2rem,1.2rem+2.4vw,3rem)] font-semibold leading-[1.08] tracking-tight transition-colors duration-300 group-hover:text-accent-deep">
               {piece.name}
             </h3>
+
+            {/* Client Outcome Callout */}
+            {piece.outcome && (
+              <p className="mt-4 border-l-2 border-accent pl-3 text-sm italic text-ink">
+                “{piece.outcome}”
+              </p>
+            )}
+
             <div className="mt-5 flex flex-wrap gap-2">
               {piece.tags.map((t) => (
                 <span
@@ -70,7 +79,9 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
                 </span>
               ))}
             </div>
-            <p className="mt-5 leading-relaxed text-ink-soft">{piece.description}</p>
+            <p className="mt-5 leading-relaxed text-ink-soft">
+              {piece.description}
+            </p>
             <Link
               href={piece.href}
               target="_blank"

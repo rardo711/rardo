@@ -82,7 +82,13 @@ const jsonLd = {
       "@type": "ProfessionalService",
       "@id": `${siteUrl}/#business`,
       name: defaultTitle,
+      alternateName: "Rardo Web Design",
       url: siteUrl,
+      logo: `${siteUrl}/icon.png`,
+      image: `${siteUrl}/photos/gerardo-olivia.webp`,
+      priceRange: "$$",
+      currenciesAccepted: "USD",
+      paymentAccepted: "Cash, Check, Bank Transfer, Card",
       founder: { "@id": `${siteUrl}/#person` },
       description:
         "One-page websites, ordering and contact forms, and update-it-yourself sites for local businesses.",
@@ -90,24 +96,60 @@ const jsonLd = {
         "@type": "PostalAddress",
         addressLocality: "Glennville",
         addressRegion: "GA",
+        postalCode: "30427",
         addressCountry: "US",
       },
       geo: {
         "@type": "GeoCoordinates",
-        latitude: 31.9407,
-        longitude: -81.9296,
+        latitude: 31.9338,
+        longitude: -81.9279,
       },
       areaServed: [
-        { "@type": "City", name: "Glennville, GA" },
         {
           "@type": "AdministrativeArea",
           name: "Tattnall County, GA",
         },
+        {
+          "@type": "City",
+          name: "Glennville, GA",
+        },
+        {
+          "@type": "City",
+          name: "Reidsville, GA",
+        },
+        {
+          "@type": "City",
+          name: "Claxton, GA",
+        },
+        {
+          "@type": "State",
+          name: "Georgia",
+        },
       ],
-      sameAs: [
-        "https://x.com/gerardocasta711",
-        "https://github.com/rardo711",
-      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Website Development Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "One-Page Small Business Website",
+              description:
+                "Complete custom one-page site built in one focused week with no recurring software fees.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Online Ordering & Inquiry Systems",
+              description:
+                "Direct-to-inbox custom order and customer inquiry forms for local merchants.",
+            },
+          },
+        ],
+      },
     },
     {
       "@type": "WebSite",
@@ -136,7 +178,10 @@ export default function RootLayout({
       <body
         className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} font-sans antialiased`}
       >
-        <a href="#main" className="skip-link">
+        <a
+          href="#main"
+          className="skip-link sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-paper focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink focus:shadow-md"
+        >
           Skip to main content
         </a>
         <script

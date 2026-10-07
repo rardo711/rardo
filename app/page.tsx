@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
 import Hero from "../components/Hero";
-import WorkShowcase from "../components/WorkShowcase";
+import WorkShowcase, { type WorkPiece } from "../components/WorkShowcase";
 import InkRule from "../components/InkRule";
 import CtaTitle from "../components/CtaTitle";
 import { pageMetadata } from "@/lib/seo";
@@ -14,11 +14,13 @@ export const metadata = pageMetadata({
   ogDescription: "Simple, fast one-page websites for local businesses.",
 });
 
-const work = [
+const work: WorkPiece[] = [
   {
     name: "RaeMa's Remedies",
     kind: "Client — order site",
     tags: ["One-page site", "Order form", "Self-editable"],
+    outcome:
+      "Eliminated messy manual direct messages by funneling custom orders directly to the owner's inbox.",
     description:
       "An order site for a family wellness brand. Customers browse the products and send their order straight to RaeMa's inbox — and she updates products, prices, and photos herself through a plain-language admin panel. No developer needed.",
     href: "https://raemas-remedies.vercel.app",
@@ -30,6 +32,8 @@ const work = [
     name: "Better Than Gold Tallow Co.",
     kind: "Client — business site",
     tags: ["One-page site", "Farm brand"],
+    outcome:
+      "Transformed a physical market flyer into an online storefront for handmade beef tallow goods.",
     description:
       "A one-page site for a local tallow business, built from her real flyer, farm photos, and exact words. What she sells, her story, and a direct line to her — nothing for a customer to get lost in.",
     href: "https://better-than-gold-tallow.vercel.app",
@@ -80,9 +84,25 @@ const steps = [
   },
 ];
 
+const faqs = [
+  {
+    q: "Are there ongoing monthly fees?",
+    a: "No monthly retainers or hosting bills from me. Your site runs on fast modern cloud infrastructure with zero baseline server cost.",
+  },
+  {
+    q: "Can I use my existing domain?",
+    a: "Yes. I will configure your domain (GoDaddy, Google, Namecheap, etc.) at launch at no additional charge.",
+  },
+  {
+    q: "How do I update prices or hours?",
+    a: "For sites requiring frequent updates, I provide a clean, phone-friendly management screen so you can edit text and photos in seconds.",
+  },
+];
+
 export default function Home() {
   return (
     <>
+      {/* ——— Hero ——— */}
       <Hero />
 
       {/* ——— Services ——— */}
@@ -91,18 +111,18 @@ export default function Home() {
         className="cv-auto [--cis:79rem] md:[--cis:62rem] lg:[--cis:55.5rem] border-b border-line bg-wash"
       >
         <div className="mx-auto max-w-6xl gutter section-y lg:max-w-7xl">
-            <Reveal>
-              <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                <span className="text-accent">01</span>
-                <span aria-hidden> · </span>What I do
-              </p>
-              <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
-                Three things, done well.
-              </h2>
-              <p className="mt-5 max-w-xl leading-relaxed text-ink-soft">
-                No packages with forty line items. Each one something I've already built and shipped.
-              </p>
-            </Reveal>
+          <Reveal>
+            <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
+              <span className="text-accent">01</span>
+              <span aria-hidden> · </span>What I do
+            </p>
+            <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
+              Three things, done well.
+            </h2>
+            <p className="mt-5 max-w-xl leading-relaxed text-ink-soft">
+              No packages with forty line items. Each one something I've already built and shipped.
+            </p>
+          </Reveal>
           <div className="mt-14 grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.06} className="h-full md:last:col-span-2 lg:last:col-span-1">
@@ -129,15 +149,15 @@ export default function Home() {
         className="cv-auto [--cis:105rem] md:[--cis:124rem] lg:[--cis:95.5rem] border-b border-line"
       >
         <div className="mx-auto max-w-6xl gutter section-y lg:max-w-7xl">
-            <Reveal>
-              <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                <span className="text-accent">02</span>
-                <span aria-hidden> · </span>Selected work
-              </p>
-              <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
-                Real sites, for real businesses.
-              </h2>
-            </Reveal>
+          <Reveal>
+            <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
+              <span className="text-accent">02</span>
+              <span aria-hidden> · </span>Selected work
+            </p>
+            <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
+              Real sites, for real businesses.
+            </h2>
+          </Reveal>
           <WorkShowcase items={work} />
         </div>
       </section>
@@ -148,15 +168,15 @@ export default function Home() {
         className="cv-auto [--cis:79rem] md:[--cis:57rem] lg:[--cis:48rem] border-b border-line"
       >
         <div className="mx-auto max-w-6xl gutter section-y lg:max-w-7xl">
-            <Reveal>
-              <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                <span className="text-accent">03</span>
-                <span aria-hidden> · </span>How it works
-              </p>
-              <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
-                How it goes.
-              </h2>
-            </Reveal>
+          <Reveal>
+            <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
+              <span className="text-accent">03</span>
+              <span aria-hidden> · </span>How it works
+            </p>
+            <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
+              How it goes.
+            </h2>
+          </Reveal>
           <div className="relative mt-14">
             <InkRule />
             <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
@@ -179,10 +199,45 @@ export default function Home() {
             </ol>
           </div>
           <Reveal delay={0.12}>
-            <p className="mt-16 max-w-2xl font-display text-quote">
-              The mockup is free. The build is a flat fee — named before I start.
-            </p>
+            <div className="mt-16 flex flex-col gap-3">
+              <p className="max-w-2xl font-display text-quote">
+                The mockup is free. Builds typically start at $500 flat — named before I start.
+              </p>
+              <p className="font-tech text-eyebrow uppercase text-ink-soft">
+                No hourly creep · No required monthly subscriptions · 100% owned by you
+              </p>
+            </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ——— Common Questions ——— */}
+      <section className="cv-auto [--cis:30rem] border-b border-line bg-wash">
+        <div className="gutter mx-auto max-w-6xl section-y lg:max-w-7xl">
+          <Reveal>
+            <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
+              <span className="text-accent">04</span>
+              <span aria-hidden> · </span>Common questions
+            </p>
+            <h2 className="mt-6 max-w-2xl font-display text-h2 font-semibold">
+              Straight answers.
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {faqs.map((faq, i) => (
+              <Reveal key={faq.q} delay={i * 0.06} className="h-full">
+                <div className="flex h-full flex-col border border-line bg-paper p-6 sm:p-8">
+                  <h3 className="font-display text-h3 font-semibold text-ink">
+                    {faq.q}
+                  </h3>
+                  <p className="mt-3 text-body leading-relaxed text-ink-soft">
+                    {faq.a}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -206,6 +261,7 @@ export default function Home() {
                 More about me
                 <ArrowRight
                   size={18}
+                  aria-hidden
                   className="transition-transform group-hover:translate-x-1"
                 />
               </Link>
