@@ -241,7 +241,7 @@ export default function ContactForm({
         transition={{ duration: 0.4, ease: EASE }}
         className="card-editorial rounded-2xl p-8 sm:p-12 outline-none"
       >
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-wash px-3.5 py-1 font-tech text-xs font-medium uppercase text-accent-deep">
+        <span className="inline-flex items-center gap-1.5 rounded-lg bg-wash px-3.5 py-1.5 font-tech text-xs font-medium uppercase text-accent-deep">
           <Check size={14} aria-hidden />
           Message Received
         </span>
@@ -256,7 +256,7 @@ export default function ContactForm({
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-7 inline-flex items-center gap-2 rounded-lg border border-line-strong bg-paper px-4 py-2 text-xs font-semibold text-ink transition-colors hover:border-ink hover:bg-wash"
+          className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl border border-line-strong bg-paper px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-wash"
         >
           Send another message
         </button>
@@ -323,7 +323,7 @@ export default function ContactForm({
                   setSelectedScope(option.id);
                   setContextBanner(`Selected: ${option.label}`);
                 }}
-                className={`group relative flex flex-col items-start justify-between rounded-xl border p-3.5 text-left transition-all duration-200 ${
+                className={`group relative flex h-full flex-col items-start justify-between rounded-xl border p-3.5 text-left transition-all duration-200 ${
                   active
                     ? "border-accent bg-wash/90 shadow-xs"
                     : "border-line bg-paper/55 hover:border-line-strong hover:bg-wash/40"

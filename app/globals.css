@@ -4,8 +4,8 @@
 @custom-variant short-landscape (@media (orientation: landscape) and (max-height: 32rem));
 
 /* 2-family editorial typographic system:
-   1. Fraunces — warm, expressive optical serif (normal + italic)
-   2. Public Sans — clean, humanist sans-serif (with tabular-nums for specs) */
+   1. Fraunces — optical serif (opsz + SOFT variable axes, normal + italic)
+   2. Public Sans — humanist sans-serif (variable wght, tabular-nums for specs) */
 @theme inline {
   --font-display: var(--font-fraunces), "Georgia", serif;
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
@@ -20,32 +20,32 @@
   --color-ink: #221a13;
   --color-coal: #17110b;
   --color-ink-soft: #5f5243;
-  --color-ink-mute: #7d6f5d;
+  --color-ink-mute: #6c5e4e;
   --color-accent: #a84d1d;
   --color-accent-deep: #86390f;
   --color-line: #e6dbc6;
   --color-line-strong: #d4c4a8;
   --color-field: #8a7b67;
 
-  /* Fluid typographic scale — interpolated 360px -> 1280px */
-  --text-display: clamp(2.5rem, 1.2rem + 5.4vw, 5.35rem);
-  --text-display--line-height: 1.04;
-  --text-display--letter-spacing: -0.025em;
-  --text-h1: clamp(2.35rem, 1.35rem + 4.3vw, 4.65rem);
+  /* Fluid typographic scale — harmonically stepped, interpolated 360px -> 1280px */
+  --text-display: clamp(2.5rem, 1.25rem + 5.1vw, 5.15rem);
+  --text-display--line-height: 1.03;
+  --text-display--letter-spacing: -0.028em;
+  --text-h1: clamp(2.35rem, 1.35rem + 4.1vw, 4.5rem);
   --text-h1--line-height: 1.05;
-  --text-h1--letter-spacing: -0.024em;
-  --text-h2: clamp(1.95rem, 1.35rem + 2.6vw, 3.4rem);
-  --text-h2--line-height: 1.08;
-  --text-h2--letter-spacing: -0.02em;
+  --text-h1--letter-spacing: -0.025em;
+  --text-h2: clamp(1.95rem, 1.35rem + 2.5vw, 3.35rem);
+  --text-h2--line-height: 1.09;
+  --text-h2--letter-spacing: -0.022em;
   --text-h3: clamp(1.375rem, 1.22rem + 0.55vw, 1.7rem);
   --text-h3--line-height: 1.22;
-  --text-h3--letter-spacing: -0.012em;
-  --text-quote: clamp(1.45rem, 1.12rem + 1.4vw, 2.25rem);
+  --text-h3--letter-spacing: -0.014em;
+  --text-quote: clamp(1.4rem, 1.1rem + 1.35vw, 2.2rem);
   --text-quote--line-height: 1.32;
-  --text-quote--letter-spacing: -0.012em;
-  --text-lead: clamp(1.0625rem, 0.96rem + 0.45vw, 1.275rem);
+  --text-quote--letter-spacing: -0.014em;
+  --text-lead: clamp(1.0625rem, 0.98rem + 0.38vw, 1.25rem);
   --text-lead--line-height: 1.62;
-  --text-body: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+  --text-body: clamp(1rem, 0.96rem + 0.16vw, 1.0625rem);
   --text-body--line-height: 1.68;
   --text-eyebrow: clamp(0.75rem, 0.72rem + 0.08vw, 0.8125rem);
   --text-eyebrow--line-height: 1.4;
@@ -62,14 +62,30 @@
   padding-bottom: clamp(4.25rem, 2.6rem + 6.2vw, 7.25rem);
 }
 
-.font-tech {
+@utility font-tech {
   font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.11em;
 }
 
-.tabular-nums {
+@utility tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+/* Fraunces variable axis refinement:
+   - Display serif gets subtle organic warmth ("SOFT" 30) while keeping optical sizing auto.
+   - Editorial italics get deeper softness ("SOFT" 80) for lyrical contrast against upright forms. */
+.font-display {
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 30;
+}
+
+.font-display em,
+.font-display i,
+em.font-display,
+i.font-display,
+.font-display.italic {
+  font-variation-settings: "SOFT" 80;
 }
 
 /* Tactile warm paper elevation — soft ambient shadows in the page's own umber */
@@ -131,7 +147,10 @@ body {
   background-color: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -157,7 +176,8 @@ button {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   text-wrap: balance;
   font-optical-sizing: auto;
   overflow-wrap: break-word;
@@ -176,7 +196,7 @@ p {
   color: var(--color-paper);
   padding: 0.75rem 1.25rem;
   font-weight: 600;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -188,7 +208,7 @@ p {
 /* ——— Choreographed hero entrance ——— */
 .hero-line {
   transform: translateY(105%);
-  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) forwards;
+  animation: hero-rise 0.72s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) forwards;
 }
 
 @keyframes hero-rise {
@@ -200,7 +220,7 @@ p {
 .hero-underline {
   transform-origin: left;
   transform: scaleX(0);
-  animation: hero-underline 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+  animation: hero-underline 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.42s forwards;
 }
 
 @keyframes hero-underline {

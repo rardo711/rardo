@@ -14,8 +14,8 @@ const specimens = [
     id: "raemas",
     shortLabel: "RaeMa’s Remedies",
     name: "RaeMa’s Remedies",
-    category: "Order Site & Self-Edit Panel",
-    location: "Tattnall County, Georgia",
+    category: "Order Site & Edit Panel",
+    location: "Tattnall County, GA",
     url: "https://raemas-remedies.vercel.app",
     image: "/work/raemas.webp",
     imageAlt:
@@ -23,9 +23,9 @@ const specimens = [
     inquireScope: "Site Inspired by RaeMa's Remedies",
     specs: [
       { k: "Client", v: "Rachael Harrelson · Family Wellness" },
-      { k: "How it works", v: "Customers browse & send orders to her inbox" },
-      { k: "Owner autonomy", v: "Updates prices, stock & photos herself" },
-      { k: "Monthly fee", v: "$0 / month · Owned outright" },
+      { k: "How it works", v: "Catalog & inbox order delivery" },
+      { k: "Owner control", v: "Self-editable prices & photos" },
+      { k: "Ongoing cost", v: "$0 / month · Owned outright" },
     ],
   },
   {
@@ -40,10 +40,10 @@ const specimens = [
       "Better Than Gold Tallow Co. homepage over a golden pasture at sunrise in Southeast Georgia.",
     inquireScope: "Site Inspired by Better Than Gold Tallow Co.",
     specs: [
-      { k: "Client", v: "Family Suet Tallow & Skincare Farm" },
-      { k: "Source material", v: "Built from her print flyer & farm photos" },
-      { k: "Customer flow", v: "Story, product catalog & direct contact" },
-      { k: "Turnaround", v: "One focused week from free mockup" },
+      { k: "Client", v: "Family Farm & Skincare Brand" },
+      { k: "Built from", v: "Market flyer & farm photos" },
+      { k: "Customer flow", v: "Story, catalog & direct reach" },
+      { k: "Turnaround", v: "One focused week" },
     ],
   },
 ] as const;
@@ -69,10 +69,10 @@ const studioPromises = [
 
 function Line({ children, i }: { children: React.ReactNode; i: number }) {
   return (
-    <span className="-mb-[0.1em] block overflow-hidden pb-[0.1em]">
+    <span className="-mb-[0.16em] block overflow-hidden pb-[0.16em]">
       <span
         className="hero-line block"
-        style={{ "--d": `${0.04 + i * 0.08}s` } as React.CSSProperties}
+        style={{ "--d": `${0.02 + i * 0.06}s` } as React.CSSProperties}
       >
         {children}
       </span>
@@ -93,8 +93,8 @@ export default function Hero() {
         className="pointer-events-none absolute -right-24 -top-24 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(168,77,29,0.08)_0%,transparent_68%)]"
       />
 
-      <div className="gutter relative mx-auto max-w-6xl pb-16 pt-12 sm:pb-24 sm:pt-18 lg:max-w-7xl lg:pb-28 lg:pt-22">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
+      <div className="gutter relative mx-auto max-w-6xl pb-16 pt-12 sm:pb-20 sm:pt-16 lg:max-w-7xl lg:pb-24 lg:pt-20 short-landscape:pb-12 short-landscape:pt-10">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
           {/* Left Column (7 cols): Expressive Editorial Headline & Story */}
           <div className="lg:col-span-7 lg:pr-4">
             <Reveal eager>
@@ -103,7 +103,7 @@ export default function Hero() {
               </p>
             </Reveal>
 
-            <h1 className="mt-6 font-display text-display font-semibold text-ink">
+            <h1 className="mt-5 font-display text-display font-semibold text-ink">
               <Line i={0}>Websites that</Line>
               <Line i={1}>
                 bring local{" "}
@@ -132,7 +132,7 @@ export default function Hero() {
                 <a
                   href="#inquire"
                   data-inquire-product="One-Page Business Website"
-                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-lg bg-ink px-7 py-3.5 text-base font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0 sm:w-auto"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-xl bg-ink px-7 py-3.5 text-base font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0 sm:w-auto"
                 >
                   <span>Start with a free mockup</span>
                   <ArrowRight
@@ -143,7 +143,7 @@ export default function Hero() {
                 </a>
                 <Link
                   href="#work"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg border border-line-strong bg-surface px-7 py-3.5 text-base font-semibold text-ink transition-all duration-300 hover:border-ink hover:bg-wash sm:w-auto"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface px-7 py-3.5 text-base font-semibold text-ink transition-all duration-300 hover:border-ink hover:bg-wash sm:w-auto"
                 >
                   See shipped work
                 </Link>
@@ -179,7 +179,7 @@ export default function Hero() {
                   <div
                     role="tablist"
                     aria-label="Preview shipped client websites"
-                    className=" inline-flex rounded-lg border border-line bg-wash/80 p-1"
+                    className="inline-flex rounded-xl border border-line bg-wash/80 p-1"
                   >
                     {specimens.map((s, idx) => {
                       const isSelected = idx === activeIdx;
@@ -190,7 +190,7 @@ export default function Hero() {
                           role="tab"
                           aria-selected={isSelected}
                           onClick={() => setActiveIdx(idx)}
-                          className={`relative z-10 rounded-md px-3 py-1 text-xs font-medium transition-colors duration-200 ${
+                          className={`relative z-10 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors duration-200 ${
                             isSelected
                               ? "text-ink"
                               : "text-ink-soft hover:text-ink"
@@ -204,7 +204,7 @@ export default function Hero() {
                                 stiffness: 380,
                                 damping: 32,
                               }}
-                              className="absolute inset-0 -z-10 rounded-md bg-surface shadow-xs"
+                              className="absolute inset-0 -z-10 rounded-lg bg-surface shadow-xs"
                             />
                           )}
                           {s.shortLabel}
@@ -245,11 +245,11 @@ export default function Hero() {
 
                   <div className="mt-4 pt-1">
                     <div className="flex items-baseline justify-between gap-3">
-                      <div>
+                      <div className="min-w-0">
                         <p className="font-tech text-[0.6875rem] font-medium uppercase text-accent-deep">
                           {active.category} · {active.location}
                         </p>
-                        <h2 className="mt-1 font-display text-2xl font-semibold tracking-tight text-ink">
+                        <h2 className="mt-1 font-display text-xl font-semibold leading-tight tracking-tight text-ink sm:text-[1.375rem]">
                           {active.name}
                         </h2>
                       </div>
@@ -275,8 +275,8 @@ export default function Hero() {
                           key={row.k}
                           className="flex items-baseline justify-between gap-4 py-2"
                         >
-                          <dt className="text-ink-mute">{row.k}</dt>
-                          <dd className="text-right font-medium text-ink">
+                          <dt className="shrink-0 text-ink-mute">{row.k}</dt>
+                          <dd className="text-right font-medium tabular-nums text-ink">
                             {row.v}
                           </dd>
                         </div>
@@ -287,7 +287,7 @@ export default function Hero() {
                       <a
                         href="#inquire"
                         data-inquire-product={active.inquireScope}
-                        className="group inline-flex min-h-10 w-full items-center justify-between rounded-lg bg-wash px-4 py-2.5 text-xs font-semibold text-ink transition-colors duration-300 hover:bg-ink hover:text-paper"
+                        className="group inline-flex min-h-11 w-full items-center justify-between rounded-xl bg-wash px-4 py-2.5 text-xs font-semibold text-ink transition-colors duration-300 hover:bg-ink hover:text-paper"
                       >
                         <span>Request a site like {active.shortLabel}</span>
                         <ArrowRight

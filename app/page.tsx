@@ -24,7 +24,7 @@ const services = [
   {
     n: "01",
     subtitle: "For local shops & services",
-    title: "One-page business websites",
+    title: "One-page websites",
     inquireScope: "One-Page Business Website",
     Diagram: DiagramOnePage,
     body: "Everything a customer checks before driving over or calling: who you are, what you do, your current hours, and a clear button to call or message you. Built to feel effortless on a phone.",
@@ -187,12 +187,21 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-7 lg:grid-cols-3">
+          <div className="mt-12 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => {
               const Diagram = s.Diagram;
+              const isThird = i === 2;
               return (
-                <Reveal key={s.n} delay={i * 0.06} className="h-full">
-                  <article className="card-editorial card-editorial-hover flex h-full flex-col justify-between rounded-2xl p-5 sm:p-6">
+                <Reveal
+                  key={s.n}
+                  delay={i * 0.06}
+                  className={`h-full ${isThird ? "md:col-span-2 lg:col-span-1" : ""}`}
+                >
+                  <article
+                    className={`card-editorial card-editorial-hover flex h-full flex-col justify-between rounded-2xl p-5 sm:p-6 ${
+                      isThird ? "md:grid md:grid-cols-2 md:items-center md:gap-8 lg:flex lg:gap-0" : ""
+                    }`}
+                  >
                     <div>
                       <div className="flex items-baseline justify-between gap-2 pb-4">
                         <span className="font-display text-lg italic text-accent-deep">
@@ -215,15 +224,15 @@ export default function Home() {
                       </p>
                     </div>
 
-                    <div className="mt-6 pt-2">
+                    <div className={`mt-6 pt-2 ${isThird ? "md:mt-0 md:pt-0 lg:mt-6 lg:pt-2" : ""}`}>
                       <dl className="divide-y divide-line/80 border-y border-line/80 text-xs">
                         {s.specs.map((row) => (
                           <div
                             key={row.k}
-                            className="flex items-baseline justify-between gap-3 py-2.5"
+                            className="flex items-baseline justify-between gap-4 py-2.5"
                           >
-                            <dt className="text-ink-mute">{row.k}</dt>
-                            <dd className="text-right font-medium text-ink">
+                            <dt className="shrink-0 text-ink-mute">{row.k}</dt>
+                            <dd className="text-right font-medium tabular-nums text-ink">
                               {row.v}
                             </dd>
                           </div>
@@ -284,12 +293,22 @@ export default function Home() {
       >
         <div className="gutter mx-auto max-w-6xl lg:max-w-7xl">
           <Reveal>
-            <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-              <span className="text-accent">03</span> · How it works
-            </p>
-            <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
-              Simple from the first hello.
-            </h2>
+            <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+              <div>
+                <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
+                  <span className="text-accent">03</span> · How it works
+                </p>
+                <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
+                  Simple from the{" "}
+                  <em className="font-normal italic text-accent-deep">
+                    first hello.
+                  </em>
+                </h2>
+              </div>
+              <p className="max-w-md text-base leading-relaxed text-ink-soft">
+                Four clear steps from our first conversation to your live domain — see a working mockup on a phone before paying anything.
+              </p>
+            </div>
           </Reveal>
 
           <div className="relative mt-14">
@@ -300,9 +319,13 @@ export default function Home() {
                   as="li"
                   key={s.n}
                   delay={i * 0.06}
-                  className="group/step border-t border-line-strong pt-6 lg:border-transparent"
+                  className="group/step relative border-t border-line-strong pt-6 lg:border-t-0 lg:pt-8"
                 >
-                  <div className="flex items-baseline justify-between">
+                  <span
+                    aria-hidden
+                    className="hidden lg:block absolute -top-[3.5px] left-0 h-2 w-2 rounded-full border-[1.5px] border-accent bg-paper"
+                  />
+                  <div className="flex items-baseline justify-between gap-3">
                     <span className="font-display text-2xl italic text-accent-deep">
                       {s.n}
                     </span>
@@ -350,7 +373,7 @@ export default function Home() {
       </section>
 
       {/* ——— About Teaser ——— */}
-      <section className="border-b border-line bg-paper py-20 sm:py-24">
+      <section className="border-b border-line bg-paper py-16 sm:py-20 lg:py-24">
         <div className="gutter mx-auto max-w-6xl lg:max-w-7xl">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <Reveal>
@@ -407,26 +430,26 @@ export default function Home() {
 
                 <dl className="mt-8 divide-y divide-line border-y border-line text-sm">
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
-                    <dt className="text-ink-mute">First step</dt>
-                    <dd className="font-medium text-ink">
+                    <dt className="shrink-0 text-ink-mute">First step</dt>
+                    <dd className="text-right font-medium tabular-nums text-ink">
                       Free working phone mockup ($0)
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
-                    <dt className="text-ink-mute">Pricing</dt>
-                    <dd className="font-medium text-ink">
+                    <dt className="shrink-0 text-ink-mute">Pricing</dt>
+                    <dd className="text-right font-medium tabular-nums text-ink">
                       Flat fee named before I start
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
-                    <dt className="text-ink-mute">Build time</dt>
-                    <dd className="font-medium text-ink">
+                    <dt className="shrink-0 text-ink-mute">Build time</dt>
+                    <dd className="text-right font-medium tabular-nums text-ink">
                       One focused week
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
-                    <dt className="text-ink-mute">Reply time</dt>
-                    <dd className="font-medium text-ink">
+                    <dt className="shrink-0 text-ink-mute">Reply time</dt>
+                    <dd className="text-right font-medium tabular-nums text-ink">
                       Within 24 hours from Glennville, GA
                     </dd>
                   </div>

@@ -31,7 +31,7 @@ const nextSteps = [
 export default function Contact() {
   return (
     <section className="border-b border-line bg-paper">
-      <div className="gutter mx-auto max-w-6xl pb-20 pt-14 sm:pt-20 lg:max-w-7xl">
+      <div className="gutter mx-auto max-w-6xl pb-16 pt-12 sm:pb-20 sm:pt-16 lg:max-w-7xl lg:pb-24 lg:pt-20">
         <Reveal eager>
           <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
             Start your project
@@ -79,21 +79,21 @@ export default function Contact() {
                 </ol>
 
                 <dl className="mt-6 divide-y divide-line/80 border-t border-line/80 pt-3 text-xs">
-                  <div className="flex items-baseline justify-between py-2.5">
-                    <dt className="text-ink-mute">Based in</dt>
-                    <dd className="font-medium text-ink">
+                  <div className="flex items-baseline justify-between gap-4 py-2.5">
+                    <dt className="shrink-0 text-ink-mute">Based in</dt>
+                    <dd className="text-right font-medium tabular-nums text-ink">
                       Glennville, GA · Works anywhere
                     </dd>
                   </div>
-                  <div className="flex items-baseline justify-between py-2.5">
-                    <dt className="text-ink-mute">Languages</dt>
-                    <dd className="font-medium text-ink">
+                  <div className="flex items-baseline justify-between gap-4 py-2.5">
+                    <dt className="shrink-0 text-ink-mute">Languages</dt>
+                    <dd className="text-right font-medium tabular-nums text-ink">
                       English &amp; Español
                     </dd>
                   </div>
-                  <div className="flex items-baseline justify-between py-2.5">
-                    <dt className="text-ink-mute">Ownership</dt>
-                    <dd className="font-medium text-ink">
+                  <div className="flex items-baseline justify-between gap-4 py-2.5">
+                    <dt className="shrink-0 text-ink-mute">Ownership</dt>
+                    <dd className="text-right font-medium tabular-nums text-ink">
                       100% yours · $0 monthly retainer
                     </dd>
                   </div>

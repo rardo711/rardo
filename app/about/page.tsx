@@ -151,8 +151,8 @@ export default function About() {
 
       {/* ——— Part 1: Essay & Portrait ——— */}
       <section className="border-b border-line bg-paper">
-        <div className="gutter mx-auto max-w-6xl pb-18 pt-14 sm:pt-20 lg:max-w-7xl lg:pb-26">
-          <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="gutter mx-auto max-w-6xl pb-16 pt-12 sm:pb-20 sm:pt-16 lg:max-w-7xl lg:pb-24 lg:pt-20">
+          <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-7">
               <Reveal eager>
                 <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
@@ -217,8 +217,8 @@ export default function About() {
                         key={row.label}
                         className="flex flex-col justify-between gap-1 py-2.5 sm:flex-row sm:items-baseline sm:gap-4"
                       >
-                        <dt className="text-ink-mute">{row.label}</dt>
-                        <dd className="font-medium text-ink sm:text-right">
+                        <dt className="shrink-0 text-ink-mute">{row.label}</dt>
+                        <dd className="font-medium tabular-nums text-ink sm:text-right">
                           {row.value}
                         </dd>
                       </div>
@@ -324,22 +324,33 @@ export default function About() {
       <section className="border-b border-line bg-paper section-y">
         <div className="gutter mx-auto max-w-6xl lg:max-w-7xl">
           <Reveal>
-            <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-              Why I build this way
-            </p>
-            <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
-              Small-town businesses don&apos;t need{" "}
-              <em className="font-normal italic text-accent-deep">
-                agency bloat.
-              </em>
-            </h2>
+            <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+              <div>
+                <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
+                  Why I build this way
+                </p>
+                <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
+                  Small-town businesses don&apos;t need{" "}
+                  <em className="font-normal italic text-accent-deep">
+                    agency bloat.
+                  </em>
+                </h2>
+              </div>
+              <p className="max-w-md text-base leading-relaxed text-ink-soft">
+                Honest craft, direct ownership, and pages tested on the same phones your neighbors keep in their pockets.
+              </p>
+            </div>
           </Reveal>
 
-          <div className="relative mt-12">
+          <div className="relative mt-14">
             <InkRule from="md" />
             <div className="grid gap-8 md:grid-cols-3">
               {convictions.map((c, i) => (
-                <Reveal key={c.num} delay={i * 0.06} className="h-full">
+                <Reveal key={c.num} delay={i * 0.06} className="relative h-full md:pt-8">
+                  <span
+                    aria-hidden
+                    className="hidden md:block absolute -top-[3.5px] left-0 h-2 w-2 rounded-full border-[1.5px] border-accent bg-paper"
+                  />
                   <div className="card-editorial flex h-full flex-col justify-between rounded-2xl p-6 sm:p-8">
                     <div>
                       <span className="font-display text-2xl italic text-accent-deep">
@@ -376,7 +387,7 @@ export default function About() {
                   </em>
                 </h2>
               </div>
-              <p className="max-w-md text-sm leading-relaxed text-ink-soft">
+              <p className="max-w-md text-base leading-relaxed text-ink-soft">
                 Client websites, personal study software, photography, our podcast, and ongoing theological writing — gathered in one place.
               </p>
             </div>
@@ -387,13 +398,13 @@ export default function About() {
               <Reveal key={item.title} delay={i * 0.04} className="h-full">
                 <div className="card-editorial card-editorial-hover flex h-full flex-col justify-between rounded-2xl p-6">
                   <div>
-                    <div className="flex items-center justify-between gap-2 text-xs text-ink-mute">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 text-xs text-ink-mute">
                       <span className="font-tech uppercase text-accent-deep">
                         {item.kind}
                       </span>
                       <span>{item.meta}</span>
                     </div>
-                    <h3 className="mt-2.5 font-display text-2xl font-semibold text-ink">
+                    <h3 className="mt-2.5 font-display text-h3 font-semibold text-ink">
                       {item.title}
                     </h3>
                     <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">
@@ -434,7 +445,7 @@ export default function About() {
                     {item.inquireScope && (
                       <Link
                         href={`/contact?scope=${encodeURIComponent(item.inquireScope)}`}
-                        className="ml-auto inline-flex items-center gap-1 rounded-lg bg-wash px-3 py-1.5 text-xs font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
+                        className="ml-auto inline-flex items-center gap-1 rounded-lg bg-wash px-3.5 py-2 text-xs font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
                       >
                         Request similar build
                       </Link>

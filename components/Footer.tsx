@@ -51,8 +51,8 @@ export default function Footer() {
       data-cta-end=""
       className="bg-coal text-paper"
     >
-      <div className="gutter mx-auto max-w-6xl py-18 sm:py-24 lg:max-w-7xl">
-        <div className="grid gap-12 border-b border-paper/12 pb-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+      <div className="gutter mx-auto max-w-6xl py-16 sm:py-20 lg:max-w-7xl lg:py-24">
+        <div className="grid gap-12 border-b border-paper/15 pb-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
           {/* Column 1: Warm Studio Signature */}
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3.5">
@@ -61,12 +61,12 @@ export default function Footer() {
                 <p className="font-display text-2xl font-semibold leading-none tracking-tight">
                   Gerardo Castaneda
                 </p>
-                <p className="mt-1 font-tech text-[0.6875rem] uppercase text-paper/60">
+                <p className="mt-1 font-tech text-[0.6875rem] uppercase text-paper/70">
                   Glennville, Georgia
                 </p>
               </div>
             </div>
-            <p className="mt-5 max-w-sm text-base leading-relaxed text-paper/75">
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-paper/80">
               Simple, fast one-page websites, direct ordering forms, and
               update-it-yourself pages for local businesses — built in one
               focused week for a flat fee.
@@ -82,7 +82,7 @@ export default function Footer() {
                 href="https://x.com/gerardocasta711"
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center gap-1 font-medium text-paper/80 transition-colors hover:text-paper"
+                className="group inline-flex items-center gap-1 font-medium text-paper/85 transition-colors hover:text-paper"
               >
                 <span className="u-sweep">@gerardocasta711</span>
                 <span className="sr-only"> on X (opens in a new tab)</span>
@@ -97,7 +97,7 @@ export default function Footer() {
 
           {/* Column 2: Navigation */}
           <div className="lg:col-span-2">
-            <p className="font-tech text-eyebrow font-medium uppercase text-paper/55">
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">
               Pages
             </p>
             <nav aria-label="Footer navigation" className="mt-5">
@@ -106,7 +106,7 @@ export default function Footer() {
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="inline-block text-sm text-paper/80 transition-colors hover:text-paper"
+                      className="inline-block text-sm text-paper/85 transition-colors hover:text-paper"
                     >
                       <span className="u-sweep">{l.label}</span>
                     </Link>
@@ -118,25 +118,29 @@ export default function Footer() {
 
           {/* Column 3: Shipped Sites & Projects */}
           <div className="lg:col-span-3">
-            <p className="font-tech text-eyebrow font-medium uppercase text-paper/55">
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">
               Work &amp; Projects
             </p>
-            <ul className="mt-5 flex flex-col gap-3">
+            <ul className="mt-5 flex flex-col gap-3.5">
               {shippedIndex.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="group inline-flex items-baseline gap-1.5 text-sm text-paper/85 transition-colors hover:text-paper"
+                    className="group flex items-start justify-between gap-2.5 text-sm text-paper/90 transition-colors hover:text-paper"
                   >
-                    <span className="u-sweep font-medium">{item.label}</span>
-                    <span className="text-xs text-paper/50">· {item.meta}</span>
+                    <span className="min-w-0">
+                      <span className="u-sweep font-medium">{item.label}</span>
+                      <span className="mt-0.5 block text-xs text-paper/65">
+                        {item.meta}
+                      </span>
+                    </span>
                     <span className="sr-only"> (opens in a new tab)</span>
                     <ArrowUpRight
-                      size={13}
+                      size={14}
                       aria-hidden
-                      className="shrink-0 self-center text-paper/45 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                      className="mt-1 shrink-0 text-paper/65 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
                     />
                   </a>
                 </li>
@@ -146,25 +150,25 @@ export default function Footer() {
 
           {/* Column 4: Colophon */}
           <div className="lg:col-span-2">
-            <p className="font-tech text-eyebrow font-medium uppercase text-paper/55">
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">
               Colophon
             </p>
-            <dl className="mt-5 flex flex-col gap-4 text-xs leading-relaxed text-paper/70">
+            <dl className="mt-5 flex flex-col gap-4 text-xs leading-relaxed text-paper/75">
               <div>
-                <dt className="text-paper/45">Home base</dt>
-                <dd className="mt-0.5 text-paper/85">
+                <dt className="text-paper/65">Home base</dt>
+                <dd className="mt-0.5 text-paper/90">
                   Glennville &amp; Tattnall County, GA
                 </dd>
               </div>
               <div>
-                <dt className="text-paper/45">The promise</dt>
-                <dd className="mt-0.5 text-paper/85">
+                <dt className="text-paper/65">The promise</dt>
+                <dd className="mt-0.5 text-paper/90">
                   Free mockup first. Flat fee named before I start. Yours outright.
                 </dd>
               </div>
               <div>
-                <dt className="text-paper/45">Typeset in</dt>
-                <dd className="mt-0.5 text-paper/85">
+                <dt className="text-paper/65">Typeset in</dt>
+                <dd className="mt-0.5 text-paper/90">
                   Fraunces &amp; Public Sans
                 </dd>
               </div>
@@ -172,9 +176,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-2 pb-[env(safe-area-inset-bottom)] text-xs text-paper/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-2 pb-[env(safe-area-inset-bottom)] text-xs text-paper/70 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Gerardo Castaneda · Glennville, Georgia</p>
-          <p className="font-display italic text-paper/70">Soli Deo Gloria</p>
+          <p className="font-display italic text-paper/80">Soli Deo Gloria</p>
         </div>
       </div>
     </footer>

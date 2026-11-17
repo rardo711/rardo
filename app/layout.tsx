@@ -13,11 +13,12 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   display: "swap",
   style: ["normal", "italic"],
+  axes: ["opsz", "SOFT"],
 });
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-public-sans",
   display: "swap",
 });

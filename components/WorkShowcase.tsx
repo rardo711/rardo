@@ -78,12 +78,12 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
   return (
     <div className="mt-12">
       {/* Fluid Segmented Filter Bar with Sliding Highlight */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <LayoutGroup id="work-filter-tabs">
           <div
             role="tablist"
             aria-label="Filter shipped work by category"
-            className="inline-flex flex-wrap gap-1.5 rounded-xl border border-line bg-wash/80 p-1.5"
+            className="inline-flex w-fit max-w-full flex-wrap gap-1 rounded-xl border border-line bg-wash/80 p-1"
           >
             {filterTabs.map((tab) => {
               const active = activeFilter === tab.id;
@@ -96,7 +96,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
                   aria-selected={active}
                   aria-controls="work-ledger-panel"
                   onClick={() => selectFilter(tab.id, tab.hash)}
-                  className={`relative z-10 inline-flex min-h-9 items-center gap-2 rounded-lg px-4 py-1.5 text-xs font-semibold transition-colors duration-200 ${
+                  className={`relative z-10 inline-flex min-h-9 items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-colors duration-200 ${
                     active ? "text-ink" : "text-ink-soft hover:text-ink"
                   }`}
                 >
@@ -125,7 +125,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
           </div>
         </LayoutGroup>
 
-        <p className="font-tech text-xs uppercase text-ink-mute">
+        <p className="shrink-0 whitespace-nowrap font-tech text-xs uppercase text-ink-mute">
           Showing {visibleItems.length} of {items.length} shipped projects
         </p>
       </div>
@@ -135,7 +135,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
         id="work-ledger-panel"
         role="tabpanel"
         aria-live="polite"
-        className="mt-10 flex flex-col gap-12 lg:gap-16"
+        className="relative mt-10 flex flex-col gap-12 lg:gap-16"
       >
         <AnimatePresence mode="popLayout">
           {visibleItems.map((piece, idx) => {
@@ -188,7 +188,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
                       <span>{piece.kind}</span>
                     </div>
 
-                    <h3 className="mt-3 font-display text-[clamp(1.75rem,1.2rem+2vw,2.65rem)] font-semibold leading-[1.1] tracking-tight text-ink">
+                    <h3 className="mt-3 font-display text-[clamp(1.65rem,1.2rem+1.8vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-ink">
                       {piece.name}
                     </h3>
 
@@ -203,7 +203,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
                           key={row.label}
                           className="flex items-baseline justify-between gap-4 py-2.5"
                         >
-                          <dt className="text-ink-mute">{row.label}</dt>
+                          <dt className="shrink-0 text-ink-mute">{row.label}</dt>
                           <dd className="text-right font-medium tabular-nums text-ink">
                             {row.value}
                           </dd>
@@ -215,7 +215,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
                       <a
                         href="#inquire"
                         data-inquire-product={piece.inquireProduct}
-                        className="group inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0"
+                        className="group inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0"
                       >
                         <span>Build something similar</span>
                         <ArrowRight
@@ -228,7 +228,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
                         href={piece.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="group/visit inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg border border-line-strong bg-paper px-5 py-2.5 text-sm font-semibold text-ink transition-colors duration-300 hover:border-ink hover:bg-wash"
+                        className="group/visit inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-line-strong bg-paper px-5 py-2.5 text-sm font-semibold text-ink transition-colors duration-300 hover:border-ink hover:bg-wash"
                       >
                         <span>Visit live site</span>
                         <span className="sr-only">

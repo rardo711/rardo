@@ -167,7 +167,7 @@ export default function Nav() {
           })}
           <Link
             href={primaryCtaHref}
-            className="group inline-flex items-center gap-2 rounded-lg bg-ink px-5 py-2.5 text-sm font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0"
+            className="group inline-flex min-h-11 items-center gap-2 rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0"
           >
             <span>Start your project</span>
             <ArrowRight
@@ -186,7 +186,7 @@ export default function Nav() {
             aria-expanded={open}
             aria-controls="site-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line-strong bg-surface text-ink transition-colors hover:border-ink data-[open=true]:bg-wash"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line-strong bg-surface text-ink transition-colors hover:border-ink data-[open=true]:bg-wash"
             data-open={open}
           >
             <Burger open={open} />
