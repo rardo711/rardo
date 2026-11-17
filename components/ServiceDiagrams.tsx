@@ -1,71 +1,133 @@
 /**
- * Custom architectural vector illustrations for each service card and software build.
- * Every diagram is bespoke and tailored to its specific offering — zero generic stock icons.
+ * Warm, bespoke editorial vector illustrations for each service offering and software build.
+ * Crafted with soft rounded paper layers, terracotta accents, and serif typography.
  */
 
 export function DiagramOnePage() {
   return (
     <svg
-      viewBox="0 0 360 176"
+      viewBox="0 0 360 184"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      className="h-auto w-full border border-line bg-paper"
+      className="h-auto w-full"
     >
-      {/* Background architectural grid ticks */}
-      <line x1="0" y1="28" x2="360" y2="28" stroke="#dfd2b8" strokeWidth="1" />
-      <line x1="218" y1="28" x2="218" y2="176" stroke="#dfd2b8" strokeWidth="1" strokeDasharray="3 3" />
+      <rect width="360" height="184" rx="10" fill="#f3ecdc" />
+      <circle cx="296" cy="36" r="76" fill="#eadec6" opacity="0.55" />
 
-      {/* Top browser/frame bar */}
-      <rect x="10" y="9" width="6" height="6" fill="#221a13" />
-      <rect x="20" y="9" width="6" height="6" stroke="#221a13" strokeWidth="1" />
-      <text x="34" y="15" fill="#594c3d" fontSize="8" fontFamily="sans-serif" letterSpacing="1.2">
-        FIG 01 · MOBILE-FIRST STOREFRONT
+      {/* Desktop Editorial Canvas */}
+      <rect
+        x="20"
+        y="22"
+        width="196"
+        height="140"
+        rx="8"
+        fill="#fffdf8"
+        stroke="#d4c4a8"
+        strokeWidth="1.2"
+      />
+      {/* Subtle browser header dots */}
+      <circle cx="33" cy="34" r="2.5" fill="#d4c4a8" />
+      <circle cx="41" cy="34" r="2.5" fill="#d4c4a8" />
+      <circle cx="49" cy="34" r="2.5" fill="#d4c4a8" />
+      <line x1="20" y1="44" x2="216" y2="44" stroke="#e6dbc6" strokeWidth="1" />
+
+      {/* Editorial Story & Hours inside Desktop Card */}
+      <text
+        x="34"
+        y="66"
+        fill="#a84d1d"
+        fontSize="7"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="1.2"
+      >
+        GLENNVILLE, GEORGIA
       </text>
-      <text x="310" y="15" fill="#a84d1d" fontSize="8" fontFamily="sans-serif" fontWeight="600">
-        99/100
+      <text
+        x="34"
+        y="83"
+        fill="#221a13"
+        fontSize="13"
+        fontFamily="Georgia, serif"
+        fontWeight="600"
+      >
+        Made by hand,
+      </text>
+      <text
+        x="34"
+        y="99"
+        fill="#86390f"
+        fontSize="13"
+        fontFamily="Georgia, serif"
+        fontStyle="italic"
+      >
+        open til six.
+      </text>
+      <rect x="34" y="109" width="112" height="4" rx="2" fill="#d4c4a8" />
+      <rect x="34" y="117" width="84" height="4" rx="2" fill="#e6dbc6" />
+
+      {/* Bottom Hours Strip */}
+      <rect x="34" y="131" width="168" height="20" rx="4" fill="#faf6ec" stroke="#e6dbc6" />
+      <circle cx="44" cy="141" r="3" fill="#a84d1d" />
+      <text x="52" y="144" fill="#5f5243" fontSize="7.5" fontFamily="sans-serif" fontWeight="500">
+        Tue – Sat · 8:00 am – 6:00 pm
       </text>
 
-      {/* Left: Desktop / Ledger View */}
-      <rect x="16" y="40" width="188" height="122" fill="#fffdf7" stroke="#221a13" strokeWidth="1.2" />
-      <line x1="16" y1="58" x2="204" y2="58" stroke="#dfd2b8" strokeWidth="1" />
-      <rect x="24" y="46" width="42" height="5" fill="#221a13" />
-      <rect x="158" y="45" width="38" height="7" fill="#a84d1d" />
+      {/* Overlapping Handheld Phone Card */}
+      <rect
+        x="230"
+        y="16"
+        width="110"
+        height="152"
+        rx="14"
+        fill="#fffdf8"
+        stroke="#221a13"
+        strokeWidth="1.4"
+      />
+      <rect x="269" y="24" width="32" height="3" rx="1.5" fill="#e6dbc6" />
+      <rect x="242" y="36" width="86" height="48" rx="6" fill="#f3ecdc" />
+      <text
+        x="252"
+        y="56"
+        fill="#221a13"
+        fontSize="9.5"
+        fontFamily="Georgia, serif"
+        fontWeight="600"
+      >
+        Who you are
+      </text>
+      <text
+        x="252"
+        y="69"
+        fill="#5f5243"
+        fontSize="7.5"
+        fontFamily="Georgia, serif"
+        fontStyle="italic"
+      >
+        &amp; where to find you
+      </text>
 
-      {/* Headline & subcopy blocks */}
-      <rect x="24" y="68" width="116" height="8" fill="#221a13" />
-      <rect x="24" y="80" width="88" height="8" fill="#a84d1d" />
-      <rect x="24" y="95" width="132" height="4" fill="#756755" />
-      <rect x="24" y="103" width="108" height="4" fill="#756755" />
+      <rect x="242" y="92" width="86" height="28" rx="5" fill="#faf6ec" stroke="#e6dbc6" />
+      <text x="250" y="104" fill="#221a13" fontSize="7" fontFamily="sans-serif" fontWeight="600">
+        Open Today · Until 6pm
+      </text>
+      <text x="250" y="114" fill="#7d6f5d" fontSize="6.5" fontFamily="sans-serif">
+        124 S. Veterans Blvd
+      </text>
 
-      {/* Structured Hours & Location Footer inside specimen */}
-      <line x1="16" y1="122" x2="204" y2="122" stroke="#dfd2b8" strokeWidth="1" />
-      <text x="24" y="135" fill="#594c3d" fontSize="7" fontFamily="sans-serif" letterSpacing="0.8">
-        HOURS: TUE–SAT · 8AM–6PM
-      </text>
-      <text x="24" y="149" fill="#221a13" fontSize="7.5" fontFamily="sans-serif" fontWeight="700">
-        GLENNVILLE, GA · (912) CALL DIRECT
-      </text>
-      <rect x="156" y="130" width="40" height="22" fill="#221a13" />
-      <path d="M170 141H182M182 141L178 137M182 141L178 145" stroke="#faf6ec" strokeWidth="1.2" />
-
-      {/* Right: Handheld Phone Viewport (where local customers find you) */}
-      <rect x="234" y="38" width="110" height="126" rx="2" fill="#fffdf7" stroke="#221a13" strokeWidth="1.5" />
-      <line x1="234" y1="52" x2="344" y2="52" stroke="#dfd2b8" strokeWidth="1" />
-      <rect x="276" y="44" width="26" height="2" fill="#221a13" />
-      <rect x="244" y="60" width="72" height="6" fill="#221a13" />
-      <rect x="244" y="70" width="54" height="6" fill="#a84d1d" />
-      <rect x="244" y="84" width="90" height="32" fill="#f2ead9" stroke="#dfd2b8" strokeWidth="1" />
-      <text x="251" y="98" fill="#221a13" fontSize="7" fontFamily="sans-serif" fontWeight="600">
-        OPEN TODAY · UNTIL 6PM
-      </text>
-      <text x="251" y="109" fill="#594c3d" fontSize="6.5" fontFamily="sans-serif">
-        124 S Veterans Blvd
-      </text>
-      {/* Prominent tap-to-call action bar */}
-      <rect x="244" y="124" width="90" height="28" fill="#a84d1d" />
-      <text x="255" y="141" fill="#faf6ec" fontSize="7.5" fontFamily="sans-serif" fontWeight="700" letterSpacing="0.8">
-        TAP TO CALL →
+      {/* Warm Tap-to-Call Pill */}
+      <rect x="242" y="128" width="86" height="28" rx="6" fill="#221a13" />
+      <text
+        x="258"
+        y="145"
+        fill="#faf6ec"
+        fontSize="8"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="0.4"
+      >
+        Tap to Call →
       </text>
     </svg>
   );
@@ -74,77 +136,110 @@ export function DiagramOnePage() {
 export function DiagramOrderLedger() {
   return (
     <svg
-      viewBox="0 0 360 176"
+      viewBox="0 0 360 184"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      className="h-auto w-full border border-line bg-paper"
+      className="h-auto w-full"
     >
-      <line x1="0" y1="28" x2="360" y2="28" stroke="#dfd2b8" strokeWidth="1" />
-      <rect x="10" y="9" width="6" height="6" fill="#a84d1d" />
-      <text x="24" y="15" fill="#594c3d" fontSize="8" fontFamily="sans-serif" letterSpacing="1.2">
-        FIG 02 · DIRECT ORDER &amp; INBOX LEDGER
-      </text>
-      <text x="292" y="15" fill="#221a13" fontSize="8" fontFamily="sans-serif" fontWeight="600">
-        $0/MO FEE
-      </text>
+      <rect width="360" height="184" rx="10" fill="#f3ecdc" />
+      <circle cx="72" cy="148" r="70" fill="#eadec6" opacity="0.55" />
 
-      {/* Left: Customer Order Slip */}
-      <rect x="16" y="42" width="152" height="120" fill="#fffdf7" stroke="#221a13" strokeWidth="1.2" />
-      <rect x="16" y="42" width="152" height="18" fill="#f2ead9" />
-      <line x1="16" y1="60" x2="168" y2="60" stroke="#221a13" strokeWidth="1" />
-      <text x="24" y="54" fill="#221a13" fontSize="7.5" fontFamily="sans-serif" fontWeight="700" letterSpacing="0.8">
-        ORDER SLIP #042
+      {/* Left: Customer Order Card */}
+      <rect
+        x="18"
+        y="22"
+        width="156"
+        height="140"
+        rx="10"
+        fill="#fffdf8"
+        stroke="#d4c4a8"
+        strokeWidth="1.2"
+      />
+      <text
+        x="32"
+        y="43"
+        fill="#a84d1d"
+        fontSize="7"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="1.2"
+      >
+        CUSTOMER ORDER
       </text>
+      <line x1="32" y1="51" x2="160" y2="51" stroke="#e6dbc6" strokeWidth="1" />
 
-      {/* Line items */}
-      <text x="24" y="75" fill="#221a13" fontSize="7.5" fontFamily="sans-serif">
-        01 · Whipped Tallow Balm
+      <text x="32" y="68" fill="#221a13" fontSize="8.5" fontFamily="Georgia, serif">
+        Whipped Tallow Balm
       </text>
-      <text x="136" y="75" fill="#221a13" fontSize="7.5" fontFamily="sans-serif" fontWeight="700">
+      <text x="142" y="68" fill="#221a13" fontSize="8" fontFamily="sans-serif" fontWeight="600">
         $24
       </text>
-      <line x1="24" y1="82" x2="160" y2="82" stroke="#dfd2b8" strokeWidth="1" />
+      <line x1="32" y1="76" x2="160" y2="76" stroke="#f3ecdc" strokeWidth="1" />
 
-      <text x="24" y="95" fill="#221a13" fontSize="7.5" fontFamily="sans-serif">
-        02 · Elderberry Syrup (16oz)
+      <text x="32" y="92" fill="#221a13" fontSize="8.5" fontFamily="Georgia, serif">
+        Elderberry Syrup (16oz)
       </text>
-      <text x="136" y="95" fill="#221a13" fontSize="7.5" fontFamily="sans-serif" fontWeight="700">
+      <text x="142" y="92" fill="#221a13" fontSize="8" fontFamily="sans-serif" fontWeight="600">
         $28
       </text>
-      <line x1="24" y1="102" x2="160" y2="102" stroke="#dfd2b8" strokeWidth="1" />
+      <line x1="32" y1="100" x2="160" y2="100" stroke="#f3ecdc" strokeWidth="1" />
 
-      <text x="24" y="115" fill="#594c3d" fontSize="7" fontFamily="sans-serif">
-        PICKUP: FRIDAY · 4:00 PM
-      </text>
-
-      <rect x="24" y="126" width="136" height="24" fill="#221a13" />
-      <text x="48" y="141" fill="#faf6ec" fontSize="7.5" fontFamily="sans-serif" fontWeight="700" letterSpacing="0.8">
-        SEND ORDER DIRECT
+      <text x="32" y="115" fill="#7d6f5d" fontSize="7.5" fontFamily="Georgia, serif" fontStyle="italic">
+        Pickup: Friday afternoon
       </text>
 
-      {/* Routing connector */}
-      <line x1="168" y1="102" x2="206" y2="102" stroke="#a84d1d" strokeWidth="1.5" strokeDasharray="3 2" />
-      <polygon points="206,98 214,102 206,106" fill="#a84d1d" />
+      <rect x="32" y="126" width="128" height="24" rx="6" fill="#a84d1d" />
+      <text
+        x="58"
+        y="141"
+        fill="#faf6ec"
+        fontSize="8"
+        fontFamily="sans-serif"
+        fontWeight="600"
+      >
+        Send Order →
+      </text>
 
-      {/* Right: Owner Inbox Dispatch */}
-      <rect x="216" y="48" width="128" height="108" fill="#fffdf7" stroke="#221a13" strokeWidth="1.2" />
-      <rect x="216" y="48" width="128" height="20" fill="#221a13" />
-      <text x="225" y="61" fill="#faf6ec" fontSize="7.5" fontFamily="sans-serif" fontWeight="700" letterSpacing="0.8">
-        OWNER INBOX · INSTANT
+      {/* Graceful Curved Connector */}
+      <path
+        d="M174 92 C 190 92, 194 92, 210 92"
+        stroke="#a84d1d"
+        strokeWidth="1.5"
+        strokeDasharray="3 3"
+      />
+      <circle cx="192" cy="92" r="3.5" fill="#a84d1d" />
+
+      {/* Right: Owner Inbox Notification Card */}
+      <rect
+        x="210"
+        y="30"
+        width="132"
+        height="124"
+        rx="10"
+        fill="#fffdf8"
+        stroke="#221a13"
+        strokeWidth="1.3"
+      />
+      <rect x="222" y="42" width="108" height="22" rx="5" fill="#faf6ec" stroke="#e6dbc6" />
+      <circle cx="232" cy="53" r="3.5" fill="#a84d1d" />
+      <text x="241" y="56" fill="#221a13" fontSize="7.5" fontFamily="sans-serif" fontWeight="600">
+        New Order in Inbox
       </text>
-      <text x="225" y="83" fill="#a84d1d" fontSize="7.5" fontFamily="sans-serif" fontWeight="700">
-        ● NEW CUSTOMER ORDER
+
+      <text x="224" y="82" fill="#221a13" fontSize="9.5" fontFamily="Georgia, serif" fontWeight="600">
+        Sarah Jenkins
       </text>
-      <text x="225" y="97" fill="#221a13" fontSize="7.5" fontFamily="sans-serif">
-        From: Sarah Jenkins
+      <text x="224" y="95" fill="#5f5243" fontSize="7.5" fontFamily="sans-serif">
+        (912) 555-0194 · 2 items
       </text>
-      <text x="225" y="109" fill="#594c3d" fontSize="7" fontFamily="sans-serif">
-        Tel: (912) 555-0194
+
+      <rect x="222" y="108" width="108" height="32" rx="6" fill="#f3ecdc" />
+      <text x="232" y="122" fill="#5f5243" fontSize="7" fontFamily="sans-serif">
+        Order Total
       </text>
-      <rect x="225" y="118" width="110" height="26" fill="#f2ead9" stroke="#dfd2b8" strokeWidth="1" />
-      <text x="232" y="134" fill="#221a13" fontSize="7.5" fontFamily="sans-serif" fontWeight="700">
-        Total: $52.00 · 0% Cut
+      <text x="232" y="134" fill="#221a13" fontSize="9" fontFamily="sans-serif" fontWeight="700">
+        $52.00 · $0 fees
       </text>
     </svg>
   );
@@ -153,89 +248,128 @@ export function DiagramOrderLedger() {
 export function DiagramSelfEditable() {
   return (
     <svg
-      viewBox="0 0 360 176"
+      viewBox="0 0 360 184"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      className="h-auto w-full border border-line bg-paper"
+      className="h-auto w-full"
     >
-      <line x1="0" y1="28" x2="360" y2="28" stroke="#dfd2b8" strokeWidth="1" />
-      <rect x="10" y="9" width="6" height="6" stroke="#221a13" strokeWidth="1.2" />
-      <text x="24" y="15" fill="#594c3d" fontSize="8" fontFamily="sans-serif" letterSpacing="1.2">
-        FIG 03 · PLAIN-LANGUAGE OWNER STUDIO
-      </text>
-      <text x="282" y="15" fill="#a84d1d" fontSize="8" fontFamily="sans-serif" fontWeight="600">
-        NO DEV NEEDED
+      <rect width="360" height="184" rx="10" fill="#f3ecdc" />
+      <circle cx="180" cy="24" r="68" fill="#eadec6" opacity="0.5" />
+
+      {/* Main Studio Editor Card */}
+      <rect
+        x="20"
+        y="22"
+        width="320"
+        height="140"
+        rx="10"
+        fill="#fffdf8"
+        stroke="#d4c4a8"
+        strokeWidth="1.2"
+      />
+      <line x1="190" y1="22" x2="190" y2="162" stroke="#e6dbc6" strokeWidth="1" />
+
+      {/* Left Pane: Plain-Language Editor Controls */}
+      <text
+        x="34"
+        y="44"
+        fill="#a84d1d"
+        fontSize="7"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="1.2"
+      >
+        YOUR EDIT PANEL
       </text>
 
-      {/* Editor Panel Frame */}
-      <rect x="16" y="40" width="328" height="122" fill="#fffdf7" stroke="#221a13" strokeWidth="1.2" />
-      <line x1="186" y1="40" x2="186" y2="162" stroke="#dfd2b8" strokeWidth="1" />
-
-      {/* Left: Plain-language controls */}
-      <text x="26" y="56" fill="#594c3d" fontSize="7" fontFamily="sans-serif" fontWeight="700" letterSpacing="1">
-        EDIT STOREFRONT FIELDS
-      </text>
-
-      {/* Field 1: Hours */}
-      <text x="26" y="72" fill="#221a13" fontSize="7" fontFamily="sans-serif">
+      <text x="34" y="62" fill="#5f5243" fontSize="7.5" fontFamily="sans-serif">
         Shop Hours
       </text>
-      <rect x="26" y="76" width="146" height="18" fill="#faf6ec" stroke="#857662" strokeWidth="1" />
-      <text x="32" y="88" fill="#221a13" fontSize="7.5" fontFamily="sans-serif" fontWeight="600">
-        Tue–Sat, 8:00 AM – 5:30 PM
+      <rect x="34" y="67" width="142" height="22" rx="5" fill="#faf6ec" stroke="#d4c4a8" />
+      <text x="42" y="81" fill="#221a13" fontSize="8" fontFamily="sans-serif" fontWeight="500">
+        Tue–Sat, 8am – 5:30pm
       </text>
 
-      {/* Field 2: Price */}
-      <text x="26" y="108" fill="#221a13" fontSize="7" fontFamily="sans-serif">
-        Unit Price
+      <text x="34" y="105" fill="#5f5243" fontSize="7.5" fontFamily="sans-serif">
+        Batch Price &amp; Status
       </text>
-      <rect x="26" y="112" width="76" height="18" fill="#faf6ec" stroke="#a84d1d" strokeWidth="1.2" />
-      <text x="32" y="124" fill="#a84d1d" fontSize="7.5" fontFamily="sans-serif" fontWeight="700">
+      <rect x="34" y="110" width="66" height="22" rx="5" fill="#faf6ec" stroke="#a84d1d" strokeWidth="1.2" />
+      <text x="44" y="124" fill="#a84d1d" fontSize="8.5" fontFamily="sans-serif" fontWeight="700">
         $24.00
       </text>
 
-      {/* Toggle: In Stock */}
-      <rect x="110" y="112" width="62" height="18" fill="#221a13" />
-      <circle cx="120" cy="121" r="3" fill="#a84d1d" />
-      <text x="127" y="124" fill="#faf6ec" fontSize="7" fontFamily="sans-serif" fontWeight="700">
-        IN STOCK
+      {/* Warm Toggle Pill */}
+      <rect x="108" y="110" width="68" height="22" rx="11" fill="#221a13" />
+      <circle cx="120" cy="121" r="5" fill="#faf6ec" />
+      <text x="130" y="124" fill="#faf6ec" fontSize="7.5" fontFamily="sans-serif" fontWeight="600">
+        In Stock
       </text>
 
-      {/* Save button */}
-      <rect x="26" y="138" width="146" height="16" fill="#a84d1d" />
-      <text x="62" y="149" fill="#faf6ec" fontSize="7" fontFamily="sans-serif" fontWeight="700" letterSpacing="0.8">
-        PUBLISH INSTANTLY →
+      <text x="34" y="148" fill="#7d6f5d" fontSize="7.5" fontFamily="Georgia, serif" fontStyle="italic">
+        Saves instantly from your phone
       </text>
 
-      {/* Right: Live Storefront Sync */}
-      <text x="198" y="56" fill="#a84d1d" fontSize="7" fontFamily="sans-serif" fontWeight="700" letterSpacing="1">
-        ● LIVE PUBLIC PAGE
+      {/* Right Pane: Live Public Preview */}
+      <text
+        x="206"
+        y="44"
+        fill="#5f5243"
+        fontSize="7"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="1.2"
+      >
+        LIVE ON YOUR SITE
       </text>
-      <rect x="198" y="66" width="134" height="84" fill="#f2ead9" stroke="#221a13" strokeWidth="1" />
-      <text x="208" y="84" fill="#221a13" fontSize="9" fontFamily="Georgia, serif" fontWeight="700">
+
+      <rect
+        x="206"
+        y="54"
+        width="120"
+        height="94"
+        rx="8"
+        fill="#faf6ec"
+        stroke="#e6dbc6"
+        strokeWidth="1"
+      />
+      <text
+        x="218"
+        y="76"
+        fill="#221a13"
+        fontSize="11"
+        fontFamily="Georgia, serif"
+        fontWeight="600"
+      >
         Small-Batch Balm
       </text>
-      <text x="208" y="98" fill="#594c3d" fontSize="7" fontFamily="sans-serif">
-        Updated 2 seconds ago
+      <text
+        x="218"
+        y="91"
+        fill="#7d6f5d"
+        fontSize="7.5"
+        fontFamily="Georgia, serif"
+        fontStyle="italic"
+      >
+        Freshly rendered this week
       </text>
-      <line x1="208" y1="106" x2="322" y2="106" stroke="#c7b697" strokeWidth="1" />
-      <text x="208" y="120" fill="#221a13" fontSize="8" fontFamily="sans-serif" fontWeight="700">
+      <line x1="218" y1="101" x2="314" y2="101" stroke="#e6dbc6" />
+      <text x="218" y="118" fill="#221a13" fontSize="9.5" fontFamily="sans-serif" fontWeight="700">
         $24.00
       </text>
-      <rect x="272" y="111" width="50" height="13" fill="#221a13" />
-      <text x="280" y="120" fill="#faf6ec" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">
-        AVAILABLE
+      <rect x="268" y="107" width="46" height="16" rx="8" fill="#f3ecdc" />
+      <text x="275" y="118" fill="#86390f" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">
+        Available
       </text>
-      <text x="208" y="139" fill="#594c3d" fontSize="7" fontFamily="sans-serif">
-        Hours: Tue–Sat 8:00a–5:30p
+      <text x="218" y="136" fill="#5f5243" fontSize="7" fontFamily="sans-serif">
+        Open Tue–Sat · 8a–5:30p
       </text>
     </svg>
   );
 }
 
 /**
- * Custom architectural vector specimen plate for Theos Logos
+ * Warm, literary bookplate & interface illustration for Theos Logos
  * (Biblical Greek & Hebrew Lexicon & Study Web Application).
  */
 export function TheosLogosPlate() {
@@ -245,154 +379,312 @@ export function TheosLogosPlate() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="Theos Logos interface specimen showing Greek and Hebrew interlinear scripture and Strong's lexicon panel"
+      aria-label="Theos Logos study environment showing Greek and Hebrew interlinear scripture and Strong's lexicon reader"
       className="aspect-[3/2] w-full object-cover"
     >
-      {/* Warm archival paper backdrop */}
-      <rect width="1440" height="960" fill="#f5efe1" />
-      <rect x="36" y="36" width="1368" height="888" fill="#faf6ec" stroke="#221a13" strokeWidth="2" />
+      {/* Warm Parchment Backdrop */}
+      <rect width="1440" height="960" fill="#f3ecdc" />
+      <circle cx="1220" cy="180" r="340" fill="#eadec6" opacity="0.6" />
+      <circle cx="220" cy="820" r="280" fill="#eadec6" opacity="0.45" />
 
-      {/* Top Application Header Bar */}
-      <rect x="36" y="36" width="1368" height="76" fill="#221a13" />
-      <text x="76" y="82" fill="#faf6ec" fontSize="26" fontFamily="Georgia, serif" fontWeight="700" letterSpacing="0.5">
-        THEOS LOGOS
+      {/* Elevated Application Window */}
+      <rect
+        x="56"
+        y="52"
+        width="1328"
+        height="856"
+        rx="20"
+        fill="#fffdf8"
+        stroke="#d4c4a8"
+        strokeWidth="2"
+      />
+
+      {/* Top Editorial Navigation Bar */}
+      <rect x="56" y="52" width="1328" height="78" rx="20" fill="#faf6ec" />
+      <line x1="56" y1="130" x2="1384" y2="130" stroke="#e6dbc6" strokeWidth="1.5" />
+      <circle cx="96" cy="91" r="6" fill="#d4c4a8" />
+      <circle cx="116" cy="91" r="6" fill="#d4c4a8" />
+      <circle cx="136" cy="91" r="6" fill="#d4c4a8" />
+
+      <text
+        x="176"
+        y="99"
+        fill="#221a13"
+        fontSize="26"
+        fontFamily="Georgia, serif"
+        fontWeight="600"
+      >
+        Theos Logos
       </text>
-      <text x="310" y="80" fill="#c7b697" fontSize="15" fontFamily="sans-serif" letterSpacing="3">
-        INTERLINEAR SCRIPTURE &amp; GREEK / HEBREW LEXICON
+      <text
+        x="348"
+        y="98"
+        fill="#7d6f5d"
+        fontSize="16"
+        fontFamily="Georgia, serif"
+        fontStyle="italic"
+      >
+        Interlinear Scripture &amp; Classical Lexicon
       </text>
-      <rect x="1190" y="54" width="180" height="40" fill="#a84d1d" />
-      <text x="1220" y="79" fill="#faf6ec" fontSize="14" fontFamily="sans-serif" fontWeight="700" letterSpacing="2">
+
+      <rect x="1164" y="71" width="180" height="40" rx="20" fill="#f3ecdc" />
+      <text
+        x="1196"
+        y="96"
+        fill="#86390f"
+        fontSize="14"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="1.2"
+      >
         JOHN 1:1 · GEN 1:1
       </text>
 
-      {/* Main Split Grid */}
-      <line x1="860" y1="112" x2="860" y2="924" stroke="#221a13" strokeWidth="2" />
-      <line x1="36" y1="200" x2="860" y2="200" stroke="#dfd2b8" strokeWidth="2" />
+      {/* Main Split Reader Layout */}
+      <line x1="856" y1="130" x2="856" y2="908" stroke="#e6dbc6" strokeWidth="1.5" />
 
-      {/* Left Pane: Manuscript Reader */}
-      <text x="76" y="164" fill="#a84d1d" fontSize="15" fontFamily="sans-serif" fontWeight="700" letterSpacing="2.5">
-        MANUSCRIPT VIEW · ΚΑΤΑ ΙΩΑΝΝΗΝ 1:1–4
+      {/* Left Pane: Interlinear Manuscript Reader */}
+      <text
+        x="104"
+        y="186"
+        fill="#a84d1d"
+        fontSize="13"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="2.2"
+      >
+        GOSPEL ACCORDING TO JOHN · CHAPTER I
       </text>
 
-      {/* Interlinear Word Cards Row 1 */}
+      {/* Interlinear Word Cards */}
       {[
-        { gr: "Ἐν", tr: "En", en: "In [the]", morph: "PREP", strong: "G1722", x: 76 },
-        { gr: "ἀρχῇ", tr: "archē", en: "beginning", morph: "N-DSF", strong: "G746", x: 220 },
-        { gr: "ἦν", tr: "ēn", en: "was", morph: "V-IAI-3S", strong: "G2258", x: 392 },
-        { gr: "ὁ", tr: "ho", en: "the", morph: "T-NSM", strong: "G3588", x: 536 },
-        { gr: "Λόγος", tr: "Logos", en: "Word", morph: "N-NSM", strong: "G3056", x: 668, active: true },
+        { gr: "Ἐν", tr: "En", en: "In [the]", strong: "G1722", x: 104 },
+        { gr: "ἀρχῇ", tr: "archē", en: "beginning", strong: "G746", x: 244 },
+        { gr: "ἦν", tr: "ēn", en: "was", strong: "G2258", x: 408 },
+        { gr: "ὁ", tr: "ho", en: "the", strong: "G3588", x: 548 },
+        { gr: "Λόγος", tr: "Logos", en: "Word", strong: "G3056", x: 676, active: true },
       ].map((w) => (
         <g key={w.strong}>
           <rect
             x={w.x}
-            y="236"
-            width={w.active ? "152" : "128"}
-            height="146"
-            fill={w.active ? "#fffdf7" : "#f2ead9"}
-            stroke={w.active ? "#a84d1d" : "#c7b697"}
-            strokeWidth={w.active ? "3" : "1.5"}
+            y="218"
+            width={w.active ? "144" : "122"}
+            height="148"
+            rx="12"
+            fill={w.active ? "#faf6ec" : "#fffdf8"}
+            stroke={w.active ? "#a84d1d" : "#e6dbc6"}
+            strokeWidth={w.active ? "2.5" : "1.5"}
           />
-          <text x={w.x + 16} y="266" fill="#a84d1d" fontSize="13" fontFamily="sans-serif" fontWeight="700" letterSpacing="1.5">
+          <text
+            x={w.x + 18}
+            y="248"
+            fill="#a84d1d"
+            fontSize="12"
+            fontFamily="sans-serif"
+            fontWeight="600"
+            letterSpacing="1.2"
+          >
             {w.strong}
           </text>
-          <text x={w.x + 16} y="308" fill="#221a13" fontSize="28" fontFamily="Georgia, serif" fontWeight="700">
+          <text
+            x={w.x + 18}
+            y="292"
+            fill="#221a13"
+            fontSize="28"
+            fontFamily="Georgia, serif"
+            fontWeight="600"
+          >
             {w.gr}
           </text>
-          <text x={w.x + 16} y="336" fill="#594c3d" fontSize="15" fontFamily="Georgia, serif" fontStyle="italic">
+          <text
+            x={w.x + 18}
+            y="320"
+            fill="#7d6f5d"
+            fontSize="15"
+            fontFamily="Georgia, serif"
+            fontStyle="italic"
+          >
             {w.tr}
           </text>
-          <text x={w.x + 16} y="364" fill="#221a13" fontSize="14" fontFamily="sans-serif" fontWeight="600">
-            {w.en} · {w.morph}
+          <text
+            x={w.x + 18}
+            y="346"
+            fill="#221a13"
+            fontSize="14"
+            fontFamily="sans-serif"
+            fontWeight="500"
+          >
+            {w.en}
           </text>
         </g>
       ))}
 
-      {/* English & Hebrew Comparative Parallel Block */}
-      <line x1="76" y1="428" x2="820" y2="428" stroke="#dfd2b8" strokeWidth="1.5" />
-      <text x="76" y="468" fill="#594c3d" fontSize="14" fontFamily="sans-serif" fontWeight="700" letterSpacing="2">
-        PARALLEL TEXT &amp; EXEGESIS NOTES
-      </text>
-      <text x="76" y="518" fill="#221a13" fontSize="30" fontFamily="Georgia, serif">
+      {/* Literary Translation Block */}
+      <text
+        x="104"
+        y="436"
+        fill="#221a13"
+        fontSize="31"
+        fontFamily="Georgia, serif"
+      >
         “In the beginning was the Word, and the Word was
       </text>
-      <text x="76" y="560" fill="#221a13" fontSize="30" fontFamily="Georgia, serif">
+      <text
+        x="104"
+        y="482"
+        fill="#221a13"
+        fontSize="31"
+        fontFamily="Georgia, serif"
+      >
         with God, and the Word was God.”
       </text>
 
-      {/* Old Testament Hebrew Cross-Reference Box */}
-      <rect x="76" y="608" width="744" height="264" fill="#fffdf7" stroke="#221a13" strokeWidth="1.5" />
-      <rect x="76" y="608" width="744" height="44" fill="#f2ead9" />
-      <line x1="76" y1="652" x2="820" y2="652" stroke="#221a13" strokeWidth="1.5" />
-      <text x="100" y="636" fill="#221a13" fontSize="14" fontFamily="sans-serif" fontWeight="700" letterSpacing="2">
-        HEBREW ROOT CORRELATION · GENESIS 1:1 (בְּרֵאשִׁית)
+      {/* Old Testament Hebrew Parallel Card */}
+      <rect
+        x="104"
+        y="538"
+        width="704"
+        height="310"
+        rx="14"
+        fill="#faf6ec"
+        stroke="#e6dbc6"
+        strokeWidth="1.5"
+      />
+      <text
+        x="136"
+        y="584"
+        fill="#a84d1d"
+        fontSize="13"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="2"
+      >
+        HEBREW PARALLEL · GENESIS 1:1
       </text>
-      <text x="100" y="712" fill="#221a13" fontSize="34" fontFamily="Georgia, serif" fontWeight="700">
-        H7225 · רֵאשִׁית (rēʾšîṯ) — beginning, firstfruits, chief part
+      <text
+        x="136"
+        y="642"
+        fill="#221a13"
+        fontSize="36"
+        fontFamily="Georgia, serif"
+        fontWeight="600"
+      >
+        בְּרֵאשִׁית (rēʾšîṯ) · H7225
       </text>
-      <text x="100" y="762" fill="#594c3d" fontSize="20" fontFamily="sans-serif">
-        Cross-indexed with LXX Ἐν ἀρχῇ ἐποίησεν ὁ Θεὸς — linking creation fiat
+      <text
+        x="136"
+        y="694"
+        fill="#5f5243"
+        fontSize="20"
+        fontFamily="Georgia, serif"
+        fontStyle="italic"
+      >
+        “Beginning, firstfruits, chief part — echoed in the Septuagint’s
       </text>
-      <text x="100" y="794" fill="#594c3d" fontSize="20" fontFamily="sans-serif">
-        with the Johanine prologue’s pre-existent Logos (John 1:1–3).
+      <text
+        x="136"
+        y="726"
+        fill="#5f5243"
+        fontSize="20"
+        fontFamily="Georgia, serif"
+        fontStyle="italic"
+      >
+        Ἐν ἀρχῇ and fulfilled in the Johannine prologue.”
       </text>
-      <text x="100" y="842" fill="#a84d1d" fontSize="14" fontFamily="sans-serif" fontWeight="700" letterSpacing="2">
-        MORPHOLOGY: NOUN · FEMININE SINGULAR CONSTRUCT
+      <line x1="136" y1="764" x2="776" y2="764" stroke="#e6dbc6" />
+      <text
+        x="136"
+        y="802"
+        fill="#7d6f5d"
+        fontSize="14"
+        fontFamily="sans-serif"
+        fontWeight="500"
+      >
+        Built for quiet seminary study &amp; original-language exegesis
       </text>
 
-      {/* Right Pane: Active Strong's Lexicon Inspector */}
-      <rect x="862" y="112" width="540" height="810" fill="#fffdf7" />
-      <rect x="900" y="152" width="140" height="34" fill="#a84d1d" />
-      <text x="920" y="174" fill="#faf6ec" fontSize="14" fontFamily="sans-serif" fontWeight="700" letterSpacing="2">
+      {/* Right Pane: Strong's Lexicon Study Card */}
+      <rect x="896" y="170" width="448" height="678" rx="14" fill="#faf6ec" stroke="#e6dbc6" strokeWidth="1.5" />
+      <rect x="932" y="204" width="128" height="32" rx="16" fill="#f3ecdc" />
+      <text
+        x="952"
+        y="225"
+        fill="#86390f"
+        fontSize="12"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="1.5"
+      >
         STRONG’S G3056
       </text>
-      <text x="900" y="246" fill="#221a13" fontSize="64" fontFamily="Georgia, serif" fontWeight="700">
+
+      <text
+        x="932"
+        y="296"
+        fill="#221a13"
+        fontSize="60"
+        fontFamily="Georgia, serif"
+        fontWeight="600"
+      >
         λόγος, ου, ὁ
       </text>
-      <text x="900" y="290" fill="#594c3d" fontSize="24" fontFamily="Georgia, serif" fontStyle="italic">
-        Transliteration: logos · Phonetic: log&apos;-os
+      <text
+        x="932"
+        y="338"
+        fill="#7d6f5d"
+        fontSize="22"
+        fontFamily="Georgia, serif"
+        fontStyle="italic"
+      >
+        logos · Nominative Singular Masculine
       </text>
 
-      <line x1="900" y1="324" x2="1360" y2="324" stroke="#dfd2b8" strokeWidth="2" />
+      <line x1="932" y1="372" x2="1308" y2="372" stroke="#e6dbc6" strokeWidth="1.5" />
 
-      <text x="900" y="366" fill="#594c3d" fontSize="14" fontFamily="sans-serif" fontWeight="700" letterSpacing="2">
-        ROOT &amp; GRAMMATICAL PARSING
+      <text
+        x="932"
+        y="412"
+        fill="#a84d1d"
+        fontSize="12"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="2"
+      >
+        SEMANTIC RANGE
       </text>
-      <text x="900" y="404" fill="#221a13" fontSize="20" fontFamily="sans-serif" fontWeight="600">
-        From λέγω (G3004) · Nominative Singular Masculine
+      <text x="932" y="454" fill="#221a13" fontSize="20" fontFamily="Georgia, serif">
+        I. A word, speech, divine utterance or decree.
+      </text>
+      <text x="932" y="494" fill="#221a13" fontSize="20" fontFamily="Georgia, serif">
+        II. Account, reckoning, reason, living wisdom.
+      </text>
+      <text x="932" y="534" fill="#221a13" fontSize="20" fontFamily="Georgia, serif">
+        III. The Personal Word — Christ incarnate.
       </text>
 
-      <line x1="900" y1="436" x2="1360" y2="436" stroke="#dfd2b8" strokeWidth="2" />
-
-      <text x="900" y="478" fill="#594c3d" fontSize="14" fontFamily="sans-serif" fontWeight="700" letterSpacing="2">
-        LEXICAL DEFINITION &amp; SEMANTIC RANGE
+      <rect x="932" y="584" width="376" height="224" rx="12" fill="#fffdf8" stroke="#e6dbc6" />
+      <text
+        x="960"
+        y="624"
+        fill="#5f5243"
+        fontSize="13"
+        fontFamily="sans-serif"
+        fontWeight="600"
+        letterSpacing="1.5"
+      >
+        NEW TESTAMENT OCCURRENCES (330)
       </text>
-      <text x="900" y="522" fill="#221a13" fontSize="21" fontFamily="sans-serif">
-        I. Speech, word, utterance, decree, mandate.
+      <text x="960" y="668" fill="#221a13" fontSize="18" fontFamily="Georgia, serif">
+        Gospel of John ······························· 40
       </text>
-      <text x="900" y="562" fill="#221a13" fontSize="21" fontFamily="sans-serif">
-        II. Account, reckoning, reason, divine wisdom.
+      <text x="960" y="706" fill="#221a13" fontSize="18" fontFamily="Georgia, serif">
+        Acts of the Apostles ························· 65
       </text>
-      <text x="900" y="602" fill="#221a13" fontSize="21" fontFamily="sans-serif">
-        III. The Personal Word (Christ), self-revelation of God.
+      <text x="960" y="744" fill="#221a13" fontSize="18" fontFamily="Georgia, serif">
+        Pauline Epistles ····························· 81
       </text>
-
-      {/* Concordance Occurrences Box */}
-      <rect x="900" y="654" width="460" height="218" fill="#f2ead9" stroke="#221a13" strokeWidth="1.5" />
-      <text x="928" y="694" fill="#221a13" fontSize="14" fontFamily="sans-serif" fontWeight="700" letterSpacing="2">
-        CONCORDANCE FREQUENCY · 330 OCCURRENCES
-      </text>
-      <line x1="928" y1="712" x2="1332" y2="712" stroke="#c7b697" strokeWidth="1.5" />
-      <text x="928" y="748" fill="#221a13" fontSize="18" fontFamily="sans-serif">
-        Gospel of John ······························· 40x
-      </text>
-      <text x="928" y="784" fill="#221a13" fontSize="18" fontFamily="sans-serif">
-        Acts of the Apostles ························· 65x
-      </text>
-      <text x="928" y="820" fill="#221a13" fontSize="18" fontFamily="sans-serif">
-        Pauline Epistles ····························· 81x
-      </text>
-      <text x="928" y="852" fill="#a84d1d" fontSize="15" fontFamily="sans-serif" fontWeight="700">
-        BUILT BY GERARDO CASTANEDA · LIVE WEB APPLICATION
+      <text x="960" y="782" fill="#a84d1d" fontSize="14" fontFamily="Georgia, serif" fontStyle="italic">
+        Personal software by Gerardo Castaneda
       </text>
     </svg>
   );

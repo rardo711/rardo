@@ -71,17 +71,14 @@ export default function StickyCta() {
       >
         <Link
           href={targetHref}
-          className="group flex min-h-12 w-full items-center justify-between rounded-[2px] border border-ink bg-ink px-5 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
+          className="group flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-ink px-6 text-base font-semibold text-paper shadow-sm transition-colors hover:bg-accent-deep"
         >
-          <span>Request Free Working Mockup</span>
-          <span className="inline-flex items-center gap-1.5 font-tech text-xs uppercase text-paper/80">
-            7-Day Build
-            <ArrowRight
-              size={16}
-              aria-hidden
-              className="transition-transform group-hover:translate-x-0.5"
-            />
-          </span>
+          <span>Start with a free mockup</span>
+          <ArrowRight
+            size={17}
+            aria-hidden
+            className="transition-transform duration-300 group-hover:translate-x-0.5"
+          />
         </Link>
       </div>
     </>

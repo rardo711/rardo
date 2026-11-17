@@ -3,43 +3,43 @@ import { ArrowUpRight } from "lucide-react";
 import Logo from "./Logo";
 
 const studioLinks = [
-  { num: "01", href: "/#services", label: "Service Capabilities" },
-  { num: "02", href: "/#work", label: "Shipped Client Ledger" },
-  { num: "03", href: "/#process", label: "Four-Stage Protocol" },
-  { num: "04", href: "/#inquire", label: "Request a Free Mockup" },
-  { num: "05", href: "/about", label: "About, Dossier & Treatise" },
-  { num: "06", href: "/contact", label: "Standalone Project Brief" },
+  { href: "/#services", label: "What I do" },
+  { href: "/#work", label: "Selected work" },
+  { href: "/#process", label: "How it works" },
+  { href: "/#inquire", label: "Free mockup" },
+  { href: "/about", label: "About & story" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const shippedIndex = [
   {
-    label: "RaeMa's Remedies",
-    meta: "Order System · Tattnall County",
+    label: "RaeMa’s Remedies",
+    meta: "Order site · Tattnall County",
     href: "https://raemas-remedies.vercel.app",
   },
   {
     label: "Better Than Gold Tallow Co.",
-    meta: "Farm Brand · Southeast GA",
+    meta: "Farm brand · Southeast GA",
     href: "https://better-than-gold-tallow.vercel.app",
   },
   {
     label: "Theos Logos",
-    meta: "Greek & Hebrew Lexicon App",
+    meta: "Greek & Hebrew study app",
     href: "https://theos-logos-official.vercel.app",
   },
   {
-    label: "The Life Proper Podcast",
-    meta: "Co-host · Spotify",
+    label: "The Life Proper",
+    meta: "Podcast on Spotify",
     href: "https://open.spotify.com/show/2rxl4jrLFaQ2SYb75NGDYj",
   },
   {
     label: "@lvngphotography",
-    meta: "Portrait & Family Archive",
+    meta: "Portrait & family archive",
     href: "https://www.instagram.com/lvngphotography/",
   },
   {
     label: "GitHub (@rardo711)",
-    meta: "Open Source & Repositories",
+    meta: "Code & repositories",
     href: "https://github.com/rardo711",
   },
 ];
@@ -49,74 +49,66 @@ export default function Footer() {
     <footer
       data-surface="dark"
       data-cta-end=""
-      className="border-t border-line bg-coal text-paper"
+      className="bg-coal text-paper"
     >
-      <div className="gutter mx-auto max-w-6xl py-16 sm:py-20 lg:max-w-7xl">
-        {/* Top 4-Column Architectural Directory */}
-        <div className="grid gap-12 border-b border-paper/15 pb-14 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          {/* Column 1: Identity & Direct Dispatch */}
-          <div className="lg:col-span-4">
-            <div className="flex items-center gap-3">
-              <Logo size={36} className="text-paper" />
+      <div className="gutter mx-auto max-w-6xl py-18 sm:py-24 lg:max-w-7xl">
+        <div className="grid gap-12 border-b border-paper/12 pb-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+          {/* Column 1: Warm Studio Signature */}
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-3.5">
+              <Logo size={38} className="text-paper" />
               <div>
                 <p className="font-display text-2xl font-semibold leading-none tracking-tight">
                   Gerardo Castaneda
                 </p>
-                <p className="mt-1 font-tech text-[0.6875rem] uppercase text-paper/65">
-                  Rardo · Independent Web Studio
+                <p className="mt-1 font-tech text-[0.6875rem] uppercase text-paper/60">
+                  Glennville, Georgia
                 </p>
               </div>
             </div>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-paper/75">
-              Bespoke one-page websites, direct inbox ordering ledgers, and
-              self-editable owner panels for small businesses in Glennville,
-              Tattnall County, and across Southeast Georgia.
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-paper/75">
+              Simple, fast one-page websites, direct ordering forms, and
+              update-it-yourself pages for local businesses — built in one
+              focused week for a flat fee.
             </p>
-            <div className="mt-6 flex flex-col gap-2 border-t border-paper/15 pt-5 text-sm">
-              <div className="flex items-baseline justify-between gap-4">
-                <span className="font-tech text-xs uppercase text-paper/60">Email</span>
-                <a
-                  href="mailto:gerardoj2001@outlook.com"
-                  className="font-medium text-paper underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent"
-                >
-                  gerardoj2001@outlook.com
-                </a>
-              </div>
-              <div className="flex items-baseline justify-between gap-4">
-                <span className="font-tech text-xs uppercase text-paper/60">Direct X</span>
-                <a
-                  href="https://x.com/gerardocasta711"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 font-medium text-paper underline decoration-paper/30 underline-offset-4 transition-colors hover:text-accent"
-                >
-                  @gerardocasta711
-                  <span className="sr-only"> (opens in a new tab)</span>
-                  <ArrowUpRight size={14} aria-hidden />
-                </a>
-              </div>
-              <div className="flex items-baseline justify-between gap-4">
-                <span className="font-tech text-xs uppercase text-paper/60">Response</span>
-                <span className="tabular-nums text-paper/85">Within 24 Hours (Mon–Sat)</span>
-              </div>
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+              <a
+                href="mailto:gerardoj2001@outlook.com"
+                className="font-medium text-paper underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent"
+              >
+                gerardoj2001@outlook.com
+              </a>
+              <a
+                href="https://x.com/gerardocasta711"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-1 font-medium text-paper/80 transition-colors hover:text-paper"
+              >
+                <span className="u-sweep">@gerardocasta711</span>
+                <span className="sr-only"> on X (opens in a new tab)</span>
+                <ArrowUpRight
+                  size={14}
+                  aria-hidden
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
             </div>
           </div>
 
-          {/* Column 2: Site Index & Capabilities */}
-          <div className="lg:col-span-3 lg:pl-4">
-            <p className="font-tech text-eyebrow font-semibold uppercase text-paper/60">
-              01 · Site Directory
+          {/* Column 2: Navigation */}
+          <div className="lg:col-span-2">
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/55">
+              Pages
             </p>
-            <nav aria-label="Footer directory" className="mt-5">
-              <ul className="flex flex-col divide-y divide-paper/10 border-y border-paper/10">
+            <nav aria-label="Footer navigation" className="mt-5">
+              <ul className="flex flex-col gap-2.5">
                 {studioLinks.map((l) => (
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="group flex items-center justify-between py-2.5 text-sm text-paper/80 transition-colors hover:text-paper"
+                      className="inline-block text-sm text-paper/80 transition-colors hover:text-paper"
                     >
                       <span className="u-sweep">{l.label}</span>
-                      <span className="font-tech text-xs text-accent">{l.num}</span>
                     </Link>
                   </li>
                 ))}
@@ -124,32 +116,27 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 3: Shipped Client & Software Index */}
+          {/* Column 3: Shipped Sites & Projects */}
           <div className="lg:col-span-3">
-            <p className="font-tech text-eyebrow font-semibold uppercase text-paper/60">
-              02 · Shipped Works &amp; Channels
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/55">
+              Work &amp; Projects
             </p>
-            <ul className="mt-5 flex flex-col divide-y divide-paper/10 border-y border-paper/10">
+            <ul className="mt-5 flex flex-col gap-3">
               {shippedIndex.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-baseline justify-between gap-2 py-2.5 text-sm text-paper/85 transition-colors hover:text-paper"
+                    className="group inline-flex items-baseline gap-1.5 text-sm text-paper/85 transition-colors hover:text-paper"
                   >
-                    <div>
-                      <span className="font-medium group-hover:underline">
-                        {item.label}
-                      </span>
-                      <span className="block font-tech text-[0.6875rem] uppercase text-paper/55">
-                        {item.meta}
-                      </span>
-                    </div>
+                    <span className="u-sweep font-medium">{item.label}</span>
+                    <span className="text-xs text-paper/50">· {item.meta}</span>
+                    <span className="sr-only"> (opens in a new tab)</span>
                     <ArrowUpRight
-                      size={14}
+                      size={13}
                       aria-hidden
-                      className="shrink-0 text-paper/50 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                      className="shrink-0 self-center text-paper/45 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
                     />
                   </a>
                 </li>
@@ -157,45 +144,37 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Colophon & Commercial Terms */}
+          {/* Column 4: Colophon */}
           <div className="lg:col-span-2">
-            <p className="font-tech text-eyebrow font-semibold uppercase text-paper/60">
-              03 · Colophon
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/55">
+              Colophon
             </p>
-            <dl className="mt-5 flex flex-col gap-3.5 text-xs text-paper/75">
-              <div className="border-t border-paper/10 pt-3">
-                <dt className="font-tech uppercase text-paper/50">Station</dt>
-                <dd className="mt-1 font-medium text-paper/90">
-                  Glennville &amp; Reidsville, Tattnall County, GA
-                </dd>
-                <dd className="mt-0.5 font-tech text-[0.6875rem] tabular-nums text-paper/60">
-                  31.9407° N, 81.9296° W
+            <dl className="mt-5 flex flex-col gap-4 text-xs leading-relaxed text-paper/70">
+              <div>
+                <dt className="text-paper/45">Home base</dt>
+                <dd className="mt-0.5 text-paper/85">
+                  Glennville &amp; Tattnall County, GA
                 </dd>
               </div>
-              <div className="border-t border-paper/10 pt-3">
-                <dt className="font-tech uppercase text-paper/50">Commercial Terms</dt>
-                <dd className="mt-1 leading-relaxed text-paper/85">
-                  $0 working mockup prior to commitment. Flat-fee build in 7 days. $0 monthly developer retainer.
+              <div>
+                <dt className="text-paper/45">The promise</dt>
+                <dd className="mt-0.5 text-paper/85">
+                  Free mockup first. Flat fee named before I start. Yours outright.
                 </dd>
               </div>
-              <div className="border-t border-paper/10 pt-3">
-                <dt className="font-tech uppercase text-paper/50">Typography</dt>
-                <dd className="mt-1 text-paper/85">
-                  Fraunces &amp; Public Sans (Tabular Numerals)
+              <div>
+                <dt className="text-paper/45">Typeset in</dt>
+                <dd className="mt-0.5 text-paper/85">
+                  Fraunces &amp; Public Sans
                 </dd>
               </div>
             </dl>
           </div>
         </div>
 
-        {/* Bottom Provenance Bar */}
-        <div className="mt-8 flex flex-col gap-3 pb-[env(safe-area-inset-bottom)] sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-tech text-xs uppercase text-paper/65">
-            © 2026 Gerardo Castaneda · Built in Glennville, Georgia · Soli Deo Gloria
-          </p>
-          <p className="font-tech text-xs uppercase text-paper/55">
-            Edition 2026.11 · All client sites 100% owner-held
-          </p>
+        <div className="mt-8 flex flex-col gap-2 pb-[env(safe-area-inset-bottom)] text-xs text-paper/55 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 Gerardo Castaneda · Glennville, Georgia</p>
+          <p className="font-display italic text-paper/70">Soli Deo Gloria</p>
         </div>
       </div>
     </footer>

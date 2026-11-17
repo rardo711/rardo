@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AlertCircle, ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/gerardoj2001@outlook.com";
 
@@ -9,62 +10,57 @@ type Status = "idle" | "sending" | "sent" | "error";
 type Field = "name" | "contact" | "message";
 type Errors = Partial<Record<Field, string>>;
 
+const EASE = [0.16, 1, 0.3, 1] as const;
+
 export const SCOPE_OPTIONS = [
   {
     id: "One-Page Business Website",
-    code: "01",
     label: "One-Page Business Website",
     sub: "Hours, story, location & tap-to-call",
     prompt:
-      "Tell me what your business sells or does, your town/hours, and what customers ask you most on the phone.",
+      "Tell me what your business does, your town and hours, and what customers ask you most on the phone.",
   },
   {
     id: "Ordering & Contact Form System",
-    code: "02",
-    label: "Ordering & Contact Form System",
+    label: "Ordering & Contact System",
     sub: "Customer orders sent straight to your inbox",
     prompt:
-      "Tell me what items or services customers order from you, and how you currently take orders (text, phone, DM, paper).",
+      "Tell me what items or services customers order from you, and how you currently take orders (phone, text, DM).",
   },
   {
     id: "Self-Editable Website + Admin Panel",
-    code: "03",
-    label: "Self-Editable Website + Admin Panel",
+    label: "Self-Editable Site",
     sub: "Update prices, photos & hours yourself",
     prompt:
-      "Tell me what changes most often in your business (seasonal items, prices, hours, photos) that you want to edit yourself.",
+      "Tell me what changes most often in your shop (seasonal items, prices, hours, photos) that you'd like to edit on your own.",
   },
   {
     id: "Site Inspired by RaeMa's Remedies",
-    code: "04",
-    label: "Site Inspired by RaeMa's Remedies",
-    sub: "Product catalog + inbox checkout + owner panel",
+    label: "Like RaeMa’s Remedies",
+    sub: "Product catalog + inbox orders + edit panel",
     prompt:
-      "I’d like a storefront and direct inbox ordering setup similar to RaeMa’s Remedies. Here is what we make/sell:",
+      "I’d love a storefront and inbox ordering setup similar to RaeMa’s Remedies. Here is what we make or sell:",
   },
   {
     id: "Site Inspired by Better Than Gold Tallow Co.",
-    code: "05",
-    label: "Site Inspired by Better Than Gold Tallow Co.",
-    sub: "Farm/maker story + product ledger + direct contact",
+    label: "Like Better Than Gold",
+    sub: "Farm/maker story + product showcase",
     prompt:
-      "I’d like a one-page brand & product showcase similar to Better Than Gold Tallow Co. Here is our story and product line:",
+      "I’d love a one-page brand & product showcase similar to Better Than Gold Tallow Co. Here is our story and what we offer:",
   },
   {
     id: "Software / Custom Web Application",
-    code: "06",
-    label: "Software / Custom Web Application",
-    sub: "Custom interactive tool or study/business app",
+    label: "Custom Project / Not Sure Yet",
+    sub: "Plain-talk advice & free mockup",
     prompt:
-      "Tell me about the custom web tool, directory, or workflow you want to build and who will use it.",
+      "Tell me a little about your business or idea — even a sentence or two is plenty to get started.",
   },
 ] as const;
 
 const inputCls =
-  "w-full min-h-12 rounded-[2px] border border-field bg-paper px-4 py-3 text-base text-ink placeholder:text-ink-mute transition-colors hover:border-ink focus-visible:border-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent aria-[invalid=true]:border-2 aria-[invalid=true]:border-accent-deep";
+  "w-full min-h-12 rounded-xl border border-line-strong bg-paper/70 px-4 py-3 text-base text-ink placeholder:text-ink-mute transition-all duration-200 hover:border-field focus:bg-surface focus-visible:border-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent aria-[invalid=true]:border-2 aria-[invalid=true]:border-accent-deep";
 
-const labelCls =
-  "font-tech text-eyebrow font-semibold uppercase text-ink";
+const labelCls = "text-sm font-semibold text-ink";
 
 const FIELD_ORDER: Field[] = ["name", "contact", "message"];
 
@@ -104,6 +100,7 @@ export default function ContactForm({
 }: {
   initialScope?: string;
 }) {
+  const reduce = useReducedMotion();
   const [status, setStatus] = useState<Status>("idle");
   const [selectedScope, setSelectedScope] = useState<string>(initialScope);
   const [contextBanner, setContextBanner] = useState<string | null>(null);
@@ -113,7 +110,6 @@ export default function ContactForm({
   const nameInputRef = useRef<HTMLInputElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
-  // Wire URL query param (?scope=... or ?product=...) and global [data-inquire-product] clicks
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const fromQuery = params.get("scope") ?? params.get("product");
@@ -123,7 +119,7 @@ export default function ContactForm({
       );
       const val = matched ? matched.id : fromQuery;
       setSelectedScope(val);
-      setContextBanner(`Pre-selected from your click: ${val}`);
+      setContextBanner(`Selected: ${matched ? matched.label : val}`);
     }
 
     function handleInquireClick(e: MouseEvent) {
@@ -139,13 +135,16 @@ export default function ContactForm({
         document.getElementById("contact-form");
       if (targetSection) {
         e.preventDefault();
+        const matched = SCOPE_OPTIONS.find((o) => o.id === product);
         setSelectedScope(product);
-        setContextBanner(`Selected Scope: ${product}`);
-        const reduce = window.matchMedia(
+        setContextBanner(
+          `Selected: ${matched ? matched.label : product}`
+        );
+        const prefersReduced = window.matchMedia(
           "(prefers-reduced-motion: reduce)"
         ).matches;
         targetSection.scrollIntoView({
-          behavior: reduce ? "auto" : "smooth",
+          behavior: prefersReduced ? "auto" : "smooth",
           block: "start",
         });
         window.setTimeout(() => {
@@ -233,31 +232,35 @@ export default function ContactForm({
 
   if (status === "sent") {
     return (
-      <div
+      <motion.div
         ref={successRef}
         tabIndex={-1}
         role="status"
-        className="rounded-[2px] border border-ink bg-surface p-8 sm:p-12 outline-none"
+        initial={reduce ? false : { opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: EASE }}
+        className="card-editorial rounded-2xl p-8 sm:p-12 outline-none"
       >
-        <p className="font-tech text-xs font-semibold uppercase text-accent-deep">
-          DISPATCH CONFIRMED · SCOPE: {selectedScope}
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-wash px-3.5 py-1 font-tech text-xs font-medium uppercase text-accent-deep">
+          <Check size={14} aria-hidden />
+          Message Received
+        </span>
+        <p className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
+          Got it — thank you.
         </p>
-        <p className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink">
-          Your project brief is in my inbox.
-        </p>
-        <p className="mt-4 max-w-lg leading-relaxed text-ink-soft">
-          I review every inquiry personally in Glennville and will reply within
-          one business day with plain-talk answers and next steps for your free
-          working mockup.
+        <p className="mt-3 max-w-lg leading-relaxed text-ink-soft">
+          Your note landed straight in my inbox in Glennville. I&apos;ll read it
+          personally and get back to you within a day with plain-talk next steps
+          for your free mockup.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 inline-flex items-center gap-2 rounded-[2px] border border-ink bg-paper px-4 py-2 font-tech text-xs font-semibold uppercase text-ink hover:bg-wash"
+          className="mt-7 inline-flex items-center gap-2 rounded-lg border border-line-strong bg-paper px-4 py-2 text-xs font-semibold text-ink transition-colors hover:border-ink hover:bg-wash"
         >
-          Send another note
+          Send another message
         </button>
-      </div>
+      </motion.div>
     );
   }
 
@@ -270,51 +273,45 @@ export default function ContactForm({
       ref={formRef}
       onSubmit={onSubmit}
       noValidate
-      className="flex flex-col gap-6 rounded-[2px] border border-ink bg-surface p-6 sm:p-8"
+      className="card-editorial flex flex-col gap-6 rounded-2xl p-6 sm:p-9"
     >
-      {/* Form Dossier Header */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-4">
-        <div>
-          <p className="font-tech text-xs font-semibold uppercase text-accent-deep">
-            FORM NO. 01 · DIRECT PROJECT &amp; MOCKUP BRIEF
-          </p>
-          <p className="mt-1 text-sm text-ink-soft">
-            No toggle gates. Pick what you need and send your note straight to my inbox.
-          </p>
-        </div>
-        <span className="rounded-[2px] border border-line-strong bg-wash px-2.5 py-1 font-tech text-[0.6875rem] font-semibold uppercase tabular-nums text-ink">
-          $0 Upfront Mockup
-        </span>
-      </div>
-
-      {/* Live Contextual Status Banner when triggered by an item CTA */}
-      {contextBanner && (
-        <div
-          role="status"
-          aria-live="polite"
-          className="flex items-center justify-between gap-3 rounded-[2px] border border-accent bg-wash px-4 py-3 text-xs font-semibold text-ink"
-        >
-          <span className="flex items-center gap-2">
-            <Check size={15} className="shrink-0 text-accent-deep" aria-hidden />
-            <span className="font-tech uppercase">{contextBanner}</span>
-          </span>
-          <button
-            type="button"
-            onClick={() => setContextBanner(null)}
-            className="font-tech text-[0.6875rem] uppercase underline text-ink-soft hover:text-ink"
+      {/* Smooth Contextual Banner when triggered from a card */}
+      <AnimatePresence>
+        {contextBanner && (
+          <motion.div
+            role="status"
+            aria-live="polite"
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
+            transition={{ duration: 0.25, ease: EASE }}
+            className="flex items-center justify-between gap-3 rounded-xl border border-accent/35 bg-wash/90 px-4 py-3 text-xs font-medium text-ink"
           >
-            Dismiss
-          </button>
-        </div>
-      )}
+            <span className="flex items-center gap-2">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-paper">
+                <Check size={12} aria-hidden />
+              </span>
+              <span>{contextBanner}</span>
+            </span>
+            <button
+              type="button"
+              onClick={() => setContextBanner(null)}
+              className="text-xs text-ink-soft underline-offset-2 hover:text-ink hover:underline"
+            >
+              Clear
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Interactive Scope / Product Selector */}
-      <fieldset className="flex flex-col gap-2.5">
+      {/* Tactile Scope / Project Selector */}
+      <fieldset className="flex flex-col gap-3">
         <legend className={labelCls}>
-          01 · What kind of build are you inquiring about?
+          What would you like to build?{" "}
+          <span className="font-normal text-ink-mute">(pick one)</span>
         </legend>
         <input type="hidden" name="scope" value={selectedScope} />
-        <div className="mt-1 grid gap-2 sm:grid-cols-2">
+        <div className="grid gap-2.5 sm:grid-cols-2">
           {SCOPE_OPTIONS.map((option) => {
             const active = selectedScope === option.id;
             return (
@@ -324,52 +321,42 @@ export default function ContactForm({
                 aria-pressed={active}
                 onClick={() => {
                   setSelectedScope(option.id);
-                  setContextBanner(`Selected Scope: ${option.label}`);
+                  setContextBanner(`Selected: ${option.label}`);
                 }}
-                className={`flex flex-col items-start justify-between rounded-[2px] border p-3 text-left transition-colors ${
+                className={`group relative flex flex-col items-start justify-between rounded-xl border p-3.5 text-left transition-all duration-200 ${
                   active
-                    ? "border-ink bg-ink text-paper"
-                    : "border-line-strong bg-paper text-ink hover:border-ink hover:bg-wash/60"
+                    ? "border-accent bg-wash/90 shadow-xs"
+                    : "border-line bg-paper/55 hover:border-line-strong hover:bg-wash/40"
                 }`}
               >
                 <div className="flex w-full items-center justify-between gap-2">
+                  <span className="font-display text-sm font-semibold text-ink">
+                    {option.label}
+                  </span>
                   <span
-                    className={`font-tech text-[0.6875rem] font-semibold uppercase ${
-                      active ? "text-accent" : "text-accent-deep"
+                    aria-hidden
+                    className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                      active
+                        ? "border-accent bg-accent text-paper"
+                        : "border-line-strong bg-surface"
                     }`}
                   >
-                    SCOPE {option.code}
+                    {active && <Check size={10} strokeWidth={3} />}
                   </span>
-                  {active && (
-                    <span className="font-tech text-[0.625rem] uppercase tracking-wider text-paper/80">
-                      SELECTED
-                    </span>
-                  )}
                 </div>
-                <span className="mt-1 font-display text-sm font-semibold leading-snug">
-                  {option.label}
-                </span>
-                <span
-                  className={`mt-0.5 text-xs ${
-                    active ? "text-paper/75" : "text-ink-soft"
-                  }`}
-                >
-                  {option.sub}
-                </span>
+                <span className="mt-1 text-xs text-ink-soft">{option.sub}</span>
               </button>
             );
           })}
         </div>
       </fieldset>
 
-      {/* Contact Inputs */}
+      {/* Name & Business */}
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="f-name" className={labelCls}>
-            02 · Your Name{" "}
-            <span className="font-normal normal-case tracking-normal text-ink-soft">
-              (required)
-            </span>
+            Your name{" "}
+            <span className="font-normal text-ink-mute">(required)</span>
           </label>
           <input
             ref={nameInputRef}
@@ -390,28 +377,25 @@ export default function ContactForm({
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="f-business" className={labelCls}>
-            03 · Business &amp; Town{" "}
-            <span className="font-normal normal-case tracking-normal text-ink-soft">
-              (optional)
-            </span>
+            Business &amp; town{" "}
+            <span className="font-normal text-ink-mute">(optional)</span>
           </label>
           <input
             id="f-business"
             name="business"
             autoComplete="organization"
             enterKeyHint="next"
-            placeholder="Doe's Feed & Seed — Glennville, GA"
+            placeholder="Doe’s Bakery · Glennville, GA"
             className={inputCls}
           />
         </div>
       </div>
 
+      {/* Contact Info */}
       <div className="flex flex-col gap-2">
         <label htmlFor="f-contact" className={labelCls}>
-          04 · Email or Phone Number{" "}
-          <span className="font-normal normal-case tracking-normal text-ink-soft">
-            (required)
-          </span>
+          Email or phone number{" "}
+          <span className="font-normal text-ink-mute">(required)</span>
         </label>
         <input
           id="f-contact"
@@ -420,7 +404,7 @@ export default function ContactForm({
           autoCapitalize="none"
           spellCheck={false}
           enterKeyHint="next"
-          placeholder="you@business.com or (912) 555-0140"
+          placeholder="Where can I reach you?"
           aria-invalid={errors.contact ? true : undefined}
           aria-describedby={errors.contact ? "f-contact-err" : undefined}
           onBlur={onBlur("contact")}
@@ -430,16 +414,15 @@ export default function ContactForm({
         <FieldError id="f-contact-err" message={errors.contact} />
       </div>
 
+      {/* Project Description */}
       <div className="flex flex-col gap-2">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <label htmlFor="f-message" className={labelCls}>
-            05 · Project Particulars{" "}
-            <span className="font-normal normal-case tracking-normal text-ink-soft">
-              (required)
-            </span>
+            About your business{" "}
+            <span className="font-normal text-ink-mute">(required)</span>
           </label>
-          <span className="font-tech text-[0.6875rem] uppercase text-accent-deep">
-            Prompt tailored for: {activeScopeObj.label}
+          <span className="font-display text-xs italic text-accent-deep">
+            {activeScopeObj.label}
           </span>
         </div>
         <textarea
@@ -469,12 +452,12 @@ export default function ContactForm({
 
       {errorCount > 0 && (
         <p role="alert" className="text-sm font-medium text-accent-deep">
-          Please complete {errorCount === 1 ? "1 required field" : `${errorCount} required fields`} before sending.
+          Please check {errorCount === 1 ? "1 field" : `${errorCount} fields`} above before sending.
         </p>
       )}
       {status === "error" && (
         <p role="alert" className="text-sm font-medium text-accent-deep">
-          Network error sending that brief — please{" "}
+          Something went wrong sending that — please{" "}
           <a
             href="mailto:gerardoj2001@outlook.com"
             className="underline underline-offset-2"
@@ -500,40 +483,40 @@ export default function ContactForm({
           type="submit"
           aria-disabled={sending}
           aria-busy={sending}
-          className="group inline-flex min-h-13 flex-1 items-center justify-center gap-2 rounded-[2px] border border-ink bg-ink px-7 py-3.5 text-base font-semibold text-paper transition-colors hover:border-accent-deep hover:bg-accent-deep aria-disabled:opacity-60"
+          className="group inline-flex min-h-13 flex-1 items-center justify-center gap-2 rounded-xl bg-ink px-7 py-3.5 text-base font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0 aria-disabled:opacity-60"
         >
-          <span>
-            {sending
-              ? "Dispatching Brief…"
-              : `Send Brief · ${activeScopeObj.code}`}
-          </span>
+          <span>{sending ? "Sending your note…" : "Send message"}</span>
           <ArrowRight
             size={18}
             aria-hidden
-            className="transition-transform group-hover:translate-x-1"
+            className="transition-transform duration-300 group-hover:translate-x-1"
           />
         </button>
         <a
           href="https://x.com/gerardocasta711"
           target="_blank"
           rel="noreferrer"
-          className="group inline-flex min-h-13 items-center justify-center gap-2 rounded-[2px] border border-ink bg-paper px-5 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-wash"
+          className="group inline-flex min-h-13 items-center justify-center gap-2 rounded-xl border border-line-strong bg-paper px-5 py-3.5 text-sm font-semibold text-ink transition-colors duration-300 hover:border-ink hover:bg-wash"
         >
-          <span>DM @gerardocasta711</span>
-          <span className="sr-only"> on X (opens in a new tab)</span>
-          <ArrowUpRight size={16} aria-hidden />
+          <span>Message on X</span>
+          <span className="sr-only"> (opens in a new tab)</span>
+          <ArrowUpRight
+            size={16}
+            aria-hidden
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
         </a>
       </div>
 
-      <p className="border-t border-line pt-3 font-tech text-xs uppercase text-ink-soft">
-        Direct Email:{" "}
+      <p className="text-center text-xs text-ink-soft sm:text-left">
+        Or email directly at{" "}
         <a
           href="mailto:gerardoj2001@outlook.com"
-          className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4"
+          className="font-semibold text-ink underline decoration-accent/70 decoration-1 underline-offset-4 transition-colors hover:text-accent-deep"
         >
           gerardoj2001@outlook.com
         </a>{" "}
-        · Replies within 24 hours · Free mockup before any invoice
+        — I reply within a day, and the mockup is always free.
       </p>
     </form>
   );

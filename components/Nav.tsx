@@ -4,15 +4,18 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Logo from "./Logo";
 
 const links = [
-  { num: "01", href: "/#services", label: "Capabilities" },
-  { num: "02", href: "/#work", label: "Shipped Work" },
-  { num: "03", href: "/#process", label: "Protocol" },
-  { num: "04", href: "/about", label: "About & Treatise" },
-  { num: "05", href: "/contact", label: "Contact" },
+  { href: "/#services", label: "What I do" },
+  { href: "/#work", label: "Selected work" },
+  { href: "/#process", label: "How it works" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 function Burger({ open }: { open: boolean }) {
   return (
@@ -26,6 +29,7 @@ function Burger({ open }: { open: boolean }) {
 
 export default function Nav() {
   const pathname = usePathname();
+  const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const openRef = useRef(false);
@@ -35,7 +39,6 @@ export default function Nav() {
   function brandClick(e: React.MouseEvent) {
     if (pathname !== "/") return;
     e.preventDefault();
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   }
 
@@ -121,27 +124,30 @@ export default function Nav() {
   return (
     <header
       ref={headerRef}
-      className="site-header sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-xs pt-[env(safe-area-inset-top)]"
+      className="site-header sticky top-0 z-50 border-b border-line/80 bg-paper/85 backdrop-blur-md pt-[env(safe-area-inset-top)]"
     >
-      <div className="gutter mx-auto flex max-w-6xl items-center justify-between py-3.5 lg:max-w-7xl">
+      <div className="gutter mx-auto flex max-w-6xl items-center justify-between py-4 lg:max-w-7xl">
         <Link
           href="/"
           onClick={brandClick}
           className="group flex items-center gap-3 text-ink"
           aria-label="Gerardo Castaneda — home"
         >
-          <Logo size={32} className="text-ink transition-colors group-hover:text-accent-deep" />
+          <Logo
+            size={34}
+            className="text-ink transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
           <div className="flex flex-col">
             <span className="font-display text-lg font-semibold leading-none tracking-tight">
               Gerardo Castaneda
             </span>
-            <span className="mt-1 font-tech text-[0.6875rem] uppercase tracking-widest text-ink-soft">
-              Glennville, GA · Web Studio
+            <span className="mt-1 font-tech text-[0.65rem] uppercase text-ink-mute">
+              Glennville, Georgia
             </span>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {links.map((l) => {
             const active =
               (l.href === "/about" && pathname === "/about") ||
@@ -151,24 +157,23 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 aria-current={active ? "page" : undefined}
-                className={`u-sweep inline-flex items-baseline gap-1.5 text-sm font-medium transition-colors hover:text-ink ${
+                className={`u-sweep text-sm font-medium transition-colors duration-300 hover:text-ink ${
                   active ? "font-semibold text-ink" : "text-ink-soft"
                 }`}
               >
-                <span className="font-tech text-xs text-accent-deep">{l.num}</span>
-                <span>{l.label}</span>
+                {l.label}
               </Link>
             );
           })}
           <Link
             href={primaryCtaHref}
-            className="group inline-flex items-center gap-2 rounded-[2px] border border-ink bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:border-accent-deep hover:bg-accent-deep"
+            className="group inline-flex items-center gap-2 rounded-lg bg-ink px-5 py-2.5 text-sm font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0"
           >
-            Request Free Mockup
+            <span>Start your project</span>
             <ArrowRight
               size={15}
               aria-hidden
-              className="transition-transform group-hover:translate-x-0.5"
+              className="transition-transform duration-300 group-hover:translate-x-0.5"
             />
           </Link>
         </nav>
@@ -181,68 +186,81 @@ export default function Nav() {
             aria-expanded={open}
             aria-controls="site-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-[2px] border border-ink bg-surface text-ink transition-colors hover:bg-wash data-[open=true]:bg-wash"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line-strong bg-surface text-ink transition-colors hover:border-ink data-[open=true]:bg-wash"
             data-open={open}
           >
             <Burger open={open} />
           </button>
 
-          {open && (
-            <nav
-              id="site-menu"
-              aria-label="Site menu"
-              className="menu-pop absolute right-0 top-[calc(100%+0.5rem)] z-[70] w-[min(22rem,calc(100vw-2.5rem))] rounded-[2px] border border-ink bg-surface p-0"
-            >
-              <div className="border-b border-line bg-wash px-4 py-2.5 font-tech text-[0.6875rem] uppercase text-ink-soft">
-                Directory · Glennville, GA
-              </div>
-              <ul className="divide-y divide-line">
-                {links.map((l) => {
-                  const active =
-                    (l.href === "/about" && pathname === "/about") ||
-                    (l.href === "/contact" && pathname === "/contact");
-                  return (
-                    <li key={l.href}>
-                      <Link
-                        href={l.href}
-                        aria-current={active ? "page" : undefined}
-                        onClick={() => setOpen(false)}
-                        className={`group flex items-center gap-3.5 px-4 py-3.5 transition-colors hover:bg-wash ${
-                          active ? "bg-wash text-accent-deep" : "text-ink"
-                        }`}
+          <AnimatePresence>
+            {open && (
+              <motion.nav
+                id="site-menu"
+                aria-label="Site menu"
+                initial={
+                  reduce ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.97 }
+                }
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={
+                  reduce ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.98 }
+                }
+                transition={{ duration: 0.28, ease: EASE }}
+                className="menu-pop absolute right-0 top-[calc(100%+0.625rem)] z-[70] w-[min(21rem,calc(100vw-2.5rem))] rounded-2xl border border-line bg-surface p-2.5"
+              >
+                <ul className="flex flex-col gap-0.5">
+                  {links.map((l, i) => {
+                    const active =
+                      (l.href === "/about" && pathname === "/about") ||
+                      (l.href === "/contact" && pathname === "/contact");
+                    return (
+                      <motion.li
+                        key={l.href}
+                        initial={reduce ? false : { opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: 0.04 + i * 0.035,
+                          ease: EASE,
+                        }}
                       >
-                        <span className="font-tech text-xs font-semibold text-accent-deep">
-                          {l.num}
-                        </span>
-                        <span className="font-display text-lg font-semibold tracking-tight">
-                          {l.label}
-                        </span>
-                        <ArrowRight
-                          size={15}
-                          aria-hidden
-                          className="ml-auto text-ink-soft transition-transform group-hover:translate-x-0.5"
-                        />
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-              <div className="border-t border-ink bg-paper p-3">
-                <Link
-                  href={primaryCtaHref}
-                  onClick={() => setOpen(false)}
-                  className="group flex min-h-11 w-full items-center justify-between rounded-[2px] bg-ink px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
-                >
-                  <span>Request Free Mockup</span>
-                  <ArrowRight
-                    size={16}
-                    aria-hidden
-                    className="transition-transform group-hover:translate-x-0.5"
-                  />
-                </Link>
-              </div>
-            </nav>
-          )}
+                        <Link
+                          href={l.href}
+                          aria-current={active ? "page" : undefined}
+                          onClick={() => setOpen(false)}
+                          className={`group flex items-center justify-between rounded-xl px-4 py-3 transition-colors hover:bg-wash ${
+                            active ? "bg-wash text-accent-deep" : "text-ink"
+                          }`}
+                        >
+                          <span className="font-display text-lg font-medium tracking-tight">
+                            {l.label}
+                          </span>
+                          <ArrowRight
+                            size={15}
+                            aria-hidden
+                            className="text-ink-mute transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-ink"
+                          />
+                        </Link>
+                      </motion.li>
+                    );
+                  })}
+                </ul>
+                <div className="mt-2 border-t border-line pt-2">
+                  <Link
+                    href={primaryCtaHref}
+                    onClick={() => setOpen(false)}
+                    className="group flex min-h-12 w-full items-center justify-between rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
+                  >
+                    <span>Start your project</span>
+                    <ArrowRight
+                      size={16}
+                      aria-hidden
+                      className="transition-transform duration-300 group-hover:translate-x-0.5"
+                    />
+                  </Link>
+                </div>
+              </motion.nav>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </header>

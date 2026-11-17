@@ -4,267 +4,304 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
+import Reveal from "./Reveal";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 const specimens = [
   {
     id: "raemas",
-    plate: "SPECIMEN 01 / 02",
+    shortLabel: "RaeMa’s Remedies",
     name: "RaeMa’s Remedies",
-    category: "Direct Order System + Self-Editable Admin",
+    category: "Order Site & Self-Edit Panel",
     location: "Tattnall County, Georgia",
     url: "https://raemas-remedies.vercel.app",
-    urlLabel: "raemas-remedies.vercel.app",
     image: "/work/raemas.webp",
     imageAlt:
       "RaeMa's Remedies homepage showing handcrafted tallow skincare and herbal remedies with direct ordering.",
     inquireScope: "Site Inspired by RaeMa's Remedies",
     specs: [
-      { k: "Client", v: "Rachael Harrelson (Family Wellness)" },
-      { k: "Architecture", v: "One-Page Storefront + Inbox Order Ledger" },
-      { k: "Owner Control", v: "Plain-language price, stock & photo editor" },
-      { k: "Ongoing Fees", v: "$0/mo platform cut · 100% client owned" },
+      { k: "Client", v: "Rachael Harrelson · Family Wellness" },
+      { k: "How it works", v: "Customers browse & send orders to her inbox" },
+      { k: "Owner autonomy", v: "Updates prices, stock & photos herself" },
+      { k: "Monthly fee", v: "$0 / month · Owned outright" },
     ],
   },
   {
     id: "tallow",
-    plate: "SPECIMEN 02 / 02",
+    shortLabel: "Better Than Gold",
     name: "Better Than Gold Tallow Co.",
-    category: "One-Page Farm Brand & Product Ledger",
+    category: "One-Page Farm Brand",
     location: "Southeast Georgia",
     url: "https://better-than-gold-tallow.vercel.app",
-    urlLabel: "better-than-gold-tallow.vercel.app",
     image: "/work/tallow.webp",
     imageAlt:
       "Better Than Gold Tallow Co. homepage over a golden pasture at sunrise in Southeast Georgia.",
     inquireScope: "Site Inspired by Better Than Gold Tallow Co.",
     specs: [
       { k: "Client", v: "Family Suet Tallow & Skincare Farm" },
-      { k: "Source Material", v: "Built directly from print flyer & farm photos" },
-      { k: "Architecture", v: "Mobile-first catalog + direct customer contact" },
-      { k: "Turnaround", v: "7 days from free mockup to live launch" },
+      { k: "Source material", v: "Built from her print flyer & farm photos" },
+      { k: "Customer flow", v: "Story, product catalog & direct contact" },
+      { k: "Turnaround", v: "One focused week from free mockup" },
     ],
   },
 ] as const;
 
-const heroSpecs = [
+const studioPromises = [
   {
-    num: "01",
-    label: "Proof First",
-    value: "$0 Mockup",
-    detail: "See your working page on a phone before paying a dime.",
+    value: "Free mockup",
+    detail: "Preview your page on a phone before paying anything",
   },
   {
-    num: "02",
-    label: "Turnaround",
-    value: "7 Days",
-    detail: "One focused week from mockup approval to live launch.",
+    value: "One week",
+    detail: "Focused turnaround from approval to live domain",
   },
   {
-    num: "03",
-    label: "Pricing Model",
-    value: "Flat Fee",
-    detail: "Named upfront before work begins. Zero monthly retainer.",
+    value: "Flat fee",
+    detail: "Named upfront — zero monthly retainers",
   },
   {
-    num: "04",
-    label: "Ownership",
-    value: "100% Yours",
-    detail: "Edit your own hours, prices, and photos anytime.",
+    value: "100% yours",
+    detail: "Update your own prices, hours & photos anytime",
   },
 ];
 
+function Line({ children, i }: { children: React.ReactNode; i: number }) {
+  return (
+    <span className="-mb-[0.1em] block overflow-hidden pb-[0.1em]">
+      <span
+        className="hero-line block"
+        style={{ "--d": `${0.04 + i * 0.08}s` } as React.CSSProperties}
+      >
+        {children}
+      </span>
+    </span>
+  );
+}
+
 export default function Hero() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const reduce = useReducedMotion();
   const active = specimens[activeIdx];
 
   return (
-    <section className="relative border-b border-line bg-paper">
-      {/* Top Architectural Dossier Bar */}
-      <div className="border-b border-line bg-wash/70">
-        <div className="gutter mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 py-2.5 font-tech text-[0.6875rem] uppercase text-ink-soft lg:max-w-7xl">
-          <span>Dossier No. 2026-GC · Independent Web Studio</span>
-          <span className="hidden sm:inline">
-            Glennville, Tattnall County, GA · 31.9407° N, 81.9296° W
-          </span>
-          <span className="inline-flex items-center gap-1.5 font-semibold text-accent-deep">
-            <span aria-hidden className="inline-block h-1.5 w-1.5 bg-accent" />
-            Booking 1-Week Builds
-          </span>
-        </div>
-      </div>
+    <section className="relative overflow-hidden border-b border-line bg-paper">
+      {/* Subtle warm ambient wash in the upper right */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 -top-24 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(168,77,29,0.08)_0%,transparent_68%)]"
+      />
 
-      <div className="gutter mx-auto max-w-6xl pb-14 pt-10 sm:pb-20 sm:pt-14 lg:max-w-7xl lg:pb-24 lg:pt-16">
-        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-10">
-          {/* Left Column (7 cols): Editorial Headline + Value Proposition */}
+      <div className="gutter relative mx-auto max-w-6xl pb-16 pt-12 sm:pb-24 sm:pt-18 lg:max-w-7xl lg:pb-28 lg:pt-22">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
+          {/* Left Column (7 cols): Expressive Editorial Headline & Story */}
           <div className="lg:col-span-7 lg:pr-4">
-            <p className="font-tech text-eyebrow font-semibold uppercase text-accent-deep">
-              Gerardo Castaneda (&ldquo;Rardo&rdquo;) · Glennville, Georgia
-            </p>
-            <h1 className="mt-5 font-display text-display font-semibold text-ink">
-              Plain-spoken websites that bring local{" "}
-              <em className="font-normal italic text-accent-deep">customers</em>{" "}
-              through your door.
+            <Reveal eager>
+              <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
+                Gerardo Castaneda · Glennville, Georgia
+              </p>
+            </Reveal>
+
+            <h1 className="mt-6 font-display text-display font-semibold text-ink">
+              <Line i={0}>Websites that</Line>
+              <Line i={1}>
+                bring local{" "}
+                <em className="relative inline-block font-normal italic text-accent-deep">
+                  customers
+                  <span
+                    aria-hidden
+                    className="hero-underline absolute bottom-[0.06em] left-0 h-[0.065em] w-full rounded-full bg-accent/85"
+                  />
+                </em>
+              </Line>
+              <Line i={2}>through your door.</Line>
             </h1>
-            <p className="mt-6 max-w-2xl text-lead text-ink-soft">
-              Most small-town businesses don&apos;t need a ten-page agency
-              brochure or a $150/month subscription. They need one fast,
-              dependable page built for a customer&apos;s phone: what you sell,
-              your current hours, where to find you, and a direct way to order
-              or call.
-            </p>
 
-            {/* Primary & Secondary Conversion Actions */}
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <a
-                href="#inquire"
-                data-inquire-product="One-Page Business Website"
-                className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-[2px] border border-ink bg-ink px-6 py-3 text-base font-semibold text-paper transition-colors hover:border-accent-deep hover:bg-accent-deep sm:w-auto"
-              >
-                Commission a Free Mockup
-                <ArrowRight
-                  size={17}
-                  aria-hidden
-                  className="transition-transform group-hover:translate-x-0.5"
-                />
-              </a>
-              <Link
-                href="#work"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[2px] border border-ink bg-surface px-6 py-3 text-base font-semibold text-ink transition-colors hover:bg-wash sm:w-auto"
-              >
-                Inspect Shipped Ledger (03)
-              </Link>
-            </div>
+            <Reveal eager delay={0.1}>
+              <p className="mt-7 max-w-xl text-lead text-ink-soft">
+                I&apos;m Rardo. I design and build simple, fast one-page
+                websites, direct ordering forms, and update-it-yourself pages for
+                local businesses — who you are, what you sell, your hours, and a
+                clear way to reach you.
+              </p>
+            </Reveal>
 
-            {/* Concrete 4-Column Specification Grid */}
-            <dl className="mt-12 grid grid-cols-2 gap-px border border-line-strong bg-line-strong sm:grid-cols-4">
-              {heroSpecs.map((spec) => (
-                <div
-                  key={spec.num}
-                  className="flex flex-col justify-between bg-surface p-4"
+            <Reveal eager delay={0.14}>
+              <div className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap sm:items-center">
+                <a
+                  href="#inquire"
+                  data-inquire-product="One-Page Business Website"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-lg bg-ink px-7 py-3.5 text-base font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0 sm:w-auto"
                 >
-                  <div>
-                    <dt className="flex items-center justify-between font-tech text-[0.6875rem] uppercase text-ink-mute">
-                      <span>{spec.label}</span>
-                      <span className="text-accent-deep">{spec.num}</span>
+                  <span>Start with a free mockup</span>
+                  <ArrowRight
+                    size={17}
+                    aria-hidden
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </a>
+                <Link
+                  href="#work"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg border border-line-strong bg-surface px-7 py-3.5 text-base font-semibold text-ink transition-all duration-300 hover:border-ink hover:bg-wash sm:w-auto"
+                >
+                  See shipped work
+                </Link>
+              </div>
+            </Reveal>
+
+            {/* Open, breathable studio promises */}
+            <Reveal eager delay={0.18}>
+              <dl className="mt-14 grid grid-cols-2 gap-6 border-t border-line pt-7 sm:grid-cols-4">
+                {studioPromises.map((item) => (
+                  <div key={item.value} className="flex flex-col">
+                    <dt className="font-display text-xl font-semibold tracking-tight text-ink">
+                      {item.value}
                     </dt>
-                    <dd className="mt-2 font-display text-2xl font-semibold tracking-tight tabular-nums text-ink">
-                      {spec.value}
+                    <dd className="mt-1 text-xs leading-relaxed text-ink-soft">
+                      {item.detail}
                     </dd>
                   </div>
-                  <p className="mt-2 text-xs leading-snug text-ink-soft">
-                    {spec.detail}
-                  </p>
-                </div>
-              ))}
-            </dl>
+                ))}
+              </dl>
+            </Reveal>
           </div>
 
-          {/* Right Column (5 cols): Live Shipped Client Specimen Dossier */}
-          <div className="lg:col-span-5">
-            <div className="rounded-[2px] border border-ink bg-surface">
-              {/* Specimen Switcher Header */}
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-wash px-4 py-2.5">
-                <span className="font-tech text-[0.6875rem] font-semibold uppercase text-ink">
-                  {active.plate} · Shipped Proof
+          {/* Right Column (5 cols): Fluid Interactive Showcase Card */}
+          <Reveal eager delay={0.12} className="lg:col-span-5">
+            <div className="card-editorial rounded-2xl p-4 sm:p-5">
+              {/* Segmented Switcher with Sliding Pill */}
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-3.5">
+                <span className="font-tech text-[0.7rem] font-medium uppercase text-ink-mute">
+                  Live Client Work
                 </span>
-                <div
-                  role="tablist"
-                  aria-label="Select live client specimen"
-                  className="flex items-center gap-1"
-                >
-                  {specimens.map((s, idx) => {
-                    const isSelected = idx === activeIdx;
-                    return (
-                      <button
-                        key={s.id}
-                        type="button"
-                        role="tab"
-                        aria-selected={isSelected}
-                        onClick={() => setActiveIdx(idx)}
-                        className={`rounded-[2px] border px-2.5 py-1 font-tech text-[0.6875rem] font-semibold uppercase transition-colors ${
-                          isSelected
-                            ? "border-ink bg-ink text-paper"
-                            : "border-line-strong bg-paper text-ink-soft hover:border-ink hover:text-ink"
-                        }`}
-                      >
-                        0{idx + 1} · {idx === 0 ? "RaeMa’s" : "Tallow Co."}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Screenshot Frame */}
-              <div className="relative border-b border-line bg-paper p-3">
-                <div className="overflow-hidden border border-line">
-                  <Image
-                    src={active.image}
-                    alt={active.imageAlt}
-                    width={1440}
-                    height={1000}
-                    priority
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="aspect-[3/2] w-full object-cover object-top"
-                  />
-                </div>
-              </div>
-
-              {/* Specimen Metadata & Key-Value Specs */}
-              <div className="p-5">
-                <div className="flex items-baseline justify-between gap-3">
-                  <div>
-                    <p className="font-tech text-[0.6875rem] font-semibold uppercase text-accent-deep">
-                      {active.category}
-                    </p>
-                    <h2 className="mt-1 font-display text-2xl font-semibold tracking-tight text-ink">
-                      {active.name}
-                    </h2>
+                <LayoutGroup id="hero-specimens">
+                  <div
+                    role="tablist"
+                    aria-label="Preview shipped client websites"
+                    className=" inline-flex rounded-lg border border-line bg-wash/80 p-1"
+                  >
+                    {specimens.map((s, idx) => {
+                      const isSelected = idx === activeIdx;
+                      return (
+                        <button
+                          key={s.id}
+                          type="button"
+                          role="tab"
+                          aria-selected={isSelected}
+                          onClick={() => setActiveIdx(idx)}
+                          className={`relative z-10 rounded-md px-3 py-1 text-xs font-medium transition-colors duration-200 ${
+                            isSelected
+                              ? "text-ink"
+                              : "text-ink-soft hover:text-ink"
+                          }`}
+                        >
+                          {isSelected && (
+                            <motion.span
+                              layoutId="hero-specimen-pill"
+                              transition={{
+                                type: "spring",
+                                stiffness: 380,
+                                damping: 32,
+                              }}
+                              className="absolute inset-0 -z-10 rounded-md bg-surface shadow-xs"
+                            />
+                          )}
+                          {s.shortLabel}
+                        </button>
+                      );
+                    })}
                   </div>
+                </LayoutGroup>
+              </div>
+
+              {/* Animated Specimen Body */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.id}
+                  initial={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
+                  transition={{ duration: 0.32, ease: EASE }}
+                >
+                  {/* Screenshot with gentle hover scale */}
                   <a
                     href={active.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex shrink-0 items-center gap-1 font-tech text-xs font-semibold uppercase text-ink underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-deep"
+                    aria-label={`Visit ${active.name} (opens in a new tab)`}
+                    className="group/shot relative block overflow-hidden rounded-xl border border-line bg-wash"
                   >
-                    Live Site
-                    <span className="sr-only"> (opens in a new tab)</span>
-                    <ArrowUpRight size={14} aria-hidden />
-                  </a>
-                </div>
-
-                <dl className="mt-4 divide-y divide-line border-y border-line text-xs">
-                  {active.specs.map((row) => (
-                    <div
-                      key={row.k}
-                      className="flex items-baseline justify-between gap-4 py-2"
-                    >
-                      <dt className="font-tech uppercase text-ink-mute">
-                        {row.k}
-                      </dt>
-                      <dd className="text-right font-medium text-ink">
-                        {row.v}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <a
-                    href="#inquire"
-                    data-inquire-product={active.inquireScope}
-                    className="group inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-[2px] border border-ink bg-ink px-4 py-2 text-xs font-semibold uppercase tracking-wider text-paper transition-colors hover:border-accent-deep hover:bg-accent-deep"
-                  >
-                    Request a Build Like {active.name}
-                    <ArrowRight
-                      size={14}
-                      aria-hidden
-                      className="transition-transform group-hover:translate-x-0.5"
+                    <Image
+                      src={active.image}
+                      alt={active.imageAlt}
+                      width={1440}
+                      height={1000}
+                      priority
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="aspect-[3/2] w-full object-cover object-top transition-transform duration-700 ease-out group-hover/shot:scale-[1.025]"
                     />
                   </a>
-                </div>
-              </div>
+
+                  <div className="mt-4 pt-1">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <div>
+                        <p className="font-tech text-[0.6875rem] font-medium uppercase text-accent-deep">
+                          {active.category} · {active.location}
+                        </p>
+                        <h2 className="mt-1 font-display text-2xl font-semibold tracking-tight text-ink">
+                          {active.name}
+                        </h2>
+                      </div>
+                      <a
+                        href={active.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group/link inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-ink-soft transition-colors hover:text-accent-deep"
+                      >
+                        <span className="u-sweep">Visit site</span>
+                        <span className="sr-only"> (opens in a new tab)</span>
+                        <ArrowUpRight
+                          size={14}
+                          aria-hidden
+                          className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                        />
+                      </a>
+                    </div>
+
+                    <dl className="mt-4 divide-y divide-line/80 border-y border-line/80 text-xs">
+                      {active.specs.map((row) => (
+                        <div
+                          key={row.k}
+                          className="flex items-baseline justify-between gap-4 py-2"
+                        >
+                          <dt className="text-ink-mute">{row.k}</dt>
+                          <dd className="text-right font-medium text-ink">
+                            {row.v}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+
+                    <div className="mt-4">
+                      <a
+                        href="#inquire"
+                        data-inquire-product={active.inquireScope}
+                        className="group inline-flex min-h-10 w-full items-center justify-between rounded-lg bg-wash px-4 py-2.5 text-xs font-semibold text-ink transition-colors duration-300 hover:bg-ink hover:text-paper"
+                      >
+                        <span>Request a site like {active.shortLabel}</span>
+                        <ArrowRight
+                          size={14}
+                          aria-hidden
+                          className="transition-transform duration-300 group-hover:translate-x-0.5"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
 

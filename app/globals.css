@@ -3,9 +3,9 @@
 /* Phones held sideways: very little height to work with. */
 @custom-variant short-landscape (@media (orientation: landscape) and (max-height: 32rem));
 
-/* Strict 2-family typographic system:
-   1. Fraunces — expressive editorial serif (normal + italic)
-   2. Public Sans — crisp grotesque sans-serif (with tabular-nums for specs/metadata) */
+/* 2-family editorial typographic system:
+   1. Fraunces — warm, expressive optical serif (normal + italic)
+   2. Public Sans — clean, humanist sans-serif (with tabular-nums for specs) */
 @theme inline {
   --font-display: var(--font-fraunces), "Georgia", serif;
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
@@ -13,57 +13,55 @@
 }
 
 @theme {
-  /* Cohesive archival paper & ink surface hierarchy */
+  /* Warm archival paper & sienna surface palette */
   --color-paper: #faf6ec;
-  --color-surface: #fffdf7;
-  --color-wash: #f2ead9;
+  --color-surface: #fffdf8;
+  --color-wash: #f3ecdc;
   --color-ink: #221a13;
-  --color-coal: #161009;
-  --color-ink-soft: #594c3d;
-  --color-ink-mute: #756755;
+  --color-coal: #17110b;
+  --color-ink-soft: #5f5243;
+  --color-ink-mute: #7d6f5d;
   --color-accent: #a84d1d;
   --color-accent-deep: #86390f;
-  --color-line: #dfd2b8;
-  --color-line-strong: #c7b697;
-  --color-field: #857662;
+  --color-line: #e6dbc6;
+  --color-line-strong: #d4c4a8;
+  --color-field: #8a7b67;
 
   /* Fluid typographic scale — interpolated 360px -> 1280px */
-  --text-display: clamp(2.35rem, 1.15rem + 5.2vw, 5.15rem);
-  --text-display--line-height: 1.03;
+  --text-display: clamp(2.5rem, 1.2rem + 5.4vw, 5.35rem);
+  --text-display--line-height: 1.04;
   --text-display--letter-spacing: -0.025em;
-  --text-h1: clamp(2.25rem, 1.3rem + 4.2vw, 4.5rem);
+  --text-h1: clamp(2.35rem, 1.35rem + 4.3vw, 4.65rem);
   --text-h1--line-height: 1.05;
-  --text-h1--letter-spacing: -0.025em;
-  --text-h2: clamp(1.875rem, 1.3rem + 2.5vw, 3.25rem);
+  --text-h1--letter-spacing: -0.024em;
+  --text-h2: clamp(1.95rem, 1.35rem + 2.6vw, 3.4rem);
   --text-h2--line-height: 1.08;
   --text-h2--letter-spacing: -0.02em;
-  --text-h3: clamp(1.35rem, 1.2rem + 0.55vw, 1.65rem);
+  --text-h3: clamp(1.375rem, 1.22rem + 0.55vw, 1.7rem);
   --text-h3--line-height: 1.22;
-  --text-h3--letter-spacing: -0.01em;
-  --text-quote: clamp(1.375rem, 1.08rem + 1.3vw, 2.125rem);
-  --text-quote--line-height: 1.3;
-  --text-quote--letter-spacing: -0.01em;
-  --text-lead: clamp(1.0625rem, 0.96rem + 0.45vw, 1.25rem);
-  --text-lead--line-height: 1.58;
+  --text-h3--letter-spacing: -0.012em;
+  --text-quote: clamp(1.45rem, 1.12rem + 1.4vw, 2.25rem);
+  --text-quote--line-height: 1.32;
+  --text-quote--letter-spacing: -0.012em;
+  --text-lead: clamp(1.0625rem, 0.96rem + 0.45vw, 1.275rem);
+  --text-lead--line-height: 1.62;
   --text-body: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
-  --text-body--line-height: 1.65;
+  --text-body--line-height: 1.68;
   --text-eyebrow: clamp(0.75rem, 0.72rem + 0.08vw, 0.8125rem);
   --text-eyebrow--line-height: 1.4;
   --text-eyebrow--letter-spacing: 0.12em;
 }
 
-/* Side padding that grows with the viewport and never sits under a notch. */
 @utility gutter {
-  padding-left: max(clamp(1.25rem, 0.957rem + 1.304vw, 2.25rem), env(safe-area-inset-left));
-  padding-right: max(clamp(1.25rem, 0.957rem + 1.304vw, 2.25rem), env(safe-area-inset-right));
+  padding-left: max(clamp(1.25rem, 0.957rem + 1.304vw, 2.5rem), env(safe-area-inset-left));
+  padding-right: max(clamp(1.25rem, 0.957rem + 1.304vw, 2.5rem), env(safe-area-inset-right));
 }
 
 @utility section-y {
-  padding-top: clamp(3.75rem, 2.5rem + 5.5vw, 6.25rem);
-  padding-bottom: clamp(3.75rem, 2.5rem + 5.5vw, 6.25rem);
+  padding-top: clamp(4.25rem, 2.6rem + 6.2vw, 7.25rem);
+  padding-bottom: clamp(4.25rem, 2.6rem + 6.2vw, 7.25rem);
 }
 
-/* Technical & specification labels use Public Sans with strict tabular numerals */
 .font-tech {
   font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
   font-variant-numeric: tabular-nums;
@@ -72,6 +70,29 @@
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+/* Tactile warm paper elevation — soft ambient shadows in the page's own umber */
+.card-editorial {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.75) inset,
+    0 2px 6px -1px rgb(34 26 19 / 0.04),
+    0 14px 34px -10px rgb(34 26 19 / 0.07);
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease;
+}
+
+.card-editorial-hover:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-line-strong);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.85) inset,
+    0 6px 14px -3px rgb(34 26 19 / 0.06),
+    0 24px 48px -12px rgb(134 57 15 / 0.12);
 }
 
 @media (min-width: 120rem) {
@@ -121,7 +142,7 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 6px;
 }
 
 [data-surface="dark"] :focus-visible {
@@ -155,13 +176,62 @@ p {
   color: var(--color-paper);
   padding: 0.75rem 1.25rem;
   font-weight: 600;
-  border-radius: 2px;
-  transition: top 0.15s ease-out;
+  border-radius: 0.5rem;
+  transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .skip-link:focus-visible {
   top: 1rem;
   outline-color: var(--color-paper);
+}
+
+/* ——— Choreographed hero entrance ——— */
+.hero-line {
+  transform: translateY(105%);
+  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) forwards;
+}
+
+@keyframes hero-rise {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hero-underline {
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: hero-underline 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+}
+
+@keyframes hero-underline {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ——— Silky scroll-triggered reveals ——— */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
+}
+
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-now {
+  animation: reveal-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) backwards;
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
 }
 
 /* ——— Reduced motion contract ——— */
@@ -174,52 +244,27 @@ p {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* ——— Subtle reveal transitions ——— */
-.js [data-reveal] {
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s),
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s);
-}
-
-.js [data-reveal].is-in {
-  opacity: 1;
-  transform: none;
-}
-
-.reveal-now {
-  animation: reveal-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) backwards;
-}
-
-@keyframes reveal-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
+  .hero-line,
+  .hero-underline,
+  .reveal-now {
+    animation: none;
+    transform: none;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
   .js [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .reveal-now {
-    animation: none;
-  }
 }
 
-/* ——— Crisp editorial underline on hover ——— */
+/* ——— Fluid editorial underline sweep ——— */
 .u-sweep {
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 1px;
   background-repeat: no-repeat;
   background-position: left calc(100% - 0.05em);
   padding-bottom: 0.12em;
-  transition: background-size 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .u-sweep:hover {
@@ -239,20 +284,21 @@ p {
   left: 0;
   width: 18px;
   height: 1.5px;
+  border-radius: 2px;
   background: currentColor;
   transition:
-    transform 0.2s ease-out,
-    opacity 0.2s ease-out;
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.25s ease;
 }
 
 .burger-line:nth-child(1) {
-  top: 3px;
+  top: 3.5px;
 }
 .burger-line:nth-child(2) {
-  top: 8px;
+  top: 8.5px;
 }
 .burger-line:nth-child(3) {
-  top: 13px;
+  top: 13.5px;
 }
 
 .burger[data-open] .burger-line:nth-child(1) {
@@ -260,6 +306,7 @@ p {
 }
 .burger[data-open] .burger-line:nth-child(2) {
   opacity: 0;
+  transform: scaleX(0.4);
 }
 .burger[data-open] .burger-line:nth-child(3) {
   transform: translateY(-5px) rotate(-45deg);
@@ -268,13 +315,14 @@ p {
 .menu-pop {
   transform-origin: top right;
   box-shadow:
-    0 2px 8px rgb(34 26 19 / 0.08),
-    0 16px 32px -8px rgb(34 26 19 / 0.18);
+    0 1px 0 rgb(255 255 255 / 0.7) inset,
+    0 4px 12px rgb(34 26 19 / 0.06),
+    0 24px 48px -10px rgb(134 57 15 / 0.18);
 }
 
 /* ——— Sticky header ——— */
 .site-header {
-  transition: transform 0.25s ease-out;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
@@ -295,12 +343,13 @@ p {
   padding: 0.625rem max(1rem, env(safe-area-inset-right))
     calc(0.625rem + env(safe-area-inset-bottom))
     max(1rem, env(safe-area-inset-left));
-  background: var(--color-paper);
-  border-top: 1px solid var(--color-line-strong);
+  background: rgba(250, 246, 236, 0.92);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--color-line);
   transform: translateY(100%);
   transition:
-    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 0.22s;
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 0.35s;
   visibility: hidden;
   contain: layout paint;
 }
@@ -309,7 +358,7 @@ p {
   transform: none;
   visibility: visible;
   transition:
-    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     visibility 0s;
 }
 
@@ -329,13 +378,13 @@ html:has(.sticky-cta[data-visible="true"]) {
   }
 }
 
-/* ——— Archival warm photo grade ——— */
+/* ——— Warm film photo grade ——— */
 .photo-warm {
-  filter: sepia(0.12) saturate(0.9) contrast(1.03) brightness(1.01);
+  filter: sepia(0.11) saturate(0.92) contrast(1.02) brightness(1.01);
 }
 
 .photo-warm[data-bw] {
-  filter: sepia(0.18) contrast(1.03);
+  filter: sepia(0.16) contrast(1.02);
 }
 
 @media (forced-colors: active) {
