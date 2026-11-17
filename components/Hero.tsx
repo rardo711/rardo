@@ -87,10 +87,14 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden border-b border-line bg-paper">
-      {/* Subtle warm ambient wash in the upper right */}
+      {/* Subtle Natural Porch Glow ambient daylight & sky mist */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-24 -top-24 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(168,77,29,0.08)_0%,transparent_68%)]"
+        className="pointer-events-none absolute -right-24 -top-24 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(202,160,107,0.16)_0%,transparent_68%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-28 -left-24 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(121,144,170,0.08)_0%,transparent_68%)]"
       />
 
       <div className="gutter relative mx-auto max-w-6xl pb-16 pt-12 sm:pb-20 sm:pt-16 lg:max-w-7xl lg:pb-24 lg:pt-20 short-landscape:pb-12 short-landscape:pt-10">

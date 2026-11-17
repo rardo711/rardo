@@ -1,6 +1,6 @@
 /**
- * Warm, bespoke editorial vector illustrations for each service offering and software build.
- * Crafted with concentric paper geometry, terracotta accents, and site CSS font variables.
+ * Bespoke editorial vector illustrations styled in the Natural Porch Glow palette:
+ * Deep Oak, Earthy Wood, Sunlit Grass, Golden Fields, Afternoon Sky, and Porch Railing.
  */
 
 const FONT_SERIF = "var(--font-fraunces), Georgia, serif";
@@ -15,8 +15,9 @@ export function DiagramOnePage() {
       aria-hidden="true"
       className="h-auto w-full"
     >
-      <rect width="360" height="184" fill="#f3ecdc" />
-      <circle cx="296" cy="36" r="76" fill="#eadec6" opacity="0.55" />
+      <rect width="360" height="184" fill="#ece0ce" />
+      <circle cx="296" cy="36" r="76" fill="#e2d3bc" opacity="0.6" />
+      <circle cx="48" cy="164" r="56" fill="#7990aa" opacity="0.11" />
 
       {/* Desktop Editorial Canvas (left margin 20) */}
       <rect
@@ -25,20 +26,20 @@ export function DiagramOnePage() {
         width="196"
         height="140"
         rx="8"
-        fill="#fffdf8"
-        stroke="#d4c4a8"
+        fill="#fcf9f3"
+        stroke="#cbb99d"
         strokeWidth="1.2"
       />
-      <circle cx="33" cy="34" r="2.5" fill="#d4c4a8" />
-      <circle cx="41" cy="34" r="2.5" fill="#d4c4a8" />
-      <circle cx="49" cy="34" r="2.5" fill="#d4c4a8" />
-      <line x1="20" y1="44" x2="216" y2="44" stroke="#e6dbc6" strokeWidth="1" />
+      <circle cx="33" cy="34" r="2.5" fill="#cbb99d" />
+      <circle cx="41" cy="34" r="2.5" fill="#caa06b" />
+      <circle cx="49" cy="34" r="2.5" fill="#7990aa" />
+      <line x1="20" y1="44" x2="216" y2="44" stroke="#dfd1ba" strokeWidth="1" />
 
       {/* Editorial Story & Hours inside Desktop Card */}
       <text
         x="34"
         y="66"
-        fill="#a84d1d"
+        fill="#555b21"
         fontSize="7"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -49,7 +50,7 @@ export function DiagramOnePage() {
       <text
         x="34"
         y="83"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="13"
         fontFamily={FONT_SERIF}
         fontWeight="600"
@@ -59,20 +60,20 @@ export function DiagramOnePage() {
       <text
         x="34"
         y="99"
-        fill="#86390f"
+        fill="#555b21"
         fontSize="13"
         fontFamily={FONT_SERIF}
         fontStyle="italic"
       >
         open til six.
       </text>
-      <rect x="34" y="109" width="112" height="4" rx="2" fill="#d4c4a8" />
-      <rect x="34" y="117" width="84" height="4" rx="2" fill="#e6dbc6" />
+      <rect x="34" y="109" width="112" height="4" rx="2" fill="#cbb99d" />
+      <rect x="34" y="117" width="84" height="4" rx="2" fill="#dfd1ba" />
 
       {/* Bottom Hours Strip */}
-      <rect x="34" y="131" width="168" height="20" rx="5" fill="#faf6ec" stroke="#e6dbc6" />
-      <circle cx="44" cy="141" r="3" fill="#a84d1d" />
-      <text x="52" y="143.5" fill="#5f5243" fontSize="7.5" fontFamily={FONT_SANS} fontWeight="500">
+      <rect x="34" y="131" width="168" height="20" rx="5" fill="#f6efe3" stroke="#dfd1ba" />
+      <circle cx="44" cy="141" r="3" fill="#7e843a" />
+      <text x="52" y="143.5" fill="#58412f" fontSize="7.5" fontFamily={FONT_SANS} fontWeight="500">
         Tue – Sat · 8:00 am – 6:00 pm
       </text>
 
@@ -83,16 +84,16 @@ export function DiagramOnePage() {
         width="110"
         height="152"
         rx="14"
-        fill="#fffdf8"
-        stroke="#221a13"
+        fill="#fcf9f3"
+        stroke="#2f3e2b"
         strokeWidth="1.4"
       />
-      <rect x="269" y="24" width="32" height="3" rx="1.5" fill="#e6dbc6" />
-      <rect x="242" y="36" width="86" height="48" rx="6" fill="#f3ecdc" />
+      <rect x="269" y="24" width="32" height="3" rx="1.5" fill="#dfd1ba" />
+      <rect x="242" y="36" width="86" height="48" rx="6" fill="#ece0ce" />
       <text
         x="252"
         y="56"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="9.5"
         fontFamily={FONT_SERIF}
         fontWeight="600"
@@ -102,7 +103,7 @@ export function DiagramOnePage() {
       <text
         x="252"
         y="69"
-        fill="#5f5243"
+        fill="#58412f"
         fontSize="7.5"
         fontFamily={FONT_SERIF}
         fontStyle="italic"
@@ -110,20 +111,20 @@ export function DiagramOnePage() {
         &amp; where to find you
       </text>
 
-      <rect x="242" y="92" width="86" height="28" rx="5" fill="#faf6ec" stroke="#e6dbc6" />
-      <text x="250" y="104" fill="#221a13" fontSize="7" fontFamily={FONT_SANS} fontWeight="600">
+      <rect x="242" y="92" width="86" height="28" rx="5" fill="#f6efe3" stroke="#dfd1ba" />
+      <text x="250" y="104" fill="#2f3e2b" fontSize="7" fontFamily={FONT_SANS} fontWeight="600">
         Open Today · Until 6pm
       </text>
-      <text x="250" y="114" fill="#6c5e4e" fontSize="6.5" fontFamily={FONT_SANS}>
+      <text x="250" y="114" fill="#6b5542" fontSize="6.5" fontFamily={FONT_SANS}>
         124 S. Veterans Blvd
       </text>
 
-      <rect x="242" y="128" width="86" height="28" rx="6" fill="#221a13" />
+      <rect x="242" y="128" width="86" height="28" rx="6" fill="#2f3e2b" />
       <text
         x="285"
         y="144.5"
         textAnchor="middle"
-        fill="#faf6ec"
+        fill="#f6efe3"
         fontSize="8"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -144,8 +145,9 @@ export function DiagramOrderLedger() {
       aria-hidden="true"
       className="h-auto w-full"
     >
-      <rect width="360" height="184" fill="#f3ecdc" />
-      <circle cx="72" cy="148" r="70" fill="#eadec6" opacity="0.55" />
+      <rect width="360" height="184" fill="#ece0ce" />
+      <circle cx="72" cy="148" r="70" fill="#e2d3bc" opacity="0.6" />
+      <circle cx="318" cy="34" r="54" fill="#7990aa" opacity="0.1" />
 
       {/* Left: Customer Order Card (margin 18) */}
       <rect
@@ -154,14 +156,14 @@ export function DiagramOrderLedger() {
         width="156"
         height="140"
         rx="10"
-        fill="#fffdf8"
-        stroke="#d4c4a8"
+        fill="#fcf9f3"
+        stroke="#cbb99d"
         strokeWidth="1.2"
       />
       <text
         x="32"
         y="43"
-        fill="#a84d1d"
+        fill="#555b21"
         fontSize="7"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -169,50 +171,50 @@ export function DiagramOrderLedger() {
       >
         CUSTOMER ORDER
       </text>
-      <line x1="32" y1="51" x2="160" y2="51" stroke="#e6dbc6" strokeWidth="1" />
+      <line x1="32" y1="51" x2="160" y2="51" stroke="#dfd1ba" strokeWidth="1" />
 
-      <text x="32" y="68" fill="#221a13" fontSize="8.5" fontFamily={FONT_SERIF}>
+      <text x="32" y="68" fill="#2f3e2b" fontSize="8.5" fontFamily={FONT_SERIF}>
         Whipped Tallow Balm
       </text>
       <text
         x="160"
         y="68"
         textAnchor="end"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="8"
         fontFamily={FONT_SANS}
         fontWeight="600"
       >
         $24
       </text>
-      <line x1="32" y1="76" x2="160" y2="76" stroke="#f3ecdc" strokeWidth="1" />
+      <line x1="32" y1="76" x2="160" y2="76" stroke="#ece0ce" strokeWidth="1" />
 
-      <text x="32" y="92" fill="#221a13" fontSize="8.5" fontFamily={FONT_SERIF}>
+      <text x="32" y="92" fill="#2f3e2b" fontSize="8.5" fontFamily={FONT_SERIF}>
         Elderberry Syrup (16oz)
       </text>
       <text
         x="160"
         y="92"
         textAnchor="end"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="8"
         fontFamily={FONT_SANS}
         fontWeight="600"
       >
         $28
       </text>
-      <line x1="32" y1="100" x2="160" y2="100" stroke="#f3ecdc" strokeWidth="1" />
+      <line x1="32" y1="100" x2="160" y2="100" stroke="#ece0ce" strokeWidth="1" />
 
-      <text x="32" y="115" fill="#6c5e4e" fontSize="7.5" fontFamily={FONT_SERIF} fontStyle="italic">
+      <text x="32" y="115" fill="#6b5542" fontSize="7.5" fontFamily={FONT_SERIF} fontStyle="italic">
         Pickup: Friday afternoon
       </text>
 
-      <rect x="32" y="126" width="128" height="24" rx="6" fill="#a84d1d" />
+      <rect x="32" y="126" width="128" height="24" rx="6" fill="#2f3e2b" />
       <text
         x="96"
         y="141"
         textAnchor="middle"
-        fill="#faf6ec"
+        fill="#f6efe3"
         fontSize="8"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -223,11 +225,11 @@ export function DiagramOrderLedger() {
       {/* Symmetric Connector */}
       <path
         d="M174 92 C 190 92, 194 92, 210 92"
-        stroke="#a84d1d"
+        stroke="#7e843a"
         strokeWidth="1.5"
         strokeDasharray="3 3"
       />
-      <circle cx="192" cy="92" r="3.5" fill="#a84d1d" />
+      <circle cx="192" cy="92" r="3.5" fill="#7e843a" />
 
       {/* Right: Owner Inbox Notification Card (margin 18) */}
       <rect
@@ -236,28 +238,28 @@ export function DiagramOrderLedger() {
         width="132"
         height="124"
         rx="10"
-        fill="#fffdf8"
-        stroke="#221a13"
+        fill="#fcf9f3"
+        stroke="#2f3e2b"
         strokeWidth="1.3"
       />
-      <rect x="222" y="42" width="108" height="22" rx="5" fill="#faf6ec" stroke="#e6dbc6" />
-      <circle cx="232" cy="53" r="3.5" fill="#a84d1d" />
-      <text x="241" y="55.5" fill="#221a13" fontSize="7.5" fontFamily={FONT_SANS} fontWeight="600">
+      <rect x="222" y="42" width="108" height="22" rx="5" fill="#f6efe3" stroke="#dfd1ba" />
+      <circle cx="232" cy="53" r="3.5" fill="#caa06b" />
+      <text x="241" y="55.5" fill="#2f3e2b" fontSize="7.5" fontFamily={FONT_SANS} fontWeight="600">
         New Order in Inbox
       </text>
 
-      <text x="224" y="82" fill="#221a13" fontSize="9.5" fontFamily={FONT_SERIF} fontWeight="600">
+      <text x="224" y="82" fill="#2f3e2b" fontSize="9.5" fontFamily={FONT_SERIF} fontWeight="600">
         Sarah Jenkins
       </text>
-      <text x="224" y="95" fill="#5f5243" fontSize="7.5" fontFamily={FONT_SANS}>
+      <text x="224" y="95" fill="#58412f" fontSize="7.5" fontFamily={FONT_SANS}>
         (912) 555-0194 · 2 items
       </text>
 
-      <rect x="222" y="108" width="108" height="32" rx="6" fill="#f3ecdc" />
-      <text x="232" y="121.5" fill="#5f5243" fontSize="7" fontFamily={FONT_SANS}>
+      <rect x="222" y="108" width="108" height="32" rx="6" fill="#ece0ce" />
+      <text x="232" y="121.5" fill="#58412f" fontSize="7" fontFamily={FONT_SANS}>
         Order Total
       </text>
-      <text x="232" y="133.5" fill="#221a13" fontSize="8.5" fontFamily={FONT_SANS} fontWeight="700">
+      <text x="232" y="133.5" fill="#2f3e2b" fontSize="8.5" fontFamily={FONT_SANS} fontWeight="700">
         $52.00 · $0 fees
       </text>
     </svg>
@@ -273,8 +275,8 @@ export function DiagramSelfEditable() {
       aria-hidden="true"
       className="h-auto w-full"
     >
-      <rect width="360" height="184" fill="#f3ecdc" />
-      <circle cx="180" cy="24" r="68" fill="#eadec6" opacity="0.5" />
+      <rect width="360" height="184" fill="#ece0ce" />
+      <circle cx="180" cy="24" r="68" fill="#e2d3bc" opacity="0.55" />
 
       {/* Main Studio Editor Card (margin 20) */}
       <rect
@@ -283,17 +285,17 @@ export function DiagramSelfEditable() {
         width="320"
         height="140"
         rx="10"
-        fill="#fffdf8"
-        stroke="#d4c4a8"
+        fill="#fcf9f3"
+        stroke="#cbb99d"
         strokeWidth="1.2"
       />
-      <line x1="190" y1="22" x2="190" y2="162" stroke="#e6dbc6" strokeWidth="1" />
+      <line x1="190" y1="22" x2="190" y2="162" stroke="#dfd1ba" strokeWidth="1" />
 
       {/* Left Pane: 34..176 (14px margin inside 20..190) */}
       <text
         x="34"
         y="44"
-        fill="#a84d1d"
+        fill="#555b21"
         fontSize="7"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -302,29 +304,29 @@ export function DiagramSelfEditable() {
         YOUR EDIT PANEL
       </text>
 
-      <text x="34" y="62" fill="#5f5243" fontSize="7.5" fontFamily={FONT_SANS}>
+      <text x="34" y="62" fill="#58412f" fontSize="7.5" fontFamily={FONT_SANS}>
         Shop Hours
       </text>
-      <rect x="34" y="67" width="142" height="22" rx="5" fill="#faf6ec" stroke="#d4c4a8" />
-      <text x="42" y="81" fill="#221a13" fontSize="8" fontFamily={FONT_SANS} fontWeight="500">
+      <rect x="34" y="67" width="142" height="22" rx="5" fill="#f6efe3" stroke="#cbb99d" />
+      <text x="42" y="81" fill="#2f3e2b" fontSize="8" fontFamily={FONT_SANS} fontWeight="500">
         Tue–Sat, 8am – 5:30pm
       </text>
 
-      <text x="34" y="105" fill="#5f5243" fontSize="7.5" fontFamily={FONT_SANS}>
+      <text x="34" y="105" fill="#58412f" fontSize="7.5" fontFamily={FONT_SANS}>
         Batch Price &amp; Status
       </text>
-      <rect x="34" y="110" width="66" height="22" rx="5" fill="#faf6ec" stroke="#a84d1d" strokeWidth="1.2" />
-      <text x="44" y="124" fill="#a84d1d" fontSize="8.5" fontFamily={FONT_SANS} fontWeight="700">
+      <rect x="34" y="110" width="66" height="22" rx="5" fill="#f6efe3" stroke="#7e843a" strokeWidth="1.2" />
+      <text x="44" y="124" fill="#555b21" fontSize="8.5" fontFamily={FONT_SANS} fontWeight="700">
         $24.00
       </text>
 
-      <rect x="108" y="110" width="68" height="22" rx="6" fill="#221a13" />
-      <circle cx="119" cy="121" r="4.5" fill="#faf6ec" />
-      <text x="129" y="123.5" fill="#faf6ec" fontSize="7.5" fontFamily={FONT_SANS} fontWeight="600">
+      <rect x="108" y="110" width="68" height="22" rx="6" fill="#2f3e2b" />
+      <circle cx="119" cy="121" r="4" fill="#caa06b" />
+      <text x="129" y="123.5" fill="#f6efe3" fontSize="7.5" fontFamily={FONT_SANS} fontWeight="600">
         In Stock
       </text>
 
-      <text x="34" y="148" fill="#6c5e4e" fontSize="7.5" fontFamily={FONT_SERIF} fontStyle="italic">
+      <text x="34" y="148" fill="#6b5542" fontSize="7.5" fontFamily={FONT_SERIF} fontStyle="italic">
         Saves instantly from your phone
       </text>
 
@@ -332,7 +334,7 @@ export function DiagramSelfEditable() {
       <text
         x="204"
         y="44"
-        fill="#5f5243"
+        fill="#58412f"
         fontSize="7"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -347,14 +349,14 @@ export function DiagramSelfEditable() {
         width="122"
         height="94"
         rx="8"
-        fill="#faf6ec"
-        stroke="#e6dbc6"
+        fill="#f6efe3"
+        stroke="#dfd1ba"
         strokeWidth="1"
       />
       <text
         x="216"
         y="76"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="10.5"
         fontFamily={FONT_SERIF}
         fontWeight="600"
@@ -364,30 +366,30 @@ export function DiagramSelfEditable() {
       <text
         x="216"
         y="91"
-        fill="#6c5e4e"
+        fill="#6b5542"
         fontSize="7.5"
         fontFamily={FONT_SERIF}
         fontStyle="italic"
       >
         Freshly rendered this week
       </text>
-      <line x1="216" y1="101" x2="314" y2="101" stroke="#e6dbc6" />
-      <text x="216" y="118" fill="#221a13" fontSize="9.5" fontFamily={FONT_SANS} fontWeight="700">
+      <line x1="216" y1="101" x2="314" y2="101" stroke="#dfd1ba" />
+      <text x="216" y="118" fill="#2f3e2b" fontSize="9.5" fontFamily={FONT_SANS} fontWeight="700">
         $24.00
       </text>
-      <rect x="268" y="107" width="46" height="16" rx="4" fill="#f3ecdc" />
+      <rect x="268" y="107" width="46" height="16" rx="4" fill="#e8eef3" />
       <text
         x="291"
         y="117.5"
         textAnchor="middle"
-        fill="#86390f"
+        fill="#4e657e"
         fontSize="6.5"
         fontFamily={FONT_SANS}
         fontWeight="600"
       >
         Available
       </text>
-      <text x="216" y="136" fill="#5f5243" fontSize="7" fontFamily={FONT_SANS}>
+      <text x="216" y="136" fill="#58412f" fontSize="7" fontFamily={FONT_SANS}>
         Open Tue–Sat · 8a–5:30p
       </text>
     </svg>
@@ -395,7 +397,7 @@ export function DiagramSelfEditable() {
 }
 
 /**
- * Warm, literary bookplate & interface illustration for Theos Logos
+ * Serene study bookplate & interface illustration for Theos Logos
  * (Biblical Greek & Hebrew Lexicon & Study Web Application).
  */
 export function TheosLogosPlate() {
@@ -408,10 +410,10 @@ export function TheosLogosPlate() {
       aria-label="Theos Logos study environment showing Greek and Hebrew interlinear scripture and Strong's lexicon reader"
       className="aspect-[3/2] w-full object-cover"
     >
-      {/* Warm Parchment Backdrop */}
-      <rect width="1440" height="960" fill="#f3ecdc" />
-      <circle cx="1220" cy="180" r="340" fill="#eadec6" opacity="0.6" />
-      <circle cx="220" cy="820" r="280" fill="#eadec6" opacity="0.45" />
+      {/* Sunlit Parchment Backdrop with Gentle Sky & Field Glow */}
+      <rect width="1440" height="960" fill="#ece0ce" />
+      <circle cx="1220" cy="180" r="340" fill="#7990aa" opacity="0.14" />
+      <circle cx="220" cy="820" r="280" fill="#e2d3bc" opacity="0.6" />
 
       {/* Elevated Application Window (56..1384, 52..908) */}
       <rect
@@ -420,15 +422,15 @@ export function TheosLogosPlate() {
         width="1328"
         height="856"
         rx="20"
-        fill="#fffdf8"
-        stroke="#d4c4a8"
+        fill="#fcf9f3"
+        stroke="#cbb99d"
         strokeWidth="2"
       />
 
-      {/* Top Editorial Navigation Bar (top corners rounded only so bottom edge meets divider cleanly) */}
+      {/* Top Editorial Navigation Bar */}
       <path
         d="M76 52 H1364 Q1384 52 1384 72 V130 H56 V72 Q56 52 76 52 Z"
-        fill="#faf6ec"
+        fill="#f6efe3"
       />
       <rect
         x="56"
@@ -436,18 +438,18 @@ export function TheosLogosPlate() {
         width="1328"
         height="856"
         rx="20"
-        stroke="#d4c4a8"
+        stroke="#cbb99d"
         strokeWidth="2"
       />
-      <line x1="56" y1="130" x2="1384" y2="130" stroke="#e6dbc6" strokeWidth="1.5" />
-      <circle cx="96" cy="91" r="6" fill="#d4c4a8" />
-      <circle cx="116" cy="91" r="6" fill="#d4c4a8" />
-      <circle cx="136" cy="91" r="6" fill="#d4c4a8" />
+      <line x1="56" y1="130" x2="1384" y2="130" stroke="#dfd1ba" strokeWidth="1.5" />
+      <circle cx="96" cy="91" r="6" fill="#cbb99d" />
+      <circle cx="116" cy="91" r="6" fill="#caa06b" />
+      <circle cx="136" cy="91" r="6" fill="#7990aa" />
 
       <text
         x="176"
         y="99"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="26"
         fontFamily={FONT_SERIF}
         fontWeight="600"
@@ -457,7 +459,7 @@ export function TheosLogosPlate() {
       <text
         x="348"
         y="98"
-        fill="#6c5e4e"
+        fill="#6b5542"
         fontSize="16"
         fontFamily={FONT_SERIF}
         fontStyle="italic"
@@ -465,12 +467,12 @@ export function TheosLogosPlate() {
         Interlinear Scripture &amp; Classical Lexicon
       </text>
 
-      <rect x="1152" y="71" width="188" height="40" rx="8" fill="#f3ecdc" />
+      <rect x="1152" y="71" width="188" height="40" rx="8" fill="#e8eef3" />
       <text
         x="1246"
         y="96"
         textAnchor="middle"
-        fill="#86390f"
+        fill="#4e657e"
         fontSize="13.5"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -480,13 +482,13 @@ export function TheosLogosPlate() {
       </text>
 
       {/* Main Split Reader Divider */}
-      <line x1="856" y1="130" x2="856" y2="908" stroke="#e6dbc6" strokeWidth="1.5" />
+      <line x1="856" y1="130" x2="856" y2="908" stroke="#dfd1ba" strokeWidth="1.5" />
 
-      {/* Left Pane (x=104..808, balanced 48px left/right inside 56..856) */}
+      {/* Left Pane (x=104..808) */}
       <text
         x="104"
         y="186"
-        fill="#a84d1d"
+        fill="#555b21"
         fontSize="13"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -495,7 +497,7 @@ export function TheosLogosPlate() {
         GOSPEL ACCORDING TO JOHN · CHAPTER I
       </text>
 
-      {/* Five Interlinear Word Cards spanning exact width 104..808 (4*122 + 1*144 + 4*18 = 704) */}
+      {/* Five Interlinear Word Cards spanning exact width 104..808 */}
       {[
         { gr: "Ἐν", tr: "En", en: "In [the]", strong: "G1722", x: 104 },
         { gr: "ἀρχῇ", tr: "archē", en: "beginning", strong: "G746", x: 244 },
@@ -510,14 +512,14 @@ export function TheosLogosPlate() {
             width={w.active ? "144" : "122"}
             height="148"
             rx="12"
-            fill={w.active ? "#faf6ec" : "#fffdf8"}
-            stroke={w.active ? "#a84d1d" : "#e6dbc6"}
+            fill={w.active ? "#f6efe3" : "#fcf9f3"}
+            stroke={w.active ? "#7e843a" : "#dfd1ba"}
             strokeWidth={w.active ? "2.5" : "1.5"}
           />
           <text
             x={w.x + 18}
             y="248"
-            fill="#a84d1d"
+            fill="#555b21"
             fontSize="12"
             fontFamily={FONT_SANS}
             fontWeight="600"
@@ -528,7 +530,7 @@ export function TheosLogosPlate() {
           <text
             x={w.x + 18}
             y="292"
-            fill="#221a13"
+            fill="#2f3e2b"
             fontSize="28"
             fontFamily={FONT_SERIF}
             fontWeight="600"
@@ -538,7 +540,7 @@ export function TheosLogosPlate() {
           <text
             x={w.x + 18}
             y="320"
-            fill="#6c5e4e"
+            fill="#6b5542"
             fontSize="15"
             fontFamily={FONT_SERIF}
             fontStyle="italic"
@@ -548,7 +550,7 @@ export function TheosLogosPlate() {
           <text
             x={w.x + 18}
             y="346"
-            fill="#221a13"
+            fill="#2f3e2b"
             fontSize="14"
             fontFamily={FONT_SANS}
             fontWeight="500"
@@ -562,7 +564,7 @@ export function TheosLogosPlate() {
       <text
         x="104"
         y="436"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="30"
         fontFamily={FONT_SERIF}
       >
@@ -571,7 +573,7 @@ export function TheosLogosPlate() {
       <text
         x="104"
         y="482"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="30"
         fontFamily={FONT_SERIF}
       >
@@ -585,14 +587,14 @@ export function TheosLogosPlate() {
         width="704"
         height="310"
         rx="14"
-        fill="#faf6ec"
-        stroke="#e6dbc6"
+        fill="#f6efe3"
+        stroke="#dfd1ba"
         strokeWidth="1.5"
       />
       <text
         x="136"
         y="584"
-        fill="#a84d1d"
+        fill="#555b21"
         fontSize="13"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -603,7 +605,7 @@ export function TheosLogosPlate() {
       <text
         x="136"
         y="642"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="36"
         fontFamily={FONT_SERIF}
         fontWeight="600"
@@ -613,7 +615,7 @@ export function TheosLogosPlate() {
       <text
         x="136"
         y="694"
-        fill="#5f5243"
+        fill="#58412f"
         fontSize="20"
         fontFamily={FONT_SERIF}
         fontStyle="italic"
@@ -623,18 +625,18 @@ export function TheosLogosPlate() {
       <text
         x="136"
         y="726"
-        fill="#5f5243"
+        fill="#58412f"
         fontSize="20"
         fontFamily={FONT_SERIF}
         fontStyle="italic"
       >
         Ἐν ἀρχῇ and fulfilled in the Johannine prologue.”
       </text>
-      <line x1="136" y1="764" x2="776" y2="764" stroke="#e6dbc6" />
+      <line x1="136" y1="764" x2="776" y2="764" stroke="#dfd1ba" />
       <text
         x="136"
         y="802"
-        fill="#6c5e4e"
+        fill="#6b5542"
         fontSize="14"
         fontFamily={FONT_SANS}
         fontWeight="500"
@@ -642,14 +644,14 @@ export function TheosLogosPlate() {
         Built for quiet seminary study &amp; original-language exegesis
       </text>
 
-      {/* Right Pane (x=900..1340, balanced 44px left/right inside 856..1384) */}
-      <rect x="900" y="170" width="440" height="678" rx="14" fill="#faf6ec" stroke="#e6dbc6" strokeWidth="1.5" />
-      <rect x="936" y="204" width="144" height="32" rx="8" fill="#f3ecdc" />
+      {/* Right Pane (x=900..1340) */}
+      <rect x="900" y="170" width="440" height="678" rx="14" fill="#f6efe3" stroke="#dfd1ba" strokeWidth="1.5" />
+      <rect x="936" y="204" width="144" height="32" rx="8" fill="#e8eef3" />
       <text
         x="1008"
         y="224.5"
         textAnchor="middle"
-        fill="#86390f"
+        fill="#4e657e"
         fontSize="12"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -661,7 +663,7 @@ export function TheosLogosPlate() {
       <text
         x="936"
         y="296"
-        fill="#221a13"
+        fill="#2f3e2b"
         fontSize="58"
         fontFamily={FONT_SERIF}
         fontWeight="600"
@@ -671,7 +673,7 @@ export function TheosLogosPlate() {
       <text
         x="936"
         y="338"
-        fill="#6c5e4e"
+        fill="#6b5542"
         fontSize="21"
         fontFamily={FONT_SERIF}
         fontStyle="italic"
@@ -679,12 +681,12 @@ export function TheosLogosPlate() {
         logos · Nominative Singular Masculine
       </text>
 
-      <line x1="936" y1="372" x2="1304" y2="372" stroke="#e6dbc6" strokeWidth="1.5" />
+      <line x1="936" y1="372" x2="1304" y2="372" stroke="#dfd1ba" strokeWidth="1.5" />
 
       <text
         x="936"
         y="412"
-        fill="#a84d1d"
+        fill="#555b21"
         fontSize="12"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -692,21 +694,21 @@ export function TheosLogosPlate() {
       >
         SEMANTIC RANGE
       </text>
-      <text x="936" y="454" fill="#221a13" fontSize="19.5" fontFamily={FONT_SERIF}>
+      <text x="936" y="454" fill="#2f3e2b" fontSize="19.5" fontFamily={FONT_SERIF}>
         I. A word, speech, divine utterance or decree.
       </text>
-      <text x="936" y="494" fill="#221a13" fontSize="19.5" fontFamily={FONT_SERIF}>
+      <text x="936" y="494" fill="#2f3e2b" fontSize="19.5" fontFamily={FONT_SERIF}>
         II. Account, reckoning, reason, living wisdom.
       </text>
-      <text x="936" y="534" fill="#221a13" fontSize="19.5" fontFamily={FONT_SERIF}>
+      <text x="936" y="534" fill="#2f3e2b" fontSize="19.5" fontFamily={FONT_SERIF}>
         III. The Personal Word — Christ incarnate.
       </text>
 
-      <rect x="936" y="584" width="368" height="224" rx="12" fill="#fffdf8" stroke="#e6dbc6" />
+      <rect x="936" y="584" width="368" height="224" rx="12" fill="#fcf9f3" stroke="#dfd1ba" />
       <text
         x="964"
         y="624"
-        fill="#5f5243"
+        fill="#58412f"
         fontSize="13"
         fontFamily={FONT_SANS}
         fontWeight="600"
@@ -715,31 +717,31 @@ export function TheosLogosPlate() {
         NEW TESTAMENT OCCURRENCES (330)
       </text>
 
-      <text x="964" y="668" fill="#221a13" fontSize="18" fontFamily={FONT_SERIF}>
+      <text x="964" y="668" fill="#2f3e2b" fontSize="18" fontFamily={FONT_SERIF}>
         Gospel of John
       </text>
-      <line x1="1102" y1="664" x2="1240" y2="664" stroke="#d4c4a8" strokeWidth="1.5" strokeDasharray="2 6" />
-      <text x="1276" y="668" textAnchor="end" fill="#221a13" fontSize="18" fontFamily={FONT_SANS} fontWeight="600">
+      <line x1="1102" y1="664" x2="1240" y2="664" stroke="#cbb99d" strokeWidth="1.5" strokeDasharray="2 6" />
+      <text x="1276" y="668" textAnchor="end" fill="#2f3e2b" fontSize="18" fontFamily={FONT_SANS} fontWeight="600">
         40
       </text>
 
-      <text x="964" y="706" fill="#221a13" fontSize="18" fontFamily={FONT_SERIF}>
+      <text x="964" y="706" fill="#2f3e2b" fontSize="18" fontFamily={FONT_SERIF}>
         Acts of the Apostles
       </text>
-      <line x1="1142" y1="702" x2="1240" y2="702" stroke="#d4c4a8" strokeWidth="1.5" strokeDasharray="2 6" />
-      <text x="1276" y="706" textAnchor="end" fill="#221a13" fontSize="18" fontFamily={FONT_SANS} fontWeight="600">
+      <line x1="1142" y1="702" x2="1240" y2="702" stroke="#cbb99d" strokeWidth="1.5" strokeDasharray="2 6" />
+      <text x="1276" y="706" textAnchor="end" fill="#2f3e2b" fontSize="18" fontFamily={FONT_SANS} fontWeight="600">
         65
       </text>
 
-      <text x="964" y="744" fill="#221a13" fontSize="18" fontFamily={FONT_SERIF}>
+      <text x="964" y="744" fill="#2f3e2b" fontSize="18" fontFamily={FONT_SERIF}>
         Pauline Epistles
       </text>
-      <line x1="1116" y1="740" x2="1240" y2="740" stroke="#d4c4a8" strokeWidth="1.5" strokeDasharray="2 6" />
-      <text x="1276" y="744" textAnchor="end" fill="#221a13" fontSize="18" fontFamily={FONT_SANS} fontWeight="600">
+      <line x1="1116" y1="740" x2="1240" y2="740" stroke="#cbb99d" strokeWidth="1.5" strokeDasharray="2 6" />
+      <text x="1276" y="744" textAnchor="end" fill="#2f3e2b" fontSize="18" fontFamily={FONT_SANS} fontWeight="600">
         81
       </text>
 
-      <text x="964" y="782" fill="#a84d1d" fontSize="14" fontFamily={FONT_SERIF} fontStyle="italic">
+      <text x="964" y="782" fill="#555b21" fontSize="14" fontFamily={FONT_SERIF} fontStyle="italic">
         Personal software by Gerardo Castaneda
       </text>
     </svg>

@@ -74,7 +74,7 @@ export default function Footer() {
             <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
               <a
                 href="mailto:gerardoj2001@outlook.com"
-                className="font-medium text-paper underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent"
+                className="font-medium text-paper underline decoration-gold decoration-2 underline-offset-4 transition-colors hover:text-gold"
               >
                 gerardoj2001@outlook.com
               </a>
@@ -140,7 +140,7 @@ export default function Footer() {
                     <ArrowUpRight
                       size={14}
                       aria-hidden
-                      className="mt-1 shrink-0 text-paper/65 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                      className="mt-1 shrink-0 text-paper/65 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-gold"
                     />
                   </a>
                 </li>

@@ -34,7 +34,7 @@ export default function Logo({ size = 34, className = "" }: Props) {
         fill="currentColor"
       />
       {/* Architectural registration tick */}
-      <circle cx="137" cy="50.5" r="2.2" fill="#a84d1d" />
+      <circle cx="137" cy="50.5" r="2.2" fill="var(--color-accent)" />
     </svg>
   );
 }

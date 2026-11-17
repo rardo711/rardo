@@ -34,7 +34,7 @@ export async function renderOg({
           height: "100%",
           display: "flex",
           position: "relative",
-          backgroundColor: "#faf6ec",
+          backgroundColor: "#f6efe3",
           padding: "72px 84px",
         }}
       >
@@ -45,7 +45,7 @@ export async function renderOg({
             left: 28,
             right: 28,
             bottom: 28,
-            border: "1px solid #e6dbc6",
+            border: "1px solid #dfd1ba",
             borderRadius: 16,
           }}
         />
@@ -61,17 +61,17 @@ export async function renderOg({
             <svg width="128" height="90" viewBox="0 0 142 100" fill="none">
               <path
                 d="M74.5 23.5C66.8 14.5 55.3 9 42.5 9C19.6 9 1 27.6 1 50.5C1 73.4 19.6 92 42.5 92C64.2 92 81.9 75.5 83.8 54.3L84 47.5H44.5L37.5 57.5H72.2C69.1 71.2 57 81.2 42.5 81.2C25.5 81.2 11.8 67.5 11.8 50.5C11.8 33.5 25.5 19.8 42.5 19.8C52.4 19.8 61.2 24.5 66.8 31.8L74.5 23.5Z"
-                fill="#221a13"
+                fill="#2f3e2b"
               />
               <path
                 d="M78.5 32.2C84.2 21.2 95.7 13.8 109 13.8C120.3 13.8 130.4 19.2 136.7 27.6L129.8 33.5C125.1 27 117.5 22.8 109 22.8C99 22.8 90.3 28.5 86.1 36.8L78.5 32.2Z"
-                fill="#221a13"
+                fill="#2f3e2b"
               />
               <path
                 d="M84.8 75.8C91.1 83.4 100.5 88.2 111 88.2C121.8 88.2 131.5 83.2 137.7 75.3L130.8 69.5C126.2 75.4 119 79.2 111 79.2C102.9 79.2 95.6 75.4 91 69.5L84.8 75.8Z"
-                fill="#221a13"
+                fill="#2f3e2b"
               />
-              <circle cx="137" cy="50.5" r="2.2" fill="#a84d1d" />
+              <circle cx="137" cy="50.5" r="2.2" fill="#7e843a" />
             </svg>
             <div
               style={{
@@ -81,7 +81,7 @@ export async function renderOg({
                 fontSize: 24,
                 letterSpacing: 4,
                 textTransform: "uppercase",
-                color: "#5f5243",
+                color: "#58412f",
               }}
             >
               {eyebrow}
@@ -96,7 +96,7 @@ export async function renderOg({
               fontSize: title.length === 2 ? 120 : 108,
               lineHeight: 1.02,
               letterSpacing: -3,
-              color: "#221a13",
+              color: "#2f3e2b",
             }}
           >
             {title.map((line) => (
@@ -112,7 +112,7 @@ export async function renderOg({
               width: 112,
               height: 5,
               borderRadius: 3,
-              backgroundColor: "#a84d1d",
+              backgroundColor: "#7e843a",
             }}
           />
           <div
@@ -130,7 +130,7 @@ export async function renderOg({
                 fontFamily: "Fraunces",
                 fontSize: 30,
                 lineHeight: 1.25,
-                color: "#5f5243",
+                color: "#58412f",
                 maxWidth: 700,
               }}
             >
@@ -143,7 +143,7 @@ export async function renderOg({
                 fontSize: 20,
                 letterSpacing: 3,
                 textTransform: "uppercase",
-                color: "#5f5243",
+                color: "#58412f",
               }}
             >
               Glennville, Georgia

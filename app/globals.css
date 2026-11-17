@@ -13,19 +13,22 @@
 }
 
 @theme {
-  /* Warm archival paper & sienna surface palette */
-  --color-paper: #faf6ec;
-  --color-surface: #fffdf8;
-  --color-wash: #f3ecdc;
-  --color-ink: #221a13;
-  --color-coal: #17110b;
-  --color-ink-soft: #5f5243;
-  --color-ink-mute: #6c5e4e;
-  --color-accent: #a84d1d;
-  --color-accent-deep: #86390f;
-  --color-line: #e6dbc6;
-  --color-line-strong: #d4c4a8;
-  --color-field: #8a7b67;
+  /* Natural Porch Glow — landscape-inspired editorial surface palette */
+  --color-paper: #f6efe3;
+  --color-surface: #fcf9f3;
+  --color-wash: #ece0ce;
+  --color-ink: #2f3e2b;
+  --color-coal: #232e20;
+  --color-ink-soft: #58412f;
+  --color-ink-mute: #6b5542;
+  --color-accent: #7e843a;
+  --color-accent-deep: #555b21;
+  --color-gold: #caa06b;
+  --color-sky: #7990aa;
+  --color-sky-deep: #4e657e;
+  --color-line: #dfd1ba;
+  --color-line-strong: #cbb99d;
+  --color-field: #8e7b64;
 
   /* Fluid typographic scale — harmonically stepped, interpolated 360px -> 1280px */
   --text-display: clamp(2.5rem, 1.25rem + 5.1vw, 5.15rem);
@@ -88,14 +91,14 @@ i.font-display,
   font-variation-settings: "SOFT" 80;
 }
 
-/* Tactile warm paper elevation — soft ambient shadows in the page's own umber */
+/* Tactile warm paper elevation — ambient shadows tinted subtly in oak and wood */
 .card-editorial {
   background-color: var(--color-surface);
   border: 1px solid var(--color-line);
   box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.75) inset,
-    0 2px 6px -1px rgb(34 26 19 / 0.04),
-    0 14px 34px -10px rgb(34 26 19 / 0.07);
+    0 1px 0 rgb(255 255 255 / 0.78) inset,
+    0 2px 6px -1px rgb(47 62 43 / 0.04),
+    0 14px 34px -10px rgb(88 65 47 / 0.07);
   transition:
     transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
@@ -106,9 +109,9 @@ i.font-display,
   transform: translateY(-3px);
   border-color: var(--color-line-strong);
   box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.85) inset,
-    0 6px 14px -3px rgb(34 26 19 / 0.06),
-    0 24px 48px -12px rgb(134 57 15 / 0.12);
+    0 1px 0 rgb(255 255 255 / 0.88) inset,
+    0 6px 14px -3px rgb(47 62 43 / 0.06),
+    0 24px 48px -12px rgb(88 65 47 / 0.11);
 }
 
 @media (min-width: 120rem) {
@@ -171,7 +174,7 @@ body {
 a,
 button {
   touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(168, 77, 29, 0.15);
+  -webkit-tap-highlight-color: rgba(126, 132, 58, 0.18);
 }
 
 h1,
@@ -335,9 +338,9 @@ p {
 .menu-pop {
   transform-origin: top right;
   box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.7) inset,
-    0 4px 12px rgb(34 26 19 / 0.06),
-    0 24px 48px -10px rgb(134 57 15 / 0.18);
+    0 1px 0 rgb(255 255 255 / 0.72) inset,
+    0 4px 12px rgb(47 62 43 / 0.06),
+    0 24px 48px -10px rgb(88 65 47 / 0.16);
 }
 
 /* ——— Sticky header ——— */
@@ -363,7 +366,7 @@ p {
   padding: 0.625rem max(1rem, env(safe-area-inset-right))
     calc(0.625rem + env(safe-area-inset-bottom))
     max(1rem, env(safe-area-inset-left));
-  background: rgba(250, 246, 236, 0.92);
+  background: rgba(246, 239, 227, 0.92);
   backdrop-filter: blur(12px);
   border-top: 1px solid var(--color-line);
   transform: translateY(100%);
@@ -398,13 +401,13 @@ html:has(.sticky-cta[data-visible="true"]) {
   }
 }
 
-/* ——— Warm film photo grade ——— */
+/* ——— Sunlit film photo grade ——— */
 .photo-warm {
-  filter: sepia(0.11) saturate(0.92) contrast(1.02) brightness(1.01);
+  filter: sepia(0.08) saturate(0.95) contrast(1.02) brightness(1.01);
 }
 
 .photo-warm[data-bw] {
-  filter: sepia(0.16) contrast(1.02);
+  filter: sepia(0.12) contrast(1.02);
 }
 
 @media (forced-colors: active) {

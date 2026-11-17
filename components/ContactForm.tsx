@@ -288,7 +288,7 @@ export default function ContactForm({
             className="flex items-center justify-between gap-3 rounded-xl border border-accent/35 bg-wash/90 px-4 py-3 text-xs font-medium text-ink"
           >
             <span className="flex items-center gap-2">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-paper">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ink text-paper">
                 <Check size={12} aria-hidden />
               </span>
               <span>{contextBanner}</span>
@@ -337,7 +337,7 @@ export default function ContactForm({
                     aria-hidden
                     className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-colors ${
                       active
-                        ? "border-accent bg-accent text-paper"
+                        ? "border-ink bg-ink text-paper"
                         : "border-line-strong bg-surface"
                     }`}
                   >

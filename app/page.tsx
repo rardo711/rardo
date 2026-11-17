@@ -172,7 +172,7 @@ export default function Home() {
             <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
               <div>
                 <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                  <span className="text-accent">01</span> · What I do
+                  <span className="text-accent-deep">01</span> · What I do
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
                   Three things,{" "}
@@ -267,7 +267,7 @@ export default function Home() {
             <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
               <div>
                 <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                  <span className="text-accent">02</span> · Selected work
+                  <span className="text-accent-deep">02</span> · Selected work
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
                   Real sites, built for{" "}
@@ -296,7 +296,7 @@ export default function Home() {
             <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
               <div>
                 <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                  <span className="text-accent">03</span> · How it works
+                  <span className="text-accent-deep">03</span> · How it works
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
                   Simple from the{" "}
@@ -415,7 +415,7 @@ export default function Home() {
             <div className="lg:col-span-5">
               <Reveal>
                 <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                  <span className="text-accent">04</span> · Start your project
+                  <span className="text-accent-deep">04</span> · Start your project
                 </p>
                 <h2 className="mt-4 font-display text-h2 font-semibold text-ink">
                   Let&apos;s build{" "}
