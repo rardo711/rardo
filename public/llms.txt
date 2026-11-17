@@ -1,46 +1,41 @@
-# Gerardo Castaneda — Websites for Small Businesses
+# Gerardo Castaneda ("Rardo") — Independent Web Studio
 
-> I build simple, fast one-page websites for local businesses.
+> Bespoke, flat-fee one-page websites, direct inbox ordering ledgers, and self-editable owner panels for small businesses in Glennville, Tattnall County, Georgia, and beyond.
 
-## Who this is for
+## Studio Dossier & Commercial Terms
 
-Local businesses that need a page customers can find: who you are, what you do,
-your hours, and a way to call or message you. Built for shops in and around
-Glennville, Georgia and Tattnall County.
+- **Builder:** Gerardo Castaneda ("Rardo")
+- **Station:** Glennville & Reidsville, Tattnall County, Georgia (31.9407° N, 81.9296° W)
+- **Languages:** English & Español (Native — born in Siguatepeque, Comayagua, Honduras)
+- **Proof-First Guarantee:** $0 working mockup built from your real business info before any invoice exists
+- **Turnaround:** 7 days (one focused week from mockup approval to live launch)
+- **Pricing Model:** Single flat fee named upfront; $0/month developer retainer; 100% client ownership
 
-## Services
+## Capabilities & Structured Offerings
 
-- One-page business websites (who you are, what you do, hours, contact)
-- Ordering and contact forms that send straight to your inbox
-- Update-it-yourself sites you can edit without a developer
+1. **No. 01 · One-Page Business Websites (`One-Page Business Website`)**
+   Mobile-first storefront with what you sell, current hours, street address, and a tap-to-call action bar.
+2. **No. 02 · Ordering & Contact Systems (`Ordering & Contact Form System`)**
+   Line-item customer order and inquiry ledgers routed straight to the owner's email inbox with 0% platform commission.
+3. **No. 03 · Self-Editable Owner Panels (`Self-Editable Website + Admin Panel`)**
+   Plain-language admin panel allowing business owners to update prices, stock status, hours, and photos in two minutes without calling a developer.
 
-## How it works
+## Shipped Production Ledger
 
-1. You reach out — tell me about your business.
-2. Free mockup — you see the page before you pay anything.
-3. I build your site — one focused week. The build is a flat fee, named before I start.
-4. It's yours — I'll show you how to update it, and I'm a message away.
-
-## Selected work
-
-- RaeMa's Remedies — family wellness brand; order system that sends orders to
-  the owner's inbox. https://raemas-remedies.vercel.app
-- Better Than Gold Tallow Co. — farm product site.
+- **No. 01 · RaeMa's Remedies** (Client Build · Direct Order System · Tattnall County, GA)
+  https://raemas-remedies.vercel.app
+- **No. 02 · Better Than Gold Tallow Co.** (Client Build · Farm Brand Storefront · Southeast GA)
   https://better-than-gold-tallow.vercel.app
+- **No. 03 · Theos Logos** (Personal Software Build · Greek & Hebrew Interlinear Lexicon Web App)
+  https://theos-logos-official.vercel.app
 
-Theos Logos (https://theos-logos-official.vercel.app) is a personal Bible study
-app, not a client site.
+## Complete Directory & Channels
 
-## About
-
-I'm Gerardo Castaneda — Rardo. Husband, father of two, musician, photographer.
-Born in Siguatepeque, Honduras; now in Glennville, Georgia. Started learning to
-build software in 2026 with AI as my tutor. I've discovered, by God's grace and goodness,
-that living for the glory of God is life's purpose.
-
-## Contact
-
-- Start a project: https://castaneda.vercel.app/contact
-- Email: gerardoj2001@outlook.com
-- X: https://x.com/gerardocasta711
-- I reply within a day — usually faster.
+- **Studio & Portfolio:** https://castaneda.vercel.app
+- **About, Dossier & Treatise:** https://castaneda.vercel.app/about
+- **Project Brief & Free Mockup:** https://castaneda.vercel.app/contact
+- **Podcast:** The Life Proper (Co-hosted with Caleb on Spotify) — https://open.spotify.com/show/2rxl4jrLFaQ2SYb75NGDYj
+- **Photography Archive:** @lvngphotography — https://www.instagram.com/lvngphotography/
+- **Direct Email:** gerardoj2001@outlook.com
+- **Direct X:** https://x.com/gerardocasta711
+- **GitHub:** https://github.com/rardo711

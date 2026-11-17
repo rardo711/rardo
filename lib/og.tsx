@@ -21,12 +21,10 @@ export async function renderOg({
   title: [string] | [string, string];
   sub: string;
 }) {
-  const [fraunces, plex, mark] = await Promise.all([
+  const [fraunces, plex] = await Promise.all([
     readFile(join(process.cwd(), "app/_fonts/Fraunces-SemiBold.ttf")),
     readFile(join(process.cwd(), "app/_fonts/PlexMono-Medium.ttf")),
-    readFile(join(process.cwd(), "public/gc-mark.png")),
   ]);
-  const markSrc = `data:image/png;base64,${mark.toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -36,8 +34,8 @@ export async function renderOg({
           height: "100%",
           display: "flex",
           position: "relative",
-          backgroundColor: "#faf6ec",
-          padding: 88,
+          backgroundColor: "#f6efe3",
+          padding: "72px 84px",
         }}
       >
         <div
@@ -47,7 +45,8 @@ export async function renderOg({
             left: 28,
             right: 28,
             bottom: 28,
-            border: "1px solid #e4d8c0",
+            border: "1px solid #dfd1ba",
+            borderRadius: 16,
           }}
         />
         <div
@@ -59,17 +58,30 @@ export async function renderOg({
           }}
         >
           <div style={{ display: "flex", alignItems: "center" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={markSrc} width={137} height={96} alt="" />
+            <svg width="128" height="90" viewBox="0 0 142 100" fill="none">
+              <path
+                d="M74.5 23.5C66.8 14.5 55.3 9 42.5 9C19.6 9 1 27.6 1 50.5C1 73.4 19.6 92 42.5 92C64.2 92 81.9 75.5 83.8 54.3L84 47.5H44.5L37.5 57.5H72.2C69.1 71.2 57 81.2 42.5 81.2C25.5 81.2 11.8 67.5 11.8 50.5C11.8 33.5 25.5 19.8 42.5 19.8C52.4 19.8 61.2 24.5 66.8 31.8L74.5 23.5Z"
+                fill="#2f3e2b"
+              />
+              <path
+                d="M78.5 32.2C84.2 21.2 95.7 13.8 109 13.8C120.3 13.8 130.4 19.2 136.7 27.6L129.8 33.5C125.1 27 117.5 22.8 109 22.8C99 22.8 90.3 28.5 86.1 36.8L78.5 32.2Z"
+                fill="#2f3e2b"
+              />
+              <path
+                d="M84.8 75.8C91.1 83.4 100.5 88.2 111 88.2C121.8 88.2 131.5 83.2 137.7 75.3L130.8 69.5C126.2 75.4 119 79.2 111 79.2C102.9 79.2 95.6 75.4 91 69.5L84.8 75.8Z"
+                fill="#2f3e2b"
+              />
+              <circle cx="137" cy="50.5" r="2.2" fill="#7e843a" />
+            </svg>
             <div
               style={{
                 display: "flex",
-                marginLeft: 32,
+                marginLeft: 28,
                 fontFamily: "Plex",
-                fontSize: 26,
+                fontSize: 24,
                 letterSpacing: 4,
                 textTransform: "uppercase",
-                color: "#6b5d4c",
+                color: "#58412f",
               }}
             >
               {eyebrow}
@@ -79,12 +91,12 @@ export async function renderOg({
             style={{
               display: "flex",
               flexDirection: "column",
-              marginTop: 40,
+              marginTop: 32,
               fontFamily: "Fraunces",
-              fontSize: title.length === 2 ? 128 : 112,
-              lineHeight: 1,
+              fontSize: title.length === 2 ? 120 : 108,
+              lineHeight: 1.02,
               letterSpacing: -3,
-              color: "#221a13",
+              color: "#2f3e2b",
             }}
           >
             {title.map((line) => (
@@ -96,40 +108,47 @@ export async function renderOg({
           <div
             style={{
               display: "flex",
-              marginTop: 36,
-              width: 120,
-              height: 8,
-              backgroundColor: "#a84d1d",
+              marginTop: 28,
+              width: 112,
+              height: 5,
+              borderRadius: 3,
+              backgroundColor: "#7e843a",
             }}
           />
           <div
             style={{
               display: "flex",
-              marginTop: 28,
-              fontFamily: "Fraunces",
-              fontSize: 34,
-              lineHeight: 1.25,
-              color: "#6b5d4c",
-              maxWidth: 820,
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              marginTop: 22,
+              width: "100%",
             }}
           >
-            {sub}
+            <div
+              style={{
+                display: "flex",
+                fontFamily: "Fraunces",
+                fontSize: 30,
+                lineHeight: 1.25,
+                color: "#58412f",
+                maxWidth: 700,
+              }}
+            >
+              {sub}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontFamily: "Plex",
+                fontSize: 20,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                color: "#58412f",
+              }}
+            >
+              Glennville, Georgia
+            </div>
           </div>
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            right: 88,
-            bottom: 72,
-            display: "flex",
-            fontFamily: "Plex",
-            fontSize: 22,
-            letterSpacing: 3,
-            textTransform: "uppercase",
-            color: "#6b5d4c",
-          }}
-        >
-          Glennville, Georgia
         </div>
       </div>
     ),

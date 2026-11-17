@@ -1,12 +1,47 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import Logo from "./Logo";
 
-const links = [
-  { href: "/#services", label: "Services" },
-  { href: "/#work", label: "Work" },
-  { href: "/#process", label: "Process" },
-  { href: "/about", label: "About" },
+const studioLinks = [
+  { href: "/#services", label: "What I do" },
+  { href: "/#work", label: "Selected work" },
+  { href: "/#process", label: "How it works" },
+  { href: "/#inquire", label: "Free mockup" },
+  { href: "/about", label: "About & story" },
   { href: "/contact", label: "Contact" },
+];
+
+const shippedIndex = [
+  {
+    label: "RaeMa’s Remedies",
+    meta: "Order site · Tattnall County",
+    href: "https://raemas-remedies.vercel.app",
+  },
+  {
+    label: "Better Than Gold Tallow Co.",
+    meta: "Farm brand · Southeast GA",
+    href: "https://better-than-gold-tallow.vercel.app",
+  },
+  {
+    label: "Theos Logos",
+    meta: "Greek & Hebrew study app",
+    href: "https://theos-logos-official.vercel.app",
+  },
+  {
+    label: "The Life Proper",
+    meta: "Podcast on Spotify",
+    href: "https://open.spotify.com/show/2rxl4jrLFaQ2SYb75NGDYj",
+  },
+  {
+    label: "@lvngphotography",
+    meta: "Portrait & family archive",
+    href: "https://www.instagram.com/lvngphotography/",
+  },
+  {
+    label: "GitHub (@rardo711)",
+    meta: "Code & repositories",
+    href: "https://github.com/rardo711",
+  },
 ];
 
 export default function Footer() {
@@ -14,55 +49,136 @@ export default function Footer() {
     <footer
       data-surface="dark"
       data-cta-end=""
-      className="cv-auto [--cis:33rem] md:[--cis:36rem] lg:[--cis:31rem] bg-coal text-paper"
+      className="bg-coal text-paper"
     >
-      <div className="gutter mx-auto max-w-6xl py-16 sm:py-20 lg:max-w-7xl">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="font-display text-[clamp(2.25rem,1.4rem+3.6vw,3.75rem)] font-semibold leading-[1.05] tracking-tight">
-              Gerardo Castaneda
+      <div className="gutter mx-auto max-w-6xl py-16 sm:py-20 lg:max-w-7xl lg:py-24">
+        <div className="grid gap-12 border-b border-paper/15 pb-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+          {/* Column 1: Warm Studio Signature */}
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-3.5">
+              <Logo size={38} className="text-paper" />
+              <div>
+                <p className="font-display text-2xl font-semibold leading-none tracking-tight">
+                  Gerardo Castaneda
+                </p>
+                <p className="mt-1 font-tech text-[0.6875rem] uppercase text-paper/70">
+                  Glennville, Georgia
+                </p>
+              </div>
+            </div>
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-paper/80">
+              Simple, fast one-page websites, direct ordering forms, and
+              update-it-yourself pages for local businesses — built in one
+              focused week for a flat fee.
             </p>
-            <p className="mt-3 max-w-md leading-relaxed text-paper/70">
-              I build websites for small businesses — from Glennville, Georgia,
-              for whoever needs one.
-            </p>
-            <Link
-              href="https://x.com/gerardocasta711"
-              target="_blank"
-              rel="noreferrer"
-              className="group mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-paper/80 underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-paper"
-            >
-              @gerardocasta711
-              <span className="sr-only"> on X (opens in a new tab)</span>
-              <ArrowUpRight
-                size={16}
-                aria-hidden
-                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </Link>
-            <a
-              href="mailto:gerardoj2001@outlook.com"
-              className="mt-1 flex min-h-11 items-center text-sm text-paper/70 underline decoration-paper/30 underline-offset-4 [overflow-wrap:anywhere] transition-colors hover:text-paper"
-            >
-              gerardoj2001@outlook.com
-            </a>
-          </div>
-          <nav aria-label="Footer" className="flex flex-wrap gap-x-7 gap-y-1">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="inline-flex min-h-11 items-center text-sm font-medium text-paper/70 transition-colors hover:text-paper"
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+              <a
+                href="mailto:gerardoj2001@outlook.com"
+                className="font-medium text-paper underline decoration-gold decoration-2 underline-offset-4 transition-colors hover:text-gold"
               >
-                <span className="u-sweep">{l.label}</span>
-              </Link>
-            ))}
-          </nav>
+                gerardoj2001@outlook.com
+              </a>
+              <a
+                href="https://x.com/gerardocasta711"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-1 font-medium text-paper/85 transition-colors hover:text-paper"
+              >
+                <span className="u-sweep">@gerardocasta711</span>
+                <span className="sr-only"> on X (opens in a new tab)</span>
+                <ArrowUpRight
+                  size={14}
+                  aria-hidden
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            </div>
+          </div>
+
+          {/* Column 2: Navigation */}
+          <div className="lg:col-span-2">
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">
+              Pages
+            </p>
+            <nav aria-label="Footer navigation" className="mt-5">
+              <ul className="flex flex-col gap-2.5">
+                {studioLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="inline-block text-sm text-paper/85 transition-colors hover:text-paper"
+                    >
+                      <span className="u-sweep">{l.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          {/* Column 3: Shipped Sites & Projects */}
+          <div className="lg:col-span-3">
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">
+              Work &amp; Projects
+            </p>
+            <ul className="mt-5 flex flex-col gap-3.5">
+              {shippedIndex.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-start justify-between gap-2.5 text-sm text-paper/90 transition-colors hover:text-paper"
+                  >
+                    <span className="min-w-0">
+                      <span className="u-sweep font-medium">{item.label}</span>
+                      <span className="mt-0.5 block text-xs text-paper/65">
+                        {item.meta}
+                      </span>
+                    </span>
+                    <span className="sr-only"> (opens in a new tab)</span>
+                    <ArrowUpRight
+                      size={14}
+                      aria-hidden
+                      className="mt-1 shrink-0 text-paper/65 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-gold"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Colophon */}
+          <div className="lg:col-span-2">
+            <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">
+              Colophon
+            </p>
+            <dl className="mt-5 flex flex-col gap-4 text-xs leading-relaxed text-paper/75">
+              <div>
+                <dt className="text-paper/65">Home base</dt>
+                <dd className="mt-0.5 text-paper/90">
+                  Glennville &amp; Tattnall County, GA
+                </dd>
+              </div>
+              <div>
+                <dt className="text-paper/65">The promise</dt>
+                <dd className="mt-0.5 text-paper/90">
+                  Free mockup first. Flat fee named before I start. Yours outright.
+                </dd>
+              </div>
+              <div>
+                <dt className="text-paper/65">Typeset in</dt>
+                <dd className="mt-0.5 text-paper/90">
+                  Fraunces &amp; Public Sans
+                </dd>
+              </div>
+            </dl>
+          </div>
         </div>
-        <div className="mt-14 border-t border-paper/15 pt-6 pb-[env(safe-area-inset-bottom)]">
-          <p className="font-tech text-eyebrow uppercase text-paper/70">
-            © 2026 Gerardo Castaneda
-          </p>
+
+        <div className="mt-8 flex flex-col gap-2 pb-[env(safe-area-inset-bottom)] text-xs text-paper/70 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 Gerardo Castaneda · Glennville, Georgia</p>
+          <p className="font-display italic text-paper/80">Soli Deo Gloria</p>
         </div>
       </div>
     </footer>
