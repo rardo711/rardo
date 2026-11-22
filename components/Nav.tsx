@@ -29,19 +29,49 @@ function Burger({ open }: { open: boolean }) {
 
 export default function Nav() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const reduce = useReducedMotion();
   const [openedPath, setOpenedPath] = useState<string | null>(null);
+  const [heroScrollState, setHeroScrollState] = useState<{
+    path: string;
+    past: boolean;
+  }>({ path: "/", past: false });
+
   const open = openedPath === pathname;
+  const overHero =
+    isHome && !(heroScrollState.path === pathname && heroScrollState.past);
+
   const headerRef = useRef<HTMLElement>(null);
   const openRef = useRef(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   function brandClick(e: React.MouseEvent) {
-    if (pathname !== "/") return;
+    if (!isHome) return;
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   }
+
+  useEffect(() => {
+    if (!isHome) return;
+    const hero = document.getElementById("hero-end");
+    if (!hero) return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        const past = !entry.isIntersecting;
+        setHeroScrollState((prev) =>
+          prev.path === pathname && prev.past === past
+            ? prev
+            : { path: pathname, past },
+        );
+      },
+      { rootMargin: "-76px 0px 0px 0px", threshold: 0 },
+    );
+
+    io.observe(hero);
+    return () => io.disconnect();
+  }, [isHome, pathname]);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -114,36 +144,41 @@ export default function Nav() {
     };
   }, [open]);
 
-  const primaryCtaHref = pathname === "/" ? "#inquire" : "/contact";
-
   return (
     <header
       ref={headerRef}
-      className="site-header sticky top-0 z-50 border-b border-line/80 bg-paper/85 backdrop-blur-md pt-[env(safe-area-inset-top)]"
+      data-surface={overHero ? "dark" : undefined}
+      className={`site-header z-50 border-b pt-[env(safe-area-inset-top)] ${
+        isHome ? "fixed inset-x-0 top-0" : "sticky top-0"
+      } ${
+        overHero
+          ? "border-transparent bg-transparent text-paper"
+          : "border-line/80 bg-paper/88 text-ink backdrop-blur-md"
+      }`}
     >
-      <div className="gutter mx-auto flex max-w-6xl items-center justify-between gap-4 py-4 lg:max-w-7xl">
+      <div className="gutter mx-auto flex max-w-6xl items-center justify-between gap-4 py-4 sm:py-5 lg:max-w-7xl">
         <Link
           href="/"
           onClick={brandClick}
-          className="group flex shrink-0 items-center gap-2.5 text-ink lg:gap-3"
+          className="group flex shrink-0 items-center gap-3"
           aria-label="Gerardo Castaneda · home"
         >
           <Logo
-            size={32}
-            className="text-ink transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            size={30}
+            className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
-          <div className="flex flex-col">
-            <span className="whitespace-nowrap font-display text-base font-semibold leading-none tracking-tight lg:text-lg">
-              Gerardo Castaneda
-            </span>
-            <span className="mt-1 whitespace-nowrap font-tech text-[0.65rem] uppercase text-ink-mute">
-              Glennville, Georgia
-            </span>
-          </div>
+          <span
+            aria-hidden={overHero || undefined}
+            className={`whitespace-nowrap font-display text-base font-semibold leading-none tracking-tight transition-opacity duration-300 lg:text-lg ${
+              overHero ? "pointer-events-none select-none opacity-0" : "opacity-100"
+            }`}
+          >
+            Gerardo Castaneda
+          </span>
         </Link>
 
         <nav
-          className="hidden items-center md:flex md:gap-4 lg:gap-8"
+          className="hidden items-center md:flex md:gap-6 lg:gap-8"
           aria-label="Primary"
         >
           {links.map((l) => {
@@ -155,25 +190,18 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 aria-current={active ? "page" : undefined}
-                className={`u-sweep whitespace-nowrap text-[0.8125rem] font-medium transition-colors duration-300 hover:text-ink lg:text-sm ${
-                  active ? "font-semibold text-ink" : "text-ink-soft"
+                className={`u-sweep whitespace-nowrap font-tech text-[0.72rem] uppercase transition-colors duration-300 ${
+                  overHero
+                    ? "font-medium text-paper/80 hover:text-paper"
+                    : active
+                      ? "font-semibold text-ink"
+                      : "font-medium text-ink-soft hover:text-ink"
                 }`}
               >
                 {l.label}
               </Link>
             );
           })}
-          <Link
-            href={primaryCtaHref}
-            className="group inline-flex min-h-11 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-xl bg-ink px-3.5 py-2 text-xs font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0 lg:gap-2 lg:px-5 lg:py-2.5 lg:text-sm"
-          >
-            <span>Start your project</span>
-            <ArrowRight
-              size={15}
-              aria-hidden
-              className="transition-transform duration-300 group-hover:translate-x-0.5"
-            />
-          </Link>
         </nav>
 
         <div ref={menuRef} className="relative md:hidden">
@@ -184,7 +212,11 @@ export default function Nav() {
             aria-expanded={open}
             aria-controls="site-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line-strong bg-surface text-ink transition-colors hover:border-ink data-[open=true]:bg-wash"
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-[2px] border transition-colors ${
+              overHero
+                ? "border-paper/25 bg-transparent text-paper hover:border-paper/60 data-[open=true]:bg-paper/10"
+                : "border-line-strong bg-surface text-ink hover:border-ink data-[open=true]:bg-wash"
+            }`}
             data-open={open}
           >
             <Burger open={open} />
@@ -203,7 +235,7 @@ export default function Nav() {
                   reduce ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.98 }
                 }
                 transition={{ duration: 0.28, ease: EASE }}
-                className="menu-pop absolute right-0 top-[calc(100%+0.625rem)] z-[70] w-[min(21rem,calc(100vw-2.5rem))] rounded-2xl border border-line bg-surface p-2.5"
+                className="menu-pop absolute right-0 top-[calc(100%+0.625rem)] z-[70] w-[min(20rem,calc(100vw-2.5rem))] rounded-2xl border border-line bg-surface p-2.5 text-ink"
               >
                 <ul className="flex flex-col gap-0.5">
                   {links.map((l, i) => {
@@ -242,20 +274,6 @@ export default function Nav() {
                     );
                   })}
                 </ul>
-                <div className="mt-2 border-t border-line pt-2">
-                  <Link
-                    href={primaryCtaHref}
-                    onClick={() => setOpenedPath(null)}
-                    className="group flex min-h-12 w-full items-center justify-between rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
-                  >
-                    <span>Start your project</span>
-                    <ArrowRight
-                      size={16}
-                      aria-hidden
-                      className="transition-transform duration-300 group-hover:translate-x-0.5"
-                    />
-                  </Link>
-                </div>
               </motion.nav>
             )}
           </AnimatePresence>
