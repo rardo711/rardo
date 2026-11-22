@@ -6,8 +6,8 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "Rardo",
     start_url: "/",
     display: "browser",
-    theme_color: "#faf6ec",
-    background_color: "#faf6ec",
+    theme_color: "#f6efe3",
+    background_color: "#f6efe3",
     icons: [
       { src: "/icon.png", sizes: "512x512", type: "image/png" },
     ],

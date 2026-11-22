@@ -5,52 +5,50 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
-/**
- * A bottom call-to-action bar for phones and tablets.
- * Shows only after the hero (home) or a short scroll (about), and steps
- * aside when the page's own final CTA / footer is on screen.
- * Hidden on desktop and in short landscape via CSS (globals.css).
- */
 export default function StickyCta() {
   const pathname = usePathname();
   const eligible = pathname === "/" || pathname === "/about";
-  const [pastStart, setPastStart] = useState(false);
-  const [atEnd, setAtEnd] = useState(false);
-
-  // Reset when the route changes (adjust state during render, not in an effect).
-  const [seenPath, setSeenPath] = useState(pathname);
-  if (seenPath !== pathname) {
-    setSeenPath(pathname);
-    setPastStart(false);
-    setAtEnd(false);
-  }
+  const [scrollState, setScrollState] = useState({
+    path: pathname,
+    pastStart: false,
+    atEnd: false,
+  });
+  const pastStart = scrollState.path === pathname && scrollState.pastStart;
+  const atEnd = scrollState.path === pathname && scrollState.atEnd;
 
   useEffect(() => {
     if (!eligible) return;
 
-    // Past the start: the hero itself on home, or a
-    // marker 600px down the page elsewhere. IntersectionObserver in both
-    // cases, so no scroll handler runs.
     const sentinel =
       document.getElementById("hero-end") ??
       document.getElementById("cta-start");
     let cleanupStart = () => {};
     if (sentinel) {
       const io = new IntersectionObserver(([e]) => {
-        setPastStart(!e.isIntersecting && e.boundingClientRect.bottom < 0);
+        const nextPastStart =
+          !e.isIntersecting && e.boundingClientRect.bottom < 0;
+        setScrollState((s) => {
+          const nextAtEnd = s.path === pathname ? s.atEnd : false;
+          if (s.path === pathname && s.pastStart === nextPastStart) return s;
+          return { path: pathname, pastStart: nextPastStart, atEnd: nextAtEnd };
+        });
       });
       io.observe(sentinel);
       cleanupStart = () => io.disconnect();
     }
 
-    // Step aside when a final CTA / the footer is visible.
     const ends = new Set<Element>();
     const endIo = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.isIntersecting) ends.add(e.target);
         else ends.delete(e.target);
       }
-      setAtEnd(ends.size > 0);
+      const nextAtEnd = ends.size > 0;
+      setScrollState((s) => {
+        const nextPastStart = s.path === pathname ? s.pastStart : false;
+        if (s.path === pathname && s.atEnd === nextAtEnd) return s;
+        return { path: pathname, pastStart: nextPastStart, atEnd: nextAtEnd };
+      });
     });
     document
       .querySelectorAll("[data-cta-end]")
@@ -64,10 +62,10 @@ export default function StickyCta() {
 
   if (!eligible) return null;
   const show = pastStart && !atEnd;
+  const targetHref = pathname === "/" ? "#inquire" : "/contact";
 
   return (
     <>
-      {/* Marker for pages without a hero: the bar appears once it's passed. */}
       <div
         id="cta-start"
         aria-hidden
@@ -81,14 +79,14 @@ export default function StickyCta() {
         className="sticky-cta"
       >
         <Link
-          href="/contact"
-          className="group flex min-h-12 w-full items-center justify-center gap-2 border border-transparent bg-ink px-6 text-base font-semibold text-paper transition-colors hover:bg-accent-deep active:scale-[0.98]"
+          href={targetHref}
+          className="group flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-ink px-6 text-base font-semibold text-paper shadow-sm transition-colors hover:bg-accent-deep"
         >
-          Start your project
+          <span>Start with a free mockup</span>
           <ArrowRight
-            size={18}
+            size={17}
             aria-hidden
-            className="transition-transform group-hover:translate-x-1"
+            className="transition-transform duration-300 group-hover:translate-x-0.5"
           />
         </Link>
       </div>

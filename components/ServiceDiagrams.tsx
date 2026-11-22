@@ -197,7 +197,7 @@ export function DiagramOrderLedger() {
         fontFamily={FONT_SANS}
         fontWeight="600"
       >
-        $24
+        × 1
       </text>
       <line x1="32" y1="76" x2="160" y2="76" stroke="#ece0ce" strokeWidth="1" />
 
@@ -213,7 +213,7 @@ export function DiagramOrderLedger() {
         fontFamily={FONT_SANS}
         fontWeight="600"
       >
-        $28
+        × 1
       </text>
       <line x1="32" y1="100" x2="160" y2="100" stroke="#ece0ce" strokeWidth="1" />
 
@@ -272,7 +272,7 @@ export function DiagramOrderLedger() {
         Order Total
       </text>
       <text x="232" y="133.5" fill="#2f3e2b" fontSize="8.5" fontFamily={FONT_SANS} fontWeight="700">
-        $52.00 · $0 fees
+        2 items · No fees
       </text>
     </svg>
   );
@@ -329,7 +329,7 @@ export function DiagramSelfEditable() {
       </text>
       <rect x="34" y="110" width="66" height="22" rx="5" fill="#f6efe3" stroke="#7e843a" strokeWidth="1.2" />
       <text x="44" y="124" fill="#555b21" fontSize="8.5" fontFamily={FONT_SANS} fontWeight="700">
-        $24.00
+        Small batch
       </text>
 
       <rect x="108" y="110" width="68" height="22" rx="6" fill="#2f3e2b" />
@@ -387,7 +387,7 @@ export function DiagramSelfEditable() {
       </text>
       <line x1="214" y1="101" x2="316" y2="101" stroke="#dfd1ba" />
       <text x="214" y="118" fill="#2f3e2b" fontSize="9.5" fontFamily={FONT_SANS} fontWeight="700">
-        $24.00
+        Fresh batch
       </text>
       <rect x="270" y="107" width="46" height="16" rx="4" fill="#e8eef3" />
       <text
