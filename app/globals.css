@@ -3,128 +3,69 @@
 /* Phones held sideways: very little height to work with. */
 @custom-variant short-landscape (@media (orientation: landscape) and (max-height: 32rem));
 
-/* 2-family editorial typographic system:
-   1. Fraunces — optical serif (opsz + SOFT variable axes, normal + italic)
-   2. Public Sans — humanist sans-serif (variable wght, tabular-nums for specs) */
+/* `inline` matters: the next/font variables are set on <body>, not :root, so
+   these must be resolved where the utility is used. As plain @theme values
+   they resolved to nothing at :root and the whole site fell back to the
+   system sans — none of the web fonts were ever applied. */
 @theme inline {
   --font-display: var(--font-fraunces), "Georgia", serif;
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-tech: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-tech: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 @theme {
-  /* Natural Porch Glow — landscape-inspired editorial surface palette */
-  --color-paper: #f6efe3;
-  --color-surface: #fcf9f3;
-  --color-wash: #ece0ce;
-  --color-ink: #2f3e2b;
-  --color-coal: #232e20;
-  --color-ink-soft: #58412f;
-  --color-ink-mute: #6b5542;
-  --color-accent: #7e843a;
-  --color-accent-deep: #555b21;
-  --color-gold: #caa06b;
-  --color-sky: #7990aa;
-  --color-sky-deep: #4e657e;
-  --color-line: #dfd1ba;
-  --color-line-strong: #cbb99d;
-  --color-field: #8e7b64;
+  --color-paper: #faf6ec;
+  --color-wash: #f3ecdc;
+  --color-ink: #221a13;
+  --color-coal: #161009;
+  --color-ink-soft: #6b5d4c;
+  --color-accent: #a84d1d;
+  --color-accent-deep: #86390f;
+  --color-line: #e4d8c0;
+  /* Form borders: 4.08:1 on paper (needs 3:1). Placeholders: 4.52:1. */
+  --color-field: #857662;
+  --color-ink-mute: #7d6f5c;
 
-  /* Fluid typographic scale — harmonically stepped, interpolated 360px -> 1280px */
-  --text-display: clamp(2.5rem, 1.25rem + 5.1vw, 5.15rem);
-  --text-display--line-height: 1.03;
-  --text-display--letter-spacing: -0.028em;
-  --text-h1: clamp(2.35rem, 1.35rem + 4.1vw, 4.5rem);
-  --text-h1--line-height: 1.05;
+  /* Fluid type — rem + vw so it follows both the viewport and text-size
+     settings. Interpolated 360px → 1280px. */
+  --text-display: clamp(2.25rem, 0.587rem + 7.391vw, 6.5rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.025em;
+  --text-h1: clamp(2.5rem, 1.326rem + 5.217vw, 5.5rem);
+  --text-h1--line-height: 1.04;
   --text-h1--letter-spacing: -0.025em;
-  --text-h2: clamp(1.95rem, 1.35rem + 2.5vw, 3.35rem);
-  --text-h2--line-height: 1.09;
-  --text-h2--letter-spacing: -0.022em;
-  --text-h3: clamp(1.375rem, 1.22rem + 0.55vw, 1.7rem);
-  --text-h3--line-height: 1.22;
-  --text-h3--letter-spacing: -0.014em;
-  --text-quote: clamp(1.4rem, 1.1rem + 1.35vw, 2.2rem);
-  --text-quote--line-height: 1.32;
-  --text-quote--letter-spacing: -0.014em;
-  --text-lead: clamp(1.0625rem, 0.98rem + 0.38vw, 1.25rem);
-  --text-lead--line-height: 1.62;
-  --text-body: clamp(1rem, 0.96rem + 0.16vw, 1.0625rem);
-  --text-body--line-height: 1.68;
-  --text-eyebrow: clamp(0.75rem, 0.72rem + 0.08vw, 0.8125rem);
+  --text-h2: clamp(2.125rem, 1.391rem + 3.261vw, 4rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: clamp(1.5rem, 1.402rem + 0.435vw, 1.75rem);
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.01em;
+  --text-quote: clamp(1.5rem, 1.109rem + 1.739vw, 2.5rem);
+  --text-quote--line-height: 1.25;
+  --text-quote--letter-spacing: -0.01em;
+  --text-lead: clamp(1.0625rem, 0.94rem + 0.543vw, 1.375rem);
+  --text-lead--line-height: 1.55;
+  --text-body: clamp(1rem, 0.951rem + 0.217vw, 1.125rem);
+  --text-body--line-height: 1.6;
+  --text-eyebrow: clamp(0.75rem, 0.72rem + 0.1vw, 0.8125rem);
   --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.16em;
 }
 
+/* Side padding that grows with the viewport and never sits under a notch. */
 @utility gutter {
-  padding-left: max(clamp(1.25rem, 0.957rem + 1.304vw, 2.5rem), env(safe-area-inset-left));
-  padding-right: max(clamp(1.25rem, 0.957rem + 1.304vw, 2.5rem), env(safe-area-inset-right));
+  padding-left: max(clamp(1.25rem, 0.957rem + 1.304vw, 2rem), env(safe-area-inset-left));
+  padding-right: max(clamp(1.25rem, 0.957rem + 1.304vw, 2rem), env(safe-area-inset-right));
 }
 
 @utility section-y {
-  padding-top: clamp(4.25rem, 2.6rem + 6.2vw, 7.25rem);
-  padding-bottom: clamp(4.25rem, 2.6rem + 6.2vw, 7.25rem);
+  padding-top: clamp(4rem, 2.435rem + 6.957vw, 7rem);
+  padding-bottom: clamp(4rem, 2.435rem + 6.957vw, 7rem);
 }
 
-@utility font-tech {
-  font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.115em;
-}
-
-@utility tabular-nums {
-  font-variant-numeric: tabular-nums;
-}
-
-/* Fraunces variable axis refinement:
-   - Display serif gets subtle organic warmth ("SOFT" 20) while keeping optical sizing auto.
-   - Editorial italics get deeper softness ("SOFT" 80) for lyrical contrast against upright forms. */
-.font-display {
-  font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 20;
-}
-
-.font-display em,
-.font-display i,
-em.font-display,
-i.font-display,
-.font-display.italic {
-  font-variation-settings: "SOFT" 80;
-}
-
-.amp-clean {
-  font-family: "Georgia", serif;
-  font-style: italic;
-  font-weight: 400;
-}
-
-/* Tactile warm paper elevation — ambient shadows tinted subtly in oak and wood */
-.card-editorial {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-line);
-  box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.78) inset,
-    0 2px 6px -1px rgb(47 62 43 / 0.04),
-    0 14px 34px -10px rgb(88 65 47 / 0.07);
-  transition:
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.35s ease;
-}
-
-.card-editorial-hover:hover {
-  transform: translateY(-3px);
-  border-color: var(--color-line-strong);
-  box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.88) inset,
-    0 6px 14px -3px rgb(47 62 43 / 0.06),
-    0 24px 48px -12px rgb(88 65 47 / 0.11);
-}
-
-.editorial-mat {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-line);
-  box-shadow: 0 1px 0 rgb(255 255 255 / 0.72) inset, 0 8px 22px -12px rgb(47 62 43 / 0.08);
-}
-
+/* Large screens: scale the whole rem-based layout instead of leaving a
+   narrow column in a big canvas. Percentages keep the user's own default
+   font size in charge. */
 @media (min-width: 120rem) {
   html {
     font-size: 112.5%;
@@ -136,11 +77,17 @@ i.font-display,
   }
 }
 
+/* ——— Scrolling ———
+   Scrolling itself is always native. Smooth behaviour is switched on only
+   for the duration of an in-page anchor jump (components/AnchorScroll.tsx)
+   and never for visitors who prefer reduced motion. */
 :root {
   --header-h: 4.5rem;
 }
 
 html {
+  /* Reserve the scrollbar's space so opening the menu, route changes and
+     short pages don't shift the layout sideways. */
   scrollbar-gutter: stable;
   scroll-padding-top: calc(var(--header-h) + env(safe-area-inset-top));
   scroll-padding-bottom: 1.5rem;
@@ -153,18 +100,30 @@ html {
   }
 }
 
+/* Anchor targets sit just under the sticky header. */
 main section[id] {
   scroll-margin-top: 0.5rem;
+}
+
+/* Below-the-fold sections skip rendering until they're near the viewport.
+   `auto` in contain-intrinsic-size remembers the real height once seen, so
+   the scrollbar and anchor jumps don't drift. Sizes are set per section. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--cis, 40rem);
+}
+
+/* Added after load + idle (components/RevealObserver.tsx): everything is
+   rendered, so scrolling never triggers first-time layout. */
+.cv-warm .cv-auto {
+  content-visibility: visible;
 }
 
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -175,9 +134,10 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
-  border-radius: 6px;
+  border-radius: 2px;
 }
 
+/* The accent ring is only 3.4:1 on the dark surfaces — use paper there. */
 [data-surface="dark"] :focus-visible {
   outline-color: var(--color-paper);
 }
@@ -185,13 +145,12 @@ body {
 a,
 button {
   touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(126, 132, 58, 0.18);
+  -webkit-tap-highlight-color: rgba(168, 77, 29, 0.15);
 }
 
 h1,
 h2,
-h3,
-h4 {
+h3 {
   text-wrap: balance;
   font-optical-sizing: auto;
   overflow-wrap: break-word;
@@ -210,8 +169,7 @@ p {
   color: var(--color-paper);
   padding: 0.75rem 1.25rem;
   font-weight: 600;
-  border-radius: 0.75rem;
-  transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: top 0.15s ease-out;
 }
 
 .skip-link:focus-visible {
@@ -219,10 +177,29 @@ p {
   outline-color: var(--color-paper);
 }
 
-/* ——— Choreographed hero entrance ——— */
+/* ——— Reduced motion: one contract for everything CSS-driven ——— */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-line,
+  .hero-underline {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* ——— Hero entrance: runs from CSS alone, so the headline is in the
+   server HTML and does not wait for hydration ——— */
 .hero-line {
-  transform: translateY(105%);
-  animation: hero-rise 0.72s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) forwards;
+  transform: translateY(100%);
+  animation: hero-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s)
+    forwards;
 }
 
 @keyframes hero-rise {
@@ -234,7 +211,7 @@ p {
 .hero-underline {
   transform-origin: left;
   transform: scaleX(0);
-  animation: hero-underline 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.42s forwards;
+  animation: hero-underline 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
 }
 
 @keyframes hero-underline {
@@ -243,13 +220,92 @@ p {
   }
 }
 
-/* ——— Silky scroll-triggered reveals ——— */
+/* ——— Scroll-linked effects, CSS only (compositor-driven, zero JS per frame).
+   They run where scroll timelines are supported and simply don't apply
+   elsewhere. ——— */
+.scroll-progress {
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 60;
+    height: 3px;
+    background: var(--color-accent);
+    transform-origin: left;
+    transform: scaleX(0);
+    pointer-events: none;
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root block);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-drift {
+      animation: hero-drift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 90svh;
+    }
+
+    .cta-scope {
+      view-timeline: --cta block;
+    }
+
+    .cta-ghost {
+      animation: cta-ghost linear both;
+      animation-timeline: --cta;
+      animation-range: cover 0% cover 100%;
+    }
+
+    .cta-word {
+      animation: cta-word linear both;
+      animation-timeline: --cta;
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+
+@keyframes progress-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hero-drift {
+  to {
+    transform: translateY(-32px);
+  }
+}
+
+@keyframes cta-ghost {
+  from {
+    transform: translateX(48px);
+  }
+  to {
+    transform: translateX(-48px);
+  }
+}
+
+@keyframes cta-word {
+  from {
+    transform: translateY(calc(var(--from) * 1px));
+  }
+  to {
+    transform: translateY(calc(var(--to) * 1px));
+  }
+}
+
+/* ——— Scroll reveals (see components/Reveal.tsx + RevealObserver.tsx) ———
+   Hidden only when JS is available (html.js), so no-JS and
+   pre-hydration visitors always see the content. */
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(12px);
   transition:
-    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
-    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s);
 }
 
 .js [data-reveal].is-in {
@@ -257,8 +313,10 @@ p {
   transform: none;
 }
 
+/* Above-the-fold content: a short CSS-only rise, never waits for JS. */
 .reveal-now {
-  animation: reveal-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) backwards;
+  animation: reveal-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s)
+    backwards;
 }
 
 @keyframes reveal-in {
@@ -268,71 +326,80 @@ p {
   }
 }
 
-/* ——— Reduced motion contract ——— */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-  .hero-line,
-  .hero-underline,
-  .reveal-now {
-    animation: none;
-    transform: none;
-  }
   .js [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;
   }
+  .reveal-now {
+    animation: none;
+  }
 }
 
-/* ——— Fluid editorial underline sweep ——— */
+/* ——— Animated underline sweep for quiet links ——— */
 .u-sweep {
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 1px;
   background-repeat: no-repeat;
   background-position: left calc(100% - 0.05em);
   padding-bottom: 0.12em;
-  transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .u-sweep:hover {
   background-size: 100% 1px;
 }
 
-/* ——— Mobile menu toggle icon ——— */
+/* ——— Warm glow behind the hero. Soft by construction; the extra blur is
+   only worth its cost on large screens. ——— */
+.hero-glow {
+  position: absolute;
+  top: -25%;
+  right: -12%;
+  width: 62%;
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle,
+    rgba(168, 77, 29, 0.11),
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+@media (min-width: 64rem) {
+  .hero-glow {
+    filter: blur(48px);
+  }
+}
+
+/* ——— Mobile dropdown menu ——— */
 .burger {
   position: relative;
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 
 .burger-line {
   position: absolute;
   left: 0;
-  width: 18px;
-  height: 1.5px;
-  border-radius: 2px;
+  width: 20px;
+  height: 2px;
   background: currentColor;
   transition:
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.25s ease;
+    transform 0.2s ease-in,
+    opacity 0.2s ease-in;
 }
 
 .burger-line:nth-child(1) {
-  top: 3.5px;
+  top: 4px;
 }
 .burger-line:nth-child(2) {
-  top: 8.5px;
+  top: 9px;
 }
 .burger-line:nth-child(3) {
-  top: 13.5px;
+  top: 14px;
 }
 
 .burger[data-open] .burger-line:nth-child(1) {
@@ -340,7 +407,7 @@ p {
 }
 .burger[data-open] .burger-line:nth-child(2) {
   opacity: 0;
-  transform: scaleX(0.4);
+  transform: scaleX(0.3);
 }
 .burger[data-open] .burger-line:nth-child(3) {
   transform: translateY(-5px) rotate(-45deg);
@@ -348,15 +415,59 @@ p {
 
 .menu-pop {
   transform-origin: top right;
+  /* Soft, warm, layered shadow in the page's own brown, not a hard edge. */
   box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.72) inset,
-    0 4px 12px rgb(47 62 43 / 0.06),
-    0 24px 48px -10px rgb(88 65 47 / 0.16);
+    0 1px 0 rgb(255 255 255 / 0.6) inset,
+    0 2px 6px rgb(34 26 19 / 0.06),
+    0 18px 40px -8px rgb(134 57 15 / 0.22);
 }
 
-/* ——— Sticky header ——— */
+@media (prefers-reduced-motion: no-preference) {
+  .burger[data-open] .burger-line {
+    transition-duration: 0.45s;
+    transition-timing-function: cubic-bezier(0.34, 1.6, 0.5, 1);
+  }
+
+  .menu-pop {
+    animation: menu-pop-in 0.42s cubic-bezier(0.22, 1.25, 0.36, 1) both;
+  }
+
+  .menu-pop[data-closing] {
+    animation: menu-pop-out 0.16s ease-in both;
+  }
+
+  /* Rows rise in one after another. */
+  .menu-item {
+    animation: menu-item-in 0.42s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+    animation-delay: calc(0.08s + var(--i, 0) * 0.05s);
+  }
+}
+
+@keyframes menu-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.9);
+  }
+}
+
+@keyframes menu-pop-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+}
+
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* ——— Sticky header: hides on scroll-down, but never while it holds focus ——— */
 .site-header {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s ease-out;
+  /* The one persistent animated layer; will-change is used nowhere else. */
   will-change: transform;
 }
 
@@ -377,14 +488,15 @@ p {
   padding: 0.625rem max(1rem, env(safe-area-inset-right))
     calc(0.625rem + env(safe-area-inset-bottom))
     max(1rem, env(safe-area-inset-left));
-  background: rgba(246, 239, 227, 0.92);
-  backdrop-filter: blur(12px);
+  background: var(--color-paper);
   border-top: 1px solid var(--color-line);
   transform: translateY(100%);
   transition:
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0s linear 0.35s;
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.22s;
   visibility: hidden;
+  /* Keeps the bar's own paint out of the page's, which steadies it while
+     iOS Safari resizes the viewport under the address bar. */
   contain: layout paint;
 }
 
@@ -392,7 +504,7 @@ p {
   transform: none;
   visibility: visible;
   transition:
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
     visibility 0s;
 }
 
@@ -412,15 +524,42 @@ html:has(.sticky-cta[data-visible="true"]) {
   }
 }
 
-/* ——— Sunlit film photo grade ——— */
+.stroke-paper {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(250, 246, 236, 0.2);
+}
+
+/* ——— Photos: one warm grade so the portraits sit on the paper palette.
+   Applied to <img> only (never to the Still wrapper). ——— */
 .photo-warm {
-  filter: sepia(0.08) saturate(0.95) contrast(1.02) brightness(1.01);
+  filter: sepia(0.14) saturate(0.88) contrast(1.03) brightness(1.01);
 }
 
 .photo-warm[data-bw] {
-  filter: sepia(0.12) contrast(1.02);
+  filter: sepia(0.2) contrast(1.02);
 }
 
+/* ——— Work shots: one image treatment — the shutter opens when the card
+   scrolls into view. Phones always see the shot immediately. ——— */
+@media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
+  .js .work-reveal {
+    clip-path: inset(100% 0 0 0);
+  }
+  .js .work-card.is-in .work-reveal {
+    animation: shot-open 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+  }
+}
+
+@keyframes shot-open {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0% 0 0 0);
+  }
+}
+
+/* ——— Forced colours: keep control boundaries visible ——— */
 @media (forced-colors: active) {
   .skip-link,
   .sticky-cta {

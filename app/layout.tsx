@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Public_Sans } from "next/font/google";
+import { Fraunces, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
 import RevealObserver from "@/components/RevealObserver";
 import AnchorScroll from "@/components/AnchorScroll";
 import StickyCta from "@/components/StickyCta";
@@ -12,19 +13,28 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
+  // The design uses real italics (<em>customers</em>, quotes); without this
+  // the browser fakes a slant. `opsz` gives display sizes the refined cut.
   style: ["normal", "italic"],
-  axes: ["opsz", "SOFT"],
 });
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
-  style: ["normal", "italic"],
   variable: "--font-public-sans",
   display: "swap",
 });
 
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
+  display: "swap",
+  // Small labels only; fetch after the critical fonts.
+  preload: false,
+});
+
 const homeDescription =
-  "Gerardo Castaneda (Rardo) designs and builds flat-fee one-page websites, direct ordering systems, and self-editable sites for small businesses in Glennville, Georgia and beyond.";
+  "I'm Rardo. I design and build simple, fast one-page websites for local businesses — who you are, what you do, your hours, and a way to call you.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -33,6 +43,8 @@ export const metadata: Metadata = {
     template: `%s · ${siteName}`,
   },
   description: homeDescription,
+  // Canonical, openGraph and twitter live on each page (lib/seo.ts): a
+  // canonical here would be inherited by every route and point them all home.
   other: {
     "geo.region": "US-GA",
     "geo.placename": "Glennville, Georgia",
@@ -40,7 +52,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f6efe3",
+  themeColor: "#faf6ec",
   colorScheme: "light",
   viewportFit: "cover",
   interactiveWidget: "resizes-content",
@@ -58,33 +70,25 @@ const jsonLd = {
       alternateName: "Rardo",
       url: `${siteUrl}/about`,
       description:
-        "Husband, father of two, musician, writer, and web builder in Glennville, Georgia. Builds flat-fee websites and ordering systems for small businesses.",
+        "Husband, father of two, musician and photographer in Glennville, Georgia. Builds simple websites for local businesses.",
       homeLocation: { "@type": "Place", name: "Glennville, Georgia" },
       sameAs: [
         "https://x.com/gerardocasta711",
         "https://github.com/rardo711",
-        "https://www.instagram.com/lvngphotography/",
       ],
     },
     {
       "@type": "ProfessionalService",
       "@id": `${siteUrl}/#business`,
       name: defaultTitle,
-      alternateName: "Rardo Web Design",
       url: siteUrl,
-      logo: `${siteUrl}/icon.png`,
-      image: `${siteUrl}/photos/gerardo-olivia.webp`,
       founder: { "@id": `${siteUrl}/#person` },
       description:
-        "One-page business websites, direct ordering and inquiry forms, and self-editable sites for independent businesses.",
-      priceRange: "$250+",
-      currenciesAccepted: "USD",
-      knowsLanguage: ["en", "es"],
+        "One-page websites, ordering and contact forms, and update-it-yourself sites for local businesses.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Glennville",
         addressRegion: "GA",
-        postalCode: "30427",
         addressCountry: "US",
       },
       geo: {
@@ -94,47 +98,11 @@ const jsonLd = {
       },
       areaServed: [
         { "@type": "City", name: "Glennville, GA" },
-        { "@type": "City", name: "Reidsville, GA" },
-        { "@type": "City", name: "Claxton, GA" },
         {
           "@type": "AdministrativeArea",
           name: "Tattnall County, GA",
         },
-        { "@type": "State", name: "Georgia" },
       ],
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Small Business Web Design Services",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "One-Page Business Website",
-              description:
-                "Mobile-first storefront with what you sell, current hours, street address, and a tap-to-call action bar.",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Direct Ordering & Contact Systems",
-              description:
-                "Line-item customer order and inquiry forms routed straight to the owner's email inbox with 0% platform commission.",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Self-Editable Owner Panels",
-              description:
-                "Plain-language admin panel allowing business owners to update prices, stock status, hours, and photos without calling a developer.",
-            },
-          },
-        ],
-      },
       sameAs: [
         "https://x.com/gerardocasta711",
         "https://github.com/rardo711",
@@ -157,6 +125,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Reveal animations only hide content when JS is available. */}
         <script
           dangerouslySetInnerHTML={{
             __html: "document.documentElement.classList.add('js')",
@@ -164,7 +133,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fraunces.variable} ${publicSans.variable} font-sans antialiased`}
+        className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} font-sans antialiased`}
       >
         <a href="#main" className="skip-link">
           Skip to main content
@@ -175,6 +144,7 @@ export default function RootLayout({
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
+        <ScrollProgress />
         <RevealObserver />
         <AnchorScroll />
         <Nav />
