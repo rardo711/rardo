@@ -321,7 +321,7 @@ export default function ContactForm({
                 aria-pressed={active}
                 onClick={() => {
                   setSelectedScope(option.id);
-                  setContextBanner(`Selected: ${option.label}`);
+                  setContextBanner(null);
                 }}
                 className={`group relative flex h-full flex-col items-start justify-between rounded-xl border p-3.5 text-left transition-all duration-200 ${
                   active
@@ -404,7 +404,7 @@ export default function ContactForm({
           autoCapitalize="none"
           spellCheck={false}
           enterKeyHint="next"
-          placeholder="Where can I reach you?"
+          placeholder="jane@bakery.com or (912) 555-0142"
           aria-invalid={errors.contact ? true : undefined}
           aria-describedby={errors.contact ? "f-contact-err" : undefined}
           onBlur={onBlur("contact")}
@@ -516,7 +516,8 @@ export default function ContactForm({
         >
           gerardoj2001@outlook.com
         </a>{" "}
-        — I reply within a day, and the mockup is always free.
+        — English &amp; Español welcome. I reply within a day, and the mockup is
+        always free.
       </p>
     </form>
   );

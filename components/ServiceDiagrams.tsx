@@ -30,9 +30,18 @@ export function DiagramOnePage() {
         stroke="#cbb99d"
         strokeWidth="1.2"
       />
-      <circle cx="33" cy="34" r="2.5" fill="#cbb99d" />
-      <circle cx="41" cy="34" r="2.5" fill="#caa06b" />
-      <circle cx="49" cy="34" r="2.5" fill="#7990aa" />
+      <circle cx="34" cy="33.5" r="2.5" fill="#7e843a" />
+      <text
+        x="43"
+        y="36"
+        fill="#6b5542"
+        fontSize="6.8"
+        fontFamily={FONT_SANS}
+        fontWeight="500"
+        letterSpacing="0.4"
+      >
+        yourshop.com
+      </text>
       <line x1="20" y1="44" x2="216" y2="44" stroke="#dfd1ba" strokeWidth="1" />
 
       {/* Editorial Story & Hours inside Desktop Card */}
@@ -40,12 +49,12 @@ export function DiagramOnePage() {
         x="34"
         y="66"
         fill="#555b21"
-        fontSize="7"
+        fontSize="6.5"
         fontFamily={FONT_SANS}
         fontWeight="600"
-        letterSpacing="1.2"
+        letterSpacing="0.9"
       >
-        GLENNVILLE, GEORGIA
+        GLENNVILLE, GA · TATTNALL COUNTY
       </text>
       <text
         x="34"
@@ -89,10 +98,10 @@ export function DiagramOnePage() {
         strokeWidth="1.4"
       />
       <rect x="269" y="24" width="32" height="3" rx="1.5" fill="#dfd1ba" />
-      <rect x="242" y="36" width="86" height="48" rx="6" fill="#ece0ce" />
+      <rect x="242" y="35" width="86" height="45" rx="6" fill="#ece0ce" />
       <text
         x="252"
-        y="56"
+        y="54"
         fill="#2f3e2b"
         fontSize="9.5"
         fontFamily={FONT_SERIF}
@@ -102,7 +111,7 @@ export function DiagramOnePage() {
       </text>
       <text
         x="252"
-        y="69"
+        y="67"
         fill="#58412f"
         fontSize="7.5"
         fontFamily={FONT_SERIF}
@@ -111,18 +120,21 @@ export function DiagramOnePage() {
         &amp; where to find you
       </text>
 
-      <rect x="242" y="92" width="86" height="28" rx="5" fill="#f6efe3" stroke="#dfd1ba" />
-      <text x="250" y="104" fill="#2f3e2b" fontSize="7" fontFamily={FONT_SANS} fontWeight="600">
+      <rect x="242" y="87" width="86" height="36" rx="5" fill="#f6efe3" stroke="#dfd1ba" />
+      <text x="250" y="98.5" fill="#2f3e2b" fontSize="6.8" fontFamily={FONT_SANS} fontWeight="600">
         Open Today · Until 6pm
       </text>
-      <text x="250" y="114" fill="#6b5542" fontSize="6.5" fontFamily={FONT_SANS}>
-        124 S. Veterans Blvd
+      <text x="250" y="109" fill="#58412f" fontSize="6.4" fontFamily={FONT_SANS}>
+        Glennville, GA
+      </text>
+      <text x="250" y="118" fill="#6b5542" fontSize="6.1" fontFamily={FONT_SANS}>
+        Tattnall County
       </text>
 
-      <rect x="242" y="128" width="86" height="28" rx="6" fill="#2f3e2b" />
+      <rect x="242" y="130" width="86" height="26" rx="6" fill="#2f3e2b" />
       <text
         x="285"
-        y="144.5"
+        y="145.5"
         textAnchor="middle"
         fill="#f6efe3"
         fontSize="8"
@@ -206,7 +218,7 @@ export function DiagramOrderLedger() {
       <line x1="32" y1="100" x2="160" y2="100" stroke="#ece0ce" strokeWidth="1" />
 
       <text x="32" y="115" fill="#6b5542" fontSize="7.5" fontFamily={FONT_SERIF} fontStyle="italic">
-        Pickup: Friday afternoon
+        Pickup: Friday at market
       </text>
 
       <rect x="32" y="126" width="128" height="24" rx="6" fill="#2f3e2b" />
@@ -248,11 +260,11 @@ export function DiagramOrderLedger() {
         New Order in Inbox
       </text>
 
-      <text x="224" y="82" fill="#2f3e2b" fontSize="9.5" fontFamily={FONT_SERIF} fontWeight="600">
-        Sarah Jenkins
+      <text x="224" y="82" fill="#2f3e2b" fontSize="9" fontFamily={FONT_SERIF} fontWeight="600">
+        Local Pickup · #104
       </text>
       <text x="224" y="95" fill="#58412f" fontSize="7.5" fontFamily={FONT_SANS}>
-        (912) 555-0194 · 2 items
+        Glennville, GA · 2 items
       </text>
 
       <rect x="222" y="108" width="108" height="32" rx="6" fill="#ece0ce" />
@@ -354,32 +366,32 @@ export function DiagramSelfEditable() {
         strokeWidth="1"
       />
       <text
-        x="216"
+        x="214"
         y="76"
         fill="#2f3e2b"
-        fontSize="10.5"
+        fontSize="9.5"
         fontFamily={FONT_SERIF}
         fontWeight="600"
       >
-        Small-Batch Balm
+        Whipped Tallow Balm
       </text>
       <text
-        x="216"
+        x="214"
         y="91"
         fill="#6b5542"
-        fontSize="7.5"
+        fontSize="7.2"
         fontFamily={FONT_SERIF}
         fontStyle="italic"
       >
-        Freshly rendered this week
+        4 oz glass jar · Small batch
       </text>
-      <line x1="216" y1="101" x2="314" y2="101" stroke="#dfd1ba" />
-      <text x="216" y="118" fill="#2f3e2b" fontSize="9.5" fontFamily={FONT_SANS} fontWeight="700">
+      <line x1="214" y1="101" x2="316" y2="101" stroke="#dfd1ba" />
+      <text x="214" y="118" fill="#2f3e2b" fontSize="9.5" fontFamily={FONT_SANS} fontWeight="700">
         $24.00
       </text>
-      <rect x="268" y="107" width="46" height="16" rx="4" fill="#e8eef3" />
+      <rect x="270" y="107" width="46" height="16" rx="4" fill="#e8eef3" />
       <text
-        x="291"
+        x="293"
         y="117.5"
         textAnchor="middle"
         fill="#4e657e"
@@ -389,7 +401,7 @@ export function DiagramSelfEditable() {
       >
         Available
       </text>
-      <text x="216" y="136" fill="#58412f" fontSize="7" fontFamily={FONT_SANS}>
+      <text x="214" y="136" fill="#58412f" fontSize="7" fontFamily={FONT_SANS}>
         Open Tue–Sat · 8a–5:30p
       </text>
     </svg>
@@ -442,12 +454,11 @@ export function TheosLogosPlate() {
         strokeWidth="2"
       />
       <line x1="56" y1="130" x2="1384" y2="130" stroke="#dfd1ba" strokeWidth="1.5" />
-      <circle cx="96" cy="91" r="6" fill="#cbb99d" />
-      <circle cx="116" cy="91" r="6" fill="#caa06b" />
-      <circle cx="136" cy="91" r="6" fill="#7990aa" />
 
+      {/* Architectural Bookplate Mark + Title */}
+      <rect x="80" y="75" width="3.5" height="32" rx="1.75" fill="#7e843a" />
       <text
-        x="176"
+        x="96"
         y="99"
         fill="#2f3e2b"
         fontSize="26"
@@ -456,15 +467,28 @@ export function TheosLogosPlate() {
       >
         Theos Logos
       </text>
+      <line x1="266" y1="77" x2="266" y2="105" stroke="#dfd1ba" strokeWidth="1.5" />
       <text
-        x="348"
-        y="98"
+        x="284"
+        y="97"
         fill="#6b5542"
         fontSize="16"
         fontFamily={FONT_SERIF}
         fontStyle="italic"
       >
         Interlinear Scripture &amp; Classical Lexicon
+      </text>
+      <text
+        x="1126"
+        y="96"
+        textAnchor="end"
+        fill="#6b5542"
+        fontSize="13"
+        fontFamily={FONT_SANS}
+        fontWeight="500"
+        letterSpacing="0.8"
+      >
+        theoslogos.vercel.app
       </text>
 
       <rect x="1152" y="71" width="188" height="40" rx="8" fill="#e8eef3" />

@@ -10,7 +10,7 @@ export const defaultTitle = "Gerardo Castaneda — Websites for Small Businesses
  * use "now", which tells search engines every page changed on every build.
  */
 export const pageDates = {
-  "/": "2026-11-17",
-  "/about": "2026-11-17",
-  "/contact": "2026-11-17",
+  "/": "2026-11-21",
+  "/about": "2026-11-21",
+  "/contact": "2026-11-21",
 } as const;

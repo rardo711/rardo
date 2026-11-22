@@ -9,8 +9,8 @@ import Logo from "./Logo";
 
 const links = [
   { href: "/#services", label: "What I do" },
-  { href: "/#work", label: "Selected work" },
-  { href: "/#process", label: "How it works" },
+  { href: "/#work", label: "Work" },
+  { href: "/#process", label: "Process" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -30,7 +30,8 @@ function Burger({ open }: { open: boolean }) {
 export default function Nav() {
   const pathname = usePathname();
   const reduce = useReducedMotion();
-  const [open, setOpen] = useState(false);
+  const [openedPath, setOpenedPath] = useState<string | null>(null);
+  const open = openedPath === pathname;
   const headerRef = useRef<HTMLElement>(null);
   const openRef = useRef(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -80,23 +81,17 @@ export default function Nav() {
     };
   }, []);
 
-  const [seenPath, setSeenPath] = useState(pathname);
-  if (seenPath !== pathname) {
-    setSeenPath(pathname);
-    setOpen(false);
-  }
-
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 64rem)");
+    const mq = window.matchMedia("(min-width: 48rem)");
     const onChange = () => {
-      if (mq.matches) setOpen(false);
+      if (mq.matches) setOpenedPath(null);
     };
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
   function closeMenu(refocus = false) {
-    setOpen(false);
+    setOpenedPath(null);
     if (refocus) buttonRef.current?.focus({ preventScroll: true });
   }
 
@@ -126,28 +121,31 @@ export default function Nav() {
       ref={headerRef}
       className="site-header sticky top-0 z-50 border-b border-line/80 bg-paper/85 backdrop-blur-md pt-[env(safe-area-inset-top)]"
     >
-      <div className="gutter mx-auto flex max-w-6xl items-center justify-between py-4 lg:max-w-7xl">
+      <div className="gutter mx-auto flex max-w-6xl items-center justify-between gap-4 py-4 lg:max-w-7xl">
         <Link
           href="/"
           onClick={brandClick}
-          className="group flex items-center gap-3 text-ink"
+          className="group flex shrink-0 items-center gap-2.5 text-ink lg:gap-3"
           aria-label="Gerardo Castaneda — home"
         >
           <Logo
-            size={34}
+            size={32}
             className="text-ink transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
           <div className="flex flex-col">
-            <span className="font-display text-lg font-semibold leading-none tracking-tight">
+            <span className="whitespace-nowrap font-display text-base font-semibold leading-none tracking-tight lg:text-lg">
               Gerardo Castaneda
             </span>
-            <span className="mt-1 font-tech text-[0.65rem] uppercase text-ink-mute">
+            <span className="mt-1 whitespace-nowrap font-tech text-[0.65rem] uppercase text-ink-mute">
               Glennville, Georgia
             </span>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+        <nav
+          className="hidden items-center md:flex md:gap-4 lg:gap-8"
+          aria-label="Primary"
+        >
           {links.map((l) => {
             const active =
               (l.href === "/about" && pathname === "/about") ||
@@ -157,7 +155,7 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 aria-current={active ? "page" : undefined}
-                className={`u-sweep text-sm font-medium transition-colors duration-300 hover:text-ink ${
+                className={`u-sweep whitespace-nowrap text-[0.8125rem] font-medium transition-colors duration-300 hover:text-ink lg:text-sm ${
                   active ? "font-semibold text-ink" : "text-ink-soft"
                 }`}
               >
@@ -167,7 +165,7 @@ export default function Nav() {
           })}
           <Link
             href={primaryCtaHref}
-            className="group inline-flex min-h-11 items-center gap-2 rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0"
+            className="group inline-flex min-h-11 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-xl bg-ink px-3.5 py-2 text-xs font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0 lg:gap-2 lg:px-5 lg:py-2.5 lg:text-sm"
           >
             <span>Start your project</span>
             <ArrowRight
@@ -178,11 +176,11 @@ export default function Nav() {
           </Link>
         </nav>
 
-        <div ref={menuRef} className="relative lg:hidden">
+        <div ref={menuRef} className="relative md:hidden">
           <button
             ref={buttonRef}
             type="button"
-            onClick={() => (open ? closeMenu() : setOpen(true))}
+            onClick={() => (open ? closeMenu() : setOpenedPath(pathname))}
             aria-expanded={open}
             aria-controls="site-menu"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -226,7 +224,7 @@ export default function Nav() {
                         <Link
                           href={l.href}
                           aria-current={active ? "page" : undefined}
-                          onClick={() => setOpen(false)}
+                          onClick={() => setOpenedPath(null)}
                           className={`group flex items-center justify-between rounded-xl px-4 py-3 transition-colors hover:bg-wash ${
                             active ? "bg-wash text-accent-deep" : "text-ink"
                           }`}
@@ -247,7 +245,7 @@ export default function Nav() {
                 <div className="mt-2 border-t border-line pt-2">
                   <Link
                     href={primaryCtaHref}
-                    onClick={() => setOpen(false)}
+                    onClick={() => setOpenedPath(null)}
                     className="group flex min-h-12 w-full items-center justify-between rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
                   >
                     <span>Start your project</span>

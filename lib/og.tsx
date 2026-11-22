@@ -6,8 +6,8 @@ export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
 
 /**
- * Share card, set in Fraunces with the GC mark. Brand tokens are copied from
- * app/globals.css (paper, ink, ink-soft, accent, line).
+ * Share card, set in Fraunces and Public Sans with the GC mark. Brand tokens
+ * are copied from app/globals.css (paper, ink, ink-soft, accent, line).
  *
  * Layout note: the mark and the name sit inside the central 630×630 so that
  * square crops (iMessage, WhatsApp, Slack) still read.
@@ -21,9 +21,9 @@ export async function renderOg({
   title: [string] | [string, string];
   sub: string;
 }) {
-  const [fraunces, plex] = await Promise.all([
+  const [fraunces, publicSans] = await Promise.all([
     readFile(join(process.cwd(), "app/_fonts/Fraunces-SemiBold.ttf")),
-    readFile(join(process.cwd(), "app/_fonts/PlexMono-Medium.ttf")),
+    readFile(join(process.cwd(), "app/_fonts/PublicSans-Medium.ttf")),
   ]);
 
   return new ImageResponse(
@@ -77,9 +77,10 @@ export async function renderOg({
               style={{
                 display: "flex",
                 marginLeft: 28,
-                fontFamily: "Plex",
+                fontFamily: "PublicSans",
                 fontSize: 24,
-                letterSpacing: 4,
+                fontWeight: 500,
+                letterSpacing: 3.2,
                 textTransform: "uppercase",
                 color: "#58412f",
               }}
@@ -127,9 +128,11 @@ export async function renderOg({
             <div
               style={{
                 display: "flex",
-                fontFamily: "Fraunces",
-                fontSize: 30,
-                lineHeight: 1.25,
+                fontFamily: "PublicSans",
+                fontSize: 27,
+                fontWeight: 500,
+                lineHeight: 1.38,
+                letterSpacing: -0.2,
                 color: "#58412f",
                 maxWidth: 700,
               }}
@@ -139,9 +142,10 @@ export async function renderOg({
             <div
               style={{
                 display: "flex",
-                fontFamily: "Plex",
+                fontFamily: "PublicSans",
                 fontSize: 20,
-                letterSpacing: 3,
+                fontWeight: 500,
+                letterSpacing: 3.2,
                 textTransform: "uppercase",
                 color: "#58412f",
               }}
@@ -156,7 +160,7 @@ export async function renderOg({
       ...ogSize,
       fonts: [
         { name: "Fraunces", data: fraunces, weight: 600, style: "normal" },
-        { name: "Plex", data: plex, weight: 500, style: "normal" },
+        { name: "PublicSans", data: publicSans, weight: 500, style: "normal" },
       ],
     },
   );

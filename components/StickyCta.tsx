@@ -8,15 +8,13 @@ import { ArrowRight } from "lucide-react";
 export default function StickyCta() {
   const pathname = usePathname();
   const eligible = pathname === "/" || pathname === "/about";
-  const [pastStart, setPastStart] = useState(false);
-  const [atEnd, setAtEnd] = useState(false);
-
-  const [seenPath, setSeenPath] = useState(pathname);
-  if (seenPath !== pathname) {
-    setSeenPath(pathname);
-    setPastStart(false);
-    setAtEnd(false);
-  }
+  const [scrollState, setScrollState] = useState({
+    path: pathname,
+    pastStart: false,
+    atEnd: false,
+  });
+  const pastStart = scrollState.path === pathname && scrollState.pastStart;
+  const atEnd = scrollState.path === pathname && scrollState.atEnd;
 
   useEffect(() => {
     if (!eligible) return;
@@ -27,7 +25,13 @@ export default function StickyCta() {
     let cleanupStart = () => {};
     if (sentinel) {
       const io = new IntersectionObserver(([e]) => {
-        setPastStart(!e.isIntersecting && e.boundingClientRect.bottom < 0);
+        const nextPastStart =
+          !e.isIntersecting && e.boundingClientRect.bottom < 0;
+        setScrollState((s) => {
+          const nextAtEnd = s.path === pathname ? s.atEnd : false;
+          if (s.path === pathname && s.pastStart === nextPastStart) return s;
+          return { path: pathname, pastStart: nextPastStart, atEnd: nextAtEnd };
+        });
       });
       io.observe(sentinel);
       cleanupStart = () => io.disconnect();
@@ -39,7 +43,12 @@ export default function StickyCta() {
         if (e.isIntersecting) ends.add(e.target);
         else ends.delete(e.target);
       }
-      setAtEnd(ends.size > 0);
+      const nextAtEnd = ends.size > 0;
+      setScrollState((s) => {
+        const nextPastStart = s.path === pathname ? s.pastStart : false;
+        if (s.path === pathname && s.atEnd === nextAtEnd) return s;
+        return { path: pathname, pastStart: nextPastStart, atEnd: nextAtEnd };
+      });
     });
     document
       .querySelectorAll("[data-cta-end]")

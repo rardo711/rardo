@@ -9,7 +9,7 @@
 - **Languages:** English & Español (Native — born in Siguatepeque, Comayagua, Honduras)
 - **Proof-First Guarantee:** $0 working mockup built from your real business info before any invoice exists
 - **Turnaround:** 7 days (one focused week from mockup approval to live launch)
-- **Pricing Model:** Single flat fee named upfront; $0/month developer retainer; 100% client ownership
+- **Pricing Model:** Starting at $250 flat fee named upfront; $0/month developer retainer; 100% client ownership
 
 ## Capabilities & Structured Offerings
 
@@ -27,7 +27,7 @@
 - **No. 02 · Better Than Gold Tallow Co.** (Client Build · Farm Brand Storefront · Southeast GA)
   https://better-than-gold-tallow.vercel.app
 - **No. 03 · Theos Logos** (Personal Software Build · Greek & Hebrew Interlinear Lexicon Web App)
-  https://theos-logos-official.vercel.app
+  https://theoslogos.vercel.app
 
 ## Complete Directory & Channels
 

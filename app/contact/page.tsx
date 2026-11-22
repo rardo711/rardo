@@ -37,8 +37,7 @@ export default function Contact() {
             Start your project
           </p>
           <h1 className="mt-5 max-w-3xl font-display text-h1 font-semibold text-ink">
-            Tell me about your{" "}
-            <em className="font-normal italic text-accent-deep">business.</em>
+            Tell me about your business.
           </h1>
           <p className="mt-5 max-w-[60ch] text-lead text-ink-soft">
             What you do, who it&apos;s for, and what you wish your website did.
@@ -58,11 +57,11 @@ export default function Contact() {
 
           <aside className="lg:col-span-5">
             <Reveal eager delay={0.1}>
-              <div className="card-editorial rounded-2xl p-6 sm:p-8">
+              <div className="border-t border-line-strong pt-7 lg:border-t-0 lg:border-l lg:border-line lg:pl-10 lg:pt-1">
                 <p className="font-tech text-eyebrow font-medium uppercase text-accent-deep">
                   What happens next
                 </p>
-                <ol className="mt-5 divide-y divide-line/80 border-t border-line/80">
+                <ol className="mt-5 divide-y divide-line border-t border-line">
                   {nextSteps.map((s) => (
                     <li key={s.n} className="py-5 last:pb-0">
                       <span className="font-display text-lg italic text-accent-deep">
@@ -78,7 +77,19 @@ export default function Contact() {
                   ))}
                 </ol>
 
-                <dl className="mt-6 divide-y divide-line/80 border-t border-line/80 pt-3 text-xs">
+                <dl className="mt-7 divide-y divide-line border-y border-line text-xs">
+                  <div className="flex items-baseline justify-between gap-4 py-2.5">
+                    <dt className="shrink-0 text-ink-mute">Pricing</dt>
+                    <dd className="text-right font-medium tabular-nums text-ink">
+                      Starts at $250 flat
+                    </dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-4 py-2.5">
+                    <dt className="shrink-0 text-ink-mute">Ownership</dt>
+                    <dd className="text-right font-medium tabular-nums text-ink">
+                      100% yours · $0/mo retainer
+                    </dd>
+                  </div>
                   <div className="flex items-baseline justify-between gap-4 py-2.5">
                     <dt className="shrink-0 text-ink-mute">Based in</dt>
                     <dd className="text-right font-medium tabular-nums text-ink">
@@ -89,12 +100,6 @@ export default function Contact() {
                     <dt className="shrink-0 text-ink-mute">Languages</dt>
                     <dd className="text-right font-medium tabular-nums text-ink">
                       English &amp; Español
-                    </dd>
-                  </div>
-                  <div className="flex items-baseline justify-between gap-4 py-2.5">
-                    <dt className="shrink-0 text-ink-mute">Ownership</dt>
-                    <dd className="text-right font-medium tabular-nums text-ink">
-                      100% yours · $0 monthly retainer
                     </dd>
                   </div>
                 </dl>

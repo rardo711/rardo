@@ -70,14 +70,21 @@ const jsonLd = {
       "@type": "ProfessionalService",
       "@id": `${siteUrl}/#business`,
       name: defaultTitle,
+      alternateName: "Rardo Web Design",
       url: siteUrl,
+      logo: `${siteUrl}/icon.png`,
+      image: `${siteUrl}/photos/gerardo-olivia.webp`,
       founder: { "@id": `${siteUrl}/#person` },
       description:
         "One-page business websites, direct ordering and inquiry forms, and self-editable sites for independent businesses.",
+      priceRange: "$250+",
+      currenciesAccepted: "USD",
+      knowsLanguage: ["en", "es"],
       address: {
         "@type": "PostalAddress",
         addressLocality: "Glennville",
         addressRegion: "GA",
+        postalCode: "30427",
         addressCountry: "US",
       },
       geo: {
@@ -88,11 +95,46 @@ const jsonLd = {
       areaServed: [
         { "@type": "City", name: "Glennville, GA" },
         { "@type": "City", name: "Reidsville, GA" },
+        { "@type": "City", name: "Claxton, GA" },
         {
           "@type": "AdministrativeArea",
           name: "Tattnall County, GA",
         },
+        { "@type": "State", name: "Georgia" },
       ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Small Business Web Design Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "One-Page Business Website",
+              description:
+                "Mobile-first storefront with what you sell, current hours, street address, and a tap-to-call action bar.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Direct Ordering & Contact Systems",
+              description:
+                "Line-item customer order and inquiry forms routed straight to the owner's email inbox with 0% platform commission.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Self-Editable Owner Panels",
+              description:
+                "Plain-language admin panel allowing business owners to update prices, stock status, hours, and photos without calling a developer.",
+            },
+          },
+        ],
+      },
       sameAs: [
         "https://x.com/gerardocasta711",
         "https://github.com/rardo711",

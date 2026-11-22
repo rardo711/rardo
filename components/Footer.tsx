@@ -25,7 +25,7 @@ const shippedIndex = [
   {
     label: "Theos Logos",
     meta: "Greek & Hebrew study app",
-    href: "https://theos-logos-official.vercel.app",
+    href: "https://theoslogos.vercel.app",
   },
   {
     label: "The Life Proper",
@@ -163,8 +163,12 @@ export default function Footer() {
               <div>
                 <dt className="text-paper/65">The promise</dt>
                 <dd className="mt-0.5 text-paper/90">
-                  Free mockup first. Flat fee named before I start. Yours outright.
+                  Free mockup first. Builds start at $250 flat. 100% yours.
                 </dd>
+              </div>
+              <div>
+                <dt className="text-paper/65">Languages</dt>
+                <dd className="mt-0.5 text-paper/90">English &amp; Español</dd>
               </div>
               <div>
                 <dt className="text-paper/65">Typeset in</dt>

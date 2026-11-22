@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { LayoutGroup, motion, useReducedMotion } from "motion/react";
 import Reveal from "./Reveal";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -20,13 +20,8 @@ const specimens = [
     image: "/work/raemas.webp",
     imageAlt:
       "RaeMa's Remedies homepage showing handcrafted tallow skincare and herbal remedies with direct ordering.",
-    inquireScope: "Site Inspired by RaeMa's Remedies",
-    specs: [
-      { k: "Client", v: "Rachael Harrelson · Family Wellness" },
-      { k: "How it works", v: "Catalog & inbox order delivery" },
-      { k: "Owner control", v: "Self-editable prices & photos" },
-      { k: "Ongoing cost", v: "$0 / month · Owned outright" },
-    ],
+    summary:
+      "Replaced messy DM threads with a self-editable catalog and direct-to-inbox ordering.",
   },
   {
     id: "tallow",
@@ -38,38 +33,33 @@ const specimens = [
     image: "/work/tallow.webp",
     imageAlt:
       "Better Than Gold Tallow Co. homepage over a golden pasture at sunrise in Southeast Georgia.",
-    inquireScope: "Site Inspired by Better Than Gold Tallow Co.",
-    specs: [
-      { k: "Client", v: "Family Farm & Skincare Brand" },
-      { k: "Built from", v: "Market flyer & farm photos" },
-      { k: "Customer flow", v: "Story, catalog & direct reach" },
-      { k: "Turnaround", v: "One focused week" },
-    ],
+    summary:
+      "Turned a handwritten market flyer and pasture photos into a clean one-page storefront.",
   },
 ] as const;
 
 const studioPromises = [
   {
     value: "Free mockup",
-    detail: "Preview your page on a phone before paying anything",
+    detail: "Preview your page on a phone before paying",
   },
   {
-    value: "One week",
-    detail: "Focused turnaround from approval to live domain",
-  },
-  {
-    value: "Flat fee",
+    value: "From $250 flat",
     detail: "Named upfront — zero monthly retainers",
   },
   {
+    value: "One week",
+    detail: "Focused turnaround from approval to launch",
+  },
+  {
     value: "100% yours",
-    detail: "Update your own prices, hours & photos anytime",
+    detail: "Edit prices & hours anytime · Hablo Español",
   },
 ];
 
 function Line({ children, i }: { children: React.ReactNode; i: number }) {
   return (
-    <span className="-mb-[0.16em] block overflow-hidden pb-[0.16em]">
+    <span className="-mb-[0.2em] block overflow-hidden pb-[0.2em]">
       <span
         className="hero-line block"
         style={{ "--d": `${0.02 + i * 0.06}s` } as React.CSSProperties}
@@ -115,7 +105,7 @@ export default function Hero() {
                   customers
                   <span
                     aria-hidden
-                    className="hero-underline absolute bottom-[0.06em] left-0 h-[0.065em] w-full rounded-full bg-accent/85"
+                    className="hero-underline absolute -bottom-[0.04em] left-0 h-[0.055em] w-full rounded-full bg-accent/85"
                   />
                 </em>
               </Line>
@@ -159,7 +149,7 @@ export default function Hero() {
               <dl className="mt-14 grid grid-cols-2 gap-6 border-t border-line pt-7 sm:grid-cols-4">
                 {studioPromises.map((item) => (
                   <div key={item.value} className="flex flex-col">
-                    <dt className="font-display text-xl font-semibold tracking-tight text-ink">
+                    <dt className="font-display text-lg font-semibold leading-snug tracking-tight tabular-nums text-ink xl:text-[1.1875rem]">
                       {item.value}
                     </dt>
                     <dd className="mt-1 text-xs leading-relaxed text-ink-soft">
@@ -171,7 +161,7 @@ export default function Hero() {
             </Reveal>
           </div>
 
-          {/* Right Column (5 cols): Fluid Interactive Showcase Card */}
+          {/* Right Column (5 cols): Focused Live Proof Preview Card */}
           <Reveal eager delay={0.12} className="lg:col-span-5">
             <div className="card-editorial rounded-2xl p-4 sm:p-5">
               {/* Segmented Switcher with Sliding Pill */}
@@ -192,7 +182,9 @@ export default function Hero() {
                           key={s.id}
                           type="button"
                           role="tab"
+                          id={`hero-tab-${s.id}`}
                           aria-selected={isSelected}
+                          aria-controls={`hero-panel-${s.id}`}
                           onClick={() => setActiveIdx(idx)}
                           className={`relative z-10 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors duration-200 ${
                             isSelected
@@ -219,14 +211,17 @@ export default function Hero() {
                 </LayoutGroup>
               </div>
 
-              {/* Animated Specimen Body */}
-              <AnimatePresence mode="wait">
+              {/* Live Proof Preview Body */}
+              <div
+                role="tabpanel"
+                id={`hero-panel-${active.id}`}
+                aria-labelledby={`hero-tab-${active.id}`}
+              >
                 <motion.div
                   key={active.id}
-                  initial={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
+                  initial={reduce ? false : { opacity: 0, y: 4 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
-                  transition={{ duration: 0.32, ease: EASE }}
+                  transition={{ duration: 0.24, ease: EASE }}
                 >
                   {/* Screenshot with gentle hover scale */}
                   <a
@@ -241,69 +236,56 @@ export default function Hero() {
                       alt={active.imageAlt}
                       width={1440}
                       height={1000}
-                      priority
+                      preload
                       sizes="(min-width: 1024px) 40vw, 100vw"
                       className="aspect-[3/2] w-full object-cover object-top transition-transform duration-700 ease-out group-hover/shot:scale-[1.025]"
                     />
                   </a>
 
                   <div className="mt-4 pt-1">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <div className="min-w-0">
-                        <p className="font-tech text-[0.6875rem] font-medium uppercase text-accent-deep">
-                          {active.category} · {active.location}
-                        </p>
-                        <h2 className="mt-1 font-display text-xl font-semibold leading-tight tracking-tight text-ink sm:text-[1.375rem]">
-                          {active.name}
-                        </h2>
-                      </div>
+                    <p className="font-tech text-[0.6875rem] font-medium uppercase text-accent-deep">
+                      {active.category} · {active.location}
+                    </p>
+                    <h2 className="mt-1 font-display text-xl font-semibold leading-tight tracking-tight text-ink sm:text-[1.375rem]">
+                      {active.name}
+                    </h2>
+                    <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">
+                      {active.summary}
+                    </p>
+
+                    <div className="mt-4 flex flex-wrap items-center gap-2.5 border-t border-line/80 pt-4">
+                      <a
+                        href={`#work-${active.id}`}
+                        className="group/details inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-wash px-4 py-2.5 text-xs font-semibold text-ink transition-colors duration-300 hover:bg-ink hover:text-paper"
+                      >
+                        <span>Read details</span>
+                        <ArrowDown
+                          size={14}
+                          aria-hidden
+                          className="transition-transform duration-300 group-hover/details:translate-y-0.5"
+                        />
+                      </a>
                       <a
                         href={active.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="group/link inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-ink-soft transition-colors hover:text-accent-deep"
+                        className="group/visit inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border border-line-strong bg-paper/70 px-4 py-2.5 text-xs font-semibold text-ink transition-colors duration-300 hover:border-ink hover:bg-wash"
                       >
-                        <span className="u-sweep">Visit site</span>
-                        <span className="sr-only"> (opens in a new tab)</span>
+                        <span>Visit live site</span>
+                        <span className="sr-only">
+                          {" "}
+                          for {active.name} (opens in a new tab)
+                        </span>
                         <ArrowUpRight
                           size={14}
                           aria-hidden
-                          className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
-                        />
-                      </a>
-                    </div>
-
-                    <dl className="mt-4 divide-y divide-line/80 border-y border-line/80 text-xs">
-                      {active.specs.map((row) => (
-                        <div
-                          key={row.k}
-                          className="flex items-baseline justify-between gap-4 py-2"
-                        >
-                          <dt className="shrink-0 text-ink-mute">{row.k}</dt>
-                          <dd className="text-right font-medium tabular-nums text-ink">
-                            {row.v}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-
-                    <div className="mt-4">
-                      <a
-                        href="#inquire"
-                        data-inquire-product={active.inquireScope}
-                        className="group inline-flex min-h-11 w-full items-center justify-between rounded-xl bg-wash px-4 py-2.5 text-xs font-semibold text-ink transition-colors duration-300 hover:bg-ink hover:text-paper"
-                      >
-                        <span>Request a site like {active.shortLabel}</span>
-                        <ArrowRight
-                          size={14}
-                          aria-hidden
-                          className="transition-transform duration-300 group-hover:translate-x-0.5"
+                          className="transition-transform duration-300 group-hover/visit:translate-x-0.5 group-hover/visit:-translate-y-0.5"
                         />
                       </a>
                     </div>
                   </div>
                 </motion.div>
-              </AnimatePresence>
+              </div>
             </div>
           </Reveal>
         </div>

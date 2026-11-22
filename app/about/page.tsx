@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
@@ -13,6 +14,17 @@ export const metadata = pageMetadata({
   description:
     "I'm Rardo — husband, father of two, musician, photographer, and web builder. From Siguatepeque, Honduras to Glennville, Georgia.",
 });
+
+function renderCleanAmp(text: string) {
+  if (!text.includes("&")) return text;
+  const parts = text.split("&");
+  return parts.map((part, idx) => (
+    <Fragment key={idx}>
+      {part}
+      {idx < parts.length - 1 && <span className="amp-clean">&amp;</span>}
+    </Fragment>
+  ));
+}
 
 const profileJsonLd = {
   "@context": "https://schema.org",
@@ -102,7 +114,7 @@ const worksIndex = [
     meta: "Web Application",
     summary:
       "A Bible study app I built for myself with an interlinear reader and Strong’s Hebrew and Greek lexicons.",
-    href: "https://theos-logos-official.vercel.app",
+    href: "https://theoslogos.vercel.app",
     linkLabel: "Open app",
     external: true,
     inquireScope: "Software / Custom Web Application",
@@ -159,7 +171,7 @@ export default function About() {
                   The person behind the sites
                 </p>
                 <h1 className="mt-5 font-display text-h1 font-semibold text-ink">
-                  I&apos;m{" "}
+                  I’m{" "}
                   <em className="font-normal italic text-accent-deep">Rardo.</em>
                 </h1>
               </Reveal>
@@ -205,13 +217,13 @@ export default function About() {
                 </Reveal>
               </div>
 
-              {/* Warm "At a Glance" Card */}
+              {/* Open Hairline "At a Glance" Ledger */}
               <Reveal eager delay={0.18}>
-                <div className="card-editorial mt-10 rounded-2xl p-6 sm:p-7">
+                <div className="mt-10 border-t border-line-strong pt-6">
                   <p className="font-tech text-xs font-medium uppercase text-accent-deep">
                     At a glance
                   </p>
-                  <dl className="mt-4 divide-y divide-line/80 border-t border-line/80 text-sm">
+                  <dl className="mt-4 divide-y divide-line border-y border-line text-sm">
                     {studioNotes.map((row) => (
                       <div
                         key={row.label}
@@ -224,7 +236,7 @@ export default function About() {
                       </div>
                     ))}
                   </dl>
-                  <p className="mt-4 border-t border-line/80 pt-3 font-display text-xs italic text-ink-soft">
+                  <p className="mt-3.5 font-display text-xs italic text-ink-soft">
                     *Steeped hot in a traditional gourd during early-morning
                     Greek reading and late-night builds.
                   </p>
@@ -233,20 +245,20 @@ export default function About() {
             </div>
 
             <Reveal eager delay={0.1} className="lg:col-span-5">
-              <figure className="card-editorial rounded-2xl p-3.5 sm:p-4">
+              <figure className="editorial-mat rounded-2xl p-2.5 sm:p-3">
                 <div className="overflow-hidden rounded-xl bg-wash">
                   <Image
                     src="/photos/gerardo-olivia.webp"
                     alt="Gerardo and Olivia, in black and white, standing under the trees."
                     width={1000}
                     height={1500}
-                    priority
+                    preload
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     data-bw=""
                     className="photo-warm aspect-[3/4] w-full object-cover object-[center_18%] transition-transform duration-700 ease-out hover:scale-[1.015]"
                   />
                 </div>
-                <figcaption className="mt-3.5 flex items-baseline justify-between px-1 text-xs text-ink-soft">
+                <figcaption className="mt-3 flex items-baseline justify-between px-1 text-xs text-ink-soft">
                   <span className="font-display text-sm italic text-ink">
                     Gerardo &amp; Olivia
                   </span>
@@ -270,10 +282,7 @@ export default function About() {
                   The life the words are about
                 </p>
                 <h2 className="mt-4 font-display text-h2 font-semibold text-ink">
-                  Home first,{" "}
-                  <em className="font-normal italic text-accent-deep">
-                    always.
-                  </em>
+                  Home first, always.
                 </h2>
               </div>
               <a
@@ -296,7 +305,7 @@ export default function About() {
           <div className="mt-10 grid gap-7 sm:grid-cols-3">
             {frames.map((f, i) => (
               <Reveal key={f.src} delay={i * 0.07}>
-                <figure className="card-editorial rounded-2xl p-3.5">
+                <figure className="editorial-mat rounded-2xl p-2.5 sm:p-3">
                   <div className="overflow-hidden rounded-xl bg-wash">
                     <Image
                       src={f.src}
@@ -307,7 +316,7 @@ export default function About() {
                       className="photo-warm aspect-[3/4] w-full object-cover object-[center_20%] transition-transform duration-700 ease-out hover:scale-[1.02]"
                     />
                   </div>
-                  <figcaption className="mt-3.5 px-1">
+                  <figcaption className="mt-3 px-1">
                     <p className="font-display text-base font-semibold text-ink">
                       {f.caption}
                     </p>
@@ -330,10 +339,7 @@ export default function About() {
                   Why I build this way
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
-                  Small-town businesses don&apos;t need{" "}
-                  <em className="font-normal italic text-accent-deep">
-                    agency bloat.
-                  </em>
+                  Small-town businesses don’t need agency bloat.
                 </h2>
               </div>
               <p className="max-w-md text-base leading-relaxed text-ink-soft">
@@ -344,29 +350,30 @@ export default function About() {
 
           <div className="relative mt-14">
             <InkRule from="md" />
-            <div className="grid gap-8 md:grid-cols-3">
+            <ol className="grid gap-10 md:grid-cols-3 md:gap-8">
               {convictions.map((c, i) => (
-                <Reveal key={c.num} delay={i * 0.06} className="relative h-full md:pt-8">
+                <Reveal
+                  as="li"
+                  key={c.num}
+                  delay={i * 0.06}
+                  className="relative border-t border-line-strong pt-6 md:border-t-0 md:pt-8"
+                >
                   <span
                     aria-hidden
                     className="hidden md:block absolute -top-[3.5px] left-0 h-2 w-2 rounded-full border-[1.5px] border-accent bg-paper"
                   />
-                  <div className="card-editorial flex h-full flex-col justify-between rounded-2xl p-6 sm:p-8">
-                    <div>
-                      <span className="font-display text-2xl italic text-accent-deep">
-                        {c.num}.
-                      </span>
-                      <h3 className="mt-4 font-display text-h3 font-semibold text-ink">
-                        {c.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-                        {c.body}
-                      </p>
-                    </div>
-                  </div>
+                  <span className="font-display text-2xl italic text-accent-deep">
+                    {c.num}.
+                  </span>
+                  <h3 className="mt-4 font-display text-h3 font-semibold text-ink">
+                    {c.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                    {c.body}
+                  </p>
                 </Reveal>
               ))}
-            </div>
+            </ol>
           </div>
         </div>
       </section>
@@ -381,10 +388,8 @@ export default function About() {
                   In the open
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
-                  Everything I&apos;m{" "}
-                  <em className="font-normal italic text-accent-deep">
-                    building &amp; writing.
-                  </em>
+                  Everything I’m building{" "}
+                  <span className="amp-clean">&amp;</span> writing.
                 </h2>
               </div>
               <p className="max-w-md text-base leading-relaxed text-ink-soft">
@@ -393,68 +398,80 @@ export default function About() {
             </div>
           </Reveal>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <ul className="mt-10 divide-y divide-line border-y border-line">
             {worksIndex.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.04} className="h-full">
-                <div className="card-editorial card-editorial-hover flex h-full flex-col justify-between rounded-2xl p-6">
-                  <div>
-                    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 text-xs text-ink-mute">
-                      <span className="font-tech uppercase text-accent-deep">
-                        {item.kind}
+              <Reveal
+                as="li"
+                key={item.title}
+                delay={i * 0.04}
+                className="grid gap-4 py-6 transition-colors hover:bg-surface/65 sm:px-4 md:grid-cols-12 md:items-baseline"
+              >
+                <div className="md:col-span-3">
+                  <p className="font-tech text-xs font-medium uppercase text-accent-deep">
+                    {item.kind}
+                  </p>
+                  <p className="mt-1 text-xs text-ink-mute">{item.meta}</p>
+                </div>
+
+                <div className="md:col-span-6">
+                  <h3 className="font-display text-h3 font-semibold text-ink">
+                    {renderCleanAmp(item.title)}
+                  </h3>
+                  <p className="mt-2 max-w-[56ch] text-sm leading-relaxed text-ink-soft">
+                    {item.summary}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-1 pt-1 md:col-span-3 md:flex-col md:items-end md:gap-y-2 md:pt-0">
+                  {item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-ink transition-colors hover:text-accent-deep md:min-h-0 md:py-0.5"
+                    >
+                      <span className="u-sweep">{item.linkLabel}</span>
+                      <span className="sr-only">
+                        {" "}
+                        — {item.title} (opens in a new tab)
                       </span>
-                      <span>{item.meta}</span>
-                    </div>
-                    <h3 className="mt-2.5 font-display text-h3 font-semibold text-ink">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">
-                      {item.summary}
-                    </p>
-                  </div>
+                      <ArrowUpRight
+                        size={15}
+                        aria-hidden
+                        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="group inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-ink transition-colors hover:text-accent-deep md:min-h-0 md:py-0.5"
+                    >
+                      <span className="u-sweep">{item.linkLabel}</span>
+                      <ArrowRight
+                        size={15}
+                        aria-hidden
+                        className="transition-transform duration-300 group-hover:translate-x-0.5"
+                      />
+                    </Link>
+                  )}
 
-                  <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-line/80 pt-4">
-                    {item.external ? (
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group inline-flex items-center gap-1.5 text-xs font-semibold text-ink transition-colors hover:text-accent-deep"
-                      >
-                        <span className="u-sweep">{item.linkLabel}</span>
-                        <span className="sr-only"> (opens in a new tab)</span>
-                        <ArrowUpRight
-                          size={14}
-                          aria-hidden
-                          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                        />
-                      </a>
-                    ) : (
-                      <Link
-                        href={item.href}
-                        className="group inline-flex items-center gap-1.5 text-xs font-semibold text-ink transition-colors hover:text-accent-deep"
-                      >
-                        <span className="u-sweep">{item.linkLabel}</span>
-                        <ArrowRight
-                          size={14}
-                          aria-hidden
-                          className="transition-transform duration-300 group-hover:translate-x-0.5"
-                        />
-                      </Link>
-                    )}
-
-                    {item.inquireScope && (
-                      <Link
-                        href={`/contact?scope=${encodeURIComponent(item.inquireScope)}`}
-                        className="ml-auto inline-flex items-center gap-1 rounded-lg bg-wash px-3.5 py-2 text-xs font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
-                      >
-                        Request similar build
-                      </Link>
-                    )}
-                  </div>
+                  {item.inquireScope && (
+                    <Link
+                      href={`/contact?scope=${encodeURIComponent(item.inquireScope)}`}
+                      className="group inline-flex min-h-11 items-center gap-1 text-xs font-medium text-ink-soft transition-colors hover:text-ink md:min-h-0 md:py-0.5"
+                    >
+                      <span className="u-sweep">Similar build</span>
+                      <ArrowRight
+                        size={13}
+                        aria-hidden
+                        className="transition-transform duration-300 group-hover:translate-x-0.5"
+                      />
+                    </Link>
+                  )}
                 </div>
               </Reveal>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
