@@ -39,30 +39,5 @@ export default function RevealObserver() {
     return () => io.disconnect();
   }, [pathname]);
 
-  // content-visibility:auto (.cv-auto) makes the first paint cheaper by
-  // skipping below-the-fold sections. Once the page has loaded and gone idle
-  // we render them for real, so the first scroll doesn't pay a layout burst.
-  useEffect(() => {
-    let timer = 0;
-    let idle = 0;
-    const warm = () => document.documentElement.classList.add("cv-warm");
-    const start = () => {
-      timer = window.setTimeout(() => {
-        if ("requestIdleCallback" in window) {
-          idle = window.requestIdleCallback(warm, { timeout: 3000 });
-        } else {
-          warm();
-        }
-      }, 1200);
-    };
-    if (document.readyState === "complete") start();
-    else window.addEventListener("load", start, { once: true });
-    return () => {
-      window.removeEventListener("load", start);
-      window.clearTimeout(timer);
-      if (idle) window.cancelIdleCallback(idle);
-    };
-  }, []);
-
   return null;
 }
