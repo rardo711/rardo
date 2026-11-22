@@ -43,7 +43,7 @@ const studioNotes = [
   { label: "Family", value: "Husband to Olivia · Father of two" },
   { label: "Day job", value: "Retail team lead · T-Mobile (Reidsville)" },
   { label: "Study", value: "Seminary coursework in Greek & Hebrew" },
-  { label: "Fuel", value: "Loose-leaf Yerba Mate*" },
+  { label: "Fuel", value: "Loose-leaf Yerba Mate" },
 ];
 
 const convictions = [
@@ -226,10 +226,6 @@ export default function About() {
                       </div>
                     ))}
                   </dl>
-                  <p className="mt-3.5 font-display text-xs italic text-ink-soft">
-                    *Steeped hot in a traditional gourd during early-morning
-                    Greek reading and late-night work.
-                  </p>
                 </div>
               </Reveal>
             </div>
