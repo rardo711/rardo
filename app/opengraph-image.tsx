@@ -1,6 +1,6 @@
 import { renderOg, ogSize, ogContentType } from "@/lib/og";
 
-export const alt = "Gerardo Castaneda — Websites for Small Businesses";
+export const alt = "Gerardo Castaneda · Websites for Small Businesses";
 export const size = ogSize;
 export const contentType = ogContentType;
 

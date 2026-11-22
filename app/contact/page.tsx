@@ -19,7 +19,7 @@ const nextSteps = [
   {
     n: "02",
     title: "I reply within a day",
-    body: "I read every note myself here in Glennville and write back honestly — even if something simpler makes more sense for you.",
+    body: "I read every note myself here in Glennville and write back honestly, even if something simpler makes more sense for you.",
   },
   {
     n: "03",

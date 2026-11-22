@@ -62,7 +62,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-5 max-w-sm text-base leading-relaxed text-paper/80">
-              Simple, fast websites for local businesses — one-page sites, order
+              Simple, fast websites for local businesses: one-page sites, order
               forms, and pages you can update yourself, usually built in about a
               week for one flat fee.
             </p>

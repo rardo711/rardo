@@ -52,7 +52,7 @@ const services = [
     title: "Ordering & contact forms",
     inquireScope: "Ordering & Contact Form System",
     Diagram: DiagramOrderLedger,
-    body: "Customers pick what they want right on your page and hit send — the order lands straight in your email. No middleman taking a cut, and no extra apps to learn.",
+    body: "Customers pick what they want right on your page and hit send, and the order lands straight in your email. No middleman taking a cut, and no extra apps to learn.",
     specs: [
       { k: "Where orders go", v: "Straight to your email" },
       { k: "Middleman cut", v: "None" },
@@ -83,7 +83,7 @@ const work: WorkPiece[] = [
     category: "commerce",
     location: "Tattnall County, Georgia",
     outcome:
-      "No more juggling orders in DMs — everything goes straight to her email.",
+      "No more juggling orders in DMs. Everything goes straight to her email.",
     description:
       "Rachael makes tallow skincare and herbal remedies here in Tattnall County. Neighbors can look through what she has and place an order in a minute, and whenever a new batch is ready, she updates the page herself.",
     href: "https://raemas-remedies.vercel.app",
@@ -109,7 +109,7 @@ const work: WorkPiece[] = [
     outcome:
       "Built straight from her market flyer and farm photos in about a week.",
     description:
-      "A simple one-page site for a tallow maker in Southeast Georgia. No invented marketing talk — just her own words, her farm photos, and a straight path to order.",
+      "A simple one-page site for a tallow maker in Southeast Georgia. No invented marketing talk, just her own words, her farm photos, and a straight path to order.",
     href: "https://better-than-gold-tallow.vercel.app",
     domainLabel: "better-than-gold-tallow.vercel.app",
     image: "/work/tallow.webp",
@@ -165,7 +165,7 @@ const steps = [
     n: "03",
     timing: "About a week",
     title: "I build it",
-    body: "Once the draft feels right and we agree on the flat fee, I finish the full site — mobile layout, forms, and whatever edit tools you need — and we put it online together.",
+    body: "Once the draft feels right and we agree on the flat fee, I finish the full site (mobile layout, forms, and whatever edit tools you need), and we put it online together.",
   },
   {
     n: "04",
@@ -182,7 +182,7 @@ const faqs: { q: string; a: string; lang?: string }[] = [
   },
   {
     q: "Are there monthly fees?",
-    a: "Not from me. Small-business sites like these run on free, reliable hosting — the only yearly cost you’ll have is your own domain name (like yourshop.com).",
+    a: "Not from me. Small-business sites like these run on free, reliable hosting. The only yearly cost you’ll have is your own domain name (like yourshop.com).",
   },
   {
     q: "Can I keep my domain & update things myself?",
@@ -190,7 +190,7 @@ const faqs: { q: string; a: string; lang?: string }[] = [
   },
   {
     q: "¿Hablas español?",
-    a: "Sí — nací y crecí en Siguatepeque, Honduras. Podemos hablar y hacer tu página completamente en español, en inglés, o en los dos idiomas.",
+    a: "Sí, nací y crecí en Siguatepeque, Honduras. Podemos hablar y hacer tu página completamente en español, en inglés, o en los dos idiomas.",
     lang: "es",
   },
 ];
@@ -395,7 +395,7 @@ export default function Home() {
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="max-w-2xl border-l-2 border-accent pl-5 sm:pl-6">
                   <p className="font-display text-quote text-ink">
-                    &ldquo;The mockup is free. The build is one flat fee — told
+                    &ldquo;The mockup is free. The build is one flat fee, told
                     to you before I start.&rdquo;
                   </p>
                   <p className="mt-3 font-tech text-xs uppercase text-ink-mute">
@@ -470,7 +470,7 @@ export default function Home() {
               </p>
               <p className="mt-5 max-w-3xl font-display text-quote text-ink">
                 Husband, father of two, musician, photographer. From the
-                mountain town of Siguatepeque, Honduras to Glennville, Georgia —
+                mountain town of Siguatepeque, Honduras to Glennville, Georgia,
                 building for neighbors, studying Scripture, and writing it all
                 down.
               </p>
@@ -510,7 +510,7 @@ export default function Home() {
                   <em className="font-normal italic text-accent-deep">yours.</em>
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-ink-soft">
-                  Tell me a little about your business — what you do, who it&apos;s
+                  Tell me a little about your business: what you do, who it&apos;s
                   for, and what you wish your website did. I&apos;ll reply within a
                   day and put together a free mockup so you can see it on your
                   phone first.

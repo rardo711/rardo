@@ -644,7 +644,7 @@ export function TheosLogosPlate() {
         fontFamily={FONT_SERIF}
         fontStyle="italic"
       >
-        “Beginning, firstfruits, chief part — echoed in the Septuagint’s
+        “Beginning, firstfruits, chief part,” echoed in the Septuagint’s
       </text>
       <text
         x="136"
@@ -725,7 +725,7 @@ export function TheosLogosPlate() {
         II. Account, reckoning, reason, living wisdom.
       </text>
       <text x="936" y="534" fill="#2f3e2b" fontSize="19.5" fontFamily={FONT_SERIF}>
-        III. The Personal Word — Christ incarnate.
+        III. The Personal Word: Christ incarnate.
       </text>
 
       <rect x="936" y="584" width="368" height="224" rx="12" fill="#fcf9f3" stroke="#dfd1ba" />

@@ -53,7 +53,7 @@ export const SCOPE_OPTIONS = [
     label: "Not sure yet / something else",
     sub: "Just talk it through first",
     prompt:
-      "Tell me a little about your business or idea — even a sentence or two is plenty.",
+      "Tell me a little about your business or idea. Even a sentence or two is plenty.",
   },
 ] as const;
 
@@ -75,11 +75,11 @@ function validate(field: Field, value: string): string | undefined {
     const looksPhone = v.replace(/\D/g, "").length >= 7;
     return looksEmail || looksPhone
       ? undefined
-      : "That doesn't look like an email or phone number — please check it.";
+      : "That doesn't look like an email or phone number. Please check it.";
   }
   return v
     ? undefined
-    : "Tell me a little about your business — a sentence or two is plenty.";
+    : "Tell me a little about your business. A sentence or two is plenty.";
 }
 
 function FieldError({ id, message }: { id: string; message?: string }) {
@@ -213,7 +213,7 @@ export default function ContactForm({
           Accept: "application/json",
         },
         body: JSON.stringify({
-          _subject: `New project inquiry (${selectedScope}) — Gerardo Castaneda`,
+          _subject: `New project inquiry (${selectedScope}) · Gerardo Castaneda`,
           _honey: "",
           scope: selectedScope,
           name: data.get("name"),
@@ -246,7 +246,7 @@ export default function ContactForm({
           Message Sent
         </span>
         <p className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
-          Got it — thanks for reaching out.
+          Got it, thanks for reaching out.
         </p>
         <p className="mt-3 max-w-lg leading-relaxed text-ink-soft">
           Your note is in my inbox here in Glennville. I&apos;ll read it and get
@@ -456,7 +456,7 @@ export default function ContactForm({
       )}
       {status === "error" && (
         <p role="alert" className="text-sm font-medium text-accent-deep">
-          Something went wrong sending that — please{" "}
+          Something went wrong sending that. Please{" "}
           <a
             href="mailto:gerardoj2001@outlook.com"
             className="underline underline-offset-2"
@@ -514,8 +514,8 @@ export default function ContactForm({
           className="font-semibold text-ink underline decoration-accent/70 decoration-1 underline-offset-4 transition-colors hover:text-accent-deep"
         >
           gerardoj2001@outlook.com
-        </a>{" "}
-        — English &amp; Español welcome. I reply within a day, and the mockup is
+        </a>
+        . English &amp; Español welcome. I reply within a day, and the mockup is
         always free.
       </p>
     </form>

@@ -2,7 +2,7 @@ export const siteUrl = "https://castaneda.vercel.app";
 
 export const siteName = "Gerardo Castaneda";
 
-export const defaultTitle = "Gerardo Castaneda — Websites for Small Businesses";
+export const defaultTitle = "Gerardo Castaneda · Websites for Small Businesses";
 
 /**
  * Last real content change per route (YYYY-MM-DD), used by the sitemap and

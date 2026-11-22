@@ -1,4 +1,4 @@
-# Gerardo Castaneda ("Rardo") — Independent Web Studio
+# Gerardo Castaneda ("Rardo") · Independent Web Studio
 
 > Bespoke, flat-fee one-page websites, direct inbox ordering ledgers, and self-editable owner panels for small businesses in Glennville, Tattnall County, Georgia, and beyond.
 
@@ -6,7 +6,7 @@
 
 - **Builder:** Gerardo Castaneda ("Rardo")
 - **Station:** Glennville & Reidsville, Tattnall County, Georgia (31.9407° N, 81.9296° W)
-- **Languages:** English & Español (Native — born in Siguatepeque, Comayagua, Honduras)
+- **Languages:** English & Español (Native speaker, born in Siguatepeque, Comayagua, Honduras)
 - **Proof-First Guarantee:** Free working mockup built from your real business info before any invoice exists
 - **Turnaround:** 7 days (one focused week from mockup approval to live launch)
 - **Pricing Model:** Single flat fee named upfront; no monthly developer retainer; 100% client ownership
@@ -34,7 +34,7 @@
 - **Studio & Portfolio:** https://castaneda.vercel.app
 - **About, Dossier & Treatise:** https://castaneda.vercel.app/about
 - **Project Brief & Free Mockup:** https://castaneda.vercel.app/contact
-- **Podcast:** The Life Proper (Co-hosted with Caleb on Spotify) — https://open.spotify.com/show/2rxl4jrLFaQ2SYb75NGDYj
+- **Podcast:** The Life Proper (Co-hosted with Caleb on Spotify): https://open.spotify.com/show/2rxl4jrLFaQ2SYb75NGDYj
 - **Direct Email:** gerardoj2001@outlook.com
 - **Direct X:** https://x.com/gerardocasta711
 - **GitHub:** https://github.com/rardo711

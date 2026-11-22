@@ -12,7 +12,7 @@ export const metadata = pageMetadata({
   title: "About",
   ogTitle: "About · Gerardo Castaneda",
   description:
-    "I'm Rardo — husband, father of two, musician, photographer, and web builder. From Siguatepeque, Honduras to Glennville, Georgia.",
+    "I'm Rardo: husband, father of two, musician, photographer, and web builder. From Siguatepeque, Honduras to Glennville, Georgia.",
 });
 
 function renderCleanAmp(text: string) {
@@ -171,14 +171,14 @@ export default function About() {
                   <p>
                     <strong className="font-semibold text-ink">
                       I&apos;m Gerardo Castaneda
-                    </strong>{" "}
-                    — Rardo to most people. Husband, father of two, musician,
+                    </strong>
+                    , or Rardo to most people. Husband, father of two, musician,
                     and photographer. I was born and raised in{" "}
                     <strong className="font-semibold text-ink">
                       Siguatepeque, Honduras
                     </strong>
-                    , a small city in the mountains of Comayagua — the food, the
-                    people, all of it still home — before putting down roots
+                    , a small city in the mountains of Comayagua (the food, the
+                    people, all of it still home), before putting down roots
                     with my wife Olivia in{" "}
                     <strong className="font-semibold text-ink">
                       Glennville, Georgia
@@ -188,7 +188,7 @@ export default function About() {
                 </Reveal>
                 <Reveal eager delay={0.1}>
                   <p>
-                    Family comes first — that&apos;s non-negotiable, and it sits
+                    Family comes first. That&apos;s non-negotiable, and it sits
                     downstream of the main thing. I&apos;ve discovered, by
                     God&apos;s grace and goodness, that{" "}
                     <em className="font-display text-lg italic text-ink">
@@ -201,7 +201,7 @@ export default function About() {
                     By day I lead a retail team at T-Mobile in neighboring
                     Reidsville, helping people sort out technology in plain talk.
                     In 2026 I started learning to build software with AI as my
-                    tutor — making real websites and tools for local businesses
+                    tutor, making real websites and tools for local businesses
                     and neighbors.
                   </p>
                 </Reveal>
@@ -371,7 +371,7 @@ export default function About() {
               </div>
               <p className="max-w-md text-base leading-relaxed text-ink-soft">
                 Websites for local folks, a Bible study app I made for myself,
-                our podcast, and what I&apos;m writing — all in one place.
+                our podcast, and what I&apos;m writing, all in one place.
               </p>
             </div>
           </Reveal>
@@ -411,7 +411,7 @@ export default function About() {
                       <span className="u-sweep">{item.linkLabel}</span>
                       <span className="sr-only">
                         {" "}
-                        — {item.title} (opens in a new tab)
+                        ({item.title}, opens in a new tab)
                       </span>
                       <ArrowUpRight
                         size={15}

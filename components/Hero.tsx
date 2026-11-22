@@ -34,7 +34,7 @@ const specimens = [
     imageAlt:
       "Better Than Gold Tallow Co. homepage over a golden pasture at sunrise in Southeast Georgia.",
     summary:
-      "Built straight from her market flyer and farm photos — what she makes, her story, and an easy way to order.",
+      "Built straight from her market flyer and farm photos: what she makes, her story, and an easy way to order.",
   },
 ] as const;
 
@@ -115,7 +115,7 @@ export default function Hero() {
             <Reveal eager delay={0.1}>
               <p className="mt-7 max-w-xl text-lead text-ink-soft">
                 I&apos;m Rardo. I build simple, fast websites for local
-                businesses — one-page sites, order forms that go straight to
+                businesses: one-page sites, order forms that go straight to
                 your email, and pages you can update yourself from your phone.
                 Who you are, what you sell, when you&apos;re open, and how to
                 reach you.

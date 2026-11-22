@@ -126,7 +126,7 @@ export default function Nav() {
           href="/"
           onClick={brandClick}
           className="group flex shrink-0 items-center gap-2.5 text-ink lg:gap-3"
-          aria-label="Gerardo Castaneda — home"
+          aria-label="Gerardo Castaneda · home"
         >
           <Logo
             size={32}
