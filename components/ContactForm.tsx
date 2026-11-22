@@ -15,45 +15,45 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export const SCOPE_OPTIONS = [
   {
     id: "One-Page Business Website",
-    label: "One-Page Business Website",
-    sub: "Hours, story, location & tap-to-call",
+    label: "One-page website",
+    sub: "Hours, story, location & easy contact",
     prompt:
-      "Tell me what your business does, your town and hours, and what customers ask you most on the phone.",
+      "Tell me what your business does, your town and hours, and what people ask you most on the phone.",
   },
   {
     id: "Ordering & Contact Form System",
-    label: "Ordering & Contact System",
-    sub: "Customer orders sent straight to your inbox",
+    label: "Order or inquiry form",
+    sub: "Customer orders sent straight to your email",
     prompt:
-      "Tell me what items or services customers order from you, and how you currently take orders (phone, text, DM).",
+      "Tell me what items or services people order from you, and how you take orders right now (phone, text, DMs).",
   },
   {
     id: "Self-Editable Website + Admin Panel",
-    label: "Self-Editable Site",
-    sub: "Update prices, photos & hours yourself",
+    label: "Site I can update myself",
+    sub: "Change hours, stock & photos from your phone",
     prompt:
-      "Tell me what changes most often in your shop (seasonal items, prices, hours, photos) that you'd like to edit on your own.",
+      "Tell me what changes most often in your shop (seasonal items, hours, stock, photos) that you'd like to update yourself.",
   },
   {
     id: "Site Inspired by RaeMa's Remedies",
     label: "Like RaeMa’s Remedies",
-    sub: "Product catalog + inbox orders + edit panel",
+    sub: "Product list + email orders + edit screen",
     prompt:
-      "I’d love a storefront and inbox ordering setup similar to RaeMa’s Remedies. Here is what we make or sell:",
+      "I’d like an order site similar to RaeMa’s Remedies. Here’s what we make or sell:",
   },
   {
     id: "Site Inspired by Better Than Gold Tallow Co.",
     label: "Like Better Than Gold",
-    sub: "Farm/maker story + product showcase",
+    sub: "Your story, products & easy way to reach you",
     prompt:
-      "I’d love a one-page brand & product showcase similar to Better Than Gold Tallow Co. Here is our story and what we offer:",
+      "I’d like a simple one-page site like Better Than Gold. Here’s our story and what we make:",
   },
   {
     id: "Software / Custom Web Application",
-    label: "Custom Project / Not Sure Yet",
-    sub: "Plain-talk advice & free mockup",
+    label: "Not sure yet / something else",
+    sub: "Just talk it through first",
     prompt:
-      "Tell me a little about your business or idea — even a sentence or two is plenty to get started.",
+      "Tell me a little about your business or idea — even a sentence or two is plenty.",
   },
 ] as const;
 
@@ -243,15 +243,14 @@ export default function ContactForm({
       >
         <span className="inline-flex items-center gap-1.5 rounded-lg bg-wash px-3.5 py-1.5 font-tech text-xs font-medium uppercase text-accent-deep">
           <Check size={14} aria-hidden />
-          Message Received
+          Message Sent
         </span>
         <p className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
-          Got it — thank you.
+          Got it — thanks for reaching out.
         </p>
         <p className="mt-3 max-w-lg leading-relaxed text-ink-soft">
-          Your note landed straight in my inbox in Glennville. I&apos;ll read it
-          personally and get back to you within a day with plain-talk next steps
-          for your free mockup.
+          Your note is in my inbox here in Glennville. I&apos;ll read it and get
+          back to you within a day.
         </p>
         <button
           type="button"
@@ -307,7 +306,7 @@ export default function ContactForm({
       {/* Tactile Scope / Project Selector */}
       <fieldset className="flex flex-col gap-3">
         <legend className={labelCls}>
-          What would you like to build?{" "}
+          What are you looking for?{" "}
           <span className="font-normal text-ink-mute">(pick one)</span>
         </legend>
         <input type="hidden" name="scope" value={selectedScope} />
@@ -485,7 +484,7 @@ export default function ContactForm({
           aria-busy={sending}
           className="group inline-flex min-h-13 flex-1 items-center justify-center gap-2 rounded-xl bg-ink px-7 py-3.5 text-base font-semibold text-paper shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0 aria-disabled:opacity-60"
         >
-          <span>{sending ? "Sending your note…" : "Send message"}</span>
+          <span>{sending ? "Sending…" : "Send message"}</span>
           <ArrowRight
             size={18}
             aria-hidden
@@ -509,7 +508,7 @@ export default function ContactForm({
       </div>
 
       <p className="text-center text-xs text-ink-soft sm:text-left">
-        Or email directly at{" "}
+        Or email me directly at{" "}
         <a
           href="mailto:gerardoj2001@outlook.com"
           className="font-semibold text-ink underline decoration-accent/70 decoration-1 underline-offset-4 transition-colors hover:text-accent-deep"

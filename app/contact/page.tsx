@@ -19,12 +19,12 @@ const nextSteps = [
   {
     n: "02",
     title: "I reply within a day",
-    body: "I read every note personally in Glennville and write back honestly — even if a simpler setup is a better fit.",
+    body: "I read every note myself here in Glennville and write back honestly — even if something simpler makes more sense for you.",
   },
   {
     n: "03",
-    title: "Free phone mockup",
-    body: "I build a working preview from your real business info so you can see exactly what you’d get before paying a dime.",
+    title: "Free mockup on a phone",
+    body: "I put together a working draft with your real info so you can see it on your phone before you spend anything.",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function Contact() {
       <div className="gutter mx-auto max-w-6xl pb-16 pt-12 sm:pb-20 sm:pt-16 lg:max-w-7xl lg:pb-24 lg:pt-20">
         <Reveal eager>
           <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-            Start your project
+            Get in touch
           </p>
           <h1 className="mt-5 max-w-3xl font-display text-h1 font-semibold text-ink">
             Tell me about your business.
@@ -79,15 +79,15 @@ export default function Contact() {
 
                 <dl className="mt-7 divide-y divide-line border-y border-line text-xs">
                   <div className="flex items-baseline justify-between gap-4 py-2.5">
-                    <dt className="shrink-0 text-ink-mute">Pricing</dt>
+                    <dt className="shrink-0 text-ink-mute">How I charge</dt>
                     <dd className="text-right font-medium tabular-nums text-ink">
-                      One flat fee, named upfront
+                      One flat fee, told upfront
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-2.5">
                     <dt className="shrink-0 text-ink-mute">Ownership</dt>
                     <dd className="text-right font-medium tabular-nums text-ink">
-                      100% yours · No monthly retainer
+                      100% yours · No monthly bills
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-2.5">

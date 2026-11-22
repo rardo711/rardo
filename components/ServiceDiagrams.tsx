@@ -269,7 +269,7 @@ export function DiagramOrderLedger() {
 
       <rect x="222" y="108" width="108" height="32" rx="6" fill="#ece0ce" />
       <text x="232" y="121.5" fill="#58412f" fontSize="7" fontFamily={FONT_SANS}>
-        Order Total
+        Order Summary
       </text>
       <text x="232" y="133.5" fill="#2f3e2b" fontSize="8.5" fontFamily={FONT_SANS} fontWeight="700">
         2 items · No fees
@@ -313,7 +313,7 @@ export function DiagramSelfEditable() {
         fontWeight="600"
         letterSpacing="1.2"
       >
-        YOUR EDIT PANEL
+        YOUR EDIT SCREEN
       </text>
 
       <text x="34" y="62" fill="#58412f" fontSize="7.5" fontFamily={FONT_SANS}>
@@ -325,10 +325,10 @@ export function DiagramSelfEditable() {
       </text>
 
       <text x="34" y="105" fill="#58412f" fontSize="7.5" fontFamily={FONT_SANS}>
-        Batch Price &amp; Status
+        Batch &amp; Status
       </text>
       <rect x="34" y="110" width="66" height="22" rx="5" fill="#f6efe3" stroke="#7e843a" strokeWidth="1.2" />
-      <text x="44" y="124" fill="#555b21" fontSize="8.5" fontFamily={FONT_SANS} fontWeight="700">
+      <text x="67" y="123.5" textAnchor="middle" fill="#555b21" fontSize="7.5" fontFamily={FONT_SANS} fontWeight="700">
         Small batch
       </text>
 
@@ -339,7 +339,7 @@ export function DiagramSelfEditable() {
       </text>
 
       <text x="34" y="148" fill="#6b5542" fontSize="7.5" fontFamily={FONT_SERIF} fontStyle="italic">
-        Saves instantly from your phone
+        Saves right from your phone
       </text>
 
       {/* Right Pane: 204..326 (14px margin inside 190..340) */}
@@ -386,7 +386,7 @@ export function DiagramSelfEditable() {
         4 oz glass jar · Small batch
       </text>
       <line x1="214" y1="101" x2="316" y2="101" stroke="#dfd1ba" />
-      <text x="214" y="118" fill="#2f3e2b" fontSize="9.5" fontFamily={FONT_SANS} fontWeight="700">
+      <text x="214" y="117.5" fill="#2f3e2b" fontSize="8" fontFamily={FONT_SANS} fontWeight="700">
         Fresh batch
       </text>
       <rect x="270" y="107" width="46" height="16" rx="4" fill="#e8eef3" />

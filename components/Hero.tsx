@@ -14,46 +14,46 @@ const specimens = [
     id: "raemas",
     shortLabel: "RaeMa’s Remedies",
     name: "RaeMa’s Remedies",
-    category: "Order Site & Edit Panel",
+    category: "Order Site & Edit Screen",
     location: "Tattnall County, GA",
     url: "https://raemas-remedies.vercel.app",
     image: "/work/raemas.webp",
     imageAlt:
       "RaeMa's Remedies homepage showing handcrafted tallow skincare and herbal remedies with direct ordering.",
     summary:
-      "Replaced messy DM threads with a self-editable catalog and direct-to-inbox ordering.",
+      "Instead of taking orders over DMs, customers pick what they want on the site and the order lands straight in her email.",
   },
   {
     id: "tallow",
     shortLabel: "Better Than Gold",
     name: "Better Than Gold Tallow Co.",
-    category: "One-Page Farm Brand",
+    category: "One-Page Site",
     location: "Southeast Georgia",
     url: "https://better-than-gold-tallow.vercel.app",
     image: "/work/tallow.webp",
     imageAlt:
       "Better Than Gold Tallow Co. homepage over a golden pasture at sunrise in Southeast Georgia.",
     summary:
-      "Turned a handwritten market flyer and pasture photos into a clean one-page storefront.",
+      "Built straight from her market flyer and farm photos — what she makes, her story, and an easy way to order.",
   },
 ] as const;
 
 const studioPromises = [
   {
     value: "Free mockup",
-    detail: "Preview your page on a phone before paying",
+    detail: "See a working draft on your phone before you pay anything",
   },
   {
     value: "One flat fee",
-    detail: "Named upfront — zero monthly retainers",
+    detail: "Told upfront, with no monthly bills from me",
   },
   {
-    value: "One week",
-    detail: "Focused turnaround from approval to launch",
+    value: "About a week",
+    detail: "Built and online without dragging it out",
   },
   {
     value: "100% yours",
-    detail: "Edit prices & hours anytime · Hablo Español",
+    detail: "Update hours & items yourself · Hablo español",
   },
 ];
 
@@ -114,10 +114,11 @@ export default function Hero() {
 
             <Reveal eager delay={0.1}>
               <p className="mt-7 max-w-xl text-lead text-ink-soft">
-                I&apos;m Rardo. I design and build simple, fast one-page
-                websites, direct ordering forms, and update-it-yourself pages for
-                local businesses — who you are, what you sell, your hours, and a
-                clear way to reach you.
+                I&apos;m Rardo. I build simple, fast websites for local
+                businesses — one-page sites, order forms that go straight to
+                your email, and pages you can update yourself from your phone.
+                Who you are, what you sell, when you&apos;re open, and how to
+                reach you.
               </p>
             </Reveal>
 
@@ -139,7 +140,7 @@ export default function Hero() {
                   href="#work"
                   className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface px-7 py-3.5 text-base font-semibold text-ink transition-all duration-300 hover:border-ink hover:bg-wash sm:w-auto"
                 >
-                  See shipped work
+                  See my work
                 </Link>
               </div>
             </Reveal>
@@ -167,12 +168,12 @@ export default function Hero() {
               {/* Segmented Switcher with Sliding Pill */}
               <div className="flex flex-wrap items-center justify-between gap-2 pb-3.5">
                 <span className="font-tech text-[0.7rem] font-medium uppercase text-ink-mute">
-                  Live Client Work
+                  Recent Work
                 </span>
                 <LayoutGroup id="hero-specimens">
                   <div
                     role="tablist"
-                    aria-label="Preview shipped client websites"
+                    aria-label="Preview recent client websites"
                     className="inline-flex rounded-xl border border-line bg-wash/80 p-1"
                   >
                     {specimens.map((s, idx) => {
@@ -258,7 +259,7 @@ export default function Hero() {
                         href={`#work-${active.id}`}
                         className="group/details inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-wash px-4 py-2.5 text-xs font-semibold text-ink transition-colors duration-300 hover:bg-ink hover:text-paper"
                       >
-                        <span>Read details</span>
+                        <span>More about this</span>
                         <ArrowDown
                           size={14}
                           aria-hidden
@@ -271,7 +272,7 @@ export default function Hero() {
                         rel="noreferrer"
                         className="group/visit inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border border-line-strong bg-paper/70 px-4 py-2.5 text-xs font-semibold text-ink transition-colors duration-300 hover:border-ink hover:bg-wash"
                       >
-                        <span>Visit live site</span>
+                        <span>Visit site</span>
                         <span className="sr-only">
                           {" "}
                           for {active.name} (opens in a new tab)

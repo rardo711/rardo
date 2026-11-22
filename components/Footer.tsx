@@ -4,10 +4,10 @@ import Logo from "./Logo";
 
 const studioLinks = [
   { href: "/#services", label: "What I do" },
-  { href: "/#work", label: "Selected work" },
+  { href: "/#work", label: "Work" },
   { href: "/#process", label: "How it works" },
   { href: "/#inquire", label: "Free mockup" },
-  { href: "/about", label: "About & story" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -19,7 +19,7 @@ const shippedIndex = [
   },
   {
     label: "Better Than Gold Tallow Co.",
-    meta: "Farm brand · Southeast GA",
+    meta: "One-page site · Southeast GA",
     href: "https://better-than-gold-tallow.vercel.app",
   },
   {
@@ -34,7 +34,7 @@ const shippedIndex = [
   },
   {
     label: "GitHub (@rardo711)",
-    meta: "Code & repositories",
+    meta: "Code & projects",
     href: "https://github.com/rardo711",
   },
 ];
@@ -62,9 +62,9 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-5 max-w-sm text-base leading-relaxed text-paper/80">
-              Simple, fast one-page websites, direct ordering forms, and
-              update-it-yourself pages for local businesses — built in one
-              focused week for a flat fee.
+              Simple, fast websites for local businesses — one-page sites, order
+              forms, and pages you can update yourself, usually built in about a
+              week for one flat fee.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
               <a
@@ -143,10 +143,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Colophon */}
+          {/* Column 4: Details */}
           <div className="lg:col-span-2">
             <p className="font-tech text-eyebrow font-medium uppercase text-paper/70">
-              Colophon
+              Details
             </p>
             <dl className="mt-5 flex flex-col gap-4 text-xs leading-relaxed text-paper/75">
               <div>
@@ -156,9 +156,9 @@ export default function Footer() {
                 </dd>
               </div>
               <div>
-                <dt className="text-paper/65">The promise</dt>
+                <dt className="text-paper/65">How I work</dt>
                 <dd className="mt-0.5 text-paper/90">
-                  Free mockup first. One flat fee, named upfront. 100% yours.
+                  Free mockup first. One flat fee, told upfront. 100% yours.
                 </dd>
               </div>
               <div>

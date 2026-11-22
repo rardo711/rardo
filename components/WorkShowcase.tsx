@@ -119,7 +119,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
                       data-inquire-product={piece.inquireProduct}
                       className="group inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0"
                     >
-                      <span>Build something similar</span>
+                      <span>I want something like this</span>
                       <ArrowRight
                         size={16}
                         aria-hidden
@@ -132,7 +132,7 @@ export default function WorkShowcase({ items }: { items: WorkPiece[] }) {
                       rel="noreferrer"
                       className="group/visit inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-line-strong bg-surface px-5 py-2.5 text-sm font-semibold text-ink transition-colors duration-300 hover:border-ink hover:bg-wash"
                     >
-                      <span>Visit live site</span>
+                      <span>Visit site</span>
                       <span className="sr-only">
                         {" "}
                         for {piece.name} (opens in a new tab)

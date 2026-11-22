@@ -41,7 +41,7 @@ const studioNotes = [
   { label: "Born & raised", value: "Siguatepeque, Comayagua, Honduras" },
   { label: "Home today", value: "Glennville, Tattnall County, Georgia" },
   { label: "Family", value: "Husband to Olivia · Father of two" },
-  { label: "Day work", value: "Retail team lead · T-Mobile (Reidsville)" },
+  { label: "Day job", value: "Retail team lead · T-Mobile (Reidsville)" },
   { label: "Study", value: "Seminary coursework in Greek & Hebrew" },
   { label: "Fuel", value: "Loose-leaf Yerba Mate*" },
 ];
@@ -49,18 +49,18 @@ const studioNotes = [
 const convictions = [
   {
     num: "I",
-    title: "Plain words over marketing fog",
-    body: "When a neighbor in Tattnall County looks up a farm stand, a shop, or a family business, they aren’t looking for agency buzzwords. They want to see what you make, when your doors are open, and how to reach you. Every site I build starts with your real words and real photos.",
+    title: "Real words, not sales talk",
+    body: "When someone around here looks up a local shop or farm stand, they don’t want clever slogans. They want to know what you make, when you’re open, and how to reach you. I start every site with your own words and your own photos.",
   },
   {
     num: "II",
-    title: "Ownership, not monthly rent",
-    body: "Small businesses shouldn’t be locked into a monthly retainer just to update a price or holiday hour. I charge a single flat fee named upfront, build a plain-language edit panel when your inventory changes often, and hand you the keys outright.",
+    title: "You own it, not rent it",
+    body: "You shouldn’t have to pay someone every month just to change holiday hours or mark something sold out. You pay one flat fee upfront, I give you a simple screen to make updates yourself when you need it, and the site is yours.",
   },
   {
     num: "III",
-    title: "Built for the phone in your hand",
-    body: "Most local customers look you up on a phone in a parking lot or on the porch. Every page I ship is light, fast on county cell service, and puts your call button or order form right where a thumb can reach it.",
+    title: "Built for phones first",
+    body: "Most people look you up on their phone from a parking lot or the porch. Every site I build loads fast even on spotty county signal, and puts your phone number or order form right where it’s easy to tap.",
   },
 ];
 
@@ -80,40 +80,40 @@ const frames = [
   {
     src: "/photos/wedding.webp",
     alt: "Gerardo and Olivia on their wedding day, foreheads touching under a floral arch.",
-    caption: "Our day",
-    note: "Where our Georgia household began",
+    caption: "Our wedding day",
+    note: "Where our life together began",
   },
 ];
 
 const worksIndex = [
   {
-    kind: "Client Order Site",
+    kind: "Client · Order site",
     title: "RaeMa’s Remedies",
     meta: "Tattnall County, GA",
     summary:
-      "Family tallow & herbal remedy storefront with direct-to-inbox ordering and a plain-language edit panel.",
+      "Order site for a family tallow and herbal remedy shop, with direct email orders and a simple edit screen she runs herself.",
     href: "https://raemas-remedies.vercel.app",
     linkLabel: "Visit site",
     external: true,
     inquireScope: "Site Inspired by RaeMa's Remedies",
   },
   {
-    kind: "Client Brand Site",
+    kind: "Client · One-page site",
     title: "Better Than Gold Tallow Co.",
     meta: "Southeast Georgia",
     summary:
-      "One-page farm storefront built from her real market flyer, pasture photography, and spoken story.",
+      "One-page site for a tallow maker in Southeast Georgia, built straight from her market flyer and farm photos.",
     href: "https://better-than-gold-tallow.vercel.app",
     linkLabel: "Visit site",
     external: true,
     inquireScope: "Site Inspired by Better Than Gold Tallow Co.",
   },
   {
-    kind: "Personal Software",
+    kind: "Personal project",
     title: "Theos Logos",
-    meta: "Web Application",
+    meta: "Study app",
     summary:
-      "A Bible study app I built for myself with an interlinear reader and Strong’s Hebrew and Greek lexicons.",
+      "A Bible study app I built for myself with Greek and Hebrew text and Strong’s definitions.",
     href: "https://theoslogos.vercel.app",
     linkLabel: "Open app",
     external: true,
@@ -124,18 +124,18 @@ const worksIndex = [
     title: "The Life Proper",
     meta: "Spotify · Co-hosted with Caleb",
     summary:
-      "Conversations with my friend Caleb on faith, fatherhood, Scripture, and the examined life.",
+      "Conversations with my friend Caleb on faith, fatherhood, Scripture, and trying to live well.",
     href: "https://open.spotify.com/show/2rxl4jrLFaQ2SYb75NGDYj",
     linkLabel: "Listen on Spotify",
     external: true,
   },
   {
-    kind: "Writing & Exegesis",
+    kind: "Writing & study",
     title: "Ultimate Truth & Seminary Studies",
-    meta: "Book Manuscript & Thesis",
+    meta: "Book & thesis",
     summary:
-      "A book manuscript called Ultimate Truth, a thesis on modern American evangelicalism, and coursework in Greek and Hebrew exegesis.",
-    href: "/contact?scope=Software+%2F+Custom+Web+Application",
+      "A book manuscript called Ultimate Truth, a thesis on modern American evangelicalism, and my seminary coursework in Greek and Hebrew.",
+    href: "/contact",
     linkLabel: "Say hello",
     external: false,
   },
@@ -158,7 +158,7 @@ export default function About() {
             <div className="lg:col-span-7">
               <Reveal eager>
                 <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                  The person behind the sites
+                  About me
                 </p>
                 <h1 className="mt-5 font-display text-h1 font-semibold text-ink">
                   I’m{" "}
@@ -201,8 +201,8 @@ export default function About() {
                     By day I lead a retail team at T-Mobile in neighboring
                     Reidsville, helping people sort out technology in plain talk.
                     In 2026 I started learning to build software with AI as my
-                    tutor — shipping real websites and tools in the open for real
-                    businesses and neighbors.
+                    tutor — making real websites and tools for local businesses
+                    and neighbors.
                   </p>
                 </Reveal>
               </div>
@@ -228,7 +228,7 @@ export default function About() {
                   </dl>
                   <p className="mt-3.5 font-display text-xs italic text-ink-soft">
                     *Steeped hot in a traditional gourd during early-morning
-                    Greek reading and late-night builds.
+                    Greek reading and late-night work.
                   </p>
                 </div>
               </Reveal>
@@ -269,7 +269,7 @@ export default function About() {
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
               <div>
                 <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                  The life the words are about
+                  Home &amp; family
                 </p>
                 <h2 className="mt-4 font-display text-h2 font-semibold text-ink">
                   Home first, always.
@@ -315,11 +315,12 @@ export default function About() {
                   Why I build this way
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
-                  Small-town businesses don’t need agency bloat.
+                  Small-town businesses don’t need a complicated website.
                 </h2>
               </div>
               <p className="max-w-md text-base leading-relaxed text-ink-soft">
-                Honest craft, direct ownership, and pages tested on the same phones your neighbors keep in their pockets.
+                Plain words, no monthly traps, and pages I test on a real phone
+                before you ever see them.
               </p>
             </div>
           </Reveal>
@@ -361,7 +362,7 @@ export default function About() {
             <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
               <div>
                 <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                  In the open
+                  What I&apos;m working on
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
                   Everything I’m building{" "}
@@ -369,7 +370,8 @@ export default function About() {
                 </h2>
               </div>
               <p className="max-w-md text-base leading-relaxed text-ink-soft">
-                Client websites, personal study software, photography, our podcast, and ongoing theological writing — gathered in one place.
+                Websites for local folks, a Bible study app I made for myself,
+                our podcast, and what I&apos;m writing — all in one place.
               </p>
             </div>
           </Reveal>
@@ -436,7 +438,7 @@ export default function About() {
                       href={`/contact?scope=${encodeURIComponent(item.inquireScope)}`}
                       className="group inline-flex min-h-11 items-center gap-1 text-xs font-medium text-ink-soft transition-colors hover:text-ink md:min-h-0 md:py-0.5"
                     >
-                      <span className="u-sweep">Similar build</span>
+                      <span className="u-sweep">Want one like this?</span>
                       <ArrowRight
                         size={13}
                         aria-hidden

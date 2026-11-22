@@ -39,10 +39,10 @@ const services = [
     title: "One-page websites",
     inquireScope: "One-Page Business Website",
     Diagram: DiagramOnePage,
-    body: "Everything a customer checks before driving over or calling: who you are, what you do, your current hours, and a clear button to call or message you. Built to feel effortless on a phone.",
+    body: "Everything someone looks up before they call or drive over: what you do, when you’re open, where to find you, and a button to reach you. Made for phones first, since that’s how most folks look you up.",
     specs: [
-      { k: "Turnaround", v: "One focused week" },
-      { k: "Designed for", v: "Phones first & desktop" },
+      { k: "Timeline", v: "About a week" },
+      { k: "Made for", v: "Phones first, desktop too" },
       { k: "Monthly fee", v: "None" },
     ],
   },
@@ -52,11 +52,11 @@ const services = [
     title: "Ordering & contact forms",
     inquireScope: "Ordering & Contact Form System",
     Diagram: DiagramOrderLedger,
-    body: "Let customers browse your goods, pick quantities, and send their order straight to your email inbox — no marketplace commissions, no apps to learn, and nothing complicated to maintain.",
+    body: "Customers pick what they want right on your page and hit send — the order lands straight in your email. No middleman taking a cut, and no extra apps to learn.",
     specs: [
-      { k: "Order delivery", v: "Straight to your inbox" },
-      { k: "Platform cut", v: "0% commission" },
-      { k: "Setup", v: "Tailored to your items" },
+      { k: "Where orders go", v: "Straight to your email" },
+      { k: "Middleman cut", v: "None" },
+      { k: "Setup", v: "Built around what you sell" },
     ],
   },
   {
@@ -65,11 +65,11 @@ const services = [
     title: "Sites you update yourself",
     inquireScope: "Self-Editable Website + Admin Panel",
     Diagram: DiagramSelfEditable,
-    body: "A plain-language edit panel built right into your site. Change prices, mark batches in or out of stock, update holiday hours, and swap photos from your phone in two minutes.",
+    body: "Need to change holiday hours, swap a photo, or mark something sold out? I build a simple screen right into your site so you can update it yourself from your phone in a couple minutes.",
     specs: [
-      { k: "Edit from", v: "Your phone or computer" },
-      { k: "What you control", v: "Prices, stock, hours & photos" },
-      { k: "Handover", v: "1-on-1 walkthrough included" },
+      { k: "Works on", v: "Your phone or computer" },
+      { k: "You control", v: "Hours, items, stock & photos" },
+      { k: "Handover", v: "I’ll walk you through it" },
     ],
   },
 ];
@@ -79,13 +79,13 @@ const work: WorkPiece[] = [
     id: "raemas",
     index: "01",
     name: "RaeMa’s Remedies",
-    kind: "Client — Order Site & Admin",
+    kind: "Client · Order site",
     category: "commerce",
     location: "Tattnall County, Georgia",
     outcome:
-      "Replaced back-and-forth DMs with a self-editable catalog and direct-to-inbox orders.",
+      "No more juggling orders in DMs — everything goes straight to her email.",
     description:
-      "An order site for Rachael Harrelson’s family wellness brand. Customers browse handcrafted remedies and send their order straight to RaeMa’s inbox — while she updates products, batch prices, and photos herself through a plain-language admin panel.",
+      "Rachael makes tallow skincare and herbal remedies here in Tattnall County. Neighbors can look through what she has and place an order in a minute, and whenever a new batch is ready, she updates the page herself.",
     href: "https://raemas-remedies.vercel.app",
     domainLabel: "raemas-remedies.vercel.app",
     image: "/work/raemas.webp",
@@ -94,8 +94,8 @@ const work: WorkPiece[] = [
     inquireProduct: "Site Inspired by RaeMa's Remedies",
     specs: [
       { label: "Client", value: "Rachael Harrelson · Tattnall County, GA" },
-      { label: "What we built", value: "One-page catalog, order form & edit panel" },
-      { label: "Owner control", value: "Self-editable products, prices & photos" },
+      { label: "What I built", value: "One-page catalog, order form & edit screen" },
+      { label: "Owner updates", value: "Items, stock & photos from her phone" },
       { label: "Monthly fees", value: "None · Owned outright" },
     ],
   },
@@ -103,13 +103,13 @@ const work: WorkPiece[] = [
     id: "tallow",
     index: "02",
     name: "Better Than Gold Tallow Co.",
-    kind: "Client — Farm Brand Site",
+    kind: "Client · One-page site",
     category: "brand",
     location: "Southeast Georgia",
     outcome:
-      "Turned a printed farmers-market flyer and pasture photos into a clean one-page storefront.",
+      "Built straight from her market flyer and farm photos in about a week.",
     description:
-      "A warm one-page site for a Southeast Georgia tallow business, crafted directly from her real market flyer, pasture photography, and spoken words. What she makes, her story, and a direct line to order — nothing for a customer to get lost in.",
+      "A simple one-page site for a tallow maker in Southeast Georgia. No invented marketing talk — just her own words, her farm photos, and a straight path to order.",
     href: "https://better-than-gold-tallow.vercel.app",
     domainLabel: "better-than-gold-tallow.vercel.app",
     image: "/work/tallow.webp",
@@ -118,32 +118,32 @@ const work: WorkPiece[] = [
     inquireProduct: "Site Inspired by Better Than Gold Tallow Co.",
     specs: [
       { label: "Client", value: "Better Than Gold · Southeast Georgia" },
-      { label: "What we built", value: "Brand story, product showcase & contact" },
-      { label: "Built from", value: "Her print flyer & original farm photos" },
-      { label: "Turnaround", value: "One focused week from free mockup" },
+      { label: "What I built", value: "Her story, products & direct contact" },
+      { label: "Built from", value: "Her market flyer & farm photos" },
+      { label: "Timeline", value: "About a week from free mockup" },
     ],
   },
   {
     id: "theos-logos",
     index: "03",
     name: "Theos Logos",
-    kind: "Personal Software — Study App",
+    kind: "Personal project · Study app",
     category: "software",
     location: "Glennville, Georgia",
     outcome:
-      "Built a fast, distraction-free Greek & Hebrew study room for daily seminary exegesis.",
+      "A quiet Greek & Hebrew Bible study tool I made for my own reading.",
     description:
-      "A biblical study web application I built for my own seminary coursework and daily reading. Pairs an interlinear scripture reader with Strong’s Greek and Hebrew lexicons, root parsing, and concordance lookups in a quiet, distraction-free reading room.",
+      "Built for my seminary classes and daily study. It puts the Greek and Hebrew text right next to Strong’s definitions and word lookups, without ads or clutter in the way.",
     href: "https://theoslogos.vercel.app",
     domainLabel: "theoslogos.vercel.app",
     imageAlt:
       "Theos Logos web application showing Greek and Hebrew interlinear scripture and Strong's lexicon panel.",
     inquireProduct: "Software / Custom Web Application",
     specs: [
-      { label: "Kind", value: "In-house web application" },
-      { label: "Features", value: "Greek & Hebrew lexicons + interlinear text" },
-      { label: "Design", value: "Split-pane manuscript & concordance reader" },
-      { label: "Status", value: "Live public web app" },
+      { label: "Kind", value: "Personal web app" },
+      { label: "Includes", value: "Greek & Hebrew text + Strong’s lookups" },
+      { label: "Layout", value: "Side-by-side reader & word study" },
+      { label: "Status", value: "Free to use online" },
     ],
   },
 ];
@@ -151,46 +151,46 @@ const work: WorkPiece[] = [
 const steps = [
   {
     n: "01",
-    timing: "First conversation",
+    timing: "First step",
     title: "We talk",
-    body: "Free and unhurried. You tell me about your business and what you wish your website did. Plain talk, no jargon, no pressure.",
+    body: "You tell me what your business does and what you want your site to help with. Plain talk, no sales pitch.",
   },
   {
     n: "02",
-    timing: "Days 2 – 3",
+    timing: "A few days later",
     title: "Free mockup",
-    body: "I build a working one-page mockup using your real business info and show it to you on my phone. You see exactly what you’d get before paying anything.",
+    body: "I put together a working draft with your real info and show it to you on a phone. If it’s not what you want, you walk away owing nothing.",
   },
   {
     n: "03",
-    timing: "One focused week",
-    title: "I build your site",
-    body: "Once you love the mockup and approve the flat fee, I build the real thing — mobile layout, forms, and edit panel — and we put it live together.",
+    timing: "About a week",
+    title: "I build it",
+    body: "Once the draft feels right and we agree on the flat fee, I finish the full site — mobile layout, forms, and whatever edit tools you need — and we put it online together.",
   },
   {
     n: "04",
-    timing: "From day one",
+    timing: "For good",
     title: "It’s yours",
-    body: "The site belongs to you outright with zero monthly retainers. I’ll show you how to update it yourself, and I’m always a message away.",
+    body: "The site belongs to you, with no monthly bills from me. I’ll show you how to update it yourself, and if you ever need a hand later, just text or email me.",
   },
 ];
 
 const faqs: { q: string; a: string; lang?: string }[] = [
   {
-    q: "What does a site cost?",
-    a: "One flat fee, named upfront after you see your free working mockup. No hourly billing and no surprise add-ons.",
+    q: "How do you charge?",
+    a: "One flat fee, and I tell you what it is after you see your free mockup. No hourly meter running and no surprise add-ons.",
   },
   {
     q: "Are there monthly fees?",
-    a: "No developer retainers or platform commissions from me. Your site runs on modern cloud hosting with no baseline monthly cost.",
+    a: "Not from me. Small-business sites like these run on free, reliable hosting — the only yearly cost you’ll have is your own domain name (like yourshop.com).",
   },
   {
-    q: "Do I keep my domain & updates?",
-    a: "100% yours. I connect your existing domain (GoDaddy, Namecheap, Squarespace, etc.) at no extra charge, and can include a simple edit panel for your phone.",
+    q: "Can I keep my domain & update things myself?",
+    a: "Yes, it’s all yours. If you already own a domain on GoDaddy or Namecheap, I’ll connect it for free. And if your hours or items change often, I’ll add a simple screen so you can update them from your phone.",
   },
   {
     q: "¿Hablas español?",
-    a: "Sí — nací y crecí en Siguatepeque, Honduras. Podemos hablar, planear y construir tu sitio completamente en español o en ambos idiomas.",
+    a: "Sí — nací y crecí en Siguatepeque, Honduras. Podemos hablar y hacer tu página completamente en español, en inglés, o en los dos idiomas.",
     lang: "es",
   },
 ];
@@ -213,11 +213,12 @@ export default function Home() {
                   <span className="text-accent-deep">01</span> · What I do
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
-                  Three things, done with care.
+                  Three things I build.
                 </h2>
               </div>
               <p className="max-w-md text-base leading-relaxed text-ink-soft">
-                No confusing agency packages with forty line items. Each offering is something I&apos;ve already built and shipped for real people.
+                No bloated packages full of stuff you don&apos;t need. Just the
+                three things small businesses around here actually ask for.
               </p>
             </div>
           </Reveal>
@@ -319,11 +320,12 @@ export default function Home() {
                   <span className="text-accent-deep">02</span> · Selected work
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
-                  Real sites, built for real people.
+                  Real sites, for real people.
                 </h2>
               </div>
               <p className="max-w-md text-base leading-relaxed text-ink-soft">
-                Explore live client storefronts and personal software below. See something that fits your business? Click &ldquo;Build something similar&rdquo; to pre-fill your project note.
+                Two local businesses and a study app I built for myself. Click
+                any of them to look around.
               </p>
             </div>
           </Reveal>
@@ -342,14 +344,15 @@ export default function Home() {
             <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
               <div>
                 <p className="font-tech text-eyebrow font-medium uppercase text-ink-soft">
-                  <span className="text-accent-deep">03</span> · How it works
+                  <span className="text-accent-deep">03</span> · The process
                 </p>
                 <h2 className="mt-4 max-w-2xl font-display text-h2 font-semibold text-ink">
-                  Simple from the first hello.
+                  How it works.
                 </h2>
               </div>
               <p className="max-w-md text-base leading-relaxed text-ink-soft">
-                Four clear steps from our first conversation to your live domain — see a working mockup on a phone before paying anything.
+                Four simple steps. You see a working version of your site on a
+                phone before you spend anything.
               </p>
             </div>
           </Reveal>
@@ -392,11 +395,11 @@ export default function Home() {
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="max-w-2xl border-l-2 border-accent pl-5 sm:pl-6">
                   <p className="font-display text-quote text-ink">
-                    &ldquo;The mockup is free. The build is one flat fee — named
-                    before I start.&rdquo;
+                    &ldquo;The mockup is free. The build is one flat fee — told
+                    to you before I start.&rdquo;
                   </p>
                   <p className="mt-3 font-tech text-xs uppercase text-ink-mute">
-                    No hourly creep · No monthly retainers · 100% owned by you
+                    No surprise bills · No monthly fees · 100% yours
                   </p>
                 </div>
                 <a
@@ -431,7 +434,7 @@ export default function Home() {
                 </h2>
               </div>
               <p className="max-w-md text-base leading-relaxed text-ink-soft">
-                What business owners usually ask before requesting a free mockup — answered plainly up front.
+                A few things people usually ask before we get started.
               </p>
             </div>
           </Reveal>
@@ -477,7 +480,7 @@ export default function Home() {
                 href="/about"
                 className="group inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2.5 rounded-xl border border-line-strong bg-surface px-7 py-3.5 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:bg-wash sm:w-auto"
               >
-                <span>Read my story &amp; notes</span>
+                <span>More about me</span>
                 <ArrowRight
                   size={17}
                   aria-hidden
@@ -517,25 +520,25 @@ export default function Home() {
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
                     <dt className="shrink-0 text-ink-mute">First step</dt>
                     <dd className="text-right font-medium tabular-nums text-ink">
-                      Free working phone mockup
+                      Free mockup on your phone
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
-                    <dt className="shrink-0 text-ink-mute">Pricing</dt>
+                    <dt className="shrink-0 text-ink-mute">How I charge</dt>
                     <dd className="text-right font-medium tabular-nums text-ink">
-                      One flat fee (named upfront)
+                      One flat fee, told upfront
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
-                    <dt className="shrink-0 text-ink-mute">Build time</dt>
+                    <dt className="shrink-0 text-ink-mute">Timeline</dt>
                     <dd className="text-right font-medium tabular-nums text-ink">
-                      One focused week
+                      About a week
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
-                    <dt className="shrink-0 text-ink-mute">Reply time</dt>
+                    <dt className="shrink-0 text-ink-mute">Reply</dt>
                     <dd className="text-right font-medium tabular-nums text-ink">
-                      Within 24 hours from Glennville, GA
+                      Within a day, from Glennville
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
